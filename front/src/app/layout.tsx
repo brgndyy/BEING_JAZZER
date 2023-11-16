@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { myStyle } from '@/_styles/vars.css';
 import Card from '@/_components/_composables/Card';
+import Header from '@/_components/_header/Header';
+import ContentCard from '@/_components/_composables/ContentCard';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
@@ -12,7 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={myStyle}>
-        <Card>{children}</Card>
+        <Card>
+          <Header />
+          <ContentCard>{children}</ContentCard>
+        </Card>
       </body>
     </html>
   );
