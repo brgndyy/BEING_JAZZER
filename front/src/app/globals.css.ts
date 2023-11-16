@@ -21,10 +21,9 @@ globalStyle('h1, h2, h3, p', {
   padding: '0',
 });
 
-// globalStyle("a, a:link, a:visited, a:hover", {
-//   color: container_text_color_var,
-//   textDecoration: "none",
-// });
+globalStyle('a, a:link, a:visited, a:hover', {
+  textDecoration: 'none',
+});
 
 globalStyle('li', {
   listStyle: 'none',
