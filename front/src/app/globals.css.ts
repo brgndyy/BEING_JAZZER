@@ -1,4 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css';
+import { root_background_color_var } from '@/_styles/vars.css';
 
 globalStyle('*', {
   boxSizing: 'border-box',
@@ -12,6 +13,7 @@ globalStyle('body', {
   overflow: 'scroll',
   transition: 'all 0.3s ease',
   position: 'relative',
+  background: root_background_color_var,
 });
 
 globalStyle('h1, h2, h3, p', {
@@ -24,20 +26,6 @@ globalStyle('h1, h2, h3, p', {
 //   textDecoration: "none",
 // });
 
-// 라이트 모드
-// globalStyle(`:root`, {
-//   background: lightVars.colorBackground,
-//   color: lightVars.text_color,
-//   // ... 기타 스타일
-// });
-
 globalStyle('li', {
   listStyle: 'none',
 });
-
-// 다크 모드
-// globalStyle(`[data-theme='dark']`, {
-//   background: darkVars.colorBackground,
-//   color: darkVars.text_color,
-//   // ... 기타 스타일
-// });
