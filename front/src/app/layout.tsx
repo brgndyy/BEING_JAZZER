@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import './globals.css.ts';
+import './globals.css';
 import { myStyle } from '@/_styles/vars.css';
 
 export const metadata: Metadata = {

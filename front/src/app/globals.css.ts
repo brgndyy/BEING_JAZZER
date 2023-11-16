@@ -1,5 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css';
-import { root_background_color_var } from '@/_styles/vars.css';
+import { rootBg } from '@/_styles/vars.css';
 
 globalStyle('*', {
   boxSizing: 'border-box',
@@ -13,7 +13,7 @@ globalStyle('body', {
   overflow: 'scroll',
   transition: 'all 0.3s ease',
   position: 'relative',
-  background: root_background_color_var,
+  background: rootBg,
 });
 
 globalStyle('h1, h2, h3, p', {
