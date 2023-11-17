@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { IoSettingsSharp } from 'react-icons/io5';
-import { HeaderPropsType } from 'types/header';
+import { HeaderPropsType } from 'types';
 import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
 import {

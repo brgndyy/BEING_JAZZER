@@ -1,4 +1,4 @@
-declare module 'types/header' {
+declare module 'types' {
   export interface HeaderPropsType {
     currentTheme: string;
   }
