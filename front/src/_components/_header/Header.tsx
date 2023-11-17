@@ -6,18 +6,24 @@ import {
   headerCategoryContainer,
   loginCategory,
   settingCategory,
+  toggleInput,
+  toggleLabel,
 } from './header.css';
+import WhiteBannerImage from '../_composables/banner/WhiteBannerImage';
 
 export default function Header() {
   return (
     <div className={headerContainer}>
       <Link href="/" className={homeLink}>
-        <div>로고 이미지</div>
+        <WhiteBannerImage />
       </Link>
       <div className={headerCategoryContainer}>
         <div className={loginCategory}>
-          <div>로그인 or 회원가입</div>
+          <div>로그인</div>
         </div>
+
+        <input type="checkbox" id="darkmodeToggle" className={toggleInput} />
+        <label htmlFor="darkmodeToggle" className={`${toggleLabel}`} />
 
         <div className={settingCategory}>
           <div>셋팅</div>

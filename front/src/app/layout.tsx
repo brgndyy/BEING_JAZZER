@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { myStyle } from '@/_styles/vars.css';
-import Card from '@/_components/_composables/Card';
+import Card from '@/_components/_composables/cards/Card';
 import Header from '@/_components/_header/Header';
-import ContentCard from '@/_components/_composables/ContentCard';
+import ContentCard from '@/_components/_composables/cards/ContentCard';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
