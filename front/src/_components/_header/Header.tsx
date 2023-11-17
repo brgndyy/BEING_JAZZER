@@ -1,19 +1,29 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { IoSettingsSharp } from 'react-icons/io5';
+import { HeaderPropsType } from 'types/header';
+import { useTheme } from '@/_hooks/useTheme';
+import { myStyle } from '@/_styles/vars.css';
 import {
   headerContainer,
   homeLink,
   headerCategoryContainer,
   loginCategory,
+  settingIcon,
   settingCategory,
   toggleInput,
   toggleLabel,
+  toggleLabelChecked,
 } from './header.css';
 import WhiteBannerImage from '../_composables/banner/WhiteBannerImage';
 
-export default function Header() {
+export default function Header({ currentTheme }: HeaderPropsType) {
+  const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
+
   return (
-    <div className={headerContainer}>
+    <div className={`${headerContainer} ${myStyle}`}>
       <Link href="/" className={homeLink}>
         <WhiteBannerImage />
       </Link>
@@ -22,11 +32,19 @@ export default function Header() {
           <div>로그인</div>
         </div>
 
-        <input type="checkbox" id="darkmodeToggle" className={toggleInput} />
-        <label htmlFor="darkmodeToggle" className={`${toggleLabel}`} />
+        <input
+          type="checkbox"
+          id="darkmodeToggle"
+          className={toggleInput}
+          onChange={themeToggleHandler}
+        />
+        <label
+          htmlFor="darkmodeToggle"
+          className={`${toggleLabel} ${darkTheme ? toggleLabelChecked : ''}`}
+        />
 
         <div className={settingCategory}>
-          <div>셋팅</div>
+          <IoSettingsSharp className={settingIcon} />
         </div>
       </div>
     </div>

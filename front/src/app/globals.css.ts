@@ -1,5 +1,5 @@
 import { globalStyle } from '@vanilla-extract/css';
-import { rootBg } from '@/_styles/vars.css';
+import { lightTheme, darkTheme } from '@/_styles/theme.css';
 
 globalStyle('*', {
   boxSizing: 'border-box',
@@ -13,7 +13,6 @@ globalStyle('body', {
   overflow: 'scroll',
   transition: 'all 0.3s ease',
   position: 'relative',
-  background: rootBg,
 });
 
 globalStyle('h1, h2, h3, p', {
@@ -27,4 +26,14 @@ globalStyle('a, a:link, a:visited, a:hover', {
 
 globalStyle('li', {
   listStyle: 'none',
+});
+
+// 라이트 모드
+globalStyle(`:root`, {
+  background: lightTheme.colorBackground,
+});
+
+// 다크 모드
+globalStyle(`[data-theme='dark']`, {
+  background: darkTheme.colorBackground,
 });

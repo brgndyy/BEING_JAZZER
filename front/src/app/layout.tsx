@@ -1,9 +1,14 @@
+/* eslint-disable react/no-danger */
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { myStyle } from '@/_styles/vars.css';
 import Card from '@/_components/_composables/cards/Card';
 import Header from '@/_components/_header/Header';
 import ContentCard from '@/_components/_composables/cards/ContentCard';
+import { getThemeCookieValue } from '@/_utils/getThemeCookieValue';
+import { generateThemeScript } from '@/_utils/generateThemeScript';
+import sanitizeHtml from '@/_utils/sanitizeHtml';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
@@ -11,11 +16,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const currentTheme = getThemeCookieValue();
+  const sanitizedThemeScript = sanitizeHtml(generateThemeScript(currentTheme));
+
   return (
     <html lang="en">
-      <body className={myStyle}>
+      <body suppressHydrationWarning className={myStyle}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: sanitizedThemeScript,
+          }}
+        />
         <Card>
-          <Header />
+          <Header currentTheme={currentTheme} />
           <ContentCard>{children}</ContentCard>
         </Card>
       </body>

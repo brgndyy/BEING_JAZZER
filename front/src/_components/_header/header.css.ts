@@ -76,6 +76,8 @@ export const loginCategory = style({});
 
 export const settingCategory = style({});
 
+export const settingIcon = style({});
+
 export const underLine = style({
   position: 'relative',
   marginTop: '7px',
