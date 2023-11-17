@@ -29,6 +29,13 @@
     "react/react-in-jsx-scope": "off",
     // 경고표시, 파일 확장자를 .ts나 .tsx 모두 허용함
     "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
-    "import/prefer-default-export": ["off", { "target": "single" }]
+    "import/prefer-default-export": ["off", { "target": "single" }],
+    // label이 직접 컨트롤 폼을 감싸거나, id 바인딩 둘중 하나만 되어도 가능
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"]
+      }
+    ]
   }
 }
