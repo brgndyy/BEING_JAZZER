@@ -5,5 +5,5 @@ export const lightTheme = createGlobalTheme(':root', {
 });
 
 export const darkTheme = createGlobalTheme('[data-theme="dark"]', {
-  colorBackground: '#000',
+  colorBackground: '#202020',
 });
