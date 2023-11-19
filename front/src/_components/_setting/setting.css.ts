@@ -9,5 +9,6 @@ export const settingIcon = style({
   transition: 'transform 0.3s ease',
   ':hover': {
     transform: 'rotate(180deg)',
+    opacity: '0.7',
   },
 });

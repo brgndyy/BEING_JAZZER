@@ -6,4 +6,8 @@ export const authText = style({
   fontSize: '1.5rem',
   cursor: 'pointer',
   padding: '0.2rem',
+  transition: 'all 0.3s ease',
+  ':hover': {
+    opacity: 0.7,
+  },
 });
