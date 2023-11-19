@@ -7,4 +7,10 @@ declare module 'types' {
     darkTheme: boolean;
     themeToggleHandler: () => void;
   }
+
+  export interface ModalProps {
+    modalHandler: () => void;
+    closing: boolean;
+    handleClose: () => void;
+  }
 }
