@@ -9,13 +9,15 @@ import {
   headerContainer,
   homeLink,
   headerCategoryContainer,
-  loginCategory,
+  loginOrSignUpCategory,
   settingCategory,
 } from './header.css';
 import WhiteBannerImage from '../_composables/banner/WhiteBannerImage';
 import DarkBannerImage from '../_composables/banner/DarkBannerImage';
 import Setting from '../_setting/Setting';
 import ThemeToggleInput from '../_theme/ThemeToggleInput';
+import Login from '../_auth/Login';
+import SignUp from '../_auth/SignUp';
 
 export default function Header({ currentTheme }: HeaderPropsType) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
@@ -26,8 +28,8 @@ export default function Header({ currentTheme }: HeaderPropsType) {
         {darkTheme ? <DarkBannerImage /> : <WhiteBannerImage />}
       </Link>
       <div className={headerCategoryContainer}>
-        <div className={loginCategory}>
-          <div>로그인</div>
+        <div className={loginOrSignUpCategory}>
+          <Login />
         </div>
         <ThemeToggleInput darkTheme={darkTheme} themeToggleHandler={themeToggleHandler} />
         <div className={settingCategory}>
