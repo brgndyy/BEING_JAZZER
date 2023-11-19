@@ -10,7 +10,7 @@ globalStyle('body', {
   width: '100vw',
   minHeight: '100vh',
   height: 'auto',
-  overflow: 'scroll',
+  overflow: 'hidden',
   transition: 'all 0.3s ease',
   position: 'relative',
 });
