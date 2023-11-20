@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Card>
           <Header currentTheme={currentTheme} />
           <ContentCard>{children}</ContentCard>
-          <div id="portal"></div>
+          <div id="portal" />
         </Card>
       </body>
     </html>
