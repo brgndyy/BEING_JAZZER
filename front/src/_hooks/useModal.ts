@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 const useModal = () => {
-  let [modal, setModal] = useState(false);
-  let [portalElement, setPortalElement] = useState<Element | null>(null);
+  const [modal, setModal] = useState(false);
+  const [portalElement, setPortalElement] = useState<Element | null>(null);
   const [closing, setClosing] = useState(false);
 
   useEffect(() => {
