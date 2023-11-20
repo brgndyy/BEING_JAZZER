@@ -15,7 +15,7 @@ export default function Setting() {
 
       {modal && portalElement
         ? createPortal(
-            <Modal modalHandler={modalHandler} closing={closing} handleClose={handleClose}>
+            <Modal modalHandler={modalHandler} closing={closing}>
               <SettingModal />
             </Modal>,
             portalElement,

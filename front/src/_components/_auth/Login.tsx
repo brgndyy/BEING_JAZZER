@@ -5,6 +5,7 @@ import { underLine } from '../_header/header.css';
 import { authText } from './login.css';
 import LoginModal from '../_modal/LoginModal';
 import Modal from '../_modal/Modal';
+import Backdrop from '../_modal/Backdrop';
 
 export default function Login() {
   const { modal, portalElement, modalHandler, closing, handleClose } = useModal();
@@ -21,9 +22,11 @@ export default function Login() {
       </div>
       {modal && portalElement
         ? createPortal(
-            <Modal modalHandler={modalHandler} closing={closing} handleClose={handleClose}>
-              <LoginModal />
-            </Modal>,
+            <Backdrop handleClose={handleClose}>
+              <Modal modalHandler={modalHandler} closing={closing}>
+                <LoginModal handleClose={handleClose} />
+              </Modal>
+            </Backdrop>,
             portalElement,
           )
         : null}

@@ -15,6 +15,9 @@ declare module 'types' {
   export interface ModalPropsType {
     modalHandler: () => void;
     closing: boolean;
+  }
+
+  export interface LoginModalPropsType {
     handleClose: () => void;
   }
 }

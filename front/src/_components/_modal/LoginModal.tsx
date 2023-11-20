@@ -2,6 +2,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import Link from 'next/link';
 import { myStyle } from '@/_styles/vars.css';
+import { LoginModalPropsType } from 'types';
 import NaverAuthImage from '../_composables/iconImages/NaverAuthImage';
 import GoogleAuthImage from '../_composables/iconImages/GoogleAuthImage';
 import {
@@ -29,7 +30,7 @@ import {
 } from './loginModal.css';
 import ModalBannerImage from './ModalBannerImage';
 
-export default function LoginModal() {
+export default function LoginModal({ handleClose }: LoginModalPropsType) {
   const [isSignUp, setIsSignUp] = useState(true);
 
   return (
@@ -43,10 +44,7 @@ export default function LoginModal() {
             <h2>{isSignUp ? '로그인' : '회원가입'}</h2>
           </div>
           <div className={closeButtonContainer}>
-            <AiOutlineClose
-              // onClick={handleClose}
-              className={`${closeButton} ${myStyle}`}
-            />
+            <AiOutlineClose onClick={handleClose} className={`${closeButton} ${myStyle}`} />
           </div>
         </div>
         <div className={loginFormContainer}>
@@ -85,25 +83,12 @@ export default function LoginModal() {
           {/* <div className={classes.oauth_icon}>카카오톡 로그인</div> */}
         </div>
         <div className={joinContainer}>
-          {isSignUp ? (
-            <div className={`${myStyle} ${toggleText}`}>
-              <p>아직 Being JAZZER가 아니신가요 ?</p>
-            </div>
-          ) : (
-            <div className={`${myStyle} ${toggleText}`}>
-              <p>이미 Being JAZZER 이신가요 ?</p>
-            </div>
-          )}
-
-          {isSignUp ? (
-            <button type="button" className={`${toggleAuthMode} ${myStyle}`}>
-              회원가입 하기
-            </button>
-          ) : (
-            <button type="button" className={toggleAuthMode}>
-              로그인 하기
-            </button>
-          )}
+          <div className={`${myStyle} ${toggleText}`}>
+            <p>{isSignUp ? `아직 Being JAZZER가 아니신가요 ?` : `이미 Being JAZZER 이신가요 ?`}</p>
+          </div>
+          <button type="button" className={`${toggleAuthMode} ${myStyle}`}>
+            {isSignUp ? `회원가입 하기` : `로그인 하기`}
+          </button>
         </div>
       </div>
     </>

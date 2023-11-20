@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { background1, text1, text3, text4, text5 } from '@/_styles/vars.css';
+import { background1, text1, text4, text5 } from '@/_styles/vars.css';
 
 export const authContainer = style({
   display: 'flex',
@@ -59,7 +59,7 @@ export const closeButtonContainer = style({
 export const closeButton = style({
   fontSize: '1.25rem',
   cursor: 'pointer',
-  color : text1,
+  color: text1,
 });
 
 export const logo = style({
