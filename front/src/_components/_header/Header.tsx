@@ -17,7 +17,6 @@ import DarkBannerImage from '../_composables/banner/DarkBannerImage';
 import Setting from '../_setting/Setting';
 import ThemeToggleInput from '../_theme/ThemeToggleInput';
 import Login from '../_auth/Login';
-import SignUp from '../_auth/SignUp';
 
 export default function Header({ currentTheme }: HeaderPropsType) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
