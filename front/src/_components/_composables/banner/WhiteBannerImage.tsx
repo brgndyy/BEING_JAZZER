@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { WhiteBannerLogoImage } from 'public/svgs';
+import { WhiteBannerLogoImage } from 'public/images/svgs';
 import { bannerImage } from './bannerImage.css';
 
 export default function WhiteBannerImage() {

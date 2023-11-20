@@ -1,4 +1,4 @@
-import { DarkBannerLogoImage } from 'public/svgs';
+import { DarkBannerLogoImage } from 'public/images/svgs';
 import Image from 'next/image';
 import { bannerImage } from './bannerImage.css';
 
