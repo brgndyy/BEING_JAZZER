@@ -4,7 +4,7 @@ import { background1 } from '@/_styles/vars.css';
 
 export const modalContainer = style({
   width: '45rem',
-  height: '40rem',
+  height: '43rem',
   borderRadius: '1rem',
   position: 'relative',
   zIndex: '1000',

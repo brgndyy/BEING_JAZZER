@@ -2,7 +2,15 @@ import { SettingModalPropsType } from 'types';
 import { AiOutlineClose } from 'react-icons/ai';
 import defaultChordSetting from '@/_mocks/chordSettingOptions';
 import { myStyle } from '@/_styles/vars.css';
-import { formLogo, logo, closeButtonContainer, closeButton, settingForm } from './settingModal.css';
+import {
+  formLogo,
+  logo,
+  closeButtonContainer,
+  closeButton,
+  settingForm,
+  buttonContainer,
+  button,
+} from './settingModal.css';
 import OptionConfig from '../_setting/OptionConfig';
 
 export default function SettingModal({ handleClose }: SettingModalPropsType) {
@@ -19,6 +27,12 @@ export default function SettingModal({ handleClose }: SettingModalPropsType) {
         {defaultChordSetting.map((setting) => {
           return <OptionConfig key={setting.id} type={setting.type} config={setting.config} />;
         })}
+
+        <div className={buttonContainer}>
+          <button onClick={handleClose} className={button} type="button">
+            설정 변경
+          </button>
+        </div>
       </form>
     </div>
   );

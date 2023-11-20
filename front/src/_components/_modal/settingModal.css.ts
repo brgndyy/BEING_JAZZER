@@ -72,3 +72,20 @@ export const title = style({
   width: '30%',
   color: text1,
 });
+
+export const buttonContainer = style({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '5rem',
+  marginTop: '1rem',
+});
+
+export const button = style({
+  padding: '1rem',
+  border: '0.05rem solid',
+  borderRadius: '1rem',
+  cursor: 'pointer',
+  fontWeight: 'bold',
+  width: '10rem',
+});
