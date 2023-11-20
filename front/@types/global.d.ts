@@ -8,7 +8,11 @@ declare module 'types' {
     themeToggleHandler: () => void;
   }
 
-  export interface ModalProps {
+  export interface BackDropPropsType {
+    handleClose: () => void;
+  }
+
+  export interface ModalPropsType {
     modalHandler: () => void;
     closing: boolean;
     handleClose: () => void;
