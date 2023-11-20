@@ -13,11 +13,18 @@ declare module 'types' {
   }
 
   export interface ModalPropsType {
-    modalHandler: () => void;
     closing: boolean;
   }
 
   export interface LoginModalPropsType {
     handleClose: () => void;
+  }
+
+  export interface SettingModalPropsType {
+    handleClose: () => void;
+  }
+  export interface OptionConfigPropsType {
+    type: string;
+    config: { [key: string]: boolean | undefined };
   }
 }

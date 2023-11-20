@@ -11,11 +11,12 @@ export default function Modal(props: PropsWithChildren<ModalPropsType>) {
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={`${modalContainer} ${closing ? moveOut : ''} ${myStyle}`}
       onClick={stopPropagation}
       role="button"
-      tabIndex="0"
+      tabIndex={0}
     >
       {children}
     </div>

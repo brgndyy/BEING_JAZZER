@@ -5,6 +5,7 @@ import useModal from '@/_hooks/useModal';
 import { settingIcon } from './setting.css';
 import SettingModal from '../_modal/SettingModal';
 import Modal from '../_modal/Modal';
+import Backdrop from '../_modal/Backdrop';
 
 export default function Setting() {
   const { modal, modalHandler, portalElement, closing, handleClose } = useModal();
@@ -15,9 +16,11 @@ export default function Setting() {
 
       {modal && portalElement
         ? createPortal(
-            <Modal modalHandler={modalHandler} closing={closing}>
-              <SettingModal />
-            </Modal>,
+            <Backdrop handleClose={handleClose}>
+              <Modal closing={closing}>
+                <SettingModal handleClose={handleClose} />
+              </Modal>
+            </Backdrop>,
             portalElement,
           )
         : null}

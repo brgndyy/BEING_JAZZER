@@ -6,6 +6,7 @@ export const authContainer = style({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
+  width: '55%',
 });
 
 export const modalBannerImageContainer = style({

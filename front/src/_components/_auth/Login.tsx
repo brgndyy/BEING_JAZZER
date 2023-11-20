@@ -23,7 +23,7 @@ export default function Login() {
       {modal && portalElement
         ? createPortal(
             <Backdrop handleClose={handleClose}>
-              <Modal modalHandler={modalHandler} closing={closing}>
+              <Modal closing={closing}>
                 <LoginModal handleClose={handleClose} />
               </Modal>
             </Backdrop>,

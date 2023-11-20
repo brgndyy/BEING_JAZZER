@@ -31,7 +31,11 @@ import {
 import ModalBannerImage from './ModalBannerImage';
 
 export default function LoginModal({ handleClose }: LoginModalPropsType) {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isLoginMode, setIsLoginMode] = useState(true);
+
+  const loginModeHandler = () => {
+    setIsLoginMode((prevMode) => !prevMode);
+  };
 
   return (
     <>
@@ -41,7 +45,7 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
       <div className={authContainer}>
         <div className={loginBanner}>
           <div className={`${logo} ${myStyle}`}>
-            <h2>{isSignUp ? '로그인' : '회원가입'}</h2>
+            <h2>{isLoginMode ? '로그인' : '회원가입'}</h2>
           </div>
           <div className={closeButtonContainer}>
             <AiOutlineClose onClick={handleClose} className={`${closeButton} ${myStyle}`} />
@@ -66,7 +70,7 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
             </div> */}
             {/* )} */}
             <button type="button" className={`${loginButton} ${myStyle}`}>
-              {isSignUp ? '로그인' : '회원가입'}
+              {isLoginMode ? '로그인' : '회원가입'}
             </button>
           </form>
         </div>
@@ -84,10 +88,16 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
         </div>
         <div className={joinContainer}>
           <div className={`${myStyle} ${toggleText}`}>
-            <p>{isSignUp ? `아직 Being JAZZER가 아니신가요 ?` : `이미 Being JAZZER 이신가요 ?`}</p>
+            <p>
+              {isLoginMode ? `아직 Being JAZZER가 아니신가요 ?` : `이미 Being JAZZER 이신가요 ?`}
+            </p>
           </div>
-          <button type="button" className={`${toggleAuthMode} ${myStyle}`}>
-            {isSignUp ? `회원가입 하기` : `로그인 하기`}
+          <button
+            type="button"
+            className={`${toggleAuthMode} ${myStyle}`}
+            onClick={loginModeHandler}
+          >
+            {isLoginMode ? `회원가입 하기` : `로그인 하기`}
           </button>
         </div>
       </div>
