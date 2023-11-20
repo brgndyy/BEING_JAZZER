@@ -1,18 +1,31 @@
 import { createVar, style } from '@vanilla-extract/css';
 
-export const headerBg = createVar();
+export const background1 = createVar();
+export const background2 = createVar();
 export const text1 = createVar();
+export const text2 = createVar();
+export const text3 = createVar();
+export const text4 = createVar();
+export const text5 = createVar();
 
 export const myStyle = style({
   vars: {
-    [headerBg]: '#fff',
+    [background1]: '#fff',
     [text1]: '#000',
+    [text2]: '#fff',
+    [text3]: '#868e96',
+    [text4]: '#505050',
+    [text5]: '#707070',
   },
   selectors: {
     '[data-theme="dark"] &': {
       vars: {
-        [headerBg]: '#1e1e1e',
+        [background1]: '#1e1e1e',
         [text1]: '#fff',
+        [text2]: '##2c2c2c',
+        [text3]: '#acacac',
+        [text4]: '#e5e5e5',
+        [text5]: '#1e1e1e',
       },
     },
   },

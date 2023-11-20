@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { softAppear } from '@/_styles/animation.css';
-import { headerBg } from '@/_styles/vars.css';
+import { background1 } from '@/_styles/vars.css';
 
 export const headerContainer = style({
   position: 'fixed',
@@ -16,7 +16,7 @@ export const headerContainer = style({
   justifyContent: 'space-between',
   alignItems: 'center',
   animation: `${softAppear} 0.3s forwards`,
-  background: headerBg,
+  background: background1,
 });
 
 export const homeLink = style({
@@ -62,7 +62,7 @@ export const underLine = style({
     left: '0',
     width: '100%',
     border: '0.5px solid',
-    background: headerBg,
+    background: background1,
     transform: 'scaleX(0)',
     transformOrigin: 'left',
     transition: 'transform 0.1s ease',
