@@ -1,3 +1,5 @@
+'use client';
+
 import { SettingModalPropsType } from 'types';
 import { AiOutlineClose } from 'react-icons/ai';
 import defaultChordSetting from '@/_mocks/chordSettingOptions';

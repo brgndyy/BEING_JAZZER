@@ -1,3 +1,5 @@
+'use client';
+
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -28,7 +30,7 @@ import {
   toggleAuthMode,
   toggleText,
 } from './loginModal.css';
-import ModalBannerImage from './ModalBannerImage';
+import ModalBannerImage from '../_composables/banner/ModalBannerImage';
 
 export default function LoginModal({ handleClose }: LoginModalPropsType) {
   const [isLoginMode, setIsLoginMode] = useState(true);
