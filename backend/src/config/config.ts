@@ -5,7 +5,7 @@ const config = {
   development: {
     username: process.env.DB_USERNAME || 'root',
     password: process.env.DB_PASSWORD,
-    database: '생성할 스키마 이름',
+    database: 'BEING_JAZZER',
     host: process.env.DB_HOST || 'localhost',
     dialect: 'mysql',
   },
