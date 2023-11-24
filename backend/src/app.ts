@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 import HttpError from './error/HttpError';
 import ERROR_MESSAGES from './constants/errorMessages';
 import PROGRESS_MESSAGES from './constants/progressMessages';
-import { corsOptions } from './constants/options';
+import { CORS_OPTIONS } from './constants/options';
 import sequelize from './models';
 
 dotenv.config();
@@ -18,7 +18,7 @@ const app = express();
 
 app.set('port', process.env.PORT || 3002);
 
-app.use(cors(corsOptions));
+app.use(cors(CORS_OPTIONS));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 
 sequelize
   .sync({
-    force: true,
+    force: false,
   })
   .then(() => {
     console.log(PROGRESS_MESSAGES.succeed_connect_database);

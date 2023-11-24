@@ -1,5 +1,4 @@
 import { Response, Request, NextFunction } from 'express';
-// import { User } from '../../models/users';
 import HttpError from '../error/HttpError';
 import sendLoginEmail from '../services/sendLoginEmail';
 import sendSignupEmail from '../services/sendSignupEmail';
@@ -7,7 +6,7 @@ import findExisitingUserFromEmail from '../services/findExistingUserFromEmail';
 import PROGRESS_MESSAGES from '../constants/progressMessages';
 import ERROR_MESSAGES from '../constants/errorMessages';
 
-export const loginOrsignUp = async (req: Request, res: Response, next: NextFunction) => {
+export const sendLoginOrSignUpEmail = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userEmail } = req.body;
 
@@ -17,7 +16,7 @@ export const loginOrsignUp = async (req: Request, res: Response, next: NextFunct
 
     res.json({ message: PROGRESS_MESSAGES.succeed_send_email });
   } catch (err) {
-    const error = new HttpError(ERROR_MESSAGES.not_succeed_send_email, 503);
+    const error = new HttpError(ERROR_MESSAGES.fail_send_email, 503);
     return next(error);
   }
 };

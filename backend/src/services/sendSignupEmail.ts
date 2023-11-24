@@ -5,6 +5,8 @@ import { transporter } from './transporter';
 import HttpError from '../error/HttpError';
 import { renderHtml } from './renderHtml';
 import ERROR_MESSAGES from '../constants/errorMessages';
+import createMailOption from './createMailOption';
+import { MAIL_STATE_OPTIONS } from '../constants/options';
 
 const sendSignupEmail = async (userEmail: string) => {
   try {
@@ -15,7 +17,7 @@ const sendSignupEmail = async (userEmail: string) => {
     const existingUser = await findExisitingUserFromEmail(userEmail);
 
     if (!existingUser) {
-      throw new HttpError(ERROR_MESSAGES.not_succeed_find_user, 500);
+      throw new HttpError(ERROR_MESSAGES.not_found_user, 500);
     }
 
     const existingUserId = existingUser.id;
@@ -30,14 +32,9 @@ const sendSignupEmail = async (userEmail: string) => {
 
     const html = renderHtml('회원가입', encryptedCode);
 
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: userEmail,
-      subject: `Being JAZZER 회원가입`,
-      html: html,
-    };
+    const mailOption = createMailOption(userEmail, MAIL_STATE_OPTIONS.sign_up, html);
 
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOption);
   } catch (err) {
     console.error(err);
     throw new HttpError(ERROR_MESSAGES.fail_send_email, 503);
