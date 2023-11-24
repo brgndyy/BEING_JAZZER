@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import morgan from 'morgan';
 import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -11,6 +11,7 @@ import ERROR_MESSAGES from './constants/errorMessages';
 import PROGRESS_MESSAGES from './constants/progressMessages';
 import { CORS_OPTIONS } from './constants/options';
 import sequelize from './models';
+import { userRoutes } from './routes/userRoutes';
 
 dotenv.config();
 
@@ -38,7 +39,7 @@ sequelize
     console.error(err);
   });
 
-// app.use('/api/users');
+app.use('/api/users', userRoutes);
 
 app.use(() => {
   const error = new HttpError(ERROR_MESSAGES.route_error, 404);
