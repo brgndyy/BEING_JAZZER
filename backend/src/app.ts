@@ -9,7 +9,8 @@ import bodyParser from 'body-parser';
 import HttpError from './error/HttpError';
 import ERROR_MESSAGES from './constants/errorMessages';
 import PROGRESS_MESSAGES from './constants/progressMessages';
-import corsOptions from './constants/corsOption';
+import { corsOptions } from './constants/options';
+import sequelize from './models';
 
 dotenv.config();
 
@@ -26,9 +27,18 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+sequelize
+  .sync({
+    force: true,
+  })
+  .then(() => {
+    console.log(PROGRESS_MESSAGES.succeed_connect_database);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+// app.use('/api/users');
 
 app.use(() => {
   const error = new HttpError(ERROR_MESSAGES.route_error, 404);
