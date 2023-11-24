@@ -94,7 +94,8 @@ export const formLabel = style({
 });
 
 export const formInput = style({
-  padding: '1rem',
+  padding: '0.9rem',
+  fontSize: '0.9rem',
   borderRadius: '1rem',
   border: '0.3px solid #d5d5d5',
   minHeight: '3rem',

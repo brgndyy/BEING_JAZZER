@@ -72,7 +72,7 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
             </div> */}
             {/* )} */}
             <button type="button" className={`${loginButton} ${myStyle}`}>
-              {isLoginMode ? '로그인' : '회원가입'}
+              {isLoginMode ? '로그인 하기' : '회원가입 하기'}
             </button>
           </form>
         </div>
