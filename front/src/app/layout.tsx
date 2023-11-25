@@ -8,6 +8,7 @@ import ContentCard from '@/_components/_composables/cards/ContentCard';
 import { getThemeCookieValue } from '@/_utils/getThemeCookieValue';
 import { generateThemeScript } from '@/_utils/generateThemeScript';
 import sanitizeHtml from '@/_utils/sanitizeHtml';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
@@ -27,6 +28,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <Card>
+          <ToastContainer
+            autoClose={1500}
+            position="top-right"
+            hideProgressBar={false}
+            theme={currentTheme}
+          />
           <Header currentTheme={currentTheme} />
           <ContentCard>{children}</ContentCard>
           <div id="portal" />
