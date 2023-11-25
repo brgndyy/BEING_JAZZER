@@ -45,26 +45,36 @@ declare module 'types' {
     config: { [key: string]: boolean | undefined };
   }
 
-  type Input = {
-    value: string | undefined;
-    isValid: boolean;
-  };
-
-  export interface Inputs {
-    [key: string]: Input;
+  export interface SearchParamsType {
+    searchParams: {
+      code: string;
+    };
   }
 
-  export interface State {
-    inputs: Inputs;
-    isValid: boolean;
+  export interface RegisterFromPropsType {
+    userEmail?: string;
   }
 
-  export interface Action {
-    type: 'INPUT_CHANGE';
-    inputId: string;
-    value: string;
-    isValid: boolean;
-  }
+  // type Input = {
+  //   value: string | undefined;
+  //   isValid: boolean;
+  // };
+
+  // export interface Inputs {
+  //   [key: string]: Input;
+  // }
+
+  // export interface State {
+  //   inputs: Inputs;
+  //   isValid: boolean;
+  // }
+
+  // export interface Action {
+  //   type: 'INPUT_CHANGE';
+  //   inputId: string;
+  //   value: string;
+  //   isValid: boolean;
+  // }
 
   export interface ResponseType {
     message: string;
