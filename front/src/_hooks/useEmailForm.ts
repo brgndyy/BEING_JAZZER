@@ -21,7 +21,7 @@ const useEmailForm = () => {
     if (emailRef.current) {
       try {
         const res = await sendRequest<ResponseType>(
-          process.env.NEXT_PUBLIC_BE_URL + PATH_ROUTES.request_auth_email,
+          process.env.NEXT_PUBLIC_DEFAULT_BE_URL + PATH_ROUTES.request_auth_email,
           JSON.stringify({
             userEmail: emailRef.current.value,
           }),
