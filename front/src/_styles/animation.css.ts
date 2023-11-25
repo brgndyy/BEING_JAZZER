@@ -38,3 +38,34 @@ export const fadeOut = keyframes({
     transform: 'translateY(400px) scale(0.75)',
   },
 });
+
+export const flipIn = keyframes({
+  from: {
+    transform: 'rotateY(90deg)',
+    opacity: 0,
+  },
+  to: {
+    transform: 'rotateY(0deg)',
+    opacity: 1,
+  },
+});
+
+export const flipOut = keyframes({
+  from: {
+    transform: 'rotateY(0deg)',
+    opacity: 1,
+  },
+  to: {
+    transform: 'rotateY(90deg)',
+    opacity: 0,
+  },
+});
+
+export const progressBarAnimation = keyframes({
+  from: {
+    width: '100%',
+  },
+  to: {
+    width: '0%',
+  },
+});
