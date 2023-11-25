@@ -12,8 +12,8 @@ import {
   loginOrSignUpCategory,
   settingCategory,
 } from './header.css';
-import WhiteBannerImage from '../_composables/banner/WhiteBannerImage';
-import DarkBannerImage from '../_composables/banner/DarkBannerImage';
+import WhiteBannerImage from '../_composables/images/bannerImages/WhiteBannerImage';
+import DarkBannerImage from '../_composables/images/bannerImages/DarkBannerImage';
 import Setting from '../_setting/Setting';
 import ThemeToggleInput from '../_theme/ThemeToggleInput';
 import Login from '../_auth/Login';

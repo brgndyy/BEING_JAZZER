@@ -30,6 +30,7 @@ export const mailMessage = style({
   fontSize: '0.875rem',
   flex: '1 1 0%',
   textAlign: 'center',
+  color: text1,
 });
 
 export const loginBanner = style({
@@ -188,4 +189,33 @@ export const joinContainer = style({
 
 export const toggleText = style({
   color: text4,
+});
+
+export const underLine = style({
+  position: 'relative',
+  marginTop: '0.5rem',
+  marginLeft: '1rem',
+  marginRight: '1rem',
+  fontSize: '1.25rem',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  transition: 'all 0.3s',
+  '::before': {
+    content: '',
+    position: 'absolute',
+    bottom: '0',
+    left: '10',
+    width: '45%',
+    border: '0.5px solid',
+    background: background1,
+    transform: 'scaleX(0)',
+    transformOrigin: 'left',
+    transition: 'transform 0.1s ease',
+  },
+  selectors: {
+    '&:hover::before': {
+      transform: 'scaleX(1)',
+    },
+  },
 });
