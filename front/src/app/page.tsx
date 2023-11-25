@@ -1,3 +1,15 @@
+import Header from '@/_components/_header/Header';
+import { getThemeCookieValue } from '@/_utils/getThemeCookieValue';
+import ContentCard from '@/_components/_composables/cards/ContentCard';
+
 export default function Home() {
-  return <></>;
+  const currentTheme = getThemeCookieValue();
+  return (
+    <>
+      <Header currentTheme={currentTheme} />
+      <ContentCard>
+        <div>하이</div>
+      </ContentCard>
+    </>
+  );
 }
