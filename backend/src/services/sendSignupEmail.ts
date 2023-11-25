@@ -14,18 +14,9 @@ const sendSignupEmail = async (userEmail: string) => {
     // db에서 삭제 후 갱신
     await AuthEmailRecord.destroy({ where: { userEmail: userEmail } });
 
-    const existingUser = await findExisitingUserFromEmail(userEmail);
-
-    if (!existingUser) {
-      throw new HttpError(ERROR_MESSAGES.not_found_user, 500);
-    }
-
-    const existingUserId = existingUser.id;
-
     const encryptedCode = await encryptEmail(userEmail);
 
     await AuthEmailRecord.create({
-      userId: existingUserId,
       userEmail: userEmail,
       encryptedCode: encryptedCode,
     });

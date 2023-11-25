@@ -12,7 +12,6 @@ export class AuthEmailRecord extends Model<
   InferCreationAttributes<AuthEmailRecord>
 > {
   declare id: CreationOptional<number>;
-  declare userId: number;
   declare userEmail: string;
   declare encryptedCode: string;
   declare createdAt: CreationOptional<Date>;
@@ -27,13 +26,6 @@ export function initAuthEmailRecord(sequelize: Sequelize): void {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-      },
-      userId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'User',
-          key: 'id',
-        },
       },
       userEmail: {
         type: DataTypes.STRING(45),

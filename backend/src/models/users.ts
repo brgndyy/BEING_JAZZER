@@ -11,6 +11,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare id: CreationOptional<number>;
   declare userEmail: string;
   declare userName: string;
+  declare emailId: number;
   declare nowLoggedIn: boolean;
   declare isAdmin: boolean;
   declare createdAt: CreationOptional<Date>;
@@ -33,6 +34,13 @@ export function initUser(sequelize: Sequelize): void {
       userName: {
         type: DataTypes.STRING(45),
         allowNull: false,
+      },
+      emailId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'AuthEmailRecords',
+          key: 'id',
+        },
       },
       nowLoggedIn: {
         type: DataTypes.BOOLEAN,

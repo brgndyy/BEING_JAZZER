@@ -22,12 +22,12 @@ const sequelize = new Sequelize(
 );
 
 // 워크벤치에 테이블 생성
-initUser(sequelize);
 initAuthEmailRecord(sequelize);
+initUser(sequelize);
 
 // 관계 설정
 function setupAssociations(): void {
-  AuthEmailRecord.belongsTo(User, { foreignKey: 'userId' });
+  User.belongsTo(AuthEmailRecord, { foreignKey: 'emailId' });
 }
 
 setupAssociations();
