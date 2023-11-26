@@ -7,9 +7,7 @@ export default function Home() {
   return (
     <>
       <Header currentTheme={currentTheme} />
-      <ContentCard>
-        <div>하이</div>
-      </ContentCard>
+      <ContentCard></ContentCard>
     </>
   );
 }

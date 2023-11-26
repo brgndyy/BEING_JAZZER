@@ -34,7 +34,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
           {children}
           <div id="portal" />
-          <div id="toast-root" />
         </Card>
       </body>
     </html>
