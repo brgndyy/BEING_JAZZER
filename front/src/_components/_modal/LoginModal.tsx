@@ -5,7 +5,6 @@ import { LoginModalPropsType } from 'types';
 import useEmailForm from '@/_hooks/useEmailForm';
 import { authContainer, modalBannerImageContainer, orLogo } from './loginModal.css';
 import ModalBannerImage from '../_composables/images/bannerImages/ModalBannerImage';
-import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from '../_composables/loadingSpinner/LoadingSpinner';
 import LoginModeToggle from '../_login/LoginModeToggle';
 import OAuthIcons from '../_login/OAuthIcons';
@@ -18,10 +17,8 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
 
   return (
     <>
-      {isLoading && <LoadingSpinner />}
-      <div className={modalBannerImageContainer}>
-        <ModalBannerImage />
-      </div>
+      {/* {isLoading && <LoadingSpinner />} */}
+      <div className={modalBannerImageContainer}>{/* <ModalBannerImage /> */}</div>
       <div className={authContainer}>
         <LoginBanner isLoginMode={isLoginMode} handleClose={handleClose} />
         <LoginForm
