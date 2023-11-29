@@ -1,14 +1,21 @@
-import { SearchParamsType } from 'types';
-import getSignupUserEmail from '@/_service/getSignupUserEmail';
-import RegisterForm from '@/_components/_register/RegisterForm';
+import { SearchParamsType } from 'types'
+import getSignupUserEmail from '@/_services/getSignupUserEmail'
+import RegisterFunnel from '@/_components/_register/RegisterFunnel'
+import getEncryptedCodeFromParams from '@/_services/getEncryptedCodeFromParams'
+import NotFound from '../not-found'
 
 export default async function RegisterPage({ searchParams }: SearchParamsType) {
-  const encryptedCode = (searchParams ? searchParams.code : '').replace(/ /g, '+');
-  const userInfo = await getSignupUserEmail(encryptedCode);
-  const { userEmail } = userInfo;
+  const encryptedCode = getEncryptedCodeFromParams({ searchParams })
+  const userInfo = await getSignupUserEmail(encryptedCode)
+  const { userEmail } = userInfo
+
+  if (!userEmail) {
+    return <NotFound />
+  }
+
   return (
     <>
-      <RegisterForm userEmail={userEmail} />;
+      <RegisterFunnel userEmail={userEmail} />;
     </>
-  );
+  )
 }
