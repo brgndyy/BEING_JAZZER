@@ -7,6 +7,7 @@ import { getThemeCookieValue } from '@/_utils/getThemeCookieValue';
 import { generateThemeScript } from '@/_utils/generateThemeScript';
 import sanitizeHtml from '@/_utils/sanitizeHtml';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
