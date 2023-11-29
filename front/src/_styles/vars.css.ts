@@ -13,6 +13,7 @@ export const toastProgressBar = createVar();
 export const myStyle = style({
   vars: {
     [background1]: '#fff',
+    [background2]: '#fff',
     [text1]: '#000',
     [text2]: '#fff',
     [text3]: '#868e96',
@@ -25,6 +26,7 @@ export const myStyle = style({
     '[data-theme="dark"] &': {
       vars: {
         [background1]: '#1e1e1e',
+        [background2]: '#2b2b2b',
         [text1]: '#fff',
         [text2]: '##2c2c2c',
         [text3]: '#acacac',
