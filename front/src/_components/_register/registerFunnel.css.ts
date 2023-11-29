@@ -22,7 +22,7 @@ export const contentDiv = style({
 
 export const group = style({
   display: 'flex',
-});
+})
 
 export const input = style({
   background: 'transparent',
@@ -31,7 +31,7 @@ export const input = style({
   outline: 'none',
   width: '100%',
   transition: 'all 0.3s ease-in',
-});
+})
 
 export const emailInput = style({
   display: 'flex',
