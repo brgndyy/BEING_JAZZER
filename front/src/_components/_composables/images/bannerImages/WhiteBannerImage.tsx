@@ -9,7 +9,7 @@ export default function WhiteBannerImage() {
       src={WhiteBannerLogoImage}
       width={100}
       height={70}
-      alt="whiteBanerImage"
+      alt="whiteBannerImage"
     />
   );
 }

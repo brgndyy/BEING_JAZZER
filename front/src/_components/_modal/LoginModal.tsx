@@ -17,8 +17,10 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner />} */}
-      <div className={modalBannerImageContainer}>{/* <ModalBannerImage /> */}</div>
+      {isLoading && <LoadingSpinner />}
+      <div className={modalBannerImageContainer}>
+        <ModalBannerImage />
+      </div>
       <div className={authContainer}>
         <LoginBanner isLoginMode={isLoginMode} handleClose={handleClose} />
         <LoginForm

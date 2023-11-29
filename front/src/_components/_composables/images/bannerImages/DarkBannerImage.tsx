@@ -1,4 +1,4 @@
-import { DarkBannerLogoImage } from 'public/images/svgs';
+import { DarkLoginModalBannerImage } from 'public/images/svgs';
 import Image from 'next/image';
 import { bannerImage } from './bannerImage.css';
 
@@ -6,10 +6,10 @@ export default function DarkBannerImage() {
   return (
     <Image
       className={bannerImage}
-      src={DarkBannerLogoImage}
+      src={DarkLoginModalBannerImage}
       width={100}
       height={70}
-      alt="whiteBanerImage"
+      alt="darkBannerImage"
     />
   );
 }
