@@ -6,8 +6,8 @@ import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
 // import DarkBannerImage from '../_composables/images/bannerImages/DarkBannerImage';
 // import WhiteBannerImage from '../_composables/images/bannerImages/WhiteBannerImage';
-import DarkBannerImage from 'public/images/svgs/DarkBanner.svg';
-import WhiteBannerImage from 'public/images/svgs/WhiteBanner.svg';
+import DarkBannerImage from 'public/assets/svgs/DarkBanner.svg';
+import WhiteBannerImage from 'public/assets/svgs/WhiteBanner.svg';
 import {
   headerContainer,
   homeLink,
@@ -26,11 +26,11 @@ export default function Header({ currentTheme }: HeaderPropsType) {
   return (
     <div className={`${headerContainer} ${myStyle}`}>
       <Link href="/" className={homeLink}>
-        {/* {darkTheme ? (
-          <DarkBannerImage width={100} height={70} />
+        {darkTheme ? (
+          <DarkBannerImage width={100} height={100} />
         ) : (
-          <WhiteBannerImage width={100} height={70} />
-        )} */}
+          <WhiteBannerImage width={100} height={100} />
+        )}
       </Link>
       <div className={headerCategoryContainer}>
         <div className={loginOrSignUpCategory}>
