@@ -25,12 +25,14 @@
     }
   },
   "include": [
+    "./@types/custom.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/types",
-    "next.config.js"
+    "next.config.js",
+    "./__mocks__"
   ],
   "exclude": ["node_modules"]
 }
