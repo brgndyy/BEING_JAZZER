@@ -52,7 +52,7 @@ declare module 'types' {
   }
 
   export interface RegisterFromPropsType {
-    userEmail?: string;
+    userEmail: string;
   }
 
   // type Input = {
