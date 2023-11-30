@@ -54,6 +54,8 @@ export const funnelInputContainer = style({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center',
 });
 
 export const funnelInput = style({
@@ -76,6 +78,18 @@ export const funnelImageInput = style({
   width: '80%',
   fontSize: '1rem',
   color: text1,
+});
+
+export const drag = style({
+  opacity: 0.7,
+  border: `0.1rem solid ${text1}`,
+  borderRadius: '1rem',
+  transition: 'all 0.3s ease',
+});
+
+export const alertText = style({
+  color: text4,
+  fontSize: '0.85rem',
 });
 
 export const emailCard = style({
