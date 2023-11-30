@@ -68,6 +68,16 @@ export const funnelInput = style({
   },
 });
 
+export const funnelImageInput = style({
+  padding: '0.9rem',
+  margin: '1rem 0',
+  borderRadius: '0.5rem',
+  border: 'none',
+  width: '80%',
+  fontSize: '1rem',
+  color: text1,
+});
+
 export const emailCard = style({
   display: 'flex',
   justifyContent: 'center',
