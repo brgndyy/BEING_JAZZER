@@ -6,7 +6,7 @@ import findExisitingUserFromEmail from '../services/findExistingUserFromEmail';
 import PROGRESS_MESSAGES from '../constants/progressMessages';
 import ERROR_MESSAGES from '../constants/errorMessages';
 
-export const sendLoginOrSignUpEmail = async (req: Request, res: Response, next: NextFunction) => {
+const sendLoginOrSignUpEmail = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userEmail } = req.body;
 
@@ -20,3 +20,5 @@ export const sendLoginOrSignUpEmail = async (req: Request, res: Response, next: 
     return next(error);
   }
 };
+
+export default sendLoginOrSignUpEmail;
