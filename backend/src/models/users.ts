@@ -11,6 +11,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   declare id: CreationOptional<number>;
   declare userEmail: string;
   declare userName: string;
+  declare userProfileImageSrc: string;
   declare emailId: number;
   declare nowLoggedIn: boolean;
   declare isAdmin: boolean;
@@ -35,10 +36,14 @@ export function initUser(sequelize: Sequelize): void {
         type: DataTypes.STRING(45),
         allowNull: false,
       },
+      userProfileImageSrc: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       emailId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'AuthEmailRecords',
+          model: 'AuthEmailRecord', // 테이블 이름으로 설정해주어야한다.
           key: 'id',
         },
       },
