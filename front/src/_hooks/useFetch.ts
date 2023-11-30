@@ -6,12 +6,12 @@ const useFetch = () => {
   const activeHttpRequests = useRef<AbortController[]>([]);
 
   const sendRequest = useCallback(
-    async <T>(
+    async (
       url: string,
       body: BodyInit | null = null,
       headers: Record<string, string> = {},
       method: string = 'GET',
-    ): Promise<T> => {
+    ): Promise<Response> => {
       setIsLoading(true);
 
       const httpAbortCtrl = new AbortController();
