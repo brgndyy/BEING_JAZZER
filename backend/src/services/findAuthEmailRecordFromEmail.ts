@@ -12,6 +12,7 @@ const findAuthEmailRecordFromEmail = async (userEmail: string) => {
 
     return existingEmail;
   } catch (err) {
+    console.error(err);
     throw new HttpError(ERROR_MESSAGES.not_found_email_record, 500);
   }
 };
