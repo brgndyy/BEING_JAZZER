@@ -9,7 +9,7 @@ import {
   first,
   second,
   third,
-  buttonContainer,
+  fourth,
   nextButton,
 } from './welcomFunnel.css';
 
@@ -26,15 +26,19 @@ export default function WelcomeFunnel({ nextStepHandler }: FunnelStepHandlerType
         </div>
 
         <div className={logoContainer}>
-          <h1 className={`${logo} ${myStyle} ${second}`}>BEING JAZEER</h1>
+          <h1 className={`${logo} ${myStyle} ${second}`}>BEING JAZEER 에</h1>
         </div>
         <div className={logoContainer}>
-          <h1 className={`${logo} ${myStyle} ${third}`}>회원가입 창입니다!</h1>
+          <h1 className={`${logo} ${myStyle} ${third}`}>오신걸 환영해요!</h1>
         </div>
       </div>
 
-      <div className={buttonContainer}>
-        <button type="button" onClick={nextStepHandler} className={`${nextButton} ${myStyle}`}>
+      <div>
+        <button
+          type="button"
+          onClick={nextStepHandler}
+          className={`${nextButton} ${myStyle} ${fourth}`}
+        >
           회원가입 하러 가기
         </button>
       </div>
