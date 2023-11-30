@@ -7,6 +7,8 @@ const ERROR_MESSAGES = deepFreeze({
   fail_send_email: '이메일을 보내는데에 실패했어요!',
   not_found_email_record: '이메일 인증 기록이 존재하질 않아요!',
   existing_user: '이미 존재하는 회원이에요!',
+  fail_sign_up: '회원가입에 실패했어요!',
+  not_defined_jwt_secret: 'JWT 시그니처를 정의해주세요!',
 });
 
 export default ERROR_MESSAGES;

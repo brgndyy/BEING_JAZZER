@@ -8,6 +8,6 @@ const router = Router();
 
 router.post('/sendAuthEmail', sendLoginOrSignUpEmail);
 router.post('/register', decryptAndRetrieveEmail);
-router.post('/signup', userProfileImageUpload.single('image'), userSignUp);
+router.post('/signup', userProfileImageUpload.single('userImage'), userSignUp);
 
 export { router as userRoutes };
