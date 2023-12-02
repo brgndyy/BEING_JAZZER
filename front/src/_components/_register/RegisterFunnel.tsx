@@ -8,6 +8,7 @@ import useForm from '@/_hooks/useForm';
 import useFetch from '@/_hooks/useFetch';
 import { Suspense } from 'react';
 import PATH_ROUTES from '@/_constants/pathRoutes';
+import { useRouter } from 'next/navigation';
 import FunnelCard from '../_composables/cards/FunnelCard';
 import WelcomeFunnel from './WelcomeFunnel';
 import UserNameFunnel from './UserNameFunnel';
@@ -38,6 +39,7 @@ const boxVariants = {
 };
 
 export default function RegisterFunnel({ userEmail }: RegisterFromPropsType) {
+  const router = useRouter();
   const { step, Funnel, nextStepHandler, previousStepHandler, direction } = useFunnel([
     'welcome',
     'userEmail',
@@ -75,7 +77,12 @@ export default function RegisterFunnel({ userEmail }: RegisterFromPropsType) {
 
     const data = await res.json();
 
-    console.log(data);
+    const { success } = data;
+
+    if (success) {
+      router.refresh();
+      router.replace('/');
+    }
   };
 
   return (

@@ -35,6 +35,7 @@ export default function LoginForm({
             className={formInput}
             id="userEmail"
             autoComplete="off"
+            name="userEmail"
             value={value}
             onChange={inputHandler}
           />

@@ -26,10 +26,11 @@ declare module 'types' {
   }
 
   export interface LoginFormPropsType {
-    formSubmitHandler: (e: React.MouseEvent<HTMLFormElement>) => void;
+    inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
     message?: string;
-    emailRef: React.RefObject<HTMLInputElement>;
+    value: string;
     isLoginMode: boolean;
+    formSubmitHandler: (e: React.MouseEvent<HTMLFormElement>) => void;
   }
 
   export interface LoginBannerPropsType {
