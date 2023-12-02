@@ -26,14 +26,16 @@ const useFetch = () => {
           signal: httpAbortCtrl.signal,
         });
 
-        const data = await res.json();
+        if (!res.ok) {
+          throw new Error('에러 발생!');
+        }
 
         activeHttpRequests.current = activeHttpRequests.current.filter(
           (reqCtrl) => reqCtrl !== httpAbortCtrl,
         );
 
         setIsLoading(false);
-        return data;
+        return res;
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);

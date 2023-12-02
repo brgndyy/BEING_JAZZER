@@ -13,7 +13,7 @@ const useForm = (initialValues: FormValues) => {
 
     setFormState((prevState) => ({
       ...prevState,
-      [name]: value, // 입력 필드 이름을 키로 사용
+      [name]: value,
     }));
   }, []);
 

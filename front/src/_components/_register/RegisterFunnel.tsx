@@ -57,16 +57,19 @@ export default function RegisterFunnel({ userEmail }: RegisterFromPropsType) {
   const formSubmitHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
+    const formData = new FormData();
+
+    formData.append('userName', typeof formState.userName === 'string' ? formState.userName : '');
+    formData.append('userEmail', userEmail);
+
+    if (formState.userImage instanceof File) {
+      formData.append('userImage', formState.userImage);
+    }
+
     const res = await sendRequest(
       `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${PATH_ROUTES.signup}`,
-      JSON.stringify({
-        userName: typeof formState.userName === 'string' ? formState.userName : '',
-        userEmail,
-        userImage: formState.userImage,
-      }),
-      {
-        'Content-Type': 'application/json',
-      },
+      formData,
+      {},
       'POST',
     );
 

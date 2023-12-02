@@ -12,10 +12,11 @@ import {
 } from '../_modal/loginModal.css';
 
 export default function LoginForm({
-  formSubmitHandler,
+  inputHandler,
   message,
-  emailRef,
+  value,
   isLoginMode,
+  formSubmitHandler,
 }: LoginFormPropsType) {
   return (
     <div className={loginFormContainer}>
@@ -34,7 +35,8 @@ export default function LoginForm({
             className={formInput}
             id="userEmail"
             autoComplete="off"
-            ref={emailRef}
+            value={value}
+            onChange={inputHandler}
           />
         )}
         <button type="submit" className={`${loginButton} ${myStyle} ${underLine}`}>
