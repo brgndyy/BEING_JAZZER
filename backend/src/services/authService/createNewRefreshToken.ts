@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-import HttpError from '../error/HttpError';
-import ERROR_MESSAGES from '../constants/errorMessages';
+import HttpError from '../../error/HttpError';
+import ERROR_MESSAGES from '../../constants/errorMessages';
 import { NewUserType } from 'types';
 
 dotenv.config();

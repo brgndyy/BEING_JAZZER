@@ -1,6 +1,6 @@
-import HttpError from '../error/HttpError';
-import { User } from '../models/users';
-import ERROR_MESSAGES from '../constants/errorMessages';
+import HttpError from '../../error/HttpError';
+import { User } from '../../models/users';
+import ERROR_MESSAGES from '../../constants/errorMessages';
 
 const createNewUser = async (
   userName: string,

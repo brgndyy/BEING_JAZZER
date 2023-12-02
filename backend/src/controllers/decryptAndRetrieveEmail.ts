@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import HttpError from '../error/HttpError';
 import * as dotenv from 'dotenv';
-import findUserEmailFromEncryptedCode from '../services/findUserEmailFromEncryptedCode';
+import findUserEmailFromEncryptedCode from '../services/databaseService/findUserEmailFromEncryptedCode';
 import ERROR_MESSAGES from '../constants/errorMessages';
 import calculateTimeDifference from '../utils/calculateTimeDifference';
 import CONFIG from '../constants/config';

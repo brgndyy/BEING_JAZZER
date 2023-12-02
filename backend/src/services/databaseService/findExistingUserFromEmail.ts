@@ -1,6 +1,6 @@
-import { User } from '../models/users';
-import HttpError from '../error/HttpError';
-import ERROR_MESSAGES from '../constants/errorMessages';
+import { User } from '../../models/users';
+import HttpError from '../../error/HttpError';
+import ERROR_MESSAGES from '../../constants/errorMessages';
 
 const findExisitingUserFromEmail = async (userEmail: string) => {
   try {

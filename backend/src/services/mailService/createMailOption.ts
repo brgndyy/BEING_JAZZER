@@ -1,4 +1,4 @@
-import { MAIL_STATE_OPTIONS } from '../constants/options';
+import { MAIL_STATE_OPTIONS } from '../../constants/options';
 
 const createMailOption = (userEmail: string, state: string, html: string) => {
   return {

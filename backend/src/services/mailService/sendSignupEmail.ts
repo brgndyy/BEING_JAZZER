@@ -1,12 +1,11 @@
-import { AuthEmailRecord } from '../models/authEmailRecords';
-import { encryptEmail } from '../utils/encryptEmail';
-import findExisitingUserFromEmail from './findExistingUserFromEmail';
-import { transporter } from './transporter';
-import HttpError from '../error/HttpError';
+import { AuthEmailRecord } from '../../models/authEmailRecords';
+import { encryptEmail } from '../../utils/encryptEmail';
+import transporter from './transporter';
+import HttpError from '../../error/HttpError';
 import { renderHtml } from './renderHtml';
-import ERROR_MESSAGES from '../constants/errorMessages';
+import ERROR_MESSAGES from '../../constants/errorMessages';
 import createMailOption from './createMailOption';
-import { MAIL_STATE_OPTIONS } from '../constants/options';
+import { MAIL_STATE_OPTIONS } from '../../constants/options';
 
 const sendSignupEmail = async (userEmail: string) => {
   try {

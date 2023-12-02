@@ -1,8 +1,8 @@
 import { Response, Request, NextFunction } from 'express';
 import HttpError from '../error/HttpError';
-import sendLoginEmail from '../services/sendLoginEmail';
-import sendSignupEmail from '../services/sendSignupEmail';
-import findExisitingUserFromEmail from '../services/findExistingUserFromEmail';
+import sendLoginEmail from '../services/mailService/sendLoginEmail';
+import sendSignupEmail from '../services/mailService/sendSignupEmail';
+import findExisitingUserFromEmail from '../services/databaseService/findExistingUserFromEmail';
 import PROGRESS_MESSAGES from '../constants/progressMessages';
 import ERROR_MESSAGES from '../constants/errorMessages';
 

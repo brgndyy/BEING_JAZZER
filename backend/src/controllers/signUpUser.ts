@@ -1,13 +1,13 @@
 import { Response, Request, NextFunction } from 'express';
 import HttpError from '../error/HttpError';
-import findExisitingUserFromEmail from '../services/findExistingUserFromEmail';
+import findExisitingUserFromEmail from '../services/databaseService/findExistingUserFromEmail';
 import ERROR_MESSAGES from '../constants/errorMessages';
-import findAuthEmailRecordFromEmail from '../services/findAuthEmailRecordFromEmail';
+import findAuthEmailRecordFromEmail from '../services/databaseService/findAuthEmailRecordFromEmail';
 import PATH from '../constants/path';
-import createNewUser from '../services/createNewUser';
-import createNewAccessToken from '../services/createNewAccessToken';
-import createNewRefreshToken from '../services/createNewRefreshToken';
-import sendTokenCookieToClient from '../services/sendTokenCookieToClient';
+import createNewUser from '../services/databaseService/createNewUser';
+import createNewAccessToken from '../services/authService/createNewAccessToken';
+import createNewRefreshToken from '../services/authService/createNewRefreshToken';
+import sendTokenCookieToClient from '../services/authService/sendTokenCookieToClient';
 import PROGRESS_MESSAGES from '../constants/progressMessages';
 
 const userSignUp = async (req: Request, res: Response, next: NextFunction) => {

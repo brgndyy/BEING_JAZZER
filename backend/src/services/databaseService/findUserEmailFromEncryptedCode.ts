@@ -1,6 +1,6 @@
-import { AuthEmailRecord } from '../models/authEmailRecords';
-import HttpError from '../error/HttpError';
-import ERROR_MESSAGES from '../constants/errorMessages';
+import { AuthEmailRecord } from '../../models/authEmailRecords';
+import HttpError from '../../error/HttpError';
+import ERROR_MESSAGES from '../../constants/errorMessages';
 
 const findUserEmailFromEncryptedCode = async (encryptedCode: string) => {
   try {

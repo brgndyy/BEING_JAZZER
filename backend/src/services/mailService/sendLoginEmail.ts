@@ -1,8 +1,8 @@
-import HttpError from '../error/HttpError';
-import ERROR_MESSAGES from '../constants/errorMessages';
-import findAuthEmailRecordFromEmail from './findAuthEmailRecordFromEmail';
+import HttpError from '../../error/HttpError';
+import ERROR_MESSAGES from '../../constants/errorMessages';
+import findAuthEmailRecordFromEmail from '../databaseService/findAuthEmailRecordFromEmail';
 import { renderHtml } from './renderHtml';
-import { transporter } from './transporter';
+import transporter from './transporter';
 
 const sendLoginEmail = async (userEmail: string) => {
   try {
