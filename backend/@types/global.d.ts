@@ -14,4 +14,16 @@ declare module 'types' {
   interface Config {
     [env: string]: EnvConfig;
   }
+
+  interface NewUserType {
+    id: number;
+    userName: string;
+    userEmail: string;
+    emailId: number;
+    userProfileImageSrc: string;
+    isAdmin: boolean;
+    nowLoggedIn: boolean;
+    updatedAt: Date;
+    createdAt: Date;
+  }
 }
