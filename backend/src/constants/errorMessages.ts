@@ -9,6 +9,9 @@ const ERROR_MESSAGES = deepFreeze({
   existing_user: '이미 존재하는 회원이에요!',
   fail_sign_up: '회원가입에 실패했어요!',
   not_defined_jwt_secret: 'JWT 시그니처를 정의해주세요!',
+  fail_send_new_access_token: '새로운 액세스 토큰을 보내는데에 실패했어요!',
+  fail_verify_refresh_token: '리프레시 토큰 조회에 실패했어요!',
+  fail_create_refresh_token_data: '데이터베이스에 리프레시 토큰을 생성하는데에 실패했어요!',
 });
 
 export default ERROR_MESSAGES;
