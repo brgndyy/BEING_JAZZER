@@ -1,7 +1,7 @@
 import { SearchParamsType } from 'types';
-import getSignupUserEmail from '@/_services/getSignupUserEmail';
+import getSignupUserEmail from '@/_services/auth/getSignupUserEmail';
 import RegisterFunnel from '@/_components/_register/RegisterFunnel';
-import getEncryptedCodeFromParams from '@/_services/getEncryptedCodeFromParams';
+import getEncryptedCodeFromParams from '@/_services/auth/getEncryptedCodeFromParams';
 import NotFound from '../not-found';
 
 export default async function RegisterPage({ searchParams }: SearchParamsType) {
