@@ -2,7 +2,7 @@ import deepFreeze from '../utils/deepFreeze';
 import PATH from './path';
 
 export const CORS_OPTIONS = deepFreeze({
-  origin: PATH.default_server_url,
+  origin: PATH.default_front_url,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 });
