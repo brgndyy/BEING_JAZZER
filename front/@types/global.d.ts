@@ -1,6 +1,23 @@
 declare module 'types' {
+  export interface UserInfoType {
+    id: number;
+    userEmail: string;
+    userName: string;
+    userProfileImageSrc: string;
+    emailId: number;
+    nowLoggedIn: boolean;
+    isAdmin: boolean;
+    createdAt: string;
+    updatedAt: string;
+  }
+
   export interface HeaderPropsType {
     currentTheme: string;
+    userInfo: UserInfoType;
+  }
+
+  export interface UserProfilePropsType {
+    userInfo: UserInfoType;
   }
 
   export interface ThemeToggleInputType {
