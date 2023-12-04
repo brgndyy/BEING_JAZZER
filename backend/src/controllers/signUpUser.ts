@@ -16,7 +16,9 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userName, userEmail } = req.body;
 
-    const userProfileImageSrc = req.file?.path || PATH.default_user_profile_image_url;
+    const userProfileImageSrc = req.file
+      ? `${PATH.default_user_profile_image_url}${req.file.filename}`
+      : PATH.default_user_profile_image_url;
 
     const existingUser = await findExisitingUserDataFromEmail(userEmail);
 
