@@ -20,17 +20,22 @@ const app = express();
 app.set('port', process.env.PORT || 3002);
 
 app.use(cors(CORS_OPTIONS));
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+  }),
+);
 app.use(bodyParser.json());
 app.use(cookieParser());
 process.env.NODE_ENV === 'production' ? morgan('combined') : morgan('dev');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use('/images', express.static('src/assets/images'));
 
 sequelize
   .sync({
-    force: false,
+    force: true,
   })
   .then(() => {
     console.log(PROGRESS_MESSAGES.succeed_connect_database);

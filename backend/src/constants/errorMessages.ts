@@ -12,6 +12,7 @@ const ERROR_MESSAGES = deepFreeze({
   fail_send_new_access_token: '새로운 액세스 토큰을 보내는데에 실패했어요!',
   fail_verify_refresh_token: '리프레시 토큰 조회에 실패했어요!',
   fail_create_refresh_token_data: '데이터베이스에 리프레시 토큰을 생성하는데에 실패했어요!',
+  fail_send_user_info: '유저 정보를 보내는데에 실패했어요!',
 });
 
 export default ERROR_MESSAGES;
