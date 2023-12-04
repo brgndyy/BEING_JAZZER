@@ -2,7 +2,7 @@ import HttpError from '../../error/HttpError';
 import { User } from '../../models/users';
 import ERROR_MESSAGES from '../../constants/errorMessages';
 
-const createNewUser = async (
+const createNewUserData = async (
   userName: string,
   userEmail: string,
   emailId: number,
@@ -25,4 +25,4 @@ const createNewUser = async (
   }
 };
 
-export default createNewUser;
+export default createNewUserData;

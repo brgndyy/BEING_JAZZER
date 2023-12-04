@@ -2,19 +2,16 @@ import { AuthEmailRecord } from '../../models/authEmailRecords';
 import HttpError from '../../error/HttpError';
 import ERROR_MESSAGES from '../../constants/errorMessages';
 
-const findAuthEmailRecordFromEmail = async (userEmail: string) => {
+const findUserEmailDataFromEncryptedCode = async (encryptedCode: string) => {
   try {
-    let existingEmail = await AuthEmailRecord.findOne({
-      where: {
-        userEmail: userEmail,
-      },
+    const emailData = await AuthEmailRecord.findOne({
+      where: { encryptedCode: encryptedCode },
     });
 
-    return existingEmail;
+    return emailData;
   } catch (err) {
-    console.error(err);
     throw new HttpError(ERROR_MESSAGES.not_found_email_record, 500);
   }
 };
 
-export default findAuthEmailRecordFromEmail;
+export default findUserEmailDataFromEncryptedCode;

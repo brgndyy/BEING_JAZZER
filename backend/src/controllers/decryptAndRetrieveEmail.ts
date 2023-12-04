@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import HttpError from '../error/HttpError';
 import * as dotenv from 'dotenv';
-import findUserEmailFromEncryptedCode from '../services/databaseService/findUserEmailFromEncryptedCode';
+import findUserEmailDataFromEncryptedCode from '../services/databaseService/findUserEmailDataFromEncryptedCode';
 import ERROR_MESSAGES from '../constants/errorMessages';
 import calculateTimeDifference from '../utils/calculateTimeDifference';
 import CONFIG from '../constants/config';
@@ -12,7 +12,7 @@ const decryptAndRetrieveEmail = async (req: Request, res: Response, next: NextFu
   let { encryptedCode } = req.body;
 
   try {
-    const emailData = await findUserEmailFromEncryptedCode(encryptedCode);
+    const emailData = await findUserEmailDataFromEncryptedCode(encryptedCode);
 
     if (!emailData) {
       throw new HttpError(ERROR_MESSAGES.not_found_email_record, 500);
