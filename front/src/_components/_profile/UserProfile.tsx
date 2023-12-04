@@ -1,12 +1,11 @@
 import { UserProfilePropsType } from 'types';
-import { FaCaretDown } from 'react-icons/fa';
-import { myStyle } from '@/_styles/vars.css';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import handleKeyDown from '@/_utils/handleKeyDown';
 import ProfileImage from './ProfileImage';
-import { profileContainer, iconContainer, icon, motionContainer } from './userProfile.css';
+import { profileContainer, motionContainer } from './userProfile.css';
 import ProfileMenu from './ProfileMenu';
+import DownIcon from './DownIcon';
 
 export default function UserProfile({ userInfo }: UserProfilePropsType) {
   const { userProfileImageSrc } = userInfo;
@@ -27,9 +26,7 @@ export default function UserProfile({ userInfo }: UserProfilePropsType) {
       aria-label="프로필 설정 토글"
     >
       <ProfileImage userProfileImageSrc={userProfileImageSrc} />
-      <div className={iconContainer}>
-        <FaCaretDown className={`${icon} ${myStyle}`} />
-      </div>
+      <DownIcon />
       <motion.div
         className={motionContainer}
         initial={{ scaleY: 0 }}
