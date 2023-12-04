@@ -5,6 +5,7 @@ const PATH_ROUTES = deepFreeze({
   register_user_info: '/api/users/register',
   signup: '/api/users/signup',
   get_new_access_token: '/api/users/new-access-token',
+  get_user_info: '/api/users/info',
 });
 
 export default PATH_ROUTES;

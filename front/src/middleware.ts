@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import getTokenValues from './_services/middleware/getTokenValues';
 import { getNewAccessToken } from './_services/auth/getNewAccessToken';
-import setNewAccessTokenToHeader from './_services/auth/setNewAccessTokenToHeader';
+import setNewAccessTokenToHeader from './_services/middleware/setNewAccessTokenToHeader';
 
 export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;

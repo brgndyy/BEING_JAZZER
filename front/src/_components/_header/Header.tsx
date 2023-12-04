@@ -19,8 +19,9 @@ import {
 import Setting from '../_setting/Setting';
 import ThemeToggleInput from '../_theme/ThemeToggleInput';
 import Login from '../_auth/Login';
+import UserProfile from '../_profile/UserProfile';
 
-export default function Header({ currentTheme }: HeaderPropsType) {
+export default function Header({ currentTheme, userInfo }: HeaderPropsType) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
 
   return (
@@ -34,7 +35,7 @@ export default function Header({ currentTheme }: HeaderPropsType) {
       </Link>
       <div className={headerCategoryContainer}>
         <div className={loginOrSignUpCategory}>
-          <Login />
+          {userInfo ? <UserProfile userInfo={userInfo} /> : <Login />}
         </div>
         <ThemeToggleInput darkTheme={darkTheme} themeToggleHandler={themeToggleHandler} />
         <div className={settingCategory}>
