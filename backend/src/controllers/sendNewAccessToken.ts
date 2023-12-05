@@ -3,8 +3,8 @@ import HttpError from '../error/HttpError';
 import ERROR_MESSAGES from '../constants/errorMessages';
 import getUserIdOfToken from '../services/authService/getUserIdOfToken';
 import findDataOfRefreshToken from '../services/authService/findDataOfRefreshToken';
-import findUserFromRefreshTokenData from '../services/databaseService/findUserFromRefreshTokenData';
-import findExistingUserDataFromId from '../services/databaseService/findExistingUserDataFromId';
+import findUserFromRefreshTokenData from '../services/databaseOfAuthService/findUserFromRefreshTokenData';
+import findExistingUserDataFromId from '../services/databaseOfAuthService/findExistingUserDataFromId';
 import createNewAccessToken from '../services/authService/createNewAccessToken';
 import sendTokenCookieToClient from '../services/authService/sendTokenCookieToClient';
 

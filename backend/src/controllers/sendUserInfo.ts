@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 import getAccessTokenFromHeader from '../services/authService/getAccessTokenFromHeader';
 import decodeAccessToken from '../services/authService/decodeAccessToken';
 import jwt from 'jsonwebtoken';
-import findExistingUserDataFromId from '../services/databaseService/findExistingUserDataFromId';
+import findExistingUserDataFromId from '../services/databaseOfAuthService/findExistingUserDataFromId';
 
 const sendUserInfo = async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,6 +1,6 @@
 import HttpError from '../../error/HttpError';
 import ERROR_MESSAGES from '../../constants/errorMessages';
-import findAuthEmailRecordFromEmail from '../databaseService/findAuthEmailRecordDataFromEmail';
+import findAuthEmailRecordFromEmail from '../databaseOfAuthService/findAuthEmailRecordDataFromEmail';
 import { renderHtml } from './renderHtml';
 import transporter from './transporter';
 
