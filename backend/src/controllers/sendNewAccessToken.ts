@@ -6,7 +6,6 @@ import findDataOfRefreshToken from '../services/authService/findDataOfRefreshTok
 import findUserFromRefreshTokenData from '../services/databaseOfAuthService/findUserFromRefreshTokenData';
 import findExistingUserDataFromId from '../services/databaseOfAuthService/findExistingUserDataFromId';
 import createNewAccessToken from '../services/authService/createNewAccessToken';
-import sendTokenCookieToClient from '../services/authService/sendTokenCookieToClient';
 
 const sendNewAccessToken = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -37,8 +36,6 @@ const sendNewAccessToken = async (req: Request, res: Response, next: NextFunctio
     }
 
     const newAccessToken = createNewAccessToken(foundedExisitngUserFromId);
-
-    sendTokenCookieToClient('accessToken', newAccessToken, res);
 
     return res.json({
       message: '새로운 엑세스 토큰 발급 완료 !',
