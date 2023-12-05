@@ -1,30 +1,18 @@
 import HttpError from '../error/HttpError';
 import ERROR_MESSAGES from '../constants/errorMessages';
-import { Request, Response, NextFunction } from 'express';
-import getAccessTokenFromHeader from '../services/authService/getAccessTokenFromHeader';
-import decodeAccessToken from '../services/authService/decodeAccessToken';
-import jwt from 'jsonwebtoken';
+import { Response, NextFunction } from 'express';
 import findExistingUserDataFromId from '../services/databaseOfAuthService/findExistingUserDataFromId';
+import { CustomRequestType } from '../@types/type';
 
-const sendUserInfo = async (req: Request, res: Response, next: NextFunction) => {
+const sendUserInfo = async (req: CustomRequestType, res: Response, next: NextFunction) => {
   try {
-    const accessToken = getAccessTokenFromHeader(req);
+    const user = req.user;
 
-    if (!accessToken || accessToken === undefined || accessToken === null) {
-      return res.json({ userInfo: undefined });
+    if (!user) {
+      throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
     }
 
-    const decodedAccessToken = decodeAccessToken(accessToken);
-
-    if (decodedAccessToken instanceof jwt.TokenExpiredError) {
-      return res.json({ userInfo: undefined });
-    }
-
-    if (typeof decodedAccessToken !== 'object' || !('id' in decodedAccessToken)) {
-      return res.json({ userInfo: undefined });
-    }
-
-    const existingUserInfo = await findExistingUserDataFromId(decodedAccessToken.id);
+    const existingUserInfo = await findExistingUserDataFromId(user.id);
 
     if (!existingUserInfo) {
       throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
