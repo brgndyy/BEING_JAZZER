@@ -21,7 +21,7 @@ const sendNewAccessToken = async (req: Request, res: Response, next: NextFunctio
     }
 
     const foundedUserFromRefreshTokenData = await findUserFromRefreshTokenData(
-      dataOfRefreshToken.id,
+      dataOfRefreshToken.userId,
     );
 
     if (!foundedUserFromRefreshTokenData) {
