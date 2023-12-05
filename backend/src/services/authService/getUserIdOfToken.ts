@@ -14,7 +14,10 @@ const getUserIdOfToken = (refreshToken: string) => {
 
   const verifiedToken = jwt.verify(refreshToken, jwtSecret);
 
-  if (typeof verifiedToken === 'string' || !verifiedToken.hasOwnProperty('id')) {
+  if (
+    typeof verifiedToken === 'string' ||
+    !Object.prototype.hasOwnProperty.call(verifiedToken, 'id')
+  ) {
     throw new HttpError(ERROR_MESSAGES.fail_verify_refresh_token, 404);
   }
 

@@ -27,7 +27,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(cookieParser());
-process.env.NODE_ENV === 'production' ? morgan('combined') : morgan('dev');
+app.use(process.env.NODE_ENV === 'production' ? morgan('combined') : morgan('dev'));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

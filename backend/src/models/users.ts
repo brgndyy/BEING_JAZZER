@@ -9,13 +9,21 @@ import {
 
 export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare id: CreationOptional<number>;
+
   declare userEmail: string;
+
   declare userName: string;
+
   declare userProfileImageSrc: string;
+
   declare emailId: number;
+
   declare nowLoggedIn: boolean;
+
   declare isAdmin: boolean;
+
   declare createdAt: CreationOptional<Date>;
+
   declare updatedAt: CreationOptional<Date>;
 }
 

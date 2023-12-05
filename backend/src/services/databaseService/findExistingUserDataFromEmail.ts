@@ -4,7 +4,7 @@ import ERROR_MESSAGES from '../../constants/errorMessages';
 
 const findExisitingUserDataFromEmail = async (userEmail: string) => {
   try {
-    let existingUser = await User.findOne({
+    const existingUser = await User.findOne({
       where: {
         userEmail: userEmail,
       },

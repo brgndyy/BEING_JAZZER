@@ -12,9 +12,13 @@ export class RefreshToken extends Model<
   InferCreationAttributes<RefreshToken>
 > {
   declare id: CreationOptional<number>;
+
   declare refreshToken: string;
+
   declare userId: number;
+
   declare createdAt: CreationOptional<Date>;
+
   declare updatedAt: CreationOptional<Date>;
 }
 

@@ -6,17 +6,17 @@ import transporter from './transporter';
 
 const sendLoginEmail = async (userEmail: string) => {
   try {
-    let existingEmail = await findAuthEmailRecordFromEmail(userEmail);
+    const existingEmail = await findAuthEmailRecordFromEmail(userEmail);
 
     if (!existingEmail) {
       throw new HttpError(ERROR_MESSAGES.not_found_email_record, 500);
     }
 
-    let existingCode = existingEmail.encryptedCode;
+    const existingCode = existingEmail.encryptedCode;
 
     const html = renderHtml('로그인', existingCode);
 
-    let mailOptions = {
+    const mailOptions = {
       from: process.env.GMAIL_USER,
       to: userEmail,
       subject: `Being JAZZER 로그인`,

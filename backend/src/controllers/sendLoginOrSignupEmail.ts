@@ -10,9 +10,13 @@ const sendLoginOrSignUpEmail = async (req: Request, res: Response, next: NextFun
   try {
     const { userEmail } = req.body;
 
-    let existingUser = await findExisitingUserDataFromEmail(userEmail);
+    const existingUser = await findExisitingUserDataFromEmail(userEmail);
 
-    existingUser ? await sendLoginEmail(userEmail) : await sendSignupEmail(userEmail);
+    if (existingUser) {
+      await sendLoginEmail(userEmail);
+    } else {
+      await sendSignupEmail(userEmail);
+    }
 
     res.json({ message: PROGRESS_MESSAGES.succeed_send_email });
   } catch (err) {

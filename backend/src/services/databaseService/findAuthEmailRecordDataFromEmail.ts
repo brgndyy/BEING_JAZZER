@@ -4,7 +4,7 @@ import ERROR_MESSAGES from '../../constants/errorMessages';
 
 const findAuthEmailRecordDataFromEmail = async (userEmail: string) => {
   try {
-    let existingEmail = await AuthEmailRecord.findOne({
+    const existingEmail = await AuthEmailRecord.findOne({
       where: {
         userEmail: userEmail,
       },

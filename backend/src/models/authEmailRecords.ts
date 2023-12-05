@@ -12,9 +12,13 @@ export class AuthEmailRecord extends Model<
   InferCreationAttributes<AuthEmailRecord>
 > {
   declare id: CreationOptional<number>;
+
   declare userEmail: string;
+
   declare encryptedCode: string;
+
   declare createdAt: CreationOptional<Date>;
+
   declare updatedAt: CreationOptional<Date>;
 }
 

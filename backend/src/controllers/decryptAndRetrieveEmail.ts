@@ -9,7 +9,7 @@ import CONFIG from '../constants/config';
 dotenv.config();
 
 const decryptAndRetrieveEmail = async (req: Request, res: Response, next: NextFunction) => {
-  let { encryptedCode } = req.body;
+  const { encryptedCode } = req.body;
 
   try {
     const emailData = await findUserEmailDataFromEncryptedCode(encryptedCode);
