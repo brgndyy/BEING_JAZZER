@@ -33,24 +33,24 @@ export function initUserSetting(sequelize: Sequelize): void {
       },
       userId: {
         type: DataTypes.INTEGER,
-        references: { model: 'User', key: 'id' },
+        references: { model: 'users', key: 'id' },
       },
       keyId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Key', key: 'id' },
+        references: { model: 'keys', key: 'id' },
       },
       chordId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Chord', key: 'id' },
+        references: { model: 'chords', key: 'id' },
       },
       chordVersionId: {
         type: DataTypes.INTEGER,
-        references: { model: 'KeyChordDetail', key: 'id' },
+        references: { model: 'keyChordDetails', key: 'id' },
       },
     },
     {
       modelName: 'UserSettings',
-      tableName: 'userSetting',
+      tableName: 'userSettings',
       sequelize,
     },
   );

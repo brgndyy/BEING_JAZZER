@@ -51,7 +51,7 @@ export function initUser(sequelize: Sequelize): void {
       emailId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'AuthEmailRecord', // 테이블 이름으로 설정해주어야한다.
+          model: 'authEmailRecords', // 테이블 이름으로 설정해주어야한다.
           key: 'id',
         },
       },
@@ -68,7 +68,7 @@ export function initUser(sequelize: Sequelize): void {
     },
     {
       modelName: 'Users',
-      tableName: 'user',
+      tableName: 'users',
       timestamps: true,
       sequelize,
     },

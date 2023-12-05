@@ -30,7 +30,7 @@ export function initChord(sequelize: Sequelize): void {
       },
       keyId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Key', key: 'id' },
+        references: { model: 'keys', key: 'id' },
       },
       root: {
         type: DataTypes.STRING(10),
@@ -47,7 +47,7 @@ export function initChord(sequelize: Sequelize): void {
     },
     {
       modelName: 'Chords',
-      tableName: 'chord',
+      tableName: 'chords',
       timestamps: false,
       sequelize,
     },

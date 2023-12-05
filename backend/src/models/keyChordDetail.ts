@@ -37,7 +37,7 @@ export function initKeyChordDetail(sequelize: Sequelize): void {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'Key',
+          model: 'keys',
           key: 'id',
         },
       },
@@ -45,7 +45,7 @@ export function initKeyChordDetail(sequelize: Sequelize): void {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'Chord',
+          model: 'chords',
           key: 'id',
         },
       },
@@ -64,7 +64,7 @@ export function initKeyChordDetail(sequelize: Sequelize): void {
     },
     {
       modelName: 'KeyChordDetails',
-      tableName: 'keyChordDetail',
+      tableName: 'keyChordDetails',
       timestamps: false,
       sequelize,
     },

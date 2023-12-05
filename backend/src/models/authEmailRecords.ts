@@ -44,7 +44,7 @@ export function initAuthEmailRecord(sequelize: Sequelize): void {
     },
     {
       modelName: 'AuthEmailRecords',
-      tableName: 'authEmailRecord',
+      tableName: 'authEmailRecords',
       timestamps: true,
       sequelize,
     },

@@ -29,7 +29,7 @@ export function initKey(sequelize: Sequelize): void {
     },
     {
       modelName: 'Keys',
-      tableName: 'key',
+      tableName: 'keys',
       timestamps: false,
       sequelize,
     },

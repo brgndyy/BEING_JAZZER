@@ -44,7 +44,7 @@ export function initRefreshToken(sequelize: Sequelize): void {
     },
     {
       modelName: 'RefreshTokens',
-      tableName: 'refreshToken',
+      tableName: 'refreshTokens',
       timestamps: true,
       sequelize,
     },
