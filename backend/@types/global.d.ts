@@ -1,21 +1,21 @@
 declare module 'types' {
-  interface CustomError extends Error {
+  export interface CustomError extends Error {
     status?: number;
     code?: number;
   }
 
-  interface EnvConfig {
+  export interface EnvConfig {
     database: string;
     username: string;
     password: string | null | undefined;
     host: string;
   }
 
-  interface Config {
+  export interface Config {
     [env: string]: EnvConfig;
   }
 
-  interface NewUserType {
+  export interface NewUserType {
     id: number;
     userName: string;
     userEmail: string;
