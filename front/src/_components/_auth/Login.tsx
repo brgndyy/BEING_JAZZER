@@ -1,6 +1,7 @@
 import { myStyle } from '@/_styles/vars.css';
 import { createPortal } from 'react-dom';
 import useModal from '@/_hooks/useModal';
+import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { underLine } from '../_header/header.css';
 import { authText } from './login.css';
 import LoginModal from '../_modal/LoginModal';
@@ -14,7 +15,7 @@ export default function Login() {
       <div>
         <button
           type="button"
-          className={`${authText} ${myStyle} ${underLine}`}
+          className={`${authText} ${myStyle} ${underLine} ${BMHANNAAir.className}`}
           onClick={modalHandler}
         >
           로그인
