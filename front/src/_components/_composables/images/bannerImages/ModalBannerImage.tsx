@@ -1,11 +1,10 @@
 import DarkLoginModalBannerImage from 'public/assets/svgs/DarkLoginModalImage.svg';
 import WhiteLoginModalBannerImage from 'public/assets/svgs/WhiteLoginModalImage.svg';
-import { useAtomValue } from 'jotai';
-import { themeAtom } from '@/_store/themeAtom';
+import useThemeStore from '@/_store/useThemeStore';
 import { bannerImage } from './bannerImage.css';
 
 export default function ModalBannerImage() {
-  const darkTheme = useAtomValue(themeAtom);
+  const darkTheme = useThemeStore((state) => state.theme);
 
   return darkTheme ? (
     <div>

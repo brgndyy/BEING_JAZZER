@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useSetAtom } from 'jotai';
-import { themeAtom } from '@/_store/themeAtom';
+import useThemeStore from '@/_store/useThemeStore';
 
 export const useTheme = (currentTheme: string) => {
   const [darkTheme, setDarkTheme] = useState<boolean>(currentTheme === 'dark');
-  const setDarkMode = useSetAtom(themeAtom);
+  const { updateTheme } = useThemeStore();
 
   useEffect(() => {
-    setDarkMode(darkTheme);
-  }, [darkTheme, setDarkMode]);
+    updateTheme(darkTheme);
+  }, [darkTheme, updateTheme]);
 
   const themeToggleHandler = async () => {
     const newTheme = !darkTheme;

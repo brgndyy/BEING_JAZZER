@@ -1,12 +1,11 @@
 import { myStyle } from '@/_styles/vars.css';
 import DarkLoadingSpinner from 'public/assets/svgs/DarkLoadingSpinner.svg';
 import WhiteLoadingSpinner from 'public/assets/svgs/WhiteLoadingSpinner.svg';
-import { useAtomValue } from 'jotai';
-import { themeAtom } from '@/_store/themeAtom';
+import useThemeStore from '@/_store/useThemeStore';
 import { loadingSpinnerContainer, loadingSpinnerText } from './loadingSpinner.css';
 
 export default function LoadingSpinner() {
-  const darkTheme = useAtomValue(themeAtom);
+  const darkTheme = useThemeStore((state) => state.theme);
 
   return (
     <div className={`${loadingSpinnerContainer} ${myStyle}`}>

@@ -21,7 +21,7 @@ import ThemeToggleInput from '../_theme/ThemeToggleInput';
 import Login from '../_auth/Login';
 import UserProfile from '../_profile/UserProfile';
 
-export default function Header({ currentTheme, userInfo }: HeaderPropsType) {
+export default function Header({ currentTheme, userInfo, chordSetting }: HeaderPropsType) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
 
   return (
