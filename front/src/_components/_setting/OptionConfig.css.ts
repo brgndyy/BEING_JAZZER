@@ -17,7 +17,7 @@ export const hiddenCheckBoxInput = style({
 });
 
 export const hideValue = style({
-  opacity: '0',
+  opacity: '0.3',
 });
 
 export const unchecked = style({
@@ -37,7 +37,6 @@ export const lockIconContainer = style({
   background: 'rgba(0,0,0,0.5)',
   width: '100%',
   height: '100%',
-  borderRadius: '0.5rem',
 });
 
 export const lockIcon = style({
@@ -45,4 +44,14 @@ export const lockIcon = style({
   width: '90%',
   height: '90%',
   borderRadius: '0.5rem',
+});
+
+export const isSelectedOption = style({
+  opacity: 1,
+  transition: 'all 0.3s ease',
+});
+
+export const isNotSelectedOption = style({
+  opacity: '0.7',
+  transition: 'all 0.3s ease',
 });

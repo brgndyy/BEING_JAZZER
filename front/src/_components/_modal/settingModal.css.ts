@@ -15,6 +15,7 @@ export const logo = style({
   display: 'flex',
   justifyContent: 'center',
   color: text1,
+  padding: '1rem',
 });
 
 export const closeButtonContainer = style({
@@ -88,4 +89,5 @@ export const button = style({
   cursor: 'pointer',
   fontWeight: 'bold',
   width: '10rem',
+  fontSize: '1rem',
 });

@@ -1,40 +1,42 @@
 'use client';
 
 import { SettingModalPropsType } from 'types';
-import { AiOutlineClose } from 'react-icons/ai';
 import defaultChordSetting from '@/_mocks/chordSettingOptions';
-import { myStyle } from '@/_styles/vars.css';
-import {
-  formLogo,
-  logo,
-  closeButtonContainer,
-  closeButton,
-  settingForm,
-  buttonContainer,
-  button,
-} from './settingModal.css';
+import React from 'react';
+import extractTrueConfigs from '@/_utils/extractTrueConfigs';
+import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
+import { formLogo, settingForm } from './settingModal.css';
 import OptionConfig from '../_setting/OptionConfig';
+import SettingModalLogo from '../_setting/SettingModalLogo';
+import SettingModalCloseButton from '../_setting/SettingModalCloseButton';
+import SettingChangeButton from '../_setting/SettingChangeButton';
 
 export default function SettingModal({ handleClose }: SettingModalPropsType) {
+  const { selectedSettingOption, handleCheckboxChange } = useSelectSettingOption(
+    extractTrueConfigs(defaultChordSetting),
+  );
+
+  console.log(selectedSettingOption);
+
   return (
     <div className={formLogo}>
-      <div className={`${logo} ${myStyle}`}>
-        <h2>Setting</h2>
-      </div>
-      <div className={closeButtonContainer}>
-        <AiOutlineClose className={`${closeButton} ${myStyle}`} onClick={handleClose} />
-      </div>
+      <SettingModalLogo />
+      <SettingModalCloseButton handleClose={handleClose} />
 
       <form className={settingForm}>
         {defaultChordSetting.map((setting) => {
-          return <OptionConfig key={setting.id} type={setting.type} config={setting.config} />;
+          return (
+            <OptionConfig
+              key={setting.id}
+              type={setting.type}
+              config={setting.config}
+              handleCheckboxChange={handleCheckboxChange}
+              selectedSettingOption={selectedSettingOption}
+            />
+          );
         })}
 
-        <div className={buttonContainer}>
-          <button onClick={handleClose} className={button} type="button">
-            설정 변경
-          </button>
-        </div>
+        <SettingChangeButton handleClose={handleClose} />
       </form>
     </div>
   );
