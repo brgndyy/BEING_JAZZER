@@ -1,6 +1,6 @@
-import deepFreeze from '@/_utils/deepFreeze';
+import { ChordSetting } from 'chordConfigType';
 
-const defaultChordSetting = deepFreeze([
+const defaultChordSetting: ChordSetting[] = [
   {
     id: 1,
     type: 'Key',
@@ -41,6 +41,6 @@ const defaultChordSetting = deepFreeze([
       13: false,
     },
   },
-]);
+];
 
 export default defaultChordSetting;
