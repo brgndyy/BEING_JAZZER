@@ -4,13 +4,10 @@ import Link from 'next/link';
 import { HeaderPropsType } from 'types';
 import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
-// import DarkBannerImage from '../_composables/images/bannerImages/DarkBannerImage';
-// import WhiteBannerImage from '../_composables/images/bannerImages/WhiteBannerImage';
-import DarkBannerImage from 'public/assets/svgs/DarkBanner.svg';
-import WhiteBannerImage from 'public/assets/svgs/WhiteBanner.svg';
 import useChordSettingStore from '@/_store/useChordSettingStore';
 import { useEffect } from 'react';
 import extractTrueConfigs from '@/_utils/extractTrueConfigs';
+import MainLogoImage from '../_composables/images/bannerImages/MainLogoImage';
 import {
   headerContainer,
   homeLink,
@@ -36,11 +33,7 @@ export default function Header({ currentTheme, userInfo, chordSetting }: HeaderP
   return (
     <div className={`${headerContainer} ${myStyle}`}>
       <Link href="/" className={homeLink}>
-        {darkTheme ? (
-          <DarkBannerImage width={100} height={100} />
-        ) : (
-          <WhiteBannerImage width={100} height={100} />
-        )}
+        <MainLogoImage darkTheme={darkTheme} />
       </Link>
       <div className={headerCategoryContainer}>
         <div className={loginOrSignUpCategory}>
