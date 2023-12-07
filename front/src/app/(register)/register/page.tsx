@@ -3,7 +3,7 @@ import RegisterFunnel from '@/_components/_register/RegisterFunnel';
 import getEncryptedCodeFromParams from '@/_services/auth/getEncryptedCodeFromParams';
 import PATH_ROUTES from '@/_constants/pathRoutes';
 import getUserInfoByEncryptedCode from '@/_services/auth/getUserInfoByEncryptedCode';
-import NotFound from '../not-found';
+import { notFound } from 'next/navigation';
 
 export default async function RegisterPage({ searchParams }: SearchParamsType) {
   const encryptedCode = getEncryptedCodeFromParams({ searchParams });
@@ -11,7 +11,7 @@ export default async function RegisterPage({ searchParams }: SearchParamsType) {
   const { userEmail } = userInfo;
 
   if (!userEmail) {
-    return <NotFound />;
+    return notFound();
   }
 
   return (
