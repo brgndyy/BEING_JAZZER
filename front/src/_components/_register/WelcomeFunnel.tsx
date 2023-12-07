@@ -1,5 +1,4 @@
-// import DarkThemeHiLogo from 'public/assets/svgs/DarkThemeHiLogo.svg';
-// import BeingJAZZERLogo from 'public/assets/svgs/BeingJAZZERLogo.svg';
+import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { myStyle } from '@/_styles/vars.css';
 import {
   welcomeContainer,
@@ -19,7 +18,7 @@ type FunnelStepHandlerType = {
 
 export default function WelcomeFunnel({ nextStepHandler }: FunnelStepHandlerType) {
   return (
-    <div className={welcomeContainer}>
+    <div className={`${welcomeContainer} ${BMHANNAAir.className}`}>
       <div className={logoWrapper}>
         <div className={logoContainer}>
           <h1 className={`${logo} ${myStyle} ${first}`}>안녕하세요</h1>
@@ -37,7 +36,7 @@ export default function WelcomeFunnel({ nextStepHandler }: FunnelStepHandlerType
         <button
           type="button"
           onClick={nextStepHandler}
-          className={`${nextButton} ${myStyle} ${fourth}`}
+          className={`${nextButton} ${myStyle} ${fourth} ${BMHANNAAir.className}`}
         >
           회원가입 하러 가기
         </button>

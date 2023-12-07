@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { validate, VALIDATION_TYPE } from '@/_utils/validator';
 import { motion } from 'framer-motion';
 import ERROR_MESSAGES from '@/_constants/errorMessages';
+import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import {
   contentContainer,
   funnelButtonContainer,
@@ -45,14 +46,14 @@ export default function UserNameFunnel({
   };
 
   return (
-    <div className={`${contentContainer} ${myStyle}`}>
+    <div className={`${contentContainer} ${myStyle} ${BMHANNAAir.className}`}>
       <label className={`${funnelLabel} ${myStyle}`} htmlFor="userName">
         이름
       </label>
       <div className={funnelInputContainer}>
         <motion.input
           type="text"
-          className={funnelInput}
+          className={`${funnelInput} ${BMHANNAAir.className}`}
           id="userName"
           name="userName"
           autoComplete="off"
@@ -69,12 +70,16 @@ export default function UserNameFunnel({
       <div className={funnelButtonContainer}>
         <button
           type="button"
-          className={`${myStyle} ${funnelButton}`}
+          className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
           onClick={previoustStepHandler}
         >
           이전으로
         </button>
-        <button type="button" className={`${myStyle} ${funnelButton}`} onClick={nextHandler}>
+        <button
+          type="button"
+          className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
+          onClick={nextHandler}
+        >
           다음
         </button>
       </div>

@@ -21,6 +21,7 @@ export const link = style({
 export const linkText = style({
   color: text1,
   transition: 'all 0.3s ease',
+  fontSize: '1.2rem',
 
   ':hover': {
     opacity: 0.7,
