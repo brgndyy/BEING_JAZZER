@@ -1,4 +1,9 @@
 declare module 'types' {
+  export interface ChordSetting {
+    readonly id: number;
+    readonly type: string;
+    readonly config: { readonly [key: string]: boolean };
+  }
   export interface UserInfoType {
     id: number;
     userEmail: string;
@@ -14,6 +19,7 @@ declare module 'types' {
   export interface HeaderPropsType {
     currentTheme: string;
     userInfo: UserInfoType;
+    chordSetting: ChordSetting[];
   }
 
   export interface UserProfilePropsType {
@@ -58,9 +64,15 @@ declare module 'types' {
   export interface SettingModalPropsType {
     handleClose: () => void;
   }
+
+  export interface SelectedSettingOptionType {
+    [key: string]: boolean;
+  }
   export interface OptionConfigPropsType {
     type: string;
     config: { [key: string]: boolean | undefined };
+    handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    selectedSettingOption: SelectedSettingOptionType;
   }
 
   export interface SearchParamsType {
@@ -72,27 +84,6 @@ declare module 'types' {
   export interface RegisterFromPropsType {
     userEmail: string;
   }
-
-  // type Input = {
-  //   value: string | undefined;
-  //   isValid: boolean;
-  // };
-
-  // export interface Inputs {
-  //   [key: string]: Input;
-  // }
-
-  // export interface State {
-  //   inputs: Inputs;
-  //   isValid: boolean;
-  // }
-
-  // export interface Action {
-  //   type: 'INPUT_CHANGE';
-  //   inputId: string;
-  //   value: string;
-  //   isValid: boolean;
-  // }
 
   export interface ResponseType {
     message: string;

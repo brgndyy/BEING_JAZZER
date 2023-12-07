@@ -1,4 +1,4 @@
-import { ChordSetting } from 'chordConfigType';
+import { ChordSetting } from 'types';
 
 const defaultChordSetting: ChordSetting[] = [
   {
