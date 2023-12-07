@@ -8,6 +8,9 @@ import { myStyle } from '@/_styles/vars.css';
 // import WhiteBannerImage from '../_composables/images/bannerImages/WhiteBannerImage';
 import DarkBannerImage from 'public/assets/svgs/DarkBanner.svg';
 import WhiteBannerImage from 'public/assets/svgs/WhiteBanner.svg';
+import useChordSettingStore from '@/_store/useChordSettingStore';
+import { useEffect } from 'react';
+import extractTrueConfigs from '@/_utils/extractTrueConfigs';
 import {
   headerContainer,
   homeLink,
@@ -23,6 +26,12 @@ import UserProfile from '../_profile/UserProfile';
 
 export default function Header({ currentTheme, userInfo, chordSetting }: HeaderPropsType) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
+  const { updateChordSetting, updateSelectedSettingOption } = useChordSettingStore();
+
+  useEffect(() => {
+    updateChordSetting(chordSetting);
+    updateSelectedSettingOption(extractTrueConfigs(chordSetting));
+  }, [chordSetting, updateChordSetting, updateSelectedSettingOption]);
 
   return (
     <div className={`${headerContainer} ${myStyle}`}>

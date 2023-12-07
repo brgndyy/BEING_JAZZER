@@ -1,14 +1,12 @@
-import { useState } from 'react';
-import { SelectedSettingOptionType } from 'types';
+import useChordSettingStore from '@/_store/useChordSettingStore';
 
-const useSelectSettingOption = (chordSetting: SelectedSettingOptionType) => {
-  const [selectedSettingOption, setSelectedSettingOption] =
-    useState<SelectedSettingOptionType>(chordSetting);
+const useSelectSettingOption = () => {
+  const { selectedSettingOption, updateSelectedSettingOption } = useChordSettingStore();
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const key = e.target.name;
     const isChecked = e.target.checked;
-    setSelectedSettingOption({ ...selectedSettingOption, [key]: isChecked });
+    updateSelectedSettingOption({ ...selectedSettingOption, [key]: isChecked });
   };
 
   return { selectedSettingOption, handleCheckboxChange };

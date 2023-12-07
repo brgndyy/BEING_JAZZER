@@ -1,10 +1,9 @@
 'use client';
 
 import { SettingModalPropsType } from 'types';
-import defaultChordSetting from '@/_mocks/chordSettingOptions';
 import React from 'react';
-import extractTrueConfigs from '@/_utils/extractTrueConfigs';
 import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
+import useChordSettingStore from '@/_store/useChordSettingStore';
 import { formLogo, settingForm } from './settingModal.css';
 import OptionConfig from '../_setting/OptionConfig';
 import SettingModalLogo from '../_setting/SettingModalLogo';
@@ -12,11 +11,8 @@ import SettingModalCloseButton from '../_setting/SettingModalCloseButton';
 import SettingChangeButton from '../_setting/SettingChangeButton';
 
 export default function SettingModal({ handleClose }: SettingModalPropsType) {
-  const { selectedSettingOption, handleCheckboxChange } = useSelectSettingOption(
-    extractTrueConfigs(defaultChordSetting),
-  );
-
-  console.log(selectedSettingOption);
+  const chordSetting = useChordSettingStore((state) => state.chordSetting);
+  const { selectedSettingOption, handleCheckboxChange } = useSelectSettingOption();
 
   return (
     <div className={formLogo}>
@@ -24,7 +20,7 @@ export default function SettingModal({ handleClose }: SettingModalPropsType) {
       <SettingModalCloseButton handleClose={handleClose} />
 
       <form className={settingForm}>
-        {defaultChordSetting.map((setting) => {
+        {chordSetting.map((setting) => {
           return (
             <OptionConfig
               key={setting.id}

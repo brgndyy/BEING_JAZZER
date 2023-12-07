@@ -1,4 +1,4 @@
-import { ChordSetting } from 'chordConfigType';
+import { ChordSetting } from 'types';
 
 const extractTrueConfigs = (settings: ChordSetting[]): { [key: string]: boolean } => {
   const initialConfig: { [key: string]: boolean } = {};
