@@ -8,6 +8,7 @@ import useFetch from '@/_hooks/useFetch';
 import ERROR_MESSAGES from '@/_constants/errorMessages';
 import { toast } from 'react-toastify';
 import PATH_ROUTES from '@/_constants/pathRoutes';
+import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { authContainer, modalBannerImageContainer, orLogo } from './loginModal.css';
 import ModalBannerImage from '../_composables/images/bannerImages/ModalBannerImage';
 import LoadingSpinner from '../_composables/loadingSpinner/LoadingSpinner';
@@ -66,7 +67,7 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
           value={typeof formState.userEmail === 'string' ? formState.userEmail : ''}
           isLoginMode={isLoginMode}
         />
-        <div className={`${orLogo} ${myStyle}`}>
+        <div className={`${orLogo} ${myStyle} ${BMHANNAAir.className}`}>
           <p>또는</p>
         </div>
         <OAuthIcons />

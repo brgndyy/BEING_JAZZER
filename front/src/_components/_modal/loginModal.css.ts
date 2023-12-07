@@ -69,6 +69,7 @@ export const logo = style({
   display: 'flex',
   justifyContent: 'center',
   color: text1,
+  fontSize: '1.4rem',
 });
 
 export const loginBannerText = style({
@@ -90,16 +91,17 @@ export const loginForm = style({
 
 export const formLabel = style({
   margin: '1.5rem 0',
-  fontSize: '1rem',
+  fontSize: '1.2rem',
   color: text4,
 });
 
 export const formInput = style({
   padding: '0.9rem',
-  fontSize: '0.9rem',
+  fontSize: '1.1rem',
   borderRadius: '1rem',
   border: '0.3px solid #d5d5d5',
   minHeight: '3rem',
+  marginBottom: '1rem',
   ':focus': {
     outline: 'none',
   },
@@ -115,9 +117,8 @@ export const loginButton = style({
   borderRadius: '1rem',
   border: 'none',
   cursor: 'pointer',
-  fontSize: '1rem',
+  fontSize: '1.2rem',
   background: background1,
-  boxShadow: 'rgba(0, 0, 0, 0.08) 0px 0px 8px',
   transition: 'all 0.3s',
   color: text4,
   ':hover': {
@@ -134,6 +135,7 @@ export const toggleAuthMode = style({
   borderRadius: '1rem',
   boxShadow: 'rgba(0, 0, 0, 0.08) 0px 0px 8px',
   transition: 'all 0.3s',
+  fontSize: '1rem',
   color: text5,
   ':hover': {
     opacity: 0.7,
@@ -153,6 +155,7 @@ export const orLogo = style({
   justifyContent: 'center',
   alignItems: 'center',
   color: text4,
+  fontSize: '1rem',
 });
 
 export const googleIcon = style({
@@ -189,6 +192,7 @@ export const joinContainer = style({
 
 export const toggleText = style({
   color: text4,
+  fontSize: '1.1rem',
 });
 
 export const underLine = style({
