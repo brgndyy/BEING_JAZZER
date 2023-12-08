@@ -13,6 +13,7 @@ import getUserInfoByAccessToken from '@/_services/auth/getUserInfoByAccessToken'
 import ContentCard from '@/_components/_composables/cards/ContentCard';
 import Header from '@/_components/_header/Header';
 import defaultChordSetting from '@/_mocks/chordSettingOptions';
+import getUserChordSetting from '@/_services/setting/getUserChordSetting';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
@@ -24,7 +25,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const sanitizedThemeScript = sanitizeHtml(generateThemeScript(currentTheme));
   const accessToken = getAccessTokenValue();
   const userInfo = await getUserInfoByAccessToken(accessToken);
-  const chordSetting = defaultChordSetting;
+  const chordSetting =
+    accessToken && userInfo ? await getUserChordSetting(accessToken) : defaultChordSetting;
 
   return (
     <html lang="en">
@@ -41,7 +43,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             hideProgressBar={false}
             theme={currentTheme}
           />
-          <Header currentTheme={currentTheme} userInfo={userInfo} chordSetting={chordSetting} />
+          <Header
+            currentTheme={currentTheme}
+            userInfo={userInfo}
+            chordSetting={chordSetting}
+            accessToken={accessToken}
+          />
           <ContentCard> {children}</ContentCard>
           <div id="portal" />
         </Card>

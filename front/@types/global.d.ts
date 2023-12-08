@@ -20,6 +20,7 @@ declare module 'types' {
     currentTheme: string;
     userInfo: UserInfoType;
     chordSetting: ChordSetting[];
+    accessToken?: string;
   }
 
   export interface UserProfilePropsType {
