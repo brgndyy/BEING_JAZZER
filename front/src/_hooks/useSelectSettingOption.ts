@@ -3,13 +3,13 @@ import useChordSettingStore from '@/_store/useChordSettingStore';
 const useSelectSettingOption = () => {
   const { chordSetting, updateChordSetting } = useChordSettingStore();
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const key = e.target.name;
-    const isChecked = e.target.checked;
+  const handleSelectedUserSettingConfig =
+    (type: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const key = e.target.name;
+      const isChecked = e.target.checked;
 
-    updateChordSetting((prevState) => {
-      const newState = prevState.map((setting) => {
-        if (Object.hasOwn(setting.config, key)) {
+      const updatedChordSetting = chordSetting.map((setting) => {
+        if (setting.type === type) {
           return {
             ...setting,
             config: {
@@ -24,11 +24,10 @@ const useSelectSettingOption = () => {
         return setting;
       });
 
-      return newState;
-    });
-  };
+      updateChordSetting(updatedChordSetting);
+    };
 
-  return { chordSetting, handleCheckboxChange };
+  return { handleSelectedUserSettingConfig };
 };
 
 export default useSelectSettingOption;

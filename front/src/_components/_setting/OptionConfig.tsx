@@ -17,21 +17,18 @@ import {
 export default function OptionConfig({
   type,
   config,
-  handleCheckboxChange,
-  selectedSettingOption,
+  handleSelectedUserSettingConfig,
 }: OptionConfigPropsType) {
   return (
     <div className={`${optionContainer} ${myStyle}`}>
       <div className={`${title} ${myStyle} ${BMHANNAAir.className}`}>{type}</div>
       <div className={`${optionSelect} ${myStyle}`}>
-        {Object.entries(config).map(([key, value], index) => {
-          const isSelected = selectedSettingOption[key];
-
+        {Object.entries(config).map(([key, { isAvailable, isSelected }], index) => {
           return (
             <label
               // eslint-disable-next-line react/no-array-index-key
               key={index}
-              className={`${configLabel} ${!value ? unchecked : ''} ${
+              className={`${configLabel} ${!isAvailable ? unchecked : ''} ${
                 isSelected ? isSelectedOption : isNotSelectedOption
               }`}
             >
@@ -40,12 +37,12 @@ export default function OptionConfig({
                 name={key}
                 id={key}
                 className={hiddenCheckBoxInput}
-                disabled={!value}
+                disabled={!isAvailable}
                 checked={isSelected}
-                onChange={handleCheckboxChange}
+                onChange={handleSelectedUserSettingConfig}
               />
-              <p className={`${value ? '' : hideValue} ${BMHANNAAir.className}`}>{key}</p>
-              {!value && (
+              <p className={`${isAvailable ? '' : hideValue} ${BMHANNAAir.className}`}>{key}</p>
+              {!isAvailable && (
                 <div className={lockIconContainer}>
                   <AiFillLock className={lockIcon} />
                 </div>
