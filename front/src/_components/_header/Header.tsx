@@ -6,7 +6,6 @@ import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
 import useChordSettingStore from '@/_store/useChordSettingStore';
 import { useEffect } from 'react';
-import extractTrueConfigs from '@/_utils/extractTrueConfigs';
 import useAccessTokenStore from '@/_store/useAccessTokenStore';
 import MainLogoImage from '../_composables/images/bannerImages/MainLogoImage';
 import {
@@ -29,22 +28,15 @@ export default function Header({
   accessToken,
 }: HeaderPropsType) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
-  const { updateChordSetting, updateSelectedSettingOption } = useChordSettingStore();
+  const { updateChordSetting } = useChordSettingStore();
   const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
 
   useEffect(() => {
     updateChordSetting(chordSetting);
-    updateSelectedSettingOption(extractTrueConfigs(chordSetting));
     if (accessToken) {
       updateAccessToken(accessToken);
     }
-  }, [
-    accessToken,
-    chordSetting,
-    updateAccessToken,
-    updateChordSetting,
-    updateSelectedSettingOption,
-  ]);
+  }, [accessToken, chordSetting, updateAccessToken, updateChordSetting]);
 
   return (
     <div className={`${headerContainer} ${myStyle}`}>

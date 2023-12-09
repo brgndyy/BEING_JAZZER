@@ -1,9 +1,10 @@
 'use client';
 
 import { SettingModalPropsType } from 'types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
 import useChordSettingStore from '@/_store/useChordSettingStore';
+import useAccessTokenStore from '@/_store/useAccessTokenStore';
 import { formLogo, settingForm } from './settingModal.css';
 import OptionConfig from '../_setting/OptionConfig';
 import SettingModalLogo from '../_setting/SettingModalLogo';
@@ -12,7 +13,12 @@ import SettingChangeButton from '../_setting/SettingChangeButton';
 
 export default function SettingModal({ handleClose }: SettingModalPropsType) {
   const chordSetting = useChordSettingStore((state) => state.chordSetting);
-  const { selectedSettingOption, handleCheckboxChange } = useSelectSettingOption();
+  const { handleCheckboxChange } = useSelectSettingOption();
+  const { accessToken } = useAccessTokenStore();
+
+  useEffect(() => {
+    console.log(chordSetting);
+  }, [chordSetting]);
 
   return (
     <div className={formLogo}>
@@ -27,7 +33,6 @@ export default function SettingModal({ handleClose }: SettingModalPropsType) {
               type={setting.type}
               config={setting.config}
               handleCheckboxChange={handleCheckboxChange}
-              selectedSettingOption={selectedSettingOption}
             />
           );
         })}
