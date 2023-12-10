@@ -1,16 +1,17 @@
 import { Response, Request, NextFunction } from 'express';
 import HttpError from '../error/HttpError';
-import findExisitingUserDataFromEmail from '../services/databaseService/findExistingUserDataFromEmail';
+import findExisitingUserDataFromEmail from '../services/databaseOfAuthService/findExistingUserDataFromEmail';
 import ERROR_MESSAGES from '../constants/errorMessages';
-import findAuthEmailRecordDataFromEmail from '../services/databaseService/findAuthEmailRecordDataFromEmail';
+import findAuthEmailRecordDataFromEmail from '../services/databaseOfAuthService/findAuthEmailRecordDataFromEmail';
 import PATH from '../constants/path';
-import createNewUserData from '../services/databaseService/createNewUserData';
+import createNewUserData from '../services/databaseOfAuthService/createNewUserData';
 import createNewAccessToken from '../services/authService/createNewAccessToken';
 import createNewRefreshToken from '../services/authService/createNewRefreshToken';
 import sendTokenCookieToClient from '../services/authService/sendTokenCookieToClient';
 import PROGRESS_MESSAGES from '../constants/progressMessages';
-import createRefreshTokenData from '../services/databaseService/createRefreshTokenData';
+import createRefreshTokenData from '../services/databaseOfAuthService/createRefreshTokenData';
 import hashRefreshToken from '../utils/hashRefreshToken';
+import setAllKeyChordDetails from '../services/databaseOfimageService/setAllKeyChordDetails';
 
 const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -43,6 +44,8 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
     const hashedRefreshToken = await hashRefreshToken(newRefreshToken);
 
     await createRefreshTokenData(hashedRefreshToken, newUser.id);
+
+    await setAllKeyChordDetails(newUser.id);
 
     sendTokenCookieToClient('accessToken', newAccessToken, res);
     sendTokenCookieToClient('refreshToken', newRefreshToken, res);
