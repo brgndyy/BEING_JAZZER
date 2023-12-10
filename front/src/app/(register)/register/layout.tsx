@@ -6,7 +6,6 @@ import { generateThemeScript } from '@/_utils/generateThemeScript';
 import sanitizeHtml from '@/_utils/sanitizeHtml';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ContentCard from '@/_components/_composables/cards/ContentCard';
 import Card from '@/_components/_composables/cards/Card';
 
 export default async function RegisterPageLayout({ children }: { children: React.ReactNode }) {
@@ -28,7 +27,7 @@ export default async function RegisterPageLayout({ children }: { children: React
             hideProgressBar={false}
             theme={currentTheme}
           />
-          <ContentCard> {children}</ContentCard>
+          {children}
         </Card>
       </body>
     </html>
