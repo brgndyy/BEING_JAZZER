@@ -46,7 +46,7 @@ function setupAssociations(): void {
   UserSetting.belongsTo(User, { foreignKey: 'userId' });
   UserSetting.belongsTo(Key, { foreignKey: 'keyId' });
   UserSetting.belongsTo(Chord, { foreignKey: 'chordId' });
-  UserSetting.belongsTo(KeyChordDetail, { foreignKey: 'chordVersionId' });
+  UserSetting.belongsTo(KeyChordDetail, { foreignKey: 'keyChordDetailId' });
 }
 
 setupAssociations();

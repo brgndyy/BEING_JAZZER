@@ -26,4 +26,12 @@ declare module 'types' {
     updatedAt: Date;
     createdAt: Date;
   }
+
+  export interface UserSettingTableType {
+    id: number;
+    userId: number;
+    keyId: number;
+    chordId: number;
+    keyChordDetailId: number;
+  }
 }

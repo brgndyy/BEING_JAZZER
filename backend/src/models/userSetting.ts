@@ -19,7 +19,7 @@ export class UserSetting extends Model<
 
   declare chordId: number;
 
-  declare chordVersionId: number;
+  declare keyChordDetailId: number;
 }
 
 export function initUserSetting(sequelize: Sequelize): void {
@@ -43,7 +43,7 @@ export function initUserSetting(sequelize: Sequelize): void {
         type: DataTypes.INTEGER,
         references: { model: 'chords', key: 'id' },
       },
-      chordVersionId: {
+      keyChordDetailId: {
         type: DataTypes.INTEGER,
         references: { model: 'keyChordDetails', key: 'id' },
       },
