@@ -34,11 +34,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/images', express.static('src/assets/images'));
 
 sequelize
-  .sync({
-    force: true,
-  })
+  .query('SET FOREIGN_KEY_CHECKS = 0')
+  .then(() => sequelize.query('TRUNCATE TABLE refreshTokens'))
+  .then(() => sequelize.query('TRUNCATE TABLE userSettings'))
+  .then(() => sequelize.query('TRUNCATE TABLE authEmailRecords'))
+  .then(() => sequelize.query('TRUNCATE TABLE users'))
+  .then(() => sequelize.query('SET FOREIGN_KEY_CHECKS = 1'))
+  .then(() => sequelize.sync({ force: false }))
   .then(() => {
-    console.log(PROGRESS_MESSAGES.succeed_connect_database);
+    console.log('데이터베이스 연결에 성공했어요!');
   })
   .catch((err) => {
     console.error(err);
