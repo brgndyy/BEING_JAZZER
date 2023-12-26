@@ -42,7 +42,7 @@ sequelize
   .then(() => sequelize.query('SET FOREIGN_KEY_CHECKS = 1'))
   .then(() => sequelize.sync({ force: false }))
   .then(() => {
-    console.log('데이터베이스 연결에 성공했어요!');
+    console.log(PROGRESS_MESSAGES.succeed_connect_database);
   })
   .catch((err) => {
     console.error(err);

@@ -13,7 +13,7 @@ const verifyAccessToken = async (req: CustomRequestType, res: Response, next: Ne
     if (!accessToken || accessToken === undefined || accessToken === null) {
       return res
         .status(401)
-        .json({ success: false, message: '토큰이 유효하지 않아요!', userInfo: undefined });
+        .json({ success: false, message: ERROR_MESSAGES.not_verified_token, userInfo: undefined });
     }
 
     const decodedAccessToken = decodeAccessToken(accessToken);
@@ -21,13 +21,13 @@ const verifyAccessToken = async (req: CustomRequestType, res: Response, next: Ne
     if (decodedAccessToken instanceof jwt.TokenExpiredError) {
       return res
         .status(401)
-        .json({ success: false, message: '토큰이 만료되었어요!', userInfo: undefined });
+        .json({ success: false, message: ERROR_MESSAGES.expired_token, userInfo: undefined });
     }
 
     if (typeof decodedAccessToken !== 'object' || !('id' in decodedAccessToken)) {
       return res
         .status(401)
-        .json({ success: false, message: '토큰이 유효하지 않아요!', userInfo: undefined });
+        .json({ success: false, message: ERROR_MESSAGES.not_verified_token, userInfo: undefined });
     }
 
     req.user = decodedAccessToken;
