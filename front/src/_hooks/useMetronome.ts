@@ -11,7 +11,6 @@ const useMetronome = () => {
   const [blur, setBlur] = useState(false);
   const [tick, setTick] = useState<HTMLAudioElement>();
   const [tock, setTock] = useState<HTMLAudioElement>();
-  const [first, setFirst] = useState(false);
   const [count, setCount] = useState(1);
 
   useEffect(() => {
@@ -20,20 +19,19 @@ const useMetronome = () => {
   }, []);
 
   const metronomePlayHandler = useCallback(() => {
-    if (!first && tick) {
-      setFirst(true);
+    const nextCount =
+      count >= METRONOME_CONDITION.max_metronome_count
+        ? METRONOME_CONDITION.min_metronome_count
+        : count + 1;
+
+    if (nextCount === METRONOME_CONDITION.min_metronome_count && tick) {
       tick.play();
-    } else if (count === METRONOME_CONDITION.min_metronome_count && tick) {
-      tick.play();
-    } else if (count < METRONOME_CONDITION.max_metronome_count + 1 && tock) {
+    } else if (nextCount > METRONOME_CONDITION.min_metronome_count && tock) {
       tock.play();
     }
-    if (count >= METRONOME_CONDITION.max_metronome_count) {
-      setCount(METRONOME_CONDITION.min_metronome_count);
-    } else {
-      setCount((prevCount) => prevCount + 1);
-    }
-  }, [count, tick, tock, first]);
+
+    setCount(nextCount);
+  }, [count, tick, tock]);
 
   useEffect(() => {
     const interval = setInterval(
