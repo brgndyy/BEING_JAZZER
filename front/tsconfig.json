@@ -21,18 +21,23 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@types/*": ["./@types/*"]
     }
   },
   "include": [
+    "./@types/global.d.ts",
     "./@types/custom.d.ts",
+    "./@types/audio.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/types",
     "next.config.js",
-    "./__mocks__"
+    "./__mocks__",
+    "src/app/(register)/default/page.tsx",
+    "src/_components/_metonome/MetronomeContext.tsㅌ"
   ],
   "exclude": ["node_modules"]
 }
