@@ -5,6 +5,7 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config, options) => {
+    const { isServer } = options;
     // WAV 파일 처리를 위한 설정
     config.module.rules.push({
       test: /\.(wav)$/,
@@ -13,7 +14,7 @@ const nextConfig = {
         options: {
           name: '[name].[ext]',
           publicPath: `/_next/static/sounds/`,
-          outputPath: `${options.isServer ? '../' : ''}static/sounds/`,
+          outputPath: `${isServer ? '../' : ''}static/sounds/`,
         },
       },
     });
