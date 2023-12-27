@@ -12,6 +12,18 @@ const useMetronome = () => {
   const [tick, setTick] = useState<HTMLAudioElement>();
   const [tock, setTock] = useState<HTMLAudioElement>();
   const [count, setCount] = useState(1);
+  const [first, setFirst] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playingModeHandler = () => {
+    setIsPlaying((prevMode) => !prevMode);
+  };
+
+  useEffect(() => {
+    if (!isPlaying) {
+      setFirst(false);
+    }
+  }, [isPlaying]);
 
   useEffect(() => {
     setTick(new Audio(tickSound));
@@ -19,24 +31,32 @@ const useMetronome = () => {
   }, []);
 
   const metronomePlayHandler = useCallback(() => {
-    const nextCount =
-      count >= METRONOME_CONDITION.max_metronome_count
-        ? METRONOME_CONDITION.min_metronome_count
-        : count + 1;
+    setCount((prevCount) => {
+      const nextCount =
+        prevCount >= METRONOME_CONDITION.max_metronome_count
+          ? METRONOME_CONDITION.min_metronome_count
+          : prevCount + 1;
 
-    if (nextCount === METRONOME_CONDITION.min_metronome_count && tick) {
-      tick.play();
-    } else if (nextCount > METRONOME_CONDITION.min_metronome_count && tock) {
-      tock.play();
-    }
+      if (!first && prevCount === 1 && tick) {
+        tick.play();
+        setFirst(true);
+      }
+      if (nextCount === METRONOME_CONDITION.min_metronome_count && tick) {
+        tick.play();
+      } else if (nextCount > METRONOME_CONDITION.min_metronome_count && tock) {
+        tock.play();
+      }
 
-    setCount(nextCount);
-  }, [count, tick, tock]);
+      return nextCount;
+    });
+  }, [tick, tock, first]);
 
   useEffect(() => {
     const interval = setInterval(
       () => {
-        metronomePlayHandler();
+        if (isPlaying) {
+          metronomePlayHandler();
+        }
       },
       (60 / bpm) * 1000,
     );
@@ -44,7 +64,7 @@ const useMetronome = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [bpm, metronomePlayHandler]);
+  }, [bpm, metronomePlayHandler, isPlaying]);
 
   const bpmChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newBpm = parseInt(e.target.value, 10);
@@ -109,6 +129,9 @@ const useMetronome = () => {
     bpmRef,
     metronomePlayHandler,
     count,
+    first,
+    playingModeHandler,
+    isPlaying,
   };
 };
 
