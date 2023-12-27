@@ -2,7 +2,12 @@ declare module 'types' {
   export interface ChordSetting {
     readonly id: number;
     readonly type: string;
-    readonly config: { readonly [key: string]: boolean };
+    readonly config: {
+      readonly [key: string]: {
+        isAvailable: boolean;
+        isSelected: boolean;
+      };
+    };
   }
   export interface UserInfoType {
     id: number;
@@ -67,13 +72,21 @@ declare module 'types' {
   }
 
   export interface SelectedSettingOptionType {
-    [key: string]: boolean;
+    [key: string]: {
+      isAvailable: boolean;
+      isSelected: boolean;
+    };
   }
   export interface OptionConfigPropsType {
     type: string;
-    config: { [key: string]: boolean | undefined };
-    handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    selectedSettingOption: SelectedSettingOptionType;
+
+    config: {
+      [key: string]: {
+        isAvailable: boolean;
+        isSelected: boolean;
+      };
+    };
+    handleSelectedUserSettingConfig: (e: React.ChangeEvent<HTMLInputElement>) => void;
   }
 
   export interface SearchParamsType {
@@ -88,5 +101,20 @@ declare module 'types' {
 
   export interface ResponseType {
     message: string;
+  }
+
+  export interface MetronomeContextType {
+    bpm: number;
+    bpmChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    bpmBlurHandler: () => void;
+    keyDownHandler: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    focusHandler: () => void;
+    blur: boolean;
+    bpmRef: React.RefObject<HTMLInputElement>;
+    metronomePlayHandler: () => void;
+    count: number;
+    first: boolean;
+    playingModeHandler: () => void;
+    isPlaying: boolean;
   }
 }
