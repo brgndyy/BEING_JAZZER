@@ -5,8 +5,16 @@ import { useContext } from 'react';
 import MetronomeContext from './MetronomeContext';
 
 export default function Metronome() {
-  const { bpm, bpmChangeHandler, bpmBlurHandler, keyDownHandler, focusHandler, bpmRef } =
-    useContext(MetronomeContext);
+  const {
+    bpm,
+    bpmChangeHandler,
+    bpmBlurHandler,
+    keyDownHandler,
+    focusHandler,
+    bpmRef,
+    playingModeHandler,
+    isPlaying,
+  } = useContext(MetronomeContext);
 
   return (
     <div>
@@ -26,6 +34,9 @@ export default function Metronome() {
           onKeyDown={keyDownHandler}
         />
       </label>
+      <button type="button" onClick={playingModeHandler}>
+        {isPlaying ? '일시 정지' : '시작'}
+      </button>
     </div>
   );
 }

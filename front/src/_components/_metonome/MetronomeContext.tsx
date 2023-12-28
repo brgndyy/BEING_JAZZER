@@ -13,6 +13,9 @@ const defaultValues: MetronomeContextType = {
   bpmRef: { current: null },
   metronomePlayHandler: () => {},
   count: 1,
+  first: false,
+  playingModeHandler: () => {},
+  isPlaying: false,
 };
 
 const MetronomeContext = createContext<MetronomeContextType>(defaultValues);
