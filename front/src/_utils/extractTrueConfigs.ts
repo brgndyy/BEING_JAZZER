@@ -1,12 +1,10 @@
-import { ChordSetting } from 'types';
+import { ChordSetting, SelectedSettingOptionType } from 'types';
 
-const extractTrueConfigs = (settings: ChordSetting[]): { [key: string]: boolean } => {
-  const initialConfig: { [key: string]: boolean } = {};
+const extractTrueConfigs = (settings: ChordSetting[]): SelectedSettingOptionType => {
+  const initialConfig: SelectedSettingOptionType = {};
   settings.forEach((setting) => {
-    Object.entries(setting.config).forEach(([key, value]) => {
-      if (value) {
-        initialConfig[key] = value;
-      }
+    Object.entries(setting.config).forEach(([key, { isAvailable, isSelected }]) => {
+      initialConfig[key] = { isAvailable, isSelected };
     });
   });
   return initialConfig;
