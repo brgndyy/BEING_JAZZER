@@ -2,7 +2,7 @@ import React from 'react';
 import { myStyle } from '@/_styles/vars.css';
 import { LoginModeTogglePropsType } from 'types';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
-import { joinContainer, toggleAuthMode, toggleText } from '../_modal/loginModal.css';
+import { joinContainer, toggleAuthMode, toggleText } from '../loginModalContent.css';
 
 export default function LoginModeToggle({
   isLoginMode,

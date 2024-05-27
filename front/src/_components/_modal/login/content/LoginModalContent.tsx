@@ -9,15 +9,16 @@ import ERROR_MESSAGES from '@/_constants/errorMessages';
 import { toast } from 'react-toastify';
 import PATH_ROUTES from '@/_constants/pathRoutes';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
-import { authContainer, modalBannerImageContainer, orLogo } from './loginModal.css';
-import ModalBannerImage from '../_composables/images/bannerImages/ModalBannerImage';
-import LoadingSpinner from '../_composables/loadingSpinner/LoadingSpinner';
-import LoginModeToggle from '../_login/LoginModeToggle';
-import OAuthIcons from '../_login/OAuthIcons';
-import LoginForm from '../_login/LoginForm';
-import LoginBanner from '../_login/LoginBanner';
+import { authContainer, modalBannerImageContainer, orLogo } from '../loginModalContent.css';
+import ModalBannerImage from '../../../_common/images/bannerImages/ModalBannerImage';
+import LoadingSpinner from '../../../_common/loadingSpinner/LoadingSpinner';
+import LoginModeToggle from './LoginModeToggle';
+import OAuthIcons from './OAuthIcons';
+import LoginForm from './LoginForm';
+import LoginBanner from './LoginBanner';
+import { modalContainer } from '../../modal.css';
 
-export default function LoginModal({ handleClose }: LoginModalPropsType) {
+export default function LoginModalContent({ handleClose }: LoginModalPropsType) {
   const [message, setMessage] = useState<string | undefined>();
   const { isLoading, sendRequest } = useFetch();
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -55,23 +56,25 @@ export default function LoginModal({ handleClose }: LoginModalPropsType) {
   return (
     <>
       {isLoading && <LoadingSpinner />}
-      <div className={modalBannerImageContainer}>
-        <ModalBannerImage />
-      </div>
-      <div className={authContainer}>
-        <LoginBanner isLoginMode={isLoginMode} handleClose={handleClose} />
-        <LoginForm
-          formSubmitHandler={formSubmitHandler}
-          inputHandler={inputHandler}
-          message={message}
-          value={typeof formState.userEmail === 'string' ? formState.userEmail : ''}
-          isLoginMode={isLoginMode}
-        />
-        <div className={`${orLogo} ${myStyle} ${BMHANNAAir.className}`}>
-          <p>또는</p>
+      <div className={`${modalContainer} ${myStyle}`}>
+        <div className={modalBannerImageContainer}>
+          <ModalBannerImage />
         </div>
-        <OAuthIcons />
-        <LoginModeToggle isLoginMode={isLoginMode} loginModeHandler={loginModeHandler} />
+        <div className={authContainer}>
+          <LoginBanner isLoginMode={isLoginMode} handleClose={handleClose} />
+          <LoginForm
+            formSubmitHandler={formSubmitHandler}
+            inputHandler={inputHandler}
+            message={message}
+            value={typeof formState.userEmail === 'string' ? formState.userEmail : ''}
+            isLoginMode={isLoginMode}
+          />
+          <div className={`${orLogo} ${myStyle} ${BMHANNAAir.className}`}>
+            <p>또는</p>
+          </div>
+          <OAuthIcons />
+          <LoginModeToggle isLoginMode={isLoginMode} loginModeHandler={loginModeHandler} />
+        </div>
       </div>
     </>
   );

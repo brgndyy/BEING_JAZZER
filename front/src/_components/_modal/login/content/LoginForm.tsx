@@ -10,7 +10,7 @@ import {
   formInput,
   loginButton,
   underLine,
-} from '../_modal/loginModal.css';
+} from '../loginModalContent.css';
 
 export default function LoginForm({
   inputHandler,

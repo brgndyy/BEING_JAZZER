@@ -7,7 +7,7 @@ import { myStyle } from '@/_styles/vars.css';
 import useChordSettingStore from '@/_store/useChordSettingStore';
 import { useEffect } from 'react';
 import useAccessTokenStore from '@/_store/useAccessTokenStore';
-import MainLogoImage from '../_composables/images/bannerImages/MainLogoImage';
+import MainLogoImage from '../_common/images/bannerImages/MainLogoImage';
 import {
   headerContainer,
   homeLink,
@@ -16,11 +16,10 @@ import {
   settingCategory,
 } from './header.css';
 
-import Setting from '../_setting/Setting';
 import ThemeToggleInput from '../_theme/ThemeToggleInput';
-import Login from '../_auth/Login';
 import UserProfile from '../_profile/UserProfile';
-import ModifiedModal from '../_setting/modifiedSettingModal/ModifiedModal';
+import SettingModal from '../_modal/setting/SettingModal';
+import LoginModal from '../_modal/login/LoginModal';
 
 export default function Header({
   currentTheme,
@@ -46,11 +45,11 @@ export default function Header({
       </Link>
       <div className={headerCategoryContainer}>
         <div className={loginOrSignUpCategory}>
-          {userInfo ? <UserProfile userInfo={userInfo} /> : <Login />}
+          {userInfo ? <UserProfile userInfo={userInfo} /> : <LoginModal />}
         </div>
         <ThemeToggleInput darkTheme={darkTheme} themeToggleHandler={themeToggleHandler} />
         <div className={settingCategory}>
-          <ModifiedModal />
+          <SettingModal />
         </div>
       </div>
     </div>

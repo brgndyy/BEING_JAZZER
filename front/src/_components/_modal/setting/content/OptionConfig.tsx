@@ -2,7 +2,7 @@ import { OptionConfigPropsType } from 'types';
 import { myStyle } from '@/_styles/vars.css';
 import { AiFillLock } from 'react-icons/ai';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
-import { optionContainer, title, optionSelect } from '../_modal/settingModal.css';
+import { optionContainer, title, optionSelect } from '../settingModal.css';
 import {
   configLabel,
   unchecked,

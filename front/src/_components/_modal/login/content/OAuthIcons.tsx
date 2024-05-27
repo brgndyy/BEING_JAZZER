@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import GoogleAuthImage from '../_composables/images/iconImages/GoogleAuthImage';
-import NaverAuthImage from '../_composables/images/iconImages/NaverAuthImage';
-import { OAuthContainer, googleIcon, naverIcon } from '../_modal/loginModal.css';
+import GoogleAuthImage from '../../../_common/images/iconImages/GoogleAuthImage';
+import NaverAuthImage from '../../../_common/images/iconImages/NaverAuthImage';
+import { OAuthContainer, googleIcon, naverIcon } from '../loginModalContent.css';
 
 export default function OAuthIcons() {
   return (

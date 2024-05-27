@@ -4,18 +4,18 @@ import { SettingModalPropsType } from 'types';
 import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
 import useChordSettingStore from '@/_store/useChordSettingStore';
 import useAccessTokenStore from '@/_store/useAccessTokenStore';
-import { formLogo, settingForm } from './settingModal.css';
-import OptionConfig from '../_setting/OptionConfig';
-import SettingModalLogo from '../_setting/SettingModalLogo';
-import SettingModalCloseButton from '../_setting/SettingModalCloseButton';
-import SettingChangeButton from '../_setting/SettingChangeButton';
+import { formLogo, settingForm } from '../settingModal.css';
+import OptionConfig from './OptionConfig';
+import SettingModalLogo from './SettingModalLogo';
+import SettingModalCloseButton from './SettingModalCloseButton';
+import SettingChangeButton from './SettingChangeButton';
 
 export default function SettingModal({ handleClose }: SettingModalPropsType) {
-  const { chordSetting } = useChordSettingStore();
-  const { handleSelectedUserSettingConfig } = useSelectSettingOption();
+  // const { chordSetting } = useChordSettingStore();
+  const { chordSetting, handleSelectedUserSettingConfig } = useSelectSettingOption();
 
   return (
-    <div className={formLogo}>
+    <div className={`${formLogo}`}>
       <SettingModalLogo />
       <SettingModalCloseButton handleClose={handleClose} />
 
