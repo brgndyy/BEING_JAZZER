@@ -20,6 +20,7 @@ import Setting from '../_setting/Setting';
 import ThemeToggleInput from '../_theme/ThemeToggleInput';
 import Login from '../_auth/Login';
 import UserProfile from '../_profile/UserProfile';
+import ModifiedModal from '../_setting/modifiedSettingModal/ModifiedModal';
 
 export default function Header({
   currentTheme,
@@ -49,7 +50,7 @@ export default function Header({
         </div>
         <ThemeToggleInput darkTheme={darkTheme} themeToggleHandler={themeToggleHandler} />
         <div className={settingCategory}>
-          <Setting />
+          <ModifiedModal />
         </div>
       </div>
     </div>
