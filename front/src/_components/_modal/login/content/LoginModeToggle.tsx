@@ -1,13 +1,14 @@
 import React from 'react';
 import { myStyle } from '@/_styles/vars.css';
-import { LoginModeTogglePropsType } from 'types';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { joinContainer, toggleAuthMode, toggleText } from '../loginModalContent.css';
 
-export default function LoginModeToggle({
-  isLoginMode,
-  loginModeHandler,
-}: LoginModeTogglePropsType) {
+type Props = {
+  isLoginMode: boolean;
+  handleLoginMode: () => void;
+};
+
+export default function LoginModeToggle({ isLoginMode, handleLoginMode }: Props) {
   return (
     <div className={joinContainer}>
       <div className={`${myStyle} ${toggleText} ${BMHANNAAir.className}`}>
@@ -16,7 +17,7 @@ export default function LoginModeToggle({
       <button
         type="button"
         className={`${toggleAuthMode} ${myStyle} ${BMHANNAAir.className}`}
-        onClick={loginModeHandler}
+        onClick={handleLoginMode}
       >
         {isLoginMode ? `회원가입 하기` : `로그인 하기`}
       </button>

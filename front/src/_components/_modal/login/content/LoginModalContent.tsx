@@ -26,7 +26,7 @@ export default function LoginModalContent({ handleClose }: LoginModalPropsType) 
     userEmail: '',
   });
 
-  const loginModeHandler = () => {
+  const handleLoginMode = () => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
@@ -73,7 +73,7 @@ export default function LoginModalContent({ handleClose }: LoginModalPropsType) 
             <p>또는</p>
           </div>
           <OAuthIcons />
-          <LoginModeToggle isLoginMode={isLoginMode} loginModeHandler={loginModeHandler} />
+          <LoginModeToggle isLoginMode={isLoginMode} handleLoginMode={handleLoginMode} />
         </div>
       </div>
     </>
