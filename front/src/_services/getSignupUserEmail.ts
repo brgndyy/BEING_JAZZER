@@ -1,8 +1,8 @@
-import PATH_ROUTES from '@/_constants/pathRoutes';
+import { API_ROUTES } from '@/_constants/routes';
 
 const getSignupUserEmail = async (encryptedCode: string) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${PATH_ROUTES.register_user_info}`,
+    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.register_user_info}`,
     {
       method: 'POST',
       headers: {

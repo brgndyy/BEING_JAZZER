@@ -1,5 +1,5 @@
 import ERROR_MESSAGES from '@/_constants/errorMessages';
-import PATH_ROUTES from '@/_constants/pathRoutes';
+import { API_ROUTES } from '@/_constants/routes';
 
 const getUserInfoByAccessToken = async (accessToken?: string) => {
   if (!accessToken) {
@@ -8,7 +8,7 @@ const getUserInfoByAccessToken = async (accessToken?: string) => {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${PATH_ROUTES.get_user_info}`,
+      `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.get_user_info}`,
       {
         method: 'POST',
         headers: {

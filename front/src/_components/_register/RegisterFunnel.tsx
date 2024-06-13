@@ -7,16 +7,16 @@ import { myStyle } from '@/_styles/vars.css';
 import useForm from '@/_hooks/useForm';
 import useFetch from '@/_hooks/useFetch';
 import { Suspense } from 'react';
-import PATH_ROUTES from '@/_constants/pathRoutes';
+import { API_ROUTES } from '@/_constants/routes';
 import { useRouter } from 'next/navigation';
-import FunnelCard from '../_composables/cards/FunnelCard';
+import FunnelCard from '../_common/cards/FunnelCard';
 import WelcomeFunnel from './WelcomeFunnel';
 import UserNameFunnel from './UserNameFunnel';
 import UserImageFunnel from './UserImageFunnel';
 import FinishFunnel from './FinishFunnel';
 import { funnelConatiner } from './funnel.css';
 import UserEmailFunnel from './UserEmailFunnel';
-import LoadingSpinner from '../_composables/loadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../_common/loadingSpinner/LoadingSpinner';
 
 const boxVariants = {
   entry: (direction: 'next' | 'previous') => ({
@@ -69,7 +69,7 @@ export default function RegisterFunnel({ userEmail }: RegisterFromPropsType) {
     }
 
     const res = await sendRequest(
-      `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${PATH_ROUTES.signup}`,
+      `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.signup}`,
       formData,
       {},
       'POST',

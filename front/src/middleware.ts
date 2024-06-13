@@ -4,7 +4,7 @@ import getTokenValues from './_services/middleware/getTokenValues';
 import { getNewAccessToken } from './_services/auth/getNewAccessToken';
 import setNewAccessTokenToHeader from './_services/middleware/setNewAccessTokenToHeader';
 import getUserInfoByEncryptedCode from './_services/auth/getUserInfoByEncryptedCode';
-import PATH_ROUTES from './_constants/pathRoutes';
+import { API_ROUTES } from './_constants/routes';
 import setCookieOfToken from './_services/middleware/setCookieOfToken';
 
 export async function middleware(request: NextRequest) {
@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
 
     try {
       const { accessTokenValue, refreshTokenValue, success } = await getUserInfoByEncryptedCode(
-        PATH_ROUTES.existing_user_login,
+        API_ROUTES.existing_user_login,
         encryptedCode,
       );
 

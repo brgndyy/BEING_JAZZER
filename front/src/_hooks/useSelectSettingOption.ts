@@ -27,7 +27,7 @@ const useSelectSettingOption = () => {
       updateChordSetting(updatedChordSetting);
     };
 
-  return { handleSelectedUserSettingConfig };
+  return { chordSetting, handleSelectedUserSettingConfig };
 };
 
 export default useSelectSettingOption;
