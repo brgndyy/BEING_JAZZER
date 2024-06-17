@@ -27,8 +27,8 @@
   },
   "include": [
     "./@types/global.d.ts",
-    "./@types/custom.d.ts",
-    "./@types/audio.d.ts",
+    "src/_types/custom.d.ts",
+    "src/_types/audio.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
@@ -37,7 +37,7 @@
     "next.config.js",
     "./__mocks__",
     "src/app/(register)/default/page.tsx",
-    "src/_components/_metonome/MetronomeContext.tsㅌ"
+    "src/_components/_metonome/MetronomeContext.ts"
   ],
   "exclude": ["node_modules"]
 }
