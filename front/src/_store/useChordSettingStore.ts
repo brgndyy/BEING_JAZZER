@@ -1,5 +1,15 @@
 import { create } from 'zustand';
-import { ChordSetting } from 'types';
+
+export interface ChordSetting {
+  readonly id: number;
+  readonly type: string;
+  readonly config: {
+    readonly [key: string]: {
+      isAvailable: boolean;
+      isSelected: boolean;
+    };
+  };
+}
 
 type ChordSettingState = {
   chordSetting: ChordSetting[];
