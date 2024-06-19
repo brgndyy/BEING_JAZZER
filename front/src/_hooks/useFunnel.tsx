@@ -26,15 +26,25 @@ const useFunnel = (steps: readonly string[]) => {
   const [direction, setDirection] = useState<'next' | 'previous'>('next');
 
   const nextStepHandler = () => {
-    setDirection('next');
-    setStepIndex((prevStepIndex) => prevStepIndex + 1);
-    setStep(steps[stepIndex + 1]);
+    if (stepIndex < steps.length - 1) {
+      setDirection('next');
+      setStepIndex((prevStepIndex) => {
+        const newIndex = prevStepIndex + 1;
+        setStep(steps[prevStepIndex + 1]);
+        return newIndex;
+      });
+    }
   };
 
   const previousStepHandler = () => {
-    setDirection('previous');
-    setStepIndex((prevStepIndex) => prevStepIndex - 1);
-    setStep(steps[stepIndex - 1]);
+    if (stepIndex > 0) {
+      setDirection('previous');
+      setStepIndex((prevStepIndex) => {
+        const newIndex = prevStepIndex - 1;
+        setStep(steps[newIndex]);
+        return newIndex;
+      });
+    }
   };
 
   return { step, Funnel, nextStepHandler, previousStepHandler, direction };
