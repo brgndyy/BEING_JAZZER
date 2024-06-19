@@ -2,7 +2,7 @@ import { formLogo, settingForm } from '@/_components/_modal/setting/settingModal
 import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
 import { myStyle } from '@/_styles/vars.css';
 import OptionConfig from './OptionConfig';
-import SettingChangeButton from './SettingChangeButton';
+import SettingApplyButton from './SettingApplyButton';
 import SettingModalCloseButton from './SettingModalCloseButton';
 import SettingModalLogo from './SettingModalLogo';
 import { modalContainer } from '../../modal.css';
@@ -32,7 +32,7 @@ export default function SettingModalContent({ handleClose }: Props) {
             );
           })}
 
-          <SettingChangeButton handleClose={handleClose} />
+          <SettingApplyButton />
         </form>
       </div>
     </div>
