@@ -1,6 +1,4 @@
-import deepFreeze from '@/_utils/deepFreeze';
-
-const COOKIE_CONFIG = deepFreeze({
+const COOKIE_CONFIG = {
   access_token: {
     expires: new Date(Date.now() + 10 * 60 * 1000),
     secure: false,
@@ -15,6 +13,6 @@ const COOKIE_CONFIG = deepFreeze({
     sameSite: 'lax' as const,
     path: '/',
   },
-});
+} as const;
 
 export default COOKIE_CONFIG;
