@@ -1,15 +1,4 @@
-interface ChordSettingConfig {
-  [key: string]: {
-    isAvailable: boolean;
-    isSelected: boolean;
-  };
-}
-
-interface ChordSetting {
-  id: number;
-  type: 'Key' | 'Chord' | 'Tension';
-  config: ChordSettingConfig;
-}
+import { ChordSetting } from '../@types';
 
 const defaultUserChordSetting: ChordSetting[] = [
   {
