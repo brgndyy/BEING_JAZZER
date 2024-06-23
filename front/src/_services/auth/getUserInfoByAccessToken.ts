@@ -7,17 +7,14 @@ const getUserInfoByAccessToken = async (accessToken?: string) => {
   }
 
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.get_user_info}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        credentials: 'include',
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.user_info}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
       },
-    );
+      credentials: 'include',
+    });
 
     if (!res.ok) {
       throw new Error(ERROR_MESSAGES.fail_get_user_info);
