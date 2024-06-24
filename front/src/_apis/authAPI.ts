@@ -25,12 +25,14 @@ export const getNewAccessToken = async (refreshToken: string) => {
   }
 };
 
-type UserEmail = {
-  userEmail?: string;
+type UserInfoByEncryptedCode = {
+  accessTokenValue: string;
+  refreshTokenValue: string;
+  success: boolean;
 };
 
 export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: string) => {
-  const userEmail = await Fetcher.post<UserEmail>(
+  const data = await Fetcher.post<UserInfoByEncryptedCode>(
     `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${path}`,
     {
       headers: {
@@ -40,9 +42,9 @@ export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: st
     },
   );
 
-  if (!userEmail) {
+  if (!data) {
     redirect('/not-found');
   }
 
-  return userEmail;
+  return data;
 };

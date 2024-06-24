@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import getTokenValues from './_services/middleware/getTokenValues';
-import { getNewAccessToken } from './_services/auth/getNewAccessToken';
+import { getNewAccessToken } from './_apis/authAPI';
 import setNewAccessTokenToHeader from './_services/middleware/setNewAccessTokenToHeader';
-import getUserInfoByEncryptedCode from './_services/auth/getUserInfoByEncryptedCode';
+import { getUserInfoByEncryptedCode } from './_apis/authAPI';
 import { API_ROUTES } from './_constants/routes';
 import setCookieOfToken from './_services/middleware/setCookieOfToken';
 
@@ -12,12 +12,11 @@ export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
   const { fetchMode, accessToken, refreshToken } = getTokenValues(request);
 
-  if ((!accessToken && refreshToken) || (fetchMode === 'navigate' && refreshToken)) {
+  if (!accessToken && refreshToken) {
     const res = await getNewAccessToken(refreshToken);
-
-    const { newAccessToken } = res;
-
-    setNewAccessTokenToHeader(response, newAccessToken);
+    if (res && res.newAccessToken) {
+      setNewAccessTokenToHeader(response, res.newAccessToken);
+    }
   }
 
   if (pathname === '/email-login') {
