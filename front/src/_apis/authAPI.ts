@@ -1,6 +1,7 @@
 import { API_ROUTES } from '@/_constants/routes';
 import { redirect } from 'next/navigation';
 import Fetcher from './fetcher/Fetcher';
+import { UserProfile } from '../_types/index';
 
 type AccessToken = {
   newAccessToken: string;
@@ -65,4 +66,25 @@ export const sendAuthEmail = async (userEmail: string) => {
       userEmail,
     }),
   });
+};
+
+export const getUserInfoByAccessToken = async (accessToken?: string) => {
+  if (!accessToken) {
+    return undefined;
+  }
+
+  const data = await Fetcher.get<UserProfile>(
+    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.user_info}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+  const { userInfo } = data;
+
+  return userInfo;
 };

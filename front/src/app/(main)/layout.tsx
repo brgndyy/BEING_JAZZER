@@ -2,18 +2,19 @@
 
 import type { Metadata } from 'next';
 import '../globals.css';
-import Card from '@/_components/_composables/cards/Card';
+import Card from '@/_components/_common/cards/Card';
 import { getThemeCookieValue } from '@/_utils/getThemeCookieValue';
 import { generateThemeScript } from '@/_utils/generateThemeScript';
 import sanitizeHtml from '@/_utils/sanitizeHtml';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import getAccessTokenValue from '@/_services/token/getAccessTokenValue';
-import getUserInfoByAccessToken from '@/_services/auth/getUserInfoByAccessToken';
-import ContentCard from '@/_components/_composables/cards/ContentCard';
+import { getUserInfoByAccessToken } from '@/_apis/authAPI';
+import ContentCard from '@/_components/_common/cards/ContentCard';
 import Header from '@/_components/_header/Header';
 import defaultChordSetting from '@/_mocks/chordSettingOptions';
-import getUserChordSetting from '@/_services/setting/getUserChordSetting';
+import { getUserChordSetting } from '@/_apis/chordSettingAPI';
+import { BMHANNAAir } from '@/_styles/fonts/fonts';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
@@ -30,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className={BMHANNAAir.className}>
         <script
           dangerouslySetInnerHTML={{
             __html: sanitizedThemeScript,
