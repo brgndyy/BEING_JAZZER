@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import useThemeStore from '@/_store/useThemeStore';
+import themeStore from '@/_store/themeStore';
 
 export const useTheme = (currentTheme: string) => {
   const [darkTheme, setDarkTheme] = useState<boolean>(currentTheme === 'dark');
-  const { updateTheme } = useThemeStore();
+  const { updateTheme } = themeStore();
 
   useEffect(() => {
     updateTheme(darkTheme);

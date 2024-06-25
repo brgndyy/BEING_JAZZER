@@ -5,9 +5,9 @@ type State = {
   updateTheme: (theme: boolean) => void;
 };
 
-const useThemeStore = create<State>((set) => ({
+const themeStore = create<State>((set) => ({
   theme: false,
   updateTheme: (theme) => set({ theme }),
 }));
 
-export default useThemeStore;
+export default themeStore;

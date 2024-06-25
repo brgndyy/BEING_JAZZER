@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
 import useSelectSettingOption from '../useSelectSettingOption';
-import useChordSettingStore from '@/_store/useChordSettingStore';
+import useChordSettingStore from '@/_store/chordSettingStore';
 
 jest.mock('@/_store/useChordSettingStore');
 

@@ -1,9 +1,9 @@
 import { ChordSetting } from '@/_types';
 import { renderHook, act } from '@testing-library/react';
-import useChordSettingStore from '../useChordSettingStore';
+import chordSettingStore from '../chordSettingStore';
 
 const initializeStore = () => {
-  const store = useChordSettingStore.getState();
+  const store = chordSettingStore.getState();
   store.updateChordSetting([]);
 };
 
@@ -13,7 +13,7 @@ describe('useChordSettingStore에 대한 테스트 코드 작성', () => {
   });
 
   it('chordSetting을 업데이트 할 수 있어야한다.', () => {
-    const { result } = renderHook(() => useChordSettingStore());
+    const { result } = renderHook(() => chordSettingStore());
 
     const newSettings: ChordSetting[] = [
       {

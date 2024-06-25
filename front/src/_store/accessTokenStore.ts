@@ -5,9 +5,9 @@ type State = {
   updateAccessToken: (accessToken: string) => void;
 };
 
-const useAccessTokenStore = create<State>((set) => ({
+const accessTokenStore = create<State>((set) => ({
   accessToken: '',
   updateAccessToken: (accessToken) => set({ accessToken }),
 }));
 
-export default useAccessTokenStore;
+export default accessTokenStore;

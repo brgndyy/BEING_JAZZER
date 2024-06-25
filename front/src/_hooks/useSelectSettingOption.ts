@@ -1,4 +1,4 @@
-import useChordSettingStore from '@/_store/useChordSettingStore';
+import useChordSettingStore from '@/_store/chordSettingStore';
 
 const useSelectSettingOption = () => {
   const { chordSetting, updateChordSetting } = useChordSettingStore();
