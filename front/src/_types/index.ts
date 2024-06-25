@@ -9,6 +9,20 @@ export interface ChordSetting {
   };
 }
 
+export type ChangeUserChordSetting = {
+  chordSetting: ChordSetting[];
+  accessToken: string;
+};
+
+export interface LoginFormState {
+  userEmail: string;
+}
+
+export interface SignUpFormState extends LoginFormState {
+  userName: string;
+  userImage: File | null;
+}
+
 export interface UserInfoType {
   id: number;
   userEmail: string;
@@ -28,7 +42,7 @@ export interface HeaderProps {
   accessToken?: string;
 }
 
-export interface UserProfilePropsType {
+export interface UserProfileProps {
   userInfo: UserInfoType;
 }
 
@@ -79,10 +93,19 @@ export interface SearchParams {
   };
 }
 
-export interface RegisterFormProps {
+export interface RegisterForm {
   userEmail: string;
 }
 
 export interface ResponseType {
   message: string;
+}
+
+export interface ChordImageData {
+  id: number;
+  keyId: number;
+  chordId: number;
+  version: number;
+  theme: 'Dark' | 'White';
+  imageUrl: string;
 }

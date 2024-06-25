@@ -48,3 +48,21 @@ export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: st
 
   return data;
 };
+
+export const userSignUp = async (signUpFormData: FormData) => {
+  await Fetcher.post(`${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.signup}`, {
+    body: signUpFormData,
+  });
+};
+
+export const sendAuthEmail = async (userEmail: string) => {
+  console.log('userEmail : ', userEmail);
+  await Fetcher.post(`${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.request_auth_email}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userEmail,
+    }),
+  });
+};

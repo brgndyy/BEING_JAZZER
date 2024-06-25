@@ -8,3 +8,7 @@ export const API_ROUTES = {
   user_chord_setting: '/api/users/chord-setting',
   default_chord_images: '/api/chord-images/default',
 } as const;
+
+export const PAGE_ROUTES = {
+  MAIN: '/',
+} as const;
