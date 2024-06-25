@@ -49,8 +49,6 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
 
     sendTokenCookieToClient('accessToken', newAccessToken, res);
     sendTokenCookieToClient('refreshToken', newRefreshToken, res);
-
-    return res.json({ success: true, message: PROGRESS_MESSAGES.succeed_sign_up });
   } catch (err) {
     const error = new HttpError(ERROR_MESSAGES.fail_sign_up, 503);
 

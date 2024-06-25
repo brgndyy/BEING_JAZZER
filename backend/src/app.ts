@@ -12,6 +12,7 @@ import PROGRESS_MESSAGES from './constants/progressMessages';
 import { CORS_OPTIONS } from './constants/options';
 import sequelize from './models';
 import { userRoutes } from './routes/userRoutes';
+import { chordImageRoutes } from './routes/chordImageRoutes';
 
 dotenv.config();
 
@@ -35,11 +36,11 @@ app.use('/images', express.static('src/assets/images'));
 
 sequelize
   .query('SET FOREIGN_KEY_CHECKS = 0')
-  .then(() => sequelize.query('TRUNCATE TABLE refreshTokens'))
-  .then(() => sequelize.query('TRUNCATE TABLE userSettings'))
-  .then(() => sequelize.query('TRUNCATE TABLE authEmailRecords'))
-  .then(() => sequelize.query('TRUNCATE TABLE users'))
-  .then(() => sequelize.query('SET FOREIGN_KEY_CHECKS = 1'))
+  // .then(() => sequelize.query('TRUNCATE TABLE refreshTokens'))
+  // .then(() => sequelize.query('TRUNCATE TABLE userSettings'))
+  // .then(() => sequelize.query('TRUNCATE TABLE authEmailRecords'))
+  // .then(() => sequelize.query('TRUNCATE TABLE users'))
+  // .then(() => sequelize.query('SET FOREIGN_KEY_CHECKS = 1'))
   .then(() => sequelize.sync({ force: false }))
   .then(() => {
     console.log(PROGRESS_MESSAGES.succeed_connect_database);
@@ -49,6 +50,7 @@ sequelize
   });
 
 app.use('/api/users', userRoutes);
+app.use('/api/chord-images', chordImageRoutes);
 
 app.use(() => {
   const error = new HttpError(ERROR_MESSAGES.route_error, 404);
