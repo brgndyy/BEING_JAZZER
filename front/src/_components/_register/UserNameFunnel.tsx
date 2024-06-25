@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { myStyle } from '@/_styles/vars.css';
 import { toast } from 'react-toastify';
 import { validate, VALIDATION_TYPE } from '@/_utils/validator';
@@ -14,19 +16,19 @@ import {
   funnelInput,
 } from './funnel.css';
 
-type FunnelStepHandlerType = {
+type Props = {
   nextStepHandler: () => void;
-  previoustStepHandler: () => void;
+  previousStepHandler: () => void;
   value: string;
   inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function UserNameFunnel({
   nextStepHandler,
-  previoustStepHandler,
+  previousStepHandler,
   value,
   inputHandler,
-}: FunnelStepHandlerType) {
+}: Props) {
   const [error, setError] = useState(false);
 
   const nextHandler = async () => {
@@ -71,7 +73,7 @@ export default function UserNameFunnel({
         <button
           type="button"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={previoustStepHandler}
+          onClick={previousStepHandler}
         >
           이전으로
         </button>

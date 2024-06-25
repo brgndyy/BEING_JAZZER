@@ -12,11 +12,11 @@ import {
   nextButton,
 } from './welcomFunnel.css';
 
-type FunnelStepHandlerType = {
+type Props = {
   nextStepHandler: () => void;
 };
 
-export default function WelcomeFunnel({ nextStepHandler }: FunnelStepHandlerType) {
+export default function WelcomeFunnel({ nextStepHandler }: Props) {
   return (
     <div className={`${welcomeContainer} ${BMHANNAAir.className}`}>
       <div className={logoWrapper}>

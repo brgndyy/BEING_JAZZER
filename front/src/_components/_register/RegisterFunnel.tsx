@@ -1,14 +1,9 @@
 'use client';
 
-import { RegisterFromPropsType } from 'types';
 import useFunnel from '@/_hooks/useFunnel';
 import { AnimatePresence, motion } from 'framer-motion';
 import { myStyle } from '@/_styles/vars.css';
 import useForm from '@/_hooks/useForm';
-import useFetch from '@/_hooks/useFetch';
-import { Suspense } from 'react';
-import { API_ROUTES } from '@/_constants/routes';
-import { useRouter } from 'next/navigation';
 import FunnelCard from '../_common/cards/FunnelCard';
 import WelcomeFunnel from './WelcomeFunnel';
 import UserNameFunnel from './UserNameFunnel';
@@ -16,7 +11,8 @@ import UserImageFunnel from './UserImageFunnel';
 import FinishFunnel from './FinishFunnel';
 import { funnelConatiner } from './funnel.css';
 import UserEmailFunnel from './UserEmailFunnel';
-import LoadingSpinner from '../_common/loadingSpinner/LoadingSpinner';
+import useSignUpMutation from '@/_hooks/mutations/useSignUpMutation';
+import { SignUpFormState } from '../../_types/index';
 
 const boxVariants = {
   entry: (direction: 'next' | 'previous') => ({
@@ -38,99 +34,72 @@ const boxVariants = {
   }),
 };
 
-export default function RegisterFunnel({ userEmail }: RegisterFromPropsType) {
-  const router = useRouter();
-  const { step, Funnel, nextStepHandler, previousStepHandler, direction } = useFunnel([
-    'welcome',
-    'userEmail',
-    'userName',
-    'userImage',
-    'finish',
-  ] as const);
+const REGISTER_STEP = ['welcome', 'userEmail', 'userName', 'userImage', 'finish'] as const;
 
-  const { formState, inputHandler, inputFileUploadHandler } = useForm({
+type Props = {
+  userEmail: string;
+};
+
+export default function RegisterFunnel({ userEmail }: Props) {
+  const { step, Funnel, nextStepHandler, previousStepHandler, direction } =
+    useFunnel(REGISTER_STEP);
+
+  const { formState, handleFormValue, handleUploadFormFile } = useForm<SignUpFormState>({
     userName: '',
     userEmail,
     userImage: null,
   });
 
-  const { sendRequest } = useFetch();
-
-  const formSubmitHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData();
-
-    formData.append('userName', typeof formState.userName === 'string' ? formState.userName : '');
-    formData.append('userEmail', userEmail);
-
-    if (formState.userImage instanceof File) {
-      formData.append('userImage', formState.userImage);
-    }
-
-    const res = await sendRequest(
-      `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.signup}`,
-      formData,
-      {},
-      'POST',
-    );
-
-    const data = await res.json();
-
-    const { success } = data;
-
-    if (success) {
-      router.refresh();
-      router.replace('/');
-    }
-  };
+  const { handleUserSignUp } = useSignUpMutation({
+    userName: formState.userName,
+    userEmail: formState.userEmail,
+    userImage: formState.userImage,
+  });
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <FunnelCard>
-        <AnimatePresence custom={direction} initial={false}>
-          <motion.div
-            className={`${funnelConatiner} ${myStyle}`}
-            key={step}
-            variants={boxVariants}
-            initial="entry"
-            animate="center"
-            exit="exit"
-            custom={direction}
-          >
-            <Funnel step={step}>
-              <Funnel.Step name="welcome">
-                <WelcomeFunnel nextStepHandler={nextStepHandler} />
-              </Funnel.Step>
-              <Funnel.Step name="userEmail">
-                <UserEmailFunnel
-                  userEmail={userEmail}
-                  nextStepHandler={nextStepHandler}
-                  previoustStepHandler={previousStepHandler}
-                />
-              </Funnel.Step>
-              <Funnel.Step name="userName">
-                <UserNameFunnel
-                  previoustStepHandler={previousStepHandler}
-                  nextStepHandler={nextStepHandler}
-                  value={typeof formState.userName === 'string' ? formState.userName : ''}
-                  inputHandler={inputHandler}
-                />
-              </Funnel.Step>
-              <Funnel.Step name="userImage">
-                <UserImageFunnel
-                  previoustStepHandler={previousStepHandler}
-                  inputFileUploadHandler={inputFileUploadHandler}
-                  formSubmitHandler={formSubmitHandler}
-                />
-              </Funnel.Step>
-              <Funnel.Step name="finish">
-                <FinishFunnel />
-              </Funnel.Step>
-            </Funnel>
-          </motion.div>
-        </AnimatePresence>
-      </FunnelCard>
-    </Suspense>
+    <FunnelCard>
+      <AnimatePresence custom={direction} initial={false}>
+        <motion.div
+          className={`${funnelConatiner} ${myStyle}`}
+          key={step}
+          variants={boxVariants}
+          initial="entry"
+          animate="center"
+          exit="exit"
+          custom={direction}
+        >
+          <Funnel step={step}>
+            <Funnel.Step name={REGISTER_STEP[0]}>
+              <WelcomeFunnel nextStepHandler={nextStepHandler} />
+            </Funnel.Step>
+            <Funnel.Step name={REGISTER_STEP[1]}>
+              <UserEmailFunnel
+                userEmail={userEmail}
+                nextStepHandler={nextStepHandler}
+                previousStepHandler={previousStepHandler}
+              />
+            </Funnel.Step>
+            <Funnel.Step name={REGISTER_STEP[2]}>
+              <UserNameFunnel
+                previousStepHandler={previousStepHandler}
+                nextStepHandler={nextStepHandler}
+                value={formState.userName}
+                inputHandler={handleFormValue}
+              />
+            </Funnel.Step>
+            <Funnel.Step name={REGISTER_STEP[3]}>
+              <UserImageFunnel
+                previousStepHandler={previousStepHandler}
+                inputFileUploadHandler={handleUploadFormFile}
+                formSubmitHandler={handleUserSignUp}
+              />
+            </Funnel.Step>
+            <Funnel.Step name={REGISTER_STEP[4]}>
+              <FinishFunnel />
+            </Funnel.Step>
+          </Funnel>
+        </motion.div>
+      </AnimatePresence>
+    </FunnelCard>
   );
 }

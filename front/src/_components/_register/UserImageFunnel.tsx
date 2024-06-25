@@ -15,13 +15,13 @@ import {
 } from './funnel.css';
 
 type FunnelStepHandlerType = {
-  previoustStepHandler: () => void;
+  previousStepHandler: () => void;
   inputFileUploadHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   formSubmitHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export default function UserImageFunnel({
-  previoustStepHandler,
+  previousStepHandler,
   inputFileUploadHandler,
   formSubmitHandler,
 }: FunnelStepHandlerType) {
@@ -82,7 +82,7 @@ export default function UserImageFunnel({
         <button
           type="button"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={previoustStepHandler}
+          onClick={previousStepHandler}
         >
           이전으로
         </button>

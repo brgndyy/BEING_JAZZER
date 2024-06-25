@@ -1,13 +1,9 @@
 import { useState, useCallback } from 'react';
 
-interface FormValues {
-  [key: string]: string | File | null;
-}
+const useForm = <T>(initialValues: T) => {
+  const [formState, setFormState] = useState<T>(initialValues);
 
-const useForm = (initialValues: FormValues) => {
-  const [formState, setFormState] = useState(initialValues);
-
-  const inputHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFormValue = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
 
@@ -17,7 +13,7 @@ const useForm = (initialValues: FormValues) => {
     }));
   }, []);
 
-  const inputFileUploadHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUploadFormFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
 
     const file = e.target.files ? e.target.files[0] : null;
@@ -29,7 +25,7 @@ const useForm = (initialValues: FormValues) => {
     }
   };
 
-  return { formState, inputHandler, setFormState, inputFileUploadHandler };
+  return { formState, handleFormValue, setFormState, handleUploadFormFile };
 };
 
 export default useForm;
