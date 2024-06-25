@@ -11,12 +11,13 @@ import {
   fourth,
   nextButton,
 } from './welcomFunnel.css';
+import Button from '../_common/button/Button';
 
 type Props = {
-  nextStepHandler: () => void;
+  handleNextStep: () => void;
 };
 
-export default function WelcomeFunnel({ nextStepHandler }: Props) {
+export default function WelcomeFunnel({ handleNextStep }: Props) {
   return (
     <div className={`${welcomeContainer} ${BMHANNAAir.className}`}>
       <div className={logoWrapper}>
@@ -33,13 +34,13 @@ export default function WelcomeFunnel({ nextStepHandler }: Props) {
       </div>
 
       <div>
-        <button
+        <Button
           type="button"
-          onClick={nextStepHandler}
+          onClick={handleNextStep}
           className={`${nextButton} ${myStyle} ${fourth} ${BMHANNAAir.className}`}
         >
           회원가입 하러 가기
-        </button>
+        </Button>
       </div>
     </div>
   );

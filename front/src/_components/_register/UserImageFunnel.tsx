@@ -3,6 +3,8 @@ import { myStyle } from '@/_styles/vars.css';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import useDragAndDrop from '@/_hooks/useDragAndDrop';
 import Image from 'next/image';
+import Input from '../_common/input/Input';
+import Button from '../_common/button/Button';
 import {
   contentContainer,
   funnelLabel,
@@ -15,15 +17,15 @@ import {
 } from './funnel.css';
 
 type FunnelStepHandlerType = {
-  previousStepHandler: () => void;
-  inputFileUploadHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  formSubmitHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handlePreviousStep: () => void;
+  handleUploadFormFile: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleUserSignUp: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export default function UserImageFunnel({
-  previousStepHandler,
-  inputFileUploadHandler,
-  formSubmitHandler,
+  handlePreviousStep,
+  handleUploadFormFile,
+  handleUserSignUp,
 }: FunnelStepHandlerType) {
   const {
     dragging,
@@ -40,7 +42,7 @@ export default function UserImageFunnel({
 
     if (imageFile) {
       setFile(imageFile);
-      inputFileUploadHandler(e);
+      handleUploadFormFile(e);
     }
   };
 
@@ -62,7 +64,7 @@ export default function UserImageFunnel({
           onDragOver={onDragOverHandler}
           onDrop={onDropHandler}
         >
-          <input
+          <Input
             type="file"
             accept=".jpg,.png,.jpeg"
             className={`${funnelImageInput} ${myStyle} ${BMHANNAAir.className}`}
@@ -79,20 +81,20 @@ export default function UserImageFunnel({
       )}
 
       <div className={funnelButtonContainer}>
-        <button
+        <Button
           type="button"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={previousStepHandler}
+          onClick={handlePreviousStep}
         >
           이전으로
-        </button>
-        <button
+        </Button>
+        <Button
           type="submit"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={formSubmitHandler}
+          onClick={handleUserSignUp}
         >
           다음
-        </button>
+        </Button>
       </div>
     </div>
   );

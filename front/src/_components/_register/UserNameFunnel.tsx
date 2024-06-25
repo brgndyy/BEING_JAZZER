@@ -15,23 +15,24 @@ import {
   funnelInputContainer,
   funnelInput,
 } from './funnel.css';
+import Button from '../_common/button/Button';
 
 type Props = {
-  nextStepHandler: () => void;
-  previousStepHandler: () => void;
+  handleNextStep: () => void;
+  handlePreviousStep: () => void;
   value: string;
   inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function UserNameFunnel({
-  nextStepHandler,
-  previousStepHandler,
+  handleNextStep,
+  handlePreviousStep,
   value,
   inputHandler,
 }: Props) {
   const [error, setError] = useState(false);
 
-  const nextHandler = async () => {
+  const handleNext = async () => {
     setError(false);
     await new Promise((resolve) => {
       setTimeout(resolve, 0);
@@ -44,7 +45,7 @@ export default function UserNameFunnel({
       return;
     }
 
-    nextStepHandler();
+    handleNextStep();
   };
 
   return (
@@ -70,20 +71,20 @@ export default function UserNameFunnel({
         />
       </div>
       <div className={funnelButtonContainer}>
-        <button
+        <Button
           type="button"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={previousStepHandler}
+          onClick={handlePreviousStep}
         >
           이전으로
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={nextHandler}
+          onClick={handleNext}
         >
           다음
-        </button>
+        </Button>
       </div>
     </div>
   );

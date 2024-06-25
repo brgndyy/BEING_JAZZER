@@ -11,23 +11,21 @@ import {
   emailCard,
   lockIcon,
 } from './funnel.css';
+import Button from '../_common/button/Button';
+import Input from '../_common/input/Input';
 
 type Props = {
   userEmail: string;
-  nextStepHandler: () => void;
-  previousStepHandler: () => void;
+  handleNextStep: () => void;
+  handlePreviousStep: () => void;
 };
 
-export default function UserEmailFunnel({
-  userEmail,
-  nextStepHandler,
-  previousStepHandler,
-}: Props) {
+export default function UserEmailFunnel({ userEmail, handleNextStep, handlePreviousStep }: Props) {
   return (
     <div className={`${contentContainer} ${myStyle} ${BMHANNAAir.className}`}>
       <h1 className={`${funnelLabel} ${myStyle}`}>이메일</h1>
       <div className={emailCard}>
-        <input
+        <Input
           type="text"
           className={`${userEmailContainer} ${BMHANNAAir.className}`}
           id="userEmail"
@@ -42,20 +40,20 @@ export default function UserEmailFunnel({
         (이메일이 정확하지 않다면 다시 회원가입 해주세요!)
       </div>
       <div className={funnelButtonContainer}>
-        <button
+        <Button
           type="button"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={previousStepHandler}
+          onClick={handlePreviousStep}
         >
           이전으로
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
-          onClick={nextStepHandler}
+          onClick={handleNextStep}
         >
           다음
-        </button>
+        </Button>
       </div>
     </div>
   );

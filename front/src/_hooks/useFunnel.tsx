@@ -25,7 +25,7 @@ const useFunnel = (steps: readonly string[]) => {
   const [stepIndex, setStepIndex] = useState<number>(0);
   const [direction, setDirection] = useState<'next' | 'previous'>('next');
 
-  const nextStepHandler = () => {
+  const handleNextStep = () => {
     if (stepIndex < steps.length - 1) {
       setDirection('next');
       setStepIndex((prevStepIndex) => {
@@ -36,7 +36,7 @@ const useFunnel = (steps: readonly string[]) => {
     }
   };
 
-  const previousStepHandler = () => {
+  const handlePreviousStep = () => {
     if (stepIndex > 0) {
       setDirection('previous');
       setStepIndex((prevStepIndex) => {
@@ -47,7 +47,7 @@ const useFunnel = (steps: readonly string[]) => {
     }
   };
 
-  return { step, Funnel, nextStepHandler, previousStepHandler, direction };
+  return { step, Funnel, handleNextStep, handlePreviousStep, direction };
 };
 
 export default useFunnel;

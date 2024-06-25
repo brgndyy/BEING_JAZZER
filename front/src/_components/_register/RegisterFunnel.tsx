@@ -41,8 +41,7 @@ type Props = {
 };
 
 export default function RegisterFunnel({ userEmail }: Props) {
-  const { step, Funnel, nextStepHandler, previousStepHandler, direction } =
-    useFunnel(REGISTER_STEP);
+  const { step, Funnel, handleNextStep, handlePreviousStep, direction } = useFunnel(REGISTER_STEP);
 
   const { formState, handleFormValue, handleUploadFormFile } = useForm<SignUpFormState>({
     userName: '',
@@ -70,28 +69,28 @@ export default function RegisterFunnel({ userEmail }: Props) {
         >
           <Funnel step={step}>
             <Funnel.Step name={REGISTER_STEP[0]}>
-              <WelcomeFunnel nextStepHandler={nextStepHandler} />
+              <WelcomeFunnel handleNextStep={handleNextStep} />
             </Funnel.Step>
             <Funnel.Step name={REGISTER_STEP[1]}>
               <UserEmailFunnel
                 userEmail={userEmail}
-                nextStepHandler={nextStepHandler}
-                previousStepHandler={previousStepHandler}
+                handleNextStep={handleNextStep}
+                handlePreviousStep={handlePreviousStep}
               />
             </Funnel.Step>
             <Funnel.Step name={REGISTER_STEP[2]}>
               <UserNameFunnel
-                previousStepHandler={previousStepHandler}
-                nextStepHandler={nextStepHandler}
+                handlePreviousStep={handlePreviousStep}
+                handleNextStep={handleNextStep}
                 value={formState.userName}
                 inputHandler={handleFormValue}
               />
             </Funnel.Step>
             <Funnel.Step name={REGISTER_STEP[3]}>
               <UserImageFunnel
-                previousStepHandler={previousStepHandler}
-                inputFileUploadHandler={handleUploadFormFile}
-                formSubmitHandler={handleUserSignUp}
+                handlePreviousStep={handlePreviousStep}
+                handleUploadFormFile={handleUploadFormFile}
+                handleUserSignUp={handleUserSignUp}
               />
             </Funnel.Step>
             <Funnel.Step name={REGISTER_STEP[4]}>
