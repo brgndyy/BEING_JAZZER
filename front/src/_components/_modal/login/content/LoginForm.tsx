@@ -1,5 +1,4 @@
 import { myStyle } from '@/_styles/vars.css';
-import { LoginFormPropsType } from 'types';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import {
   loginFormContainer,
@@ -11,17 +10,26 @@ import {
   loginButton,
   underLine,
 } from '../loginModalContent.css';
+import Input from '@/_components/_common/input/Input';
+
+type Props = {
+  handleFormValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  message?: string;
+  value: string;
+  isLoginMode: boolean;
+  handleSendAuthEmail: (e: React.FormEvent) => void;
+};
 
 export default function LoginForm({
-  inputHandler,
+  handleFormValue,
   message,
   value,
   isLoginMode,
-  formSubmitHandler,
-}: LoginFormPropsType) {
+  handleSendAuthEmail,
+}: Props) {
   return (
     <div className={loginFormContainer}>
-      <form className={loginForm} onSubmit={formSubmitHandler}>
+      <form className={loginForm} onSubmit={handleSendAuthEmail}>
         <label className={`${formLabel} ${myStyle} ${BMHANNAAir.className}`} htmlFor="userEmail">
           이메일
         </label>
@@ -30,7 +38,7 @@ export default function LoginForm({
             <p className={`${mailMessage} ${myStyle}`}>{message}</p>
           </div>
         ) : (
-          <input
+          <Input
             type="email"
             placeholder="이메일"
             className={`${formInput} ${BMHANNAAir.className}`}
@@ -38,7 +46,7 @@ export default function LoginForm({
             autoComplete="off"
             name="userEmail"
             value={value}
-            onChange={inputHandler}
+            onChange={handleFormValue}
           />
         )}
         <button

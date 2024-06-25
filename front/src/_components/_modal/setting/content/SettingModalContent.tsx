@@ -32,7 +32,7 @@ export default function SettingModalContent({ handleClose }: Props) {
             );
           })}
 
-          <SettingApplyButton />
+          <SettingApplyButton handleClose={handleClose} />
         </form>
       </div>
     </div>
