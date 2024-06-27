@@ -15,7 +15,7 @@ const decryptAndRetrieveEmail = async (req: Request, res: Response, next: NextFu
     const emailData = await findUserEmailDataFromEncryptedCode(encryptedCode);
 
     if (!emailData) {
-      throw new HttpError(ERROR_MESSAGES.not_found_email_record, 500);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_EMAIL_RECORD, 500);
     }
 
     const { userEmail, createdAt } = emailData;

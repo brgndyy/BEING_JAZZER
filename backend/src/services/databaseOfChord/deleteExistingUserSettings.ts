@@ -6,7 +6,7 @@ const deleteExistingUserSettings = async (userId: number) => {
   try {
     await UserSetting.destroy({ where: { userId } });
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.fail_delete_user_setting, 503);
+    throw new HttpError(ERROR_MESSAGES.FAIL_DELETE_USER_SETTING, 503);
   }
 };
 

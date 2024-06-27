@@ -4,11 +4,8 @@ import { KeyChordDetail } from '../models/keyChordDetail';
 import { UserSetting } from '../models/userSetting';
 import HttpError from '../error/HttpError';
 import ERROR_MESSAGES from '../constants/errorMessages';
-
-const THEME = {
-  WHITE: 'White',
-  DARK: 'Dark',
-} as const;
+import shuffleArray from '../utils/shuffleArray';
+import shuffleChordImages from '../services/shuffleChordImages';
 
 const sendUserChordImages = async (req: CustomRequestType, res: Response, next: NextFunction) => {
   try {
@@ -33,10 +30,9 @@ const sendUserChordImages = async (req: CustomRequestType, res: Response, next: 
       },
     });
 
-    const whiteImages = userChordImages.filter((image) => image.theme === THEME.WHITE);
-    const darkImages = userChordImages.filter((image) => image.theme === THEME.DARK);
+    const { whiteChordImages, darkChordImages } = shuffleChordImages(userChordImages);
 
-    return res.json({ whiteImages, darkImages });
+    return res.json({ whiteChordImages, darkChordImages });
   } catch (err) {}
 };
 

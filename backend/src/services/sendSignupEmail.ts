@@ -22,12 +22,14 @@ const sendSignupEmail = async (userEmail: string) => {
 
     const html = renderHtml('회원가입', encryptedCode);
 
+    console.log('html : ', html);
+
     const mailOption = createMailOption(userEmail, MAIL_STATE_OPTIONS.sign_up, html);
 
     await transporter.sendMail(mailOption);
   } catch (err) {
     console.error(err);
-    throw new HttpError(ERROR_MESSAGES.fail_send_email, 503);
+    throw new HttpError(ERROR_MESSAGES.FAIL_SEND_EMAIL, 503);
   }
 };
 

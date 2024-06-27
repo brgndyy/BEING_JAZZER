@@ -9,7 +9,7 @@ const sendLoginEmail = async (userEmail: string) => {
     const existingEmail = await findAuthEmailRecordFromEmail(userEmail);
 
     if (!existingEmail) {
-      throw new HttpError(ERROR_MESSAGES.not_found_email_record, 500);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_EMAIL_RECORD, 500);
     }
 
     const existingCode = existingEmail.encryptedCode;
@@ -25,7 +25,7 @@ const sendLoginEmail = async (userEmail: string) => {
 
     await transporter.sendMail(mailOptions);
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.fail_send_email, 500);
+    throw new HttpError(ERROR_MESSAGES.FAIL_SEND_EMAIL, 500);
   }
 };
 

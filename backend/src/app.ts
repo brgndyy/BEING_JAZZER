@@ -53,14 +53,14 @@ app.use('/api/users', userRoutes);
 app.use('/api/chord-images', chordImageRoutes);
 
 app.use(() => {
-  const error = new HttpError(ERROR_MESSAGES.route_error, 404);
+  const error = new HttpError(ERROR_MESSAGES.ROUTE_ERROR, 404);
 
   throw error;
 });
 
 app.use((error: CustomError, req: Request, res: Response) => {
   res.status(error.code || 500);
-  res.json({ message: error.message || ERROR_MESSAGES.default_error });
+  res.json({ message: error.message || ERROR_MESSAGES.DEFAULT_ERROR });
 });
 
 app.listen(app.get('port'), () => {

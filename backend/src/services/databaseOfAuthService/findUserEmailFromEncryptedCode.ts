@@ -10,7 +10,7 @@ const findUserEmailFromEncryptedCode = async (encryptedCode: string) => {
 
     return emailData;
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.not_found_email_record, 500);
+    throw new HttpError(ERROR_MESSAGES.NOT_FOUND_EMAIL_RECORD, 500);
   }
 };
 

@@ -9,7 +9,7 @@ const jwtSecret = process.env.JWT_SIGNATURE;
 
 const getUserIdOfToken = (refreshToken: string) => {
   if (!jwtSecret) {
-    throw new HttpError(ERROR_MESSAGES.not_defined_jwt_secret, 503);
+    throw new HttpError(ERROR_MESSAGES.NOT_DEFINED_JWT_SECRET, 503);
   }
 
   const verifiedToken = jwt.verify(refreshToken, jwtSecret);
@@ -18,7 +18,7 @@ const getUserIdOfToken = (refreshToken: string) => {
     typeof verifiedToken === 'string' ||
     !Object.prototype.hasOwnProperty.call(verifiedToken, 'id')
   ) {
-    throw new HttpError(ERROR_MESSAGES.fail_verify_refresh_token, 404);
+    throw new HttpError(ERROR_MESSAGES.FAIL_VERIFY_REFRESH_TOKEN, 404);
   }
 
   const userIdOfToken = verifiedToken.id;

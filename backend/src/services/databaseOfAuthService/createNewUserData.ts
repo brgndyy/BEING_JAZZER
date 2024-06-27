@@ -21,7 +21,7 @@ const createNewUserData = async (
     return newUser;
   } catch (err) {
     console.error(err);
-    throw new HttpError(ERROR_MESSAGES.fail_sign_up, 500);
+    throw new HttpError(ERROR_MESSAGES.FAIL_SIGN_UP, 500);
   }
 };
 

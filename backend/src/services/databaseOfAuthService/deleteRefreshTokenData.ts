@@ -10,7 +10,7 @@ const deleteRefreshTokenData = async (id: number) => {
       },
     });
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.fail_delete_refrsh_token_data, 503);
+    throw new HttpError(ERROR_MESSAGES.FAIL_DELETE_REFRESH_TOKEN_DATA, 503);
   }
 };
 

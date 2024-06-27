@@ -9,18 +9,18 @@ const sendUserInfo = async (req: CustomRequestType, res: Response, next: NextFun
     const user = req.user;
 
     if (!user) {
-      throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
     }
 
     const existingUserInfo = await findExistingUserDataFromId(user.id);
 
     if (!existingUserInfo) {
-      throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
     }
 
     return res.json({ userInfo: existingUserInfo });
   } catch (err) {
-    const error = new HttpError(ERROR_MESSAGES.fail_send_user_info, 503);
+    const error = new HttpError(ERROR_MESSAGES.FAIL_SEND_USER_INFO, 503);
     return next(error);
   }
 };

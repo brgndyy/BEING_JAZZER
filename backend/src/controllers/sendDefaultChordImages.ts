@@ -13,7 +13,7 @@ const sendDefaultChordImages = async (req: Request, res: Response, next: NextFun
     const defaultChordImages = await findDefaultChordImages();
 
     if (!defaultChordImages) {
-      const error = new HttpError(CHORD_IMAGE_ERROR_MESSAGE.fail_send_chord_images, 500);
+      const error = new HttpError(CHORD_IMAGE_ERROR_MESSAGE.FAIL_SEND_CHORD_IMAGES, 500);
 
       throw error;
     }
@@ -23,7 +23,7 @@ const sendDefaultChordImages = async (req: Request, res: Response, next: NextFun
 
     return res.json({ whiteImages, darkImages });
   } catch (err) {
-    const error = new HttpError(CHORD_IMAGE_ERROR_MESSAGE.fail_send_chord_images, 500);
+    const error = new HttpError(CHORD_IMAGE_ERROR_MESSAGE.FAIL_SEND_CHORD_IMAGES, 500);
 
     throw error;
   }

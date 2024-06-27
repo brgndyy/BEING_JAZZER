@@ -12,7 +12,7 @@ const findExistingUserDataFromId = async (id: number) => {
 
     return user;
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
+    throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
   }
 };
 

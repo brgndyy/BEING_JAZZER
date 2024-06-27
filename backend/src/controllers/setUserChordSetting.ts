@@ -16,13 +16,13 @@ const setUserChordSetting = async (req: CustomRequestType, res: Response, next: 
     const { userChordSetting } = req.body;
 
     if (!user) {
-      throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
     }
 
     const existingUser = await findExistingUserDataFromId(user.id);
 
     if (!existingUser) {
-      throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
     }
 
     await deleteExistingUserSettings(existingUser.id);
@@ -40,7 +40,7 @@ const setUserChordSetting = async (req: CustomRequestType, res: Response, next: 
 
     return res.json({ convertedAllUserSetting: convertedAllUserSetting });
   } catch (err) {
-    const error = new HttpError(ERROR_MESSAGES.fail_convert_user_setting, 503);
+    const error = new HttpError(ERROR_MESSAGES.FAIL_CONVERT_USER_SETTING, 503);
 
     return next(error);
   }

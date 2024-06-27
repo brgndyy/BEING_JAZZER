@@ -21,7 +21,7 @@ const convertUserSettingToRightFormat = async (allUserSetting: UserSettingTableT
 
     return chordSetting;
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.fail_conver_user_setting, 503);
+    throw new HttpError(ERROR_MESSAGES.FAIL_CONVERT_USER_SETTING, 503);
   }
 };
 

@@ -13,7 +13,7 @@ const verifyAccessToken = async (req: CustomRequestType, res: Response, next: Ne
     if (!accessToken || accessToken === undefined || accessToken === null) {
       return res
         .status(401)
-        .json({ success: false, message: ERROR_MESSAGES.not_verified_token, userInfo: undefined });
+        .json({ success: false, message: ERROR_MESSAGES.NOT_VERIFIED_TOKEN, userInfo: undefined });
     }
 
     const decodedAccessToken = decodeAccessToken(accessToken);
@@ -21,19 +21,19 @@ const verifyAccessToken = async (req: CustomRequestType, res: Response, next: Ne
     if (decodedAccessToken instanceof jwt.TokenExpiredError) {
       return res
         .status(401)
-        .json({ success: false, message: ERROR_MESSAGES.expired_token, userInfo: undefined });
+        .json({ success: false, message: ERROR_MESSAGES.EXPIRED_TOKEN, userInfo: undefined });
     }
 
     if (typeof decodedAccessToken !== 'object' || !('id' in decodedAccessToken)) {
       return res
         .status(401)
-        .json({ success: false, message: ERROR_MESSAGES.not_verified_token, userInfo: undefined });
+        .json({ success: false, message: ERROR_MESSAGES.NOT_VERIFIED_TOKEN, userInfo: undefined });
     }
 
     req.user = decodedAccessToken;
     next();
   } catch (err) {
-    const error = new HttpError(ERROR_MESSAGES.fail_verify_access_token, 503);
+    const error = new HttpError(ERROR_MESSAGES.FAIL_VERIFY_ACCESS_TOKEN, 503);
 
     return next(error);
   }

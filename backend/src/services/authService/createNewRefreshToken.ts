@@ -12,7 +12,7 @@ const createNewRefreshToken = (newUser: NewUserType) => {
   const { id } = newUser;
 
   if (!jwtSecret) {
-    throw new HttpError(ERROR_MESSAGES.not_defined_jwt_secret, 503);
+    throw new HttpError(ERROR_MESSAGES.NOT_DEFINED_JWT_SECRET, 503);
   }
 
   const newRefreshToken = jwt.sign({ id: id }, jwtSecret, {

@@ -12,7 +12,7 @@ const findDataOfRefreshToken = async (userIdOfToken: number) => {
 
     return dataOfRefreshToken;
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.fail_verify_refresh_token, 503);
+    throw new HttpError(ERROR_MESSAGES.FAIL_VERIFY_REFRESH_TOKEN, 503);
   }
 };
 

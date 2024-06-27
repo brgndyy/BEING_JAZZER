@@ -13,7 +13,7 @@ const findDefaultChordImages = async () => {
     return defaultChordImages;
   } catch (err) {
     if (err instanceof HttpError) {
-      const error = new HttpError(CHORD_IMAGE_ERROR_MESSAGE.fail_get_chord_images, 500);
+      const error = new HttpError(CHORD_IMAGE_ERROR_MESSAGE.FAIL_GET_CHORD_IMAGES, 500);
       throw error;
     }
   }

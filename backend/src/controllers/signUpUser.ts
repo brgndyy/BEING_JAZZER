@@ -24,13 +24,13 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
     const existingUser = await findExisitingUserDataFromEmail(userEmail);
 
     if (existingUser) {
-      throw new HttpError(ERROR_MESSAGES.existing_user, 422);
+      throw new HttpError(ERROR_MESSAGES.EXISTING_USER, 422);
     }
 
     const emailFromRecord = await findAuthEmailRecordDataFromEmail(userEmail);
 
     if (!emailFromRecord) {
-      throw new HttpError(ERROR_MESSAGES.not_found_email_record, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_EMAIL_RECORD, 503);
     }
 
     const emailId = emailFromRecord.id;
@@ -50,7 +50,7 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
     sendTokenCookieToClient('accessToken', newAccessToken, res);
     sendTokenCookieToClient('refreshToken', newRefreshToken, res);
   } catch (err) {
-    const error = new HttpError(ERROR_MESSAGES.fail_sign_up, 503);
+    const error = new HttpError(ERROR_MESSAGES.FAIL_SIGN_UP, 503);
 
     return next(error);
   }

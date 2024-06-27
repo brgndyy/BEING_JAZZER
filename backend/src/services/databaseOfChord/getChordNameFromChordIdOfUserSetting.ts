@@ -11,12 +11,12 @@ const getChordNameFromChordIdOfUserSetting = async (chordId: number) => {
     });
 
     if (!targetChord) {
-      throw new HttpError(ERROR_MESSAGES.not_found_chord, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_CHORD, 503);
     }
 
     return { chord: targetChord.quality, tension: targetChord.tension };
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.not_found_chord, 503);
+    throw new HttpError(ERROR_MESSAGES.NOT_FOUND_CHORD, 503);
   }
 };
 

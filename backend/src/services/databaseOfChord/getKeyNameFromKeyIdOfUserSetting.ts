@@ -11,12 +11,12 @@ const getKeyNameFromKeyIdOfUserSetting = async (keyId: number) => {
     });
 
     if (!targetKey) {
-      throw new HttpError(ERROR_MESSAGES.not_found_key, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_KEY, 503);
     }
 
     return targetKey.key;
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.not_found_key, 503);
+    throw new HttpError(ERROR_MESSAGES.NOT_FOUND_KEY, 503);
   }
 };
 

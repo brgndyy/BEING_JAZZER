@@ -12,7 +12,7 @@ const findAllUserSetting = async (id: number) => {
 
     return allUserSetting;
   } catch (err) {
-    throw new HttpError(ERROR_MESSAGES.not_found_user_setting, 503);
+    throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER_SETTING, 503);
   }
 };
 

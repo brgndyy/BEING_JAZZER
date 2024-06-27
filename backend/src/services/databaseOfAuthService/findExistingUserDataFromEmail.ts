@@ -13,7 +13,7 @@ const findExisitingUserDataFromEmail = async (userEmail: string) => {
     return existingUser;
   } catch (err) {
     console.error(err);
-    throw new HttpError(ERROR_MESSAGES.not_found_user, 500);
+    throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 500);
   }
 };
 

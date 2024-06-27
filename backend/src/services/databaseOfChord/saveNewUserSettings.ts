@@ -32,7 +32,7 @@ const saveNewUserSettings = async ({ userId, userChordSetting }: SaveNewUserSett
       }
     }
   } catch (err) {
-    throw new HttpError(USER_CHORD_SETTING_ERROR_MESSAGE.fail_save_user_setting, 503);
+    throw new HttpError(USER_CHORD_SETTING_ERROR_MESSAGE.FAIL_SAVE_USER_SETTING, 503);
   }
 };
 

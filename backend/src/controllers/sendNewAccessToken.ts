@@ -16,7 +16,7 @@ const sendNewAccessToken = async (req: Request, res: Response, next: NextFunctio
     const dataOfRefreshToken = await findDataOfRefreshToken(userIdOfToken);
 
     if (!dataOfRefreshToken) {
-      throw new HttpError(ERROR_MESSAGES.fail_verify_refresh_token, 503);
+      throw new HttpError(ERROR_MESSAGES.FAIL_VERIFY_REFRESH_TOKEN, 503);
     }
 
     const foundedUserFromRefreshTokenData = await findUserFromRefreshTokenData(
@@ -24,7 +24,7 @@ const sendNewAccessToken = async (req: Request, res: Response, next: NextFunctio
     );
 
     if (!foundedUserFromRefreshTokenData) {
-      throw new HttpError(ERROR_MESSAGES.fail_verify_refresh_token, 503);
+      throw new HttpError(ERROR_MESSAGES.FAIL_VERIFY_REFRESH_TOKEN, 503);
     }
 
     const foundedExisitngUserFromId = await findExistingUserDataFromId(
@@ -32,7 +32,7 @@ const sendNewAccessToken = async (req: Request, res: Response, next: NextFunctio
     );
 
     if (!foundedExisitngUserFromId) {
-      throw new HttpError(ERROR_MESSAGES.not_found_user, 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
     }
 
     const newAccessToken = createNewAccessToken(foundedExisitngUserFromId);
@@ -43,7 +43,7 @@ const sendNewAccessToken = async (req: Request, res: Response, next: NextFunctio
       newAccessToken: newAccessToken,
     });
   } catch (err) {
-    const error = new HttpError(ERROR_MESSAGES.fail_send_new_access_token, 503);
+    const error = new HttpError(ERROR_MESSAGES.FAIL_SEND_NEW_ACCESS_TOKEN, 503);
     return next(error);
   }
 };

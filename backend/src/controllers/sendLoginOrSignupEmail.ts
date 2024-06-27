@@ -20,7 +20,7 @@ const sendLoginOrSignUpEmail = async (req: Request, res: Response, next: NextFun
 
     res.json({ message: PROGRESS_MESSAGES.succeed_send_email });
   } catch (err) {
-    const error = new HttpError(ERROR_MESSAGES.fail_send_email, 503);
+    const error = new HttpError(ERROR_MESSAGES.FAIL_SEND_EMAIL, 503);
     return next(error);
   }
 };

@@ -27,7 +27,7 @@ const sendSignupEmail = async (userEmail: string) => {
     await transporter.sendMail(mailOption);
   } catch (err) {
     console.error(err);
-    throw new HttpError(ERROR_MESSAGES.fail_send_email, 503);
+    throw new HttpError(ERROR_MESSAGES.FAIL_SEND_EMAIL, 503);
   }
 };
 
