@@ -3,8 +3,7 @@ import { CustomRequestType } from '../@types/type';
 import { KeyChordDetail } from '../models/keyChordDetail';
 import { UserSetting } from '../models/userSetting';
 import HttpError from '../error/HttpError';
-import ERROR_MESSAGES from '../constants/errorMessages';
-import shuffleArray from '../utils/shuffleArray';
+import ERROR_MESSAGES, { CHORD_IMAGE_ERROR_MESSAGE } from '../constants/errorMessages';
 import shuffleChordImages from '../services/shuffleChordImages';
 
 const sendUserChordImages = async (req: CustomRequestType, res: Response, next: NextFunction) => {
@@ -12,7 +11,7 @@ const sendUserChordImages = async (req: CustomRequestType, res: Response, next: 
     const user = req.user;
 
     if (!user) {
-      throw new HttpError('', 503);
+      throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
     }
 
     const userSettings = await UserSetting.findAll({
@@ -33,7 +32,9 @@ const sendUserChordImages = async (req: CustomRequestType, res: Response, next: 
     const { whiteChordImages, darkChordImages } = shuffleChordImages(userChordImages);
 
     return res.json({ whiteChordImages, darkChordImages });
-  } catch (err) {}
+  } catch (err) {
+    throw new HttpError(CHORD_IMAGE_ERROR_MESSAGE.FAIL_SEND_CHORD_IMAGES, 503);
+  }
 };
 
 export default sendUserChordImages;
