@@ -1,12 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { HeaderPropsType } from 'types';
+import { HeaderProps } from '@/_types';
 import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
-import useChordSettingStore from '@/_store/useChordSettingStore';
+import chordSettingStore from '@/_store/chordSettingStore';
 import { useEffect } from 'react';
-import useAccessTokenStore from '@/_store/useAccessTokenStore';
+import accessTokenStore from '@/_store/accessTokenStore';
 import MainLogoImage from '../_common/images/bannerImages/MainLogoImage';
 import {
   headerContainer,
@@ -20,16 +20,14 @@ import ThemeToggleInput from '../_theme/ThemeToggleInput';
 import UserProfile from '../_profile/UserProfile';
 import SettingModal from '../_modal/setting/SettingModal';
 import LoginModal from '../_modal/login/LoginModal';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-export default function Header({
-  currentTheme,
-  userInfo,
-  chordSetting,
-  accessToken,
-}: HeaderPropsType) {
+const queryClient = new QueryClient({});
+
+export default function Header({ currentTheme, userInfo, chordSetting, accessToken }: HeaderProps) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
-  const { updateChordSetting } = useChordSettingStore();
-  const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
+  const { updateChordSetting } = chordSettingStore();
+  const updateAccessToken = accessTokenStore((state) => state.updateAccessToken);
 
   useEffect(() => {
     updateChordSetting(chordSetting);
@@ -39,19 +37,21 @@ export default function Header({
   }, [accessToken, chordSetting, updateAccessToken, updateChordSetting]);
 
   return (
-    <div className={`${headerContainer} ${myStyle}`}>
-      <Link href="/" className={homeLink}>
-        <MainLogoImage darkTheme={darkTheme} />
-      </Link>
-      <div className={headerCategoryContainer}>
-        <div className={loginOrSignUpCategory}>
-          {userInfo ? <UserProfile userInfo={userInfo} /> : <LoginModal />}
-        </div>
-        <ThemeToggleInput darkTheme={darkTheme} themeToggleHandler={themeToggleHandler} />
-        <div className={settingCategory}>
-          <SettingModal />
+    <QueryClientProvider client={queryClient}>
+      <div className={`${headerContainer} ${myStyle}`}>
+        <Link href="/" className={homeLink}>
+          <MainLogoImage darkTheme={darkTheme} />
+        </Link>
+        <div className={headerCategoryContainer}>
+          <div className={loginOrSignUpCategory}>
+            {userInfo ? <UserProfile userInfo={userInfo} /> : <LoginModal />}
+          </div>
+          <ThemeToggleInput darkTheme={darkTheme} themeToggleHandler={themeToggleHandler} />
+          <div className={settingCategory}>
+            <SettingModal />
+          </div>
         </div>
       </div>
-    </div>
+    </QueryClientProvider>
   );
 }
