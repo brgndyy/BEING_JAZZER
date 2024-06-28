@@ -1,23 +1,23 @@
 import { API_ROUTES } from '@/_constants/routes';
 import { redirect } from 'next/navigation';
 import Fetcher from './fetcher/Fetcher';
-import { UserProfile } from '../_types/index';
+import { UserProfile, UserInfo } from '../_types/index';
+import API_URL from '@/_constants/apiUrl';
 
 type AccessToken = {
   newAccessToken: string;
 };
 
 export const getNewAccessToken = async (refreshToken: string) => {
-  const data = await Fetcher.post<AccessToken>(
-    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.new_access_token}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ refreshToken }),
+  const data = await Fetcher.post<AccessToken>(`${API_URL}${API_ROUTES.new_access_token}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
     },
-  );
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  console.log('data : ', data);
 
   if (data) {
     return { newAccessToken: data.newAccessToken };
@@ -26,22 +26,34 @@ export const getNewAccessToken = async (refreshToken: string) => {
   }
 };
 
-type UserInfoByEncryptedCode = {
+type TokenValues = {
   accessTokenValue: string;
   refreshTokenValue: string;
   success: boolean;
 };
 
-export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: string) => {
-  const data = await Fetcher.post<UserInfoByEncryptedCode>(
-    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${path}`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ encryptedCode }),
+export const getTokenValuesByEncryptedCode = async (path: string, encryptedCode: string) => {
+  const data = await Fetcher.post<TokenValues>(`${API_URL}${path}`, {
+    headers: {
+      'Content-Type': 'application/json',
     },
-  );
+    body: JSON.stringify({ encryptedCode }),
+  });
+
+  if (!data) {
+    redirect('/not-found');
+  }
+
+  return data;
+};
+
+export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: string) => {
+  const data = await Fetcher.post<UserInfo>(`${API_URL}${path}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ encryptedCode }),
+  });
 
   if (!data) {
     redirect('/not-found');
@@ -51,14 +63,14 @@ export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: st
 };
 
 export const userSignUp = async (signUpFormData: FormData) => {
-  await Fetcher.post(`${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.signup}`, {
+  await Fetcher.post(`${API_URL}${API_ROUTES.signup}`, {
     body: signUpFormData,
   });
 };
 
 export const sendAuthEmail = async (userEmail: string) => {
   console.log('userEmail : ', userEmail);
-  await Fetcher.post(`${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.request_auth_email}`, {
+  await Fetcher.post(`${API_URL}${API_ROUTES.request_auth_email}`, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -73,16 +85,13 @@ export const getUserInfoByAccessToken = async (accessToken?: string) => {
     return undefined;
   }
 
-  const data = await Fetcher.get<UserProfile>(
-    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.user_info}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
+  const data = await Fetcher.get<UserProfile>(`${API_URL}${API_ROUTES.user_info}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
     },
-  );
+  });
 
   const { userInfo } = data;
 
