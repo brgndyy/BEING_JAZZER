@@ -1,4 +1,4 @@
-import { modalExit, modalEnter } from '../modal.css';
+import { modalExit, modalEnter } from '../modal2.css';
 import { Modal } from 'brgndyy-react-modal';
 import React, { useState } from 'react';
 import LoginModalTriggerButton from './LoginModalTriggerButton';

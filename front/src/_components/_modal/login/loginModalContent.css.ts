@@ -210,7 +210,7 @@ export const underLine = style({
     position: 'absolute',
     bottom: '0',
     left: '10',
-    width: '45%',
+    width: '80%',
     border: '0.5px solid',
     background: background1,
     transform: 'scaleX(0)',
