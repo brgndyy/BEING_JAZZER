@@ -16,18 +16,22 @@ const useCountDown = (
   const [count, setCount] = useState<number | string>(initialSettingValue);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prev) => {
-        if (typeof prev === 'number' && prev > 1) {
-          return prev - 1;
-        } else if (prev === 1) {
-          return initialOnCountDownEndText;
-        } else if (prev === initialOnCountDownEndText) {
+    const handleCountDown = (prev: number | string) => {
+      if (typeof prev === 'number' && prev > 1) {
+        return prev - 1;
+      } else if (prev === 1) {
+        return initialOnCountDownEndText;
+      } else if (prev === initialOnCountDownEndText) {
+        clearInterval(interval);
+        setTimeout(() => {
           handleEndInitialMount();
-        }
+        }, 0);
+      }
+      return prev;
+    };
 
-        return prev;
-      });
+    const interval = setInterval(() => {
+      setCount((prev) => handleCountDown(prev));
     }, 1000);
 
     return () => clearInterval(interval);
