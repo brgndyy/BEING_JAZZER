@@ -1,13 +1,11 @@
 import { API_ROUTES } from '@/_constants/routes';
 import Fetcher from './fetcher/Fetcher';
-import { ChordImageData } from '@/_types';
-
-// TODO 서버에서 데이터를 받아와서, 여기서 랜덤으로 섞은 이미지를 무작위로 보여주어야하는데,
-// 이거에 대한 작업은 어디에서 이루어지는것이 맞을까 ?
+import { TotalChordImageData } from '@/_types';
+import API_URL from '@/_constants/apiUrl';
 
 export const getDefaultChordImage = async () => {
-  const data = await Fetcher.get<ChordImageData[]>(
-    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.default_chord_images}`,
+  const data = await Fetcher.get<TotalChordImageData>(
+    `${API_URL}${API_ROUTES.default_chord_images}`,
     {
       method: 'GET',
       headers: {
@@ -16,5 +14,21 @@ export const getDefaultChordImage = async () => {
     },
   );
 
-  return data;
+  const { whiteChordImages, darkChordImages } = data;
+
+  return { whiteChordImages, darkChordImages };
+};
+
+export const getUserChordImage = async (accessToken: string) => {
+  const data = await Fetcher.get<TotalChordImageData>(`${API_URL}${API_ROUTES.user_chord_images}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const { whiteChordImages, darkChordImages } = data;
+
+  return { whiteChordImages, darkChordImages };
 };
