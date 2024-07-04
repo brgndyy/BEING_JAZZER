@@ -1,7 +1,5 @@
-import deepFreeze from '../utils/deepFreeze';
-
-const DELIMETER = deepFreeze({
+const DELIMITER = {
   space: ' ',
-});
+} as const;
 
-export default DELIMETER;
+export default DELIMITER;
