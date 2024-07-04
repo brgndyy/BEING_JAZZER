@@ -1,12 +1,10 @@
 import { renderHook, act } from '@testing-library/react';
 import useSelectSettingOption from '../useSelectSettingOption';
-import useChordSettingStore from '@/_store/chordSettingStore';
+import chordSettingStore from '@/_store/chordSettingStore';
 
-jest.mock('@/_store/useChordSettingStore');
+jest.mock('@/_store/chordSettingStore');
 
-const mockChordSettingStore = useChordSettingStore as jest.MockedFunction<
-  typeof useChordSettingStore
->;
+const mockChordSettingStore = chordSettingStore as jest.MockedFunction<typeof chordSettingStore>;
 
 describe('useSelectSettingOption hook에 대한 테스트 코드 작성', () => {
   const chordSetting = [

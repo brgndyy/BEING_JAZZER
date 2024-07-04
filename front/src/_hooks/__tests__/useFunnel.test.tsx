@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import useFunnel from '../useFunnel';
 
 const FunnelComponent = ({ steps }: { steps: string[] }) => {
-  const { step, Funnel, nextStepHandler, previousStepHandler } = useFunnel(steps);
+  const { step, Funnel, handleNextStep, handlePreviousStep } = useFunnel(steps);
 
   return (
     <div>
@@ -14,8 +14,8 @@ const FunnelComponent = ({ steps }: { steps: string[] }) => {
           </Funnel.Step>
         ))}
       </Funnel>
-      <button onClick={nextStepHandler}>다음</button>
-      <button onClick={previousStepHandler}>이전</button>
+      <button onClick={handleNextStep}>다음</button>
+      <button onClick={handlePreviousStep}>이전</button>
     </div>
   );
 };
