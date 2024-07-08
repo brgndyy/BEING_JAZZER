@@ -1,9 +1,10 @@
 'use client';
 
 import SlideOfSingleChord from './SlideOfSingleChord';
-import Metronome from '../_metonome/Metronome';
-import MetronomeProvider from '../_metonome/MetronomeProvider';
+import Metronome from '../_metronome/Metronome';
+import MetronomeProvider from '../_metronome/MetronomeProvider';
 import { WhiteChordImageData, DarkChordImageData } from '@/_types';
+import { carouselCard } from './slideOfSingleChord.css';
 
 type Props = {
   whiteChordImages: WhiteChordImageData[];
@@ -11,12 +12,12 @@ type Props = {
 };
 
 export default function PageOfSingleChord({ whiteChordImages, darkChordImages }: Props) {
-  console.log('whiteChordImages: ', whiteChordImages);
-  console.log('darkChordImages: ', darkChordImages);
   return (
-    <MetronomeProvider>
-      <Metronome />
-      <SlideOfSingleChord />
-    </MetronomeProvider>
+    <div className={carouselCard}>
+      <MetronomeProvider>
+        <Metronome />
+        <SlideOfSingleChord whiteChordImages={whiteChordImages} darkChordImages={darkChordImages} />
+      </MetronomeProvider>
+    </div>
   );
 }
