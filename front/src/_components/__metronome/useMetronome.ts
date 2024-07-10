@@ -27,6 +27,12 @@ const useMetronome = ({ minBpm, maxBpm, autoPlay, onEndCount }: UseMetronomeHook
   const [bpm, setBpm] = useState<number>(60);
   const [count, setCount] = useState<number>(METRONOME_COUNT.MIN);
 
+  useEffect(() => {
+    if (autoPlay) {
+      setIsPlaying(true);
+    }
+  }, [autoPlay]);
+
   const handlePlayMetronomeSound = useCallback(async () => {
     if (count === METRONOME_COUNT.MIN && tick) {
       tick.currentTime = 0;
@@ -40,6 +46,7 @@ const useMetronome = ({ minBpm, maxBpm, autoPlay, onEndCount }: UseMetronomeHook
       (prevCount) => {
         if (prevCount >= METRONOME_COUNT.MAX) {
           onEndCount();
+          console.log('변경!');
           return METRONOME_COUNT.MIN;
         } else {
           return prevCount + 1;
@@ -50,27 +57,25 @@ const useMetronome = ({ minBpm, maxBpm, autoPlay, onEndCount }: UseMetronomeHook
   }, [count, tick, tock]);
 
   useEffect(() => {
-    if (autoPlay) {
-      const interval = setInterval(
-        () => {
-          if (isPlaying) {
-            handlePlayMetronomeSound();
-          }
-        },
-        (60 / bpm) * 1000,
-      );
+    const interval = setInterval(
+      () => {
+        if (isPlaying) {
+          handlePlayMetronomeSound();
+        }
+      },
+      (60 / bpm) * 1000,
+    );
 
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [autoPlay, bpm, isPlaying, handlePlayMetronomeSound]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [bpm, isPlaying, handlePlayMetronomeSound]);
 
-  useEffect(() => {
-    if (autoPlay) {
-      handlePlayMetronomeSound();
-    }
-  }, [autoPlay, handlePlayMetronomeSound]);
+  //   useEffect(() => {
+  //     if (autoPlay) {
+  //       handlePlayMetronomeSound();
+  //     }
+  //   }, [autoPlay, handlePlayMetronomeSound]);
 
   const handleBPMChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newBpm = parseInt(e.target.value, 10);
