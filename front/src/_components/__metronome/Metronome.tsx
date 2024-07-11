@@ -9,6 +9,7 @@ type Props = {
   minBpm?: number;
   autoPlay?: boolean;
   onEndCount?: () => void;
+  performOnMount?: boolean;
 };
 
 function Metronome({
@@ -17,8 +18,9 @@ function Metronome({
   maxBpm = 300,
   autoPlay = false,
   onEndCount = () => {},
+  performOnMount = false,
 }: PropsWithChildren<Props>) {
-  const metronome = useMetronome({ minBpm, maxBpm, autoPlay, onEndCount });
+  const metronome = useMetronome({ minBpm, maxBpm, autoPlay, onEndCount, performOnMount });
 
   const contextValue = useMemo(
     () => ({
