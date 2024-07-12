@@ -1,10 +1,10 @@
 'use client';
 
 import SlideOfSingleChord from './SlideOfSingleChord';
-import Metronome from '../_metronome/Metronome';
-import MetronomeProvider from '../_metronome/MetronomeProvider';
 import { WhiteChordImageData, DarkChordImageData } from '@/_types';
 import { carouselCard } from './slideOfSingleChord.css';
+import Metronome from '../__metronome/Metronome';
+import useCarousel from '@/_hooks/useCarousel';
 
 type Props = {
   whiteChordImages: WhiteChordImageData[];
@@ -12,12 +12,19 @@ type Props = {
 };
 
 export default function PageOfSingleChord({ whiteChordImages, darkChordImages }: Props) {
+  const { carouselRef, handleNextCarousel } = useCarousel();
+
   return (
     <div className={carouselCard}>
-      <MetronomeProvider>
-        <Metronome />
-        <SlideOfSingleChord whiteChordImages={whiteChordImages} darkChordImages={darkChordImages} />
-      </MetronomeProvider>
+      <Metronome autoPlay onEndCount={handleNextCarousel}>
+        <Metronome.BPMInput />
+        <Metronome.Button />
+        <SlideOfSingleChord
+          whiteChordImages={whiteChordImages}
+          darkChordImages={darkChordImages}
+          carouselRef={carouselRef}
+        />
+      </Metronome>
     </div>
   );
 }

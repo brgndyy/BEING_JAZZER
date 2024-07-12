@@ -1,7 +1,7 @@
 import { PropsWithChildren, useMemo } from 'react';
 import MetronomeContext from './MetronomeContext';
 import useMetronome from './useMetronome';
-import PlayButton from './PlayButton';
+import Button from './Button';
 import BPMInput from './BPMInput';
 
 type Props = {
@@ -10,6 +10,7 @@ type Props = {
   autoPlay?: boolean;
   onEndCount?: () => void;
   performOnMount?: boolean;
+  maxBeatCount?: number;
 };
 
 function Metronome({
@@ -19,8 +20,16 @@ function Metronome({
   autoPlay = false,
   onEndCount = () => {},
   performOnMount = false,
+  maxBeatCount = 4,
 }: PropsWithChildren<Props>) {
-  const metronome = useMetronome({ minBpm, maxBpm, autoPlay, onEndCount, performOnMount });
+  const metronome = useMetronome({
+    minBpm,
+    maxBpm,
+    autoPlay,
+    onEndCount,
+    performOnMount,
+    maxBeatCount,
+  });
 
   const contextValue = useMemo(
     () => ({
@@ -39,4 +48,4 @@ function Metronome({
 export default Metronome;
 
 Metronome.BPMInput = BPMInput;
-Metronome.PlayButton = PlayButton;
+Metronome.Button = Button;

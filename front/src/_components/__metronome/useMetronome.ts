@@ -7,17 +7,13 @@ const METRONOME_COUNT = {
   MAX: 4,
 } as const;
 
-// const CONDITION = {
-//   min_metronome_count: 1,
-//   max_metronome_count: 4,
-// } as const;
-
 type UseMetronomeHookParams = {
   minBpm: number;
   maxBpm: number;
   autoPlay: boolean;
   onEndCount: () => void;
   performOnMount: boolean;
+  maxBeatCount: number;
 };
 
 const useMetronome = ({
@@ -26,14 +22,12 @@ const useMetronome = ({
   autoPlay,
   onEndCount,
   performOnMount,
+  maxBeatCount,
 }: UseMetronomeHookParams) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const bpmRef = useRef<HTMLInputElement | null>(null);
-  const [tick] = useState<HTMLAudioElement>(new Audio(tickSound));
-  const [tock] = useState<HTMLAudioElement>(new Audio(tockSound));
   const [bpm, setBpm] = useState<number>(60);
   const [count, setCount] = useState<number>(METRONOME_COUNT.MIN);
-  const [isInitialActionPerformed, setIsInitialActionPerformed] = useState(performOnMount);
 
   useEffect(() => {
     if (autoPlay) {
@@ -41,53 +35,41 @@ const useMetronome = ({
     }
   }, [autoPlay]);
 
-  //   const metronomePlayHandler = useCallback(() => {
-  //     if (!first && tick) {
-  //       setFirst(true);
-  //       tick.play();
-  //     } else if (count == 1 && tick) {
-  //       tick.play();
-  //       const totalSlides = darkTheme ? images.dark.length : images.white.length;
-  //       const nextSlide = (count - 1) % totalSlides;
-  //       carouselRef.current && carouselRef.current.next(nextSlide);
-  //     } else if (count < 5 && tock) {
-  //       tock.play();
-  //     }
-  //     if (count >= 4) {
-  //       setCount(1);
-  //     } else {
-  //       setCount((count) => count + 1);
-  //     }
-  //   }, [count, tick, tock, darkTheme, images]);
-
-  const handlePlayMetronomeSound = useCallback(async () => {
-    if (count === METRONOME_COUNT.MIN && tick) {
-      tick.currentTime = 0;
-      await tick.play();
-      if (isInitialActionPerformed) {
-        onEndCount();
+  const handlePlayMetronomeSound = useCallback(() => {
+    const playSound = async (audioUrl: string) => {
+      const audio = new Audio(audioUrl);
+      try {
+        await audio.play();
+      } catch (error) {
+        console.error(error);
       }
-    } else if (count > METRONOME_COUNT.MIN && tock) {
-      tock.currentTime = 0;
-      await tock.play();
+    };
+
+    if (count === METRONOME_COUNT.MIN) {
+      playSound(tickSound);
+    } else {
+      playSound(tockSound);
     }
 
     setCount((prevCount) => {
-      if (prevCount >= METRONOME_COUNT.MAX) {
-        setIsInitialActionPerformed(true);
+      if (prevCount >= maxBeatCount) {
+        requestAnimationFrame(() => {
+          onEndCount();
+        });
+
         return METRONOME_COUNT.MIN;
       } else {
         return prevCount + 1;
       }
     });
-  }, [count, tick, tock]);
+  }, [count, onEndCount]);
 
   useEffect(() => {
+    if (!isPlaying) return;
+
     const interval = setInterval(
       () => {
-        if (isPlaying) {
-          handlePlayMetronomeSound();
-        }
+        handlePlayMetronomeSound();
       },
       (60 / bpm) * 1000,
     );
