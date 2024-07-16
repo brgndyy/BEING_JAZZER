@@ -1,9 +1,14 @@
-import useChordSettingStore from '@/_store/chordSettingStore';
+import useChordSettingStore from '@/_store/useChordSettingStore';
+import defaultChordSetting from '@/_mocks/chordSettingOptions';
 
 const useSelectSettingOption = () => {
   const { chordSetting, updateChordSetting } = useChordSettingStore();
 
-  const handleSelectedUserSettingConfig =
+  const initializeDefaultChordSetting = () => {
+    updateChordSetting(defaultChordSetting);
+  };
+
+  const handleSelectedUserChordSetting =
     (type: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const key = e.target.name;
       const isChecked = e.target.checked;
@@ -27,7 +32,7 @@ const useSelectSettingOption = () => {
       updateChordSetting(updatedChordSetting);
     };
 
-  return { chordSetting, handleSelectedUserSettingConfig };
+  return { chordSetting, handleSelectedUserChordSetting, initializeDefaultChordSetting };
 };
 
 export default useSelectSettingOption;

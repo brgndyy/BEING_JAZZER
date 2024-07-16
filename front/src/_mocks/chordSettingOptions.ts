@@ -1,4 +1,4 @@
-import { ChordSetting } from 'types';
+import { ChordSetting } from '@/_types';
 
 const defaultChordSetting: ChordSetting[] = [
   {

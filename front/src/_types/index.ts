@@ -14,16 +14,17 @@ export type ChangeUserChordSetting = {
   accessToken: string;
 };
 
-export interface LoginFormState {
+export interface LoginParams {
   userEmail: string;
 }
 
-export interface SignUpFormState extends LoginFormState {
+export interface SignUpParams {
   userName: string;
   userImage: File | null;
+  userEmail: string;
 }
 
-export interface UserInfoType {
+export interface UserInfo {
   id: number;
   userEmail: string;
   userName: string;
@@ -37,13 +38,13 @@ export interface UserInfoType {
 
 export interface HeaderProps {
   currentTheme: string;
-  userInfo: UserInfoType;
+  userInfo?: UserInfo;
   chordSetting: ChordSetting[];
   accessToken?: string;
 }
 
-export interface UserProfileProps {
-  userInfo: UserInfoType;
+export interface UserProfile {
+  userInfo: UserInfo;
 }
 
 export interface ThemeToggleInputProps {
@@ -51,41 +52,7 @@ export interface ThemeToggleInputProps {
   themeToggleHandler: () => void;
 }
 
-export interface BackDropPropsType {
-  handleClose: () => void;
-}
-
-export interface ModalPropsType {
-  closing: boolean;
-}
-
-export interface LoginModalProps {
-  handleClose: () => void;
-}
-
-export interface LoginFormProps {
-  inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  message?: string;
-  value: string;
-  isLoginMode: boolean;
-  formSubmitHandler: (e: React.MouseEvent<HTMLFormElement>) => void;
-}
-
-export interface LoginBannerPropsType {
-  isLoginMode: boolean;
-  handleClose: () => void;
-}
-
-export interface SettingModalPropsType {
-  handleClose: () => void;
-}
-
-export interface SelectedSettingOptionType {
-  [key: string]: {
-    isAvailable: boolean;
-    isSelected: boolean;
-  };
-}
+export type ChordSettingKey = 'Key' | 'Chord' | 'Tension';
 
 export interface SearchParams {
   searchParams: {
@@ -93,19 +60,15 @@ export interface SearchParams {
   };
 }
 
-export interface RegisterForm {
-  userEmail: string;
-}
-
-export interface ResponseType {
-  message: string;
-}
-
 export interface ChordImageData {
   id: number;
   keyId: number;
   chordId: number;
   version: number;
-  theme: 'Dark' | 'White';
   imageUrl: string;
+  theme: 'Dark' | 'White';
+}
+export interface TotalChordImageData {
+  whiteChordImages: ChordImageData[];
+  darkChordImages: ChordImageData[];
 }

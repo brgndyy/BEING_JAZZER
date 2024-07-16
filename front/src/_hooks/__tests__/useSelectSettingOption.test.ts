@@ -1,10 +1,12 @@
 import { renderHook, act } from '@testing-library/react';
 import useSelectSettingOption from '../useSelectSettingOption';
-import chordSettingStore from '@/_store/chordSettingStore';
+import useChordSettingStore from '@/_store/useChordSettingStore';
 
 jest.mock('@/_store/chordSettingStore');
 
-const mockChordSettingStore = chordSettingStore as jest.MockedFunction<typeof chordSettingStore>;
+const mockChordSettingStore = useChordSettingStore as jest.MockedFunction<
+  typeof useChordSettingStore
+>;
 
 describe('useSelectSettingOption hook에 대한 테스트 코드 작성', () => {
   const chordSetting = [
@@ -40,7 +42,7 @@ describe('useSelectSettingOption hook에 대한 테스트 코드 작성', () => 
     const event = { target: { name: 'C', checked: true } } as React.ChangeEvent<HTMLInputElement>;
 
     act(() => {
-      result.current.handleSelectedUserSettingConfig('major')(event);
+      result.current.handleSelectedUserChordSetting('major')(event);
     });
 
     expect(updateChordSetting).toHaveBeenCalledWith([
@@ -68,7 +70,7 @@ describe('useSelectSettingOption hook에 대한 테스트 코드 작성', () => 
     const event = { target: { name: 'A', checked: true } } as React.ChangeEvent<HTMLInputElement>;
 
     act(() => {
-      result.current.handleSelectedUserSettingConfig('minor')(event);
+      result.current.handleSelectedUserChordSetting('minor')(event);
     });
 
     expect(updateChordSetting).toHaveBeenCalledWith([

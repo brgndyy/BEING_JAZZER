@@ -12,7 +12,7 @@ import FinishFunnel from './FinishFunnel';
 import { funnelConatiner } from './funnel.css';
 import UserEmailFunnel from './UserEmailFunnel';
 import useSignUpMutation from '@/_hooks/mutations/useSignUpMutation';
-import { SignUpFormState } from '../../_types/index';
+import { SignUpParams } from '@/_types';
 import { boxVariants } from '@/_styles/framer';
 
 const REGISTER_STEP = ['welcome', 'userEmail', 'userName', 'userImage', 'finish'] as const;
@@ -24,7 +24,7 @@ type Props = {
 export default function RegisterFunnel({ userEmail }: Props) {
   const { step, Funnel, handleNextStep, handlePreviousStep, direction } = useFunnel(REGISTER_STEP);
 
-  const { formState, handleFormValue, handleUploadFormFile } = useForm<SignUpFormState>({
+  const { formState, handleFormValue, handleUploadFormFile } = useForm<SignUpParams>({
     userName: '',
     userEmail,
     userImage: null,
