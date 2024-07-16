@@ -6,4 +6,5 @@ export const contentCard = style({
   minHeight: '100vh',
   paddingTop: '5rem',
   paddingBottom: '4rem',
+  display: 'flex',
 });

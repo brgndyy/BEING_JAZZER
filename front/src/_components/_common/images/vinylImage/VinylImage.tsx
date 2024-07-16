@@ -1,9 +1,9 @@
 import WhiteModeVinylImage from '@/assets/images/vinylWhiteMode.svg';
 import DarkModeVinylImage from '@/assets/images/vinylDarkMode.svg';
-import themeStore from '@/_store/themeStore';
+import useThemeStore from '@/_store/useThemeStore';
 
 export default function VinylImage() {
-  const currentTheme = themeStore((state) => state.theme);
+  const currentTheme = useThemeStore((state) => state.theme);
 
   return (
     <>

@@ -12,7 +12,7 @@ import OAuthIcons from './OAuthIcons';
 import LoginForm from './LoginForm';
 import LoginBanner from './LoginBanner';
 import { modalContainer } from '../../modal.css';
-import { LoginFormState } from '@/_types';
+import { LoginParams } from '@/_types';
 import useAuthEmailMutation from '@/_hooks/mutations/useAuthEmailMutation';
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
 
 export default function LoginModalContent({ handleClose }: Props) {
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const { formState, handleFormValue } = useForm<LoginFormState>({
+  const { formState, handleFormValue } = useForm<LoginParams>({
     userEmail: '',
   });
 

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import COOKIE_CONFIG from '@/_constants/cookieConfig';
+import COOKIE_CONFIG from '@/_constants/tokenCookieOption';
 
 const setCookieOfToken = (response: NextResponse, type: string, token: string) => {
   const cookieConfig =

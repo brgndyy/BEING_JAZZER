@@ -69,3 +69,16 @@ export const progressBarAnimation = keyframes({
     width: '0%',
   },
 });
+
+// 카운트다운 애니메이션
+
+export const countDownText = keyframes({
+  '0%': {
+    fontSize: '80px',
+    opacity: 0.5,
+  },
+  '100%': {
+    fontSize: '120px',
+    opacity: '1',
+  },
+});

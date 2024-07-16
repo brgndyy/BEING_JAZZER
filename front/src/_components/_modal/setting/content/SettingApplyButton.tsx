@@ -1,13 +1,16 @@
+'use client';
+
 import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { buttonContainer, button } from '../settingModal.css';
 import useChangeUserChordSetting from '@/_hooks/mutations/useChangeUserChordSetting';
-import useAccessTokenStore from '@/_store/accessTokenStore';
+import useAccessTokenStore from '@/_store/useAccessTokenStore';
 import { toast } from 'react-toastify';
 import LoadingSpinner from '@/_components/_common/loadingSpinner/LoadingSpinner';
 import { ChordSetting, ChordSettingKey } from '@/_types';
 import ERROR_MESSAGES from '@/_constants/errorMessages';
-import useChangeDefaultChordSetting from '@/_hooks/mutations/useChangeDefaultChordSetting';
+import { usePathname } from 'next/navigation';
+import { PAGE_ROUTES } from '@/_constants/routes';
 
 type Props = {
   handleClose: () => void;
@@ -27,7 +30,10 @@ const validateMinimumSetting = (chordSetting: ChordSetting[]) => {
 };
 
 export default function SettingApplyButton({ handleClose }: Props) {
-  const { chordSetting } = useSelectSettingOption();
+  const { chordSetting, initializeDefaultChordSetting } = useSelectSettingOption();
+  const pathName = usePathname();
+  const isPlayChordPage = pathName === PAGE_ROUTES.playChord;
+
   const { accessToken } = useAccessTokenStore();
   const isCompletedMinimumSetting = validateMinimumSetting(chordSetting);
   const { handleUserChordSetting, isPending: isUserChordChangePending } = useChangeUserChordSetting(
@@ -42,9 +48,10 @@ export default function SettingApplyButton({ handleClose }: Props) {
     if (isCompletedMinimumSetting) {
       if (accessToken) {
         handleUserChordSetting({ accessToken, chordSetting });
+        isPlayChordPage && window.location.reload();
       } else {
-        // TODO 비회원일때 코드 설정을 변경하면 발생할 로직 설정
-        toast.error('에러가 발생했어요!');
+        handleClose();
+        initializeDefaultChordSetting();
       }
     } else {
       toast.error(ERROR_MESSAGES.not_satisfied_chord_setting);

@@ -6,7 +6,7 @@ import { generateThemeScript } from '@/_utils/generateThemeScript';
 import sanitizeHtml from '@/_utils/sanitizeHtml';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Card from '@/_components/_composables/cards/Card';
+import Card from '@/_components/_common/cards/Card';
 
 export default async function RegisterPageLayout({ children }: { children: React.ReactNode }) {
   const currentTheme = getThemeCookieValue();

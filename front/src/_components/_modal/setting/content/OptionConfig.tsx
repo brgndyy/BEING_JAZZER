@@ -1,7 +1,6 @@
-import { OptionConfigPropsType } from 'types';
 import { myStyle } from '@/_styles/vars.css';
+import { ChangeEventHandler } from 'react';
 import { AiFillLock } from 'react-icons/ai';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { optionContainer, title, optionSelect } from '../settingModal.css';
 import {
   configLabel,
@@ -13,15 +12,27 @@ import {
   isSelectedOption,
   isNotSelectedOption,
 } from './OptionConfig.css';
+import Input from '@/_components/_common/input/Input';
+
+export interface OptionConfigProps {
+  type: string;
+  config: {
+    [key: string]: {
+      isAvailable: boolean;
+      isSelected: boolean;
+    };
+  };
+  handleSelectedUserChordSetting: ChangeEventHandler<HTMLInputElement>;
+}
 
 export default function OptionConfig({
   type,
   config,
-  handleSelectedUserSettingConfig,
-}: OptionConfigPropsType) {
+  handleSelectedUserChordSetting,
+}: OptionConfigProps) {
   return (
     <div className={`${optionContainer} ${myStyle}`}>
-      <div className={`${title} ${myStyle} ${BMHANNAAir.className}`}>{type}</div>
+      <div className={`${title} ${myStyle}`}>{type}</div>
       <div className={`${optionSelect} ${myStyle}`}>
         {Object.entries(config).map(([key, { isAvailable, isSelected }], index) => {
           return (
@@ -32,16 +43,16 @@ export default function OptionConfig({
                 isSelected ? isSelectedOption : isNotSelectedOption
               }`}
             >
-              <input
+              <Input
                 type="checkbox"
                 name={key}
                 id={key}
                 className={hiddenCheckBoxInput}
                 disabled={!isAvailable}
                 checked={isSelected}
-                onChange={handleSelectedUserSettingConfig}
+                onChange={handleSelectedUserChordSetting}
               />
-              <p className={`${isAvailable ? '' : hideValue} ${BMHANNAAir.className}`}>{key}</p>
+              <p className={`${isAvailable ? '' : hideValue}`}>{key}</p>
               {!isAvailable && (
                 <div className={lockIconContainer}>
                   <AiFillLock className={lockIcon} />

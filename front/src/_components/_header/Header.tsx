@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { HeaderProps } from '@/_types';
 import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
-import chordSettingStore from '@/_store/chordSettingStore';
+import useChordSettingStore from '@/_store/useChordSettingStore';
 import { useEffect } from 'react';
-import accessTokenStore from '@/_store/accessTokenStore';
+import useAccessTokenStore from '@/_store/useAccessTokenStore';
 import MainLogoImage from '../_common/images/bannerImages/MainLogoImage';
 import {
   headerContainer,
@@ -26,8 +26,8 @@ const queryClient = new QueryClient({});
 
 export default function Header({ currentTheme, userInfo, chordSetting, accessToken }: HeaderProps) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
-  const { updateChordSetting } = chordSettingStore();
-  const updateAccessToken = accessTokenStore((state) => state.updateAccessToken);
+  const { updateChordSetting } = useChordSettingStore();
+  const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
 
   useEffect(() => {
     updateChordSetting(chordSetting);
@@ -39,7 +39,7 @@ export default function Header({ currentTheme, userInfo, chordSetting, accessTok
   return (
     <QueryClientProvider client={queryClient}>
       <div className={`${headerContainer} ${myStyle}`}>
-        <Link href="/" className={homeLink}>
+        <Link href="/" className={homeLink} replace>
           <MainLogoImage darkTheme={darkTheme} />
         </Link>
         <div className={headerCategoryContainer}>

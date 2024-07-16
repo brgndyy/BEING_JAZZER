@@ -2,18 +2,18 @@ import { useMutation } from '@tanstack/react-query';
 import { userSignUp } from '@/_apis/authAPI';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
-import { SignUpFormState } from '@/_types';
 import ERROR_MESSAGES from '@/_constants/errorMessages';
 import { PAGE_ROUTES } from '@/_constants/routes';
+import { SignUpParams } from '@/_types';
 
-const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpFormState) => {
+const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpParams) => {
   const router = useRouter();
 
   const { mutate: userSignUpMutation } = useMutation<void, Error, { signUpFormData: FormData }>({
     mutationFn: ({ signUpFormData }) => userSignUp(signUpFormData),
     onSuccess: () => {
       router.refresh();
-      router.replace(PAGE_ROUTES.MAIN);
+      router.replace(PAGE_ROUTES.main);
     },
     onError: (error: Error) => {
       toast.error(ERROR_MESSAGES.FAIL_SIGN_UP);

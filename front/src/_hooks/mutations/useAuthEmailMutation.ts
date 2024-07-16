@@ -16,7 +16,7 @@ const useAuthEmailMutation = ({ userEmail }: UseLoginMutation) => {
     {
       mutationFn: ({ userEmail }) => sendAuthEmail(userEmail),
       onSuccess: () => {
-        setMessage(SUCCESS_MESSAGE.SEND_MAIL);
+        setMessage(SUCCESS_MESSAGE.send_mail);
       },
       onError: (error: Error) => {
         toast.error(ERROR_MESSAGES.FAIL_SEND_EMAIL);

@@ -1,6 +1,6 @@
 import { myStyle } from '@/_styles/vars.css';
 import { AiOutlineClose } from 'react-icons/ai';
-import { LoginBannerPropsType } from 'types';
+import { LoginBannerPropsType } from '@/_types';
 import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { loginBanner, logo, closeButtonContainer, closeButton } from '../loginModalContent.css';
 

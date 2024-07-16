@@ -1,11 +1,11 @@
 import DarkLoginModalBannerImage from 'public/assets/svgs/DarkLoginModalImage.svg';
 import WhiteLoginModalBannerImage from 'public/assets/svgs/WhiteLoginModalImage.svg';
-import themeStore from '@/_store/themeStore';
+import useThemeStore from '@/_store/useThemeStore';
 import { bannerImage } from './bannerImage.css';
 import { container } from './modalBannerImage.css';
 
 export default function ModalBannerImage() {
-  const darkTheme = themeStore((state) => state.theme);
+  const darkTheme = useThemeStore((state) => state.theme);
 
   return (
     <div className={container}>

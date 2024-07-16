@@ -8,6 +8,7 @@ const ERROR_MESSAGES = {
   fail_fetch: '데이터 통신에 실패했어요!',
   FAIL_SIGN_UP: '회원가입에 실패했어요!',
   FAIL_LOGIN: '로그인에 실패했어요!',
+  not_satisfied_chord_setting: '모든 설정이 유효하지 않아요!',
 } as const;
 
 export default ERROR_MESSAGES;

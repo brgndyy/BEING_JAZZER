@@ -9,8 +9,10 @@ import {
   formInput,
   loginButton,
   underLine,
+  underLineNarrow,
 } from '../loginModalContent.css';
 import Input from '@/_components/_common/input/Input';
+import Button from '@/_components/_common/button/Button';
 
 type Props = {
   handleFormValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -49,12 +51,12 @@ export default function LoginForm({
             onChange={handleFormValue}
           />
         )}
-        <button
+        <Button
           type="submit"
-          className={`${loginButton} ${myStyle} ${underLine} ${BMHANNAAir.className}`}
+          className={`${loginButton} ${myStyle} ${underLineNarrow} ${underLine} ${BMHANNAAir.className}`}
         >
           {isLoginMode ? '로그인 하기' : '회원가입 하기'}
-        </button>
+        </Button>
       </form>
     </div>
   );

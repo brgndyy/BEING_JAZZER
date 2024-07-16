@@ -37,3 +37,12 @@ globalStyle(`:root`, {
 globalStyle(`[data-theme='dark']`, {
   background: darkTheme.colorBackground,
 });
+
+// input::-webkit-outer-spin-button,
+// input::-webkit-inner-spin-button {
+//   -webkit-appearance: none;
+// }
+// /* Firefox */
+// input[type=number] {
+//   -moz-appearance: textfield;
+// }

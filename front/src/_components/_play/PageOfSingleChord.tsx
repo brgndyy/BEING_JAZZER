@@ -5,7 +5,7 @@ import { ChordImageData } from '@/_types';
 import { carouselCard } from './slideOfSingleChord.css';
 import Metronome from '../__metronome/Metronome';
 import useCarousel from '@/_hooks/useCarousel';
-import themeStore from '@/_store/themeStore';
+import useThemeStore from '@/_store/useThemeStore';
 import { useWindowWidth } from '@/_hooks/useWindowWidth';
 import { useEffect, useState } from 'react';
 import { ResponsiveType } from 'react-multi-carousel';
@@ -37,7 +37,7 @@ const responsiveSetting = {
 
 export default function PageOfSingleChord({ whiteChordImages, darkChordImages }: Props) {
   const { carouselRef, handleNextCarousel } = useCarousel();
-  const theme = themeStore((state) => state.theme);
+  const theme = useThemeStore((state) => state.theme);
   const currentImages = theme ? darkChordImages : whiteChordImages;
 
   // const windowWidth = useWindowWidth();

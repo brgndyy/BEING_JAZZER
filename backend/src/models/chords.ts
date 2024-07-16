@@ -42,7 +42,7 @@ export function initChord(sequelize: Sequelize): void {
       },
       tension: {
         type: DataTypes.STRING(10),
-        allowNull: true, // 텐션은 선택적이므로 allowNull을 true로 설정
+        allowNull: true,
       },
     },
     {

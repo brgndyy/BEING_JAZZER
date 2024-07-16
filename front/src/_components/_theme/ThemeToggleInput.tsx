@@ -1,8 +1,7 @@
-import React from 'react';
-import { ThemeToggleInputType } from 'types';
 import { toggleInput, toggleLabel, toggleLabelChecked } from './themeToggleInput.css';
+import { ThemeToggleInputProps } from '@/_types/index';
 
-export default function ThemeToggleInput({ darkTheme, themeToggleHandler }: ThemeToggleInputType) {
+export default function ThemeToggleInput({ darkTheme, themeToggleHandler }: ThemeToggleInputProps) {
   return (
     <>
       <input

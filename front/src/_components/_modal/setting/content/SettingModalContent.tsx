@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function SettingModalContent({ handleClose }: Props) {
-  const { chordSetting, handleSelectedUserSettingConfig } = useSelectSettingOption();
+  const { chordSetting, handleSelectedUserChordSetting } = useSelectSettingOption();
 
   return (
     <div className={`${modalContainer} ${myStyle}`}>
@@ -27,7 +27,7 @@ export default function SettingModalContent({ handleClose }: Props) {
                 key={setting.id}
                 type={setting.type}
                 config={setting.config}
-                handleSelectedUserSettingConfig={handleSelectedUserSettingConfig(setting.type)}
+                handleSelectedUserChordSetting={handleSelectedUserChordSetting(setting.type)}
               />
             );
           })}

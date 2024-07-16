@@ -1,5 +1,3 @@
-import deepFreeze from './deepFreeze';
-
 import {
   REQUIRE,
   MIN_LENGTH,
@@ -14,7 +12,7 @@ type ValueType = string | number;
 
 type ValidatorFn = (value: ValueType) => boolean;
 
-export const VALIDATION_TYPE = deepFreeze({
+export const VALIDATION_TYPE = {
   REQUIRE,
   MIN_LENGTH,
   MAX_LENGTH,
@@ -22,7 +20,7 @@ export const VALIDATION_TYPE = deepFreeze({
   MAX_NUM,
   EMAIL,
   NO_SPACES,
-});
+} as const;
 
 export const validate = (value: ValueType, validators: ValidatorFn[]): boolean => {
   return validators.every((validator) => validator(value));

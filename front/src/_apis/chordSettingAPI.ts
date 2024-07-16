@@ -1,7 +1,7 @@
 import Fetcher from './fetcher/Fetcher';
 import { API_ROUTES } from '@/_constants/routes';
-import { ChangeUserChordSetting } from '@/_types/index';
-import { ChordSetting } from '@/_types/index';
+import { ChangeUserChordSetting, ChordSetting } from '@/_types/index';
+import API_URL from '@/_constants/apiUrl';
 
 type GetUserChordSetting = {
   convertedAllUserSetting: ChordSetting[];
@@ -9,7 +9,7 @@ type GetUserChordSetting = {
 
 export const getUserChordSetting = async (accessToken: string) => {
   const data = await Fetcher.get<GetUserChordSetting>(
-    `${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.user_chord_setting}`,
+    `${API_URL}${API_ROUTES.user_chord_setting}`,
     {
       headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
     },
@@ -24,7 +24,7 @@ export const changeUserChordSetting = async ({
   chordSetting,
   accessToken,
 }: ChangeUserChordSetting) => {
-  await Fetcher.post(`${process.env.NEXT_PUBLIC_DEFAULT_BE_URL}${API_ROUTES.user_chord_setting}`, {
+  await Fetcher.post(`${API_URL}${API_ROUTES.user_chord_setting}`, {
     headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       userChordSetting: chordSetting,

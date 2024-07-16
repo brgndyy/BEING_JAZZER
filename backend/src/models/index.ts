@@ -1,10 +1,8 @@
 import { Sequelize } from 'sequelize';
 import { Config } from 'types';
 import configData from '../config/config';
-import { initUser } from './users';
-import { initAuthEmailRecord } from './authEmailRecords';
-import { User } from './users';
-import { AuthEmailRecord } from './authEmailRecords';
+import { initAuthEmailRecord, AuthEmailRecord } from './authEmailRecords';
+import { User, initUser } from './users';
 import { initRefreshToken, RefreshToken } from './refreshTokens';
 import { initKey, Key } from './keys';
 import { initChord, Chord } from './chords';
@@ -26,7 +24,6 @@ const sequelize = new Sequelize(
   },
 );
 
-// 워크벤치에 테이블 생성
 initAuthEmailRecord(sequelize);
 initUser(sequelize);
 initRefreshToken(sequelize);
@@ -35,7 +32,6 @@ initChord(sequelize);
 initKeyChordDetail(sequelize);
 initUserSetting(sequelize);
 
-// 관계 설정
 function setupAssociations(): void {
   User.belongsTo(AuthEmailRecord, { foreignKey: 'emailId' });
   RefreshToken.belongsTo(User, { foreignKey: 'userId' });

@@ -17,8 +17,6 @@ export const getNewAccessToken = async (refreshToken: string) => {
     body: JSON.stringify({ refreshToken }),
   });
 
-  console.log('data : ', data);
-
   if (data) {
     return { newAccessToken: data.newAccessToken };
   } else {
@@ -69,7 +67,6 @@ export const userSignUp = async (signUpFormData: FormData) => {
 };
 
 export const sendAuthEmail = async (userEmail: string) => {
-  console.log('userEmail : ', userEmail);
   await Fetcher.post(`${API_URL}${API_ROUTES.request_auth_email}`, {
     headers: {
       'Content-Type': 'application/json',

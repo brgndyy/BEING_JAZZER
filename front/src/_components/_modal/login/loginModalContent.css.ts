@@ -195,6 +195,18 @@ export const toggleText = style({
   fontSize: '1.1rem',
 });
 
+export const underLineWide = style({
+  '::before': {
+    width: '85%',
+  },
+});
+
+export const underLineNarrow = style({
+  '::before': {
+    width: '40%',
+  },
+});
+
 export const underLine = style({
   position: 'relative',
   marginTop: '0.5rem',
@@ -209,8 +221,6 @@ export const underLine = style({
     content: '',
     position: 'absolute',
     bottom: '0',
-    left: '10',
-    width: '80%',
     border: '0.5px solid',
     background: background1,
     transform: 'scaleX(0)',
@@ -228,7 +238,7 @@ export const authText = style({
   color: text1,
   fontSize: '1.5rem',
   cursor: 'pointer',
-  padding: '0.2rem',
+  padding: '0.3rem',
   transition: 'all 0.3s ease',
   ':hover': {
     opacity: 0.7,

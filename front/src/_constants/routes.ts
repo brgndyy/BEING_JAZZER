@@ -7,8 +7,10 @@ export const API_ROUTES = {
   existing_user_login: '/api/users/login-existing-user',
   user_chord_setting: '/api/users/chord-setting',
   default_chord_images: '/api/chord-images/default',
+  user_chord_images: '/api/chord-images/user',
 } as const;
 
 export const PAGE_ROUTES = {
-  MAIN: '/',
+  main: '/',
+  playChord: '/play/chords',
 } as const;

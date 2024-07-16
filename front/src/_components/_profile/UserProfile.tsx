@@ -1,4 +1,4 @@
-import { UserProfilePropsType } from 'types';
+import { UserInfo } from '@/_types';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import handleKeyDown from '@/_utils/handleKeyDown';
@@ -7,7 +7,11 @@ import { profileContainer, motionContainer } from './userProfile.css';
 import ProfileMenu from './ProfileMenu';
 import DownIcon from './DownIcon';
 
-export default function UserProfile({ userInfo }: UserProfilePropsType) {
+export interface Props {
+  userInfo: UserInfo;
+}
+
+export default function UserProfile({ userInfo }: Props) {
   const { userProfileImageSrc } = userInfo;
 
   const [isOpen, setIsOpen] = useState(false);

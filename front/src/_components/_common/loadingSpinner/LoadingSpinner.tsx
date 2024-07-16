@@ -3,12 +3,12 @@ import { myStyle } from '@/_styles/vars.css';
 // import WhiteLoadingSpinner from 'public/assets//WhiteLoadingSpinner.svg';
 import WhiteWebp from 'public/assets/webps/WhiteLoadingSpinnerThick.webp';
 import DarkWebp from 'public/assets/webps/DarkLoadingSpinnerThick.webp';
-import themeStore from '@/_store/themeStore';
+import useThemeStore from '@/_store/useThemeStore';
 import { loadingSpinnerContainer, loadingSpinnerText } from './loadingSpinner.css';
 import Image from 'next/image';
 
 export default function LoadingSpinner() {
-  const darkTheme = themeStore((state) => state.theme);
+  const darkTheme = useThemeStore((state) => state.theme);
 
   return (
     <div className={`${loadingSpinnerContainer} ${myStyle}`}>

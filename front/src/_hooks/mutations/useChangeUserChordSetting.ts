@@ -16,7 +16,7 @@ const useChangeUserChordSetting = ({
   initialChordSetting,
   accessToken = '',
 }: HookProps) => {
-  const { mutate: changeChordSettingMutation } = useCachedMutation<
+  const { mutate: changeChordSettingMutation, isPending } = useCachedMutation<
     void,
     Error,
     ChangeUserChordSetting
@@ -26,7 +26,7 @@ const useChangeUserChordSetting = ({
       toast.error(ERROR_MESSAGES.fail_get_chord_setting);
     },
     onSuccess: () => {
-      toast.success(SUCCESS_MESSAGE.SET_USER_CHORD);
+      toast.success(SUCCESS_MESSAGE.set_user_chord);
     },
     onSettled: () => {
       handleClose();
@@ -37,7 +37,7 @@ const useChangeUserChordSetting = ({
     changeChordSettingMutation({ accessToken, chordSetting });
   };
 
-  return { handleUserChordSetting };
+  return { handleUserChordSetting, isPending };
 };
 
 export default useChangeUserChordSetting;

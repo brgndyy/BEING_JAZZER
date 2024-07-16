@@ -1,11 +1,11 @@
-import { SearchParamsType } from 'types';
+import { SearchParams } from '@/_types';
 import RegisterFunnel from '@/_components/_register/RegisterFunnel';
-import getEncryptedCodeFromParams from '@/_services/auth/getEncryptedCodeFromParams';
-import { API_ROUTES } from '@/_constants/pathRoutes';
-import getUserInfoByEncryptedCode from '@/_services/auth/getUserInfoByEncryptedCode';
+import getEncryptedCodeFromParams from '@/_utils/getEncryptedCodeFromParams';
+import { API_ROUTES } from '@/_constants/routes';
+import { getUserInfoByEncryptedCode } from '@/_apis/authAPI';
 import { notFound } from 'next/navigation';
 
-export default async function RegisterPage({ searchParams }: SearchParamsType) {
+export default async function RegisterPage({ searchParams }: SearchParams) {
   const encryptedCode = getEncryptedCodeFromParams({ searchParams });
   const userInfo = await getUserInfoByEncryptedCode(API_ROUTES.register_user_info, encryptedCode);
   const { userEmail } = userInfo;

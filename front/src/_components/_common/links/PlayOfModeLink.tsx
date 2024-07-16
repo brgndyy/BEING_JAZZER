@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { myStyle } from '@/_styles/vars.css';
 import { container, linkContainer } from './playOfModeLink.css';
 import PlayOfModeLinkCard from './PlayOfModeLinkCard';
