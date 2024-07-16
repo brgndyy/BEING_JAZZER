@@ -21,7 +21,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["src/*"],
       "@types/*": ["./@types/*"]
     }
   },
@@ -37,7 +37,8 @@
     "next.config.js",
     "./__mocks__",
     "src/app/(register)/default/page.tsx",
-    "src/_components/_metonome/MetronomeContext.ts"
+    "src/_components/_metronome/MetronomeContext.ts",
+    "src/_constants/messages"
   ],
   "exclude": ["node_modules"]
 }
