@@ -52,6 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
           <ContentCard> {children}</ContentCard>
           <div id="portal" />
+          <div id="spinner" />
         </Card>
       </body>
     </html>
