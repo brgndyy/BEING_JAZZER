@@ -3,7 +3,7 @@ import { fadeIn, fadeOut } from '@/_styles/animation.css';
 import { background1 } from '@/_styles/vars.css';
 
 export const modalContainer = style({
-  width: '45rem',
+  width: '49rem',
   height: '43rem',
   borderRadius: '1rem',
   position: 'relative',
