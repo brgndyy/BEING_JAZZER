@@ -24,7 +24,7 @@ jobs:
             backend:
               - 'backend/src/**'
 
-  build_and_test_frontend:
+  test_frontend:
     needs: path_changes
     if: needs.path_changes.outputs.front == 'true'
     runs-on: ubuntu-latest
