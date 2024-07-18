@@ -1,12 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { background1, text1 } from '@/_styles/vars.css';
 
+export const modalContainer = style({
+  width: '100%',
+  height: '100%',
+});
+
 export const loadingSpinnerContainer = style({
-  height: '100vh',
-  width: '100vh',
-  position: 'fixed',
-  top: '0',
-  left: '0',
+  width: '100%',
+  height: '100%',
   background: background1,
   display: 'flex',
   justifyContent: 'center',

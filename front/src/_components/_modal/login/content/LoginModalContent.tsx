@@ -36,7 +36,6 @@ export default function LoginModalContent({ handleClose }: Props) {
   return (
     <>
       {isPending && <LoadingSpinner />}
-      <LoadingSpinner />
       <div className={`${modalContainer} ${myStyle}`}>
         <div className={modalBannerImageContainer}>
           <ModalBannerImage />
