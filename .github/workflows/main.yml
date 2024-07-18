@@ -1,0 +1,45 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "front/src/**"
+      - "backend/src/**"
+
+jobs:
+  path_changes:
+    runs-on: ubuntu-latest
+    outputs:
+      front: ${{ steps.filter.outputs.front }}
+      backend: ${{ steps.filter.outputs.backend }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            front:
+              - 'front/src/**'
+            backend:
+              - 'backend/src/**'
+
+  build_and_test_frontend:
+    needs: path_changes
+    if: needs.path_changes.outputs.front == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.0.0"
+      - name: Install Dependencies
+        run: |
+          cd front
+          npm install
+      - name: Run Tests
+        run: |
+          cd front
+          npm test
