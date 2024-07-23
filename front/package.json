@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "chromatic": "node -r dotenv/config ./node_modules/.bin/chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.45.1",
@@ -52,6 +53,7 @@
     "@typescript-eslint/parser": "^6.11.0",
     "@vanilla-extract/jest-transform": "^1.1.1",
     "@vanilla-extract/next-plugin": "^2.3.2",
+    "chromatic": "^11.5.6",
     "eslint": "^8.53.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
