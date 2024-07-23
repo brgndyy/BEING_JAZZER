@@ -25,7 +25,7 @@ export const myStyle = style({
       vars: {
         [background1]: '#1e1e1e',
         [background2]: '#2b2b2b',
-        [background3]: '#fff',
+        [background3]: '#232323',
         [text1]: '#fff',
         [text2]: '##2c2c2c',
         [text3]: '#acacac',
