@@ -36,6 +36,7 @@
     "@storybook/addon-interactions": "^8.2.5",
     "@storybook/addon-links": "^8.2.5",
     "@storybook/addon-onboarding": "^8.2.5",
+    "@storybook/addon-styling-webpack": "^1.0.0",
     "@storybook/blocks": "^8.2.5",
     "@storybook/nextjs": "^8.2.5",
     "@storybook/react": "^8.2.5",
@@ -53,6 +54,7 @@
     "@typescript-eslint/parser": "^6.11.0",
     "@vanilla-extract/jest-transform": "^1.1.1",
     "@vanilla-extract/next-plugin": "^2.3.2",
+    "@vanilla-extract/webpack-plugin": "^2.3.11",
     "chromatic": "^11.5.6",
     "eslint": "^8.53.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -69,6 +71,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-transformer-svg": "^2.0.1",
+    "mini-css-extract-plugin": "^2.9.0",
     "msw": "^2.3.1",
     "prettier": "^3.1.0",
     "storybook": "^8.2.5"
