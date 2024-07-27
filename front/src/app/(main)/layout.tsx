@@ -14,7 +14,7 @@ import ContentCard from '@/_components/_common/cards/ContentCard';
 import Header from '@/_components/_header/Header';
 import defaultChordSetting from '@/_mocks/chordSettingOptions';
 import { getUserChordSetting } from '@/_apis/chordSettingAPI';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
+import { myFont } from '@/assets/fonts/font';
 
 export const metadata: Metadata = {
   title: 'BEING JAZZER',
@@ -31,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={BMHANNAAir.className}>
+      <body suppressHydrationWarning className={myFont.className}>
         <script
           dangerouslySetInnerHTML={{
             __html: sanitizedThemeScript,
@@ -50,7 +50,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             chordSetting={chordSetting}
             accessToken={accessToken}
           />
-          <ContentCard> {children}</ContentCard>
+          <ContentCard>{children}</ContentCard>
           <div id="portal" />
           <div id="spinner" />
         </Card>

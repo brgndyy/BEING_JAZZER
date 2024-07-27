@@ -1,5 +1,4 @@
 import { myStyle } from '@/_styles/vars.css';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import {
   loginFormContainer,
   loginForm,
@@ -32,7 +31,7 @@ export default function LoginForm({
   return (
     <div className={loginFormContainer}>
       <form className={loginForm} onSubmit={handleSendAuthEmail}>
-        <label className={`${formLabel} ${myStyle} ${BMHANNAAir.className}`} htmlFor="userEmail">
+        <label className={`${formLabel} ${myStyle}`} htmlFor="userEmail">
           이메일
         </label>
         {message ? (
@@ -43,7 +42,7 @@ export default function LoginForm({
           <Input
             type="email"
             placeholder="이메일"
-            className={`${formInput} ${BMHANNAAir.className}`}
+            className={`${formInput}`}
             id="userEmail"
             autoComplete="off"
             name="userEmail"
@@ -52,8 +51,9 @@ export default function LoginForm({
           />
         )}
         <Button
+          variant="default"
           type="submit"
-          className={`${loginButton} ${myStyle} ${underLineNarrow} ${underLine} ${BMHANNAAir.className}`}
+          className={`${loginButton} ${myStyle} ${underLineNarrow} ${underLine}`}
         >
           {isLoginMode ? '로그인 하기' : '회원가입 하기'}
         </Button>

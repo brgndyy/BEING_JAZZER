@@ -3,7 +3,6 @@
 import { myStyle } from '@/_styles/vars.css';
 import useForm from '@/_hooks/useForm';
 import React, { useState } from 'react';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { authContainer, modalBannerImageContainer, orLogo } from '../loginModalContent.css';
 import ModalBannerImage from '../../../_common/images/bannerImages/ModalBannerImage';
 import LoadingSpinner from '../../../_common/loadingSpinner/LoadingSpinner';
@@ -49,7 +48,7 @@ export default function LoginModalContent({ handleClose }: Props) {
             value={formState.userEmail}
             isLoginMode={isLoginMode}
           />
-          <div className={`${orLogo} ${myStyle} ${BMHANNAAir.className}`}>
+          <div className={`${orLogo} ${myStyle}`}>
             <p>또는</p>
           </div>
           <OAuthIcons />

@@ -1,7 +1,22 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+import { background } from './button.css';
+import { myStyle } from '@/_styles/vars.css';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant: keyof typeof background;
+}
 
-export default function Button({ children, ...props }: PropsWithChildren<Props>) {
-  return <button {...props}>{children}</button>;
+export default function Button({
+  variant,
+  children,
+  className,
+  ...props
+}: PropsWithChildren<ButtonProps>) {
+  const classNames = ` ${background[variant]} ${myStyle} ${className || ''}`;
+
+  return (
+    <button className={classNames} {...props}>
+      {children}
+    </button>
+  );
 }

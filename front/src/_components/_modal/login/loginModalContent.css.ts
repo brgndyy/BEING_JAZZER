@@ -170,16 +170,16 @@ export const googleIcon = style({
   cursor: 'pointer',
 });
 
-export const naverIcon = style({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  padding: '0.5rem',
-  cursor: 'pointer',
-  marginLeft: '0.7rem',
-  marginRight: '0.7rem',
-  marginBottom: '0.1rem',
-});
+// export const naverIcon = style({
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   padding: '0.5rem',
+//   cursor: 'pointer',
+//   marginLeft: '0.7rem',
+//   marginRight: '0.7rem',
+//   marginBottom: '0.1rem',
+// });
 
 export const joinContainer = style({
   width: '100%',
@@ -197,7 +197,7 @@ export const toggleText = style({
 
 export const underLineWide = style({
   '::before': {
-    width: '85%',
+    width: '90%',
   },
 });
 
@@ -233,6 +233,10 @@ export const underLine = style({
     },
   },
 });
+
+export const wideUnderLine = style([underLine, underLineWide]);
+
+export const narrowUnderLine = style([underLine, underLineNarrow]);
 
 export const authText = style({
   color: text1,

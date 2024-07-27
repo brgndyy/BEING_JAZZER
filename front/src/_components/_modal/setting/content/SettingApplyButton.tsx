@@ -1,7 +1,6 @@
 'use client';
 
 import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { buttonContainer, button } from '../settingModal.css';
 import useChangeUserChordSetting from '@/_hooks/mutations/useChangeUserChordSetting';
 import useAccessTokenStore from '@/_store/useAccessTokenStore';
@@ -62,11 +61,7 @@ export default function SettingApplyButton({ handleClose }: Props) {
     <>
       {isUserChordChangePending && <LoadingSpinner />}
       <div className={buttonContainer}>
-        <button
-          onClick={handleTotalUserChordSetting}
-          className={`${button} ${BMHANNAAir.className}`}
-          type="button"
-        >
+        <button onClick={handleTotalUserChordSetting} className={`${button}`} type="button">
           설정 변경
         </button>
       </div>

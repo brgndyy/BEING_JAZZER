@@ -5,6 +5,21 @@ globalStyle('*', {
   boxSizing: 'border-box',
 });
 
+globalStyle('html', {
+  fontSize: '62.5%',
+});
+
+globalStyle('button', {
+  cursor: 'pointer',
+  outline: 'none',
+  border: 'none',
+  background: 'inherit',
+  padding: '0',
+  color: 'inherit',
+  fontWeight: 'inherit',
+  fontSize: 'inherit',
+});
+
 globalStyle('body', {
   margin: '0',
   width: '100vw',
@@ -37,12 +52,3 @@ globalStyle(`:root`, {
 globalStyle(`[data-theme='dark']`, {
   background: darkTheme.colorBackground,
 });
-
-// input::-webkit-outer-spin-button,
-// input::-webkit-inner-spin-button {
-//   -webkit-appearance: none;
-// }
-// /* Firefox */
-// input[type=number] {
-//   -moz-appearance: textfield;
-// }
