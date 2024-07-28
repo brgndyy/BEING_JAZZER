@@ -1,4 +1,3 @@
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import { myStyle } from '@/_styles/vars.css';
 import {
   welcomeContainer,
@@ -19,7 +18,7 @@ type Props = {
 
 export default function WelcomeFunnel({ handleNextStep }: Props) {
   return (
-    <div className={`${welcomeContainer} ${BMHANNAAir.className}`}>
+    <div className={`${welcomeContainer} `}>
       <div className={logoWrapper}>
         <div className={logoContainer}>
           <h1 className={`${logo} ${myStyle} ${first}`}>안녕하세요</h1>
@@ -35,9 +34,10 @@ export default function WelcomeFunnel({ handleNextStep }: Props) {
 
       <div>
         <Button
+          variant="primary"
           type="button"
           onClick={handleNextStep}
-          className={`${nextButton} ${myStyle} ${fourth} ${BMHANNAAir.className}`}
+          className={`${nextButton} ${myStyle} ${fourth}`}
         >
           회원가입 하러 가기
         </Button>

@@ -23,7 +23,7 @@ export const toggleLabel = style({
     width: '1.3rem',
     height: '1.3rem',
     position: 'absolute',
-    top: '6px',
+    top: '4px',
     left: '3px',
     borderRadius: '17rem',
     background: 'linear-gradient(180deg, #ffcc89, #d8860b)',

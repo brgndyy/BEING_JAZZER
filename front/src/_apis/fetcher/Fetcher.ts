@@ -32,15 +32,15 @@ const Fetcher = {
     try {
       const res = await fetch(url, {
         method: 'POST',
-        body,
+        body: body ? JSON.stringify(body) : undefined,
         headers,
       });
-
+  
       if (!res.ok) {
         const error = new HttpError(ERROR_MESSAGES.fail_fetch, res.status);
         throw error;
       }
-
+  
       const contentType = res.headers.get('Content-Type');
       if (contentType && contentType.includes('application/json')) {
         const data: T = await res.json();

@@ -9,6 +9,7 @@ import existingUserLogin from '../controllers/existingUserLogin';
 import setUserChordSetting from '../controllers/setUserChordSetting';
 import verifyAccessToken from '../middlewares/verifyAccessToken';
 import sendUserSetting from '../controllers/sendUserSetting';
+import withdrawUser from '../controllers/withdrawUser';
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.get('/info', verifyAccessToken, sendUserInfo);
 router.post('/login-existing-user', existingUserLogin);
 router.get('/chord-setting', verifyAccessToken, sendUserSetting);
 router.post('/chord-setting', verifyAccessToken, setUserChordSetting);
+router.post('/withdraw', verifyAccessToken, withdrawUser);
 
 export { router as userRoutes };

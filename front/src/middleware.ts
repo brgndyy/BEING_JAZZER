@@ -13,6 +13,8 @@ export async function middleware(request: NextRequest) {
 
   if (!accessToken && refreshToken) {
     const res = await getNewAccessToken(refreshToken);
+
+    console.log('res: ', res);
     if (res && res.newAccessToken) {
       response = NextResponse.next();
 

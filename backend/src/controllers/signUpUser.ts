@@ -8,7 +8,6 @@ import createNewUserData from '../services/databaseOfAuthService/createNewUserDa
 import createNewAccessToken from '../services/authService/createNewAccessToken';
 import createNewRefreshToken from '../services/authService/createNewRefreshToken';
 import sendTokenCookieToClient from '../services/authService/sendTokenCookieToClient';
-import PROGRESS_MESSAGES from '../constants/progressMessages';
 import createRefreshTokenData from '../services/databaseOfAuthService/createRefreshTokenData';
 import hashRefreshToken from '../utils/hashRefreshToken';
 import setAllKeyChordDetails from '../services/databaseOfimageService/setAllKeyChordDetails';

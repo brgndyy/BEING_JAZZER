@@ -40,6 +40,7 @@ export default function LoginForm({
           </div>
         ) : (
           <Input
+            variant="default"
             type="email"
             placeholder="이메일"
             className={`${formInput}`}

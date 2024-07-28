@@ -10,9 +10,9 @@ export default function ModalBannerImage() {
   return (
     <div className={container}>
       {darkTheme ? (
-        <DarkLoginModalBannerImage width={300} height={400} className={bannerImage} />
+        <DarkLoginModalBannerImage width={200} height={400} className={bannerImage} />
       ) : (
-        <WhiteLoginModalBannerImage width={300} height={400} className={bannerImage} />
+        <WhiteLoginModalBannerImage width={200} height={400} className={bannerImage} />
       )}
     </div>
   );

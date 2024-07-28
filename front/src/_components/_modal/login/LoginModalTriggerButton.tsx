@@ -1,6 +1,4 @@
-import { myStyle } from '@/_styles/vars.css';
-import React from 'react';
-import { authText, wideUnderLine } from './loginModalContent.css';
+import { wideUnderLine } from './loginModalContent.css';
 import Button from '@/_components/_common/button/Button';
 
 type Props = {

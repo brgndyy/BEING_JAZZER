@@ -17,7 +17,7 @@ import { getUserChordSetting } from '@/_apis/chordSettingAPI';
 import { myFont } from '@/assets/fonts/font';
 
 export const metadata: Metadata = {
-  title: 'BEING JAZZER',
+  title: 'Being JAZZER',
   description: '랜덤으로 코드를 연습할수 있는 사이트입니다.',
 };
 

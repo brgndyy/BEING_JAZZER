@@ -1,6 +1,5 @@
 import React from 'react';
 import { myStyle } from '@/_styles/vars.css';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import useDragAndDrop from '@/_hooks/useDragAndDrop';
 import Image from 'next/image';
 import Input from '../_common/input/Input';
@@ -48,7 +47,7 @@ export default function UserImageFunnel({
 
   return (
     <div className={`${contentContainer} ${myStyle}`}>
-      <label className={`${funnelLabel} ${myStyle} ${BMHANNAAir.className}`} htmlFor="userImage">
+      <label className={`${funnelLabel} ${myStyle}`} htmlFor="userImage">
         프로필 이미지
       </label>
 
@@ -56,25 +55,25 @@ export default function UserImageFunnel({
         <Image src={previewUrl} width={100} height={100} alt="userImage" />
       ) : (
         <div
-          className={`${funnelInputContainer} ${dragging ? drag : ''} ${myStyle} ${
-            BMHANNAAir.className
-          }`}
+          className={`${funnelInputContainer} ${dragging ? drag : ''} ${myStyle}
+          `}
           onDragEnter={onDragEnterHandler}
           onDragLeave={onDragLeaveHandler}
           onDragOver={onDragOverHandler}
           onDrop={onDropHandler}
         >
           <Input
+            variant="default"
             type="file"
             accept=".jpg,.png,.jpeg"
-            className={`${funnelImageInput} ${myStyle} ${BMHANNAAir.className}`}
+            className={`${funnelImageInput} ${myStyle}`}
             multiple={false}
             aria-hidden
             id="userImage"
             name="userImage"
             onChange={uploadImageHandler}
           />
-          <div className={`${alertText} ${myStyle} ${BMHANNAAir.className}`}>
+          <div className={`${alertText} ${myStyle}`}>
             (업로드 된 파일이 없을시, 기본 이미지로 대체돼요!)
           </div>
         </div>
@@ -82,15 +81,17 @@ export default function UserImageFunnel({
 
       <div className={funnelButtonContainer}>
         <Button
+          variant="default"
           type="button"
-          className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
+          className={`${myStyle} ${funnelButton}`}
           onClick={handlePreviousStep}
         >
           이전으로
         </Button>
         <Button
+          variant="default"
           type="submit"
-          className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
+          className={`${myStyle} ${funnelButton} `}
           onClick={handleUserSignUp}
         >
           다음

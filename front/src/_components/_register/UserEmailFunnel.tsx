@@ -1,6 +1,5 @@
 import { myStyle } from '@/_styles/vars.css';
 import { FaLock } from 'react-icons/fa';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 import {
   contentContainer,
   funnelButtonContainer,
@@ -22,12 +21,13 @@ type Props = {
 
 export default function UserEmailFunnel({ userEmail, handleNextStep, handlePreviousStep }: Props) {
   return (
-    <div className={`${contentContainer} ${myStyle} ${BMHANNAAir.className}`}>
+    <div className={`${contentContainer} ${myStyle}`}>
       <h1 className={`${funnelLabel} ${myStyle}`}>이메일</h1>
       <div className={emailCard}>
         <Input
+          variant="default"
           type="text"
-          className={`${userEmailContainer} ${BMHANNAAir.className}`}
+          className={`${userEmailContainer}`}
           id="userEmail"
           autoComplete="off"
           value={userEmail}
@@ -41,15 +41,17 @@ export default function UserEmailFunnel({ userEmail, handleNextStep, handlePrevi
       </div>
       <div className={funnelButtonContainer}>
         <Button
+          variant="primary"
           type="button"
-          className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
+          className={`${myStyle} ${funnelButton}`}
           onClick={handlePreviousStep}
         >
           이전으로
         </Button>
         <Button
+          variant="primary"
           type="button"
-          className={`${myStyle} ${funnelButton} ${BMHANNAAir.className}`}
+          className={`${myStyle} ${funnelButton}`}
           onClick={handleNextStep}
         >
           다음
