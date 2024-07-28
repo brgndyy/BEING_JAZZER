@@ -34,6 +34,7 @@ const ERROR_MESSAGES = deepFreeze({
   NOT_FOUND_CHORD: '해당 코드를 찾는데에 실패했어요!',
   NOT_VERIFIED_TOKEN: '토큰이 유효하지 않아요!',
   EXPIRED_TOKEN: '토큰이 만료되었어요!',
+  fail_withdraw: '회원탈퇴를 하는데에 실패했어요!',
 });
 
 export default ERROR_MESSAGES;
