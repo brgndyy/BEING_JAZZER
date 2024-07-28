@@ -4,6 +4,7 @@ import { PAGE_ROUTES } from '@/_constants/routes';
 import { withdrawAccount } from '@/_apis/authAPI';
 import { toast } from 'react-toastify';
 import ERROR_MESSAGES from '@/_constants/errorMessages';
+import deleteCookie from '@/_utils/deleteCookie';
 
 const useWithdraw = (accessToken: string) => {
   const router = useRouter();
@@ -11,6 +12,8 @@ const useWithdraw = (accessToken: string) => {
   const { mutate: withdrawMutation } = useMutation({
     mutationFn: withdrawAccount,
     onSuccess: () => {
+      deleteCookie('accessToken');
+      deleteCookie('refreshToken');
       router.refresh();
       router.replace(PAGE_ROUTES.main);
     },

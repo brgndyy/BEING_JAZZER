@@ -7,7 +7,7 @@ import sanitizeHtml from '@/_utils/sanitizeHtml';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from '@/_components/_common/cards/Card';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
+import { myFont } from '@/assets/fonts/font';
 
 export default async function RegisterPageLayout({ children }: { children: React.ReactNode }) {
   const currentTheme = getThemeCookieValue();
@@ -15,7 +15,7 @@ export default async function RegisterPageLayout({ children }: { children: React
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={BMHANNAAir.className}>
+      <body suppressHydrationWarning className={myFont.className}>
         <script
           dangerouslySetInnerHTML={{
             __html: sanitizedThemeScript,

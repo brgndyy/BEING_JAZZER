@@ -9,8 +9,8 @@ import { SignUpParams } from '@/_types';
 const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpParams) => {
   const router = useRouter();
 
-  const { mutate: userSignUpMutation } = useMutation<void, Error, { signUpFormData: FormData }>({
-    mutationFn: ({ signUpFormData }) => userSignUp(signUpFormData),
+  const { mutate: userSignUpMutation } = useMutation({
+    mutationFn: userSignUp,
     onSuccess: () => {
       router.refresh();
       router.replace(PAGE_ROUTES.main);
@@ -32,7 +32,7 @@ const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpParams) => 
       signUpFormData.append('userImage', userImage);
     }
 
-    userSignUpMutation({ signUpFormData });
+    userSignUpMutation(signUpFormData);
   };
 
   return { handleUserSignUp };

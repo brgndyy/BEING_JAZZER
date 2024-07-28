@@ -22,7 +22,7 @@ import SettingModal from '../_modal/setting/SettingModal';
 import LoginModal from '../_modal/login/LoginModal';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-const queryClient = new QueryClient({});
+export const queryClient = new QueryClient({});
 
 export default function Header({ currentTheme, userInfo, chordSetting, accessToken }: HeaderProps) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);

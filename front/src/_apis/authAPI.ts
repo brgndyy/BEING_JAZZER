@@ -96,7 +96,7 @@ export const getUserInfoByAccessToken = async (accessToken?: string) => {
 };
 
 export const withdrawAccount = async (accessToken: string) => {
-  await Fetcher.post(`${API_URL}${API_ROUTES.withdraw_user}`, {
+  await Fetcher.post<void>(`${API_URL}${API_ROUTES.withdraw_user}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,

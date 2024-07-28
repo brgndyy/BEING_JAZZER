@@ -12,9 +12,11 @@ const withdrawUser = async (req: CustomRequestType, res: Response, next: NextFun
       throw new HttpError(ERROR_MESSAGES.NOT_FOUND_USER, 503);
     }
 
+    console.log(user);
+
     await deleteUser(user.id);
 
-    return;
+    return res.status(201);
   } catch (err) {
     const error = new HttpError(ERROR_MESSAGES.fail_withdraw, 503);
 

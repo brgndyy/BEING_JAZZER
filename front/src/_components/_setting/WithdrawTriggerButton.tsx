@@ -6,12 +6,14 @@ import { modalExit, modalEnter } from '../_modal/modal.css';
 import WithdrawContent from '../_modal/withdraw/WithdrawContent';
 import { triggerButton } from '../_modal/withdraw/withDrawContent.css';
 import useModal from '@/_hooks/useModal';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '../_header/Header';
 
 export default function WithdrawTriggerButton() {
   const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Button variant="warning" onClick={handleModalOpen} className={triggerButton}>
         회원 탈퇴
       </Button>
@@ -30,6 +32,6 @@ export default function WithdrawTriggerButton() {
           </Modal.Backdrop>
         </Modal.Portal>
       </Modal>
-    </>
+    </QueryClientProvider>
   );
 }
