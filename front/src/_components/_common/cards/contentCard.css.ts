@@ -4,7 +4,7 @@ export const contentCard = style({
   width: '100%',
   height: 'auto',
   minHeight: '100vh',
-  paddingTop: '5rem',
+  paddingTop: '8rem',
   paddingBottom: '4rem',
   display: 'flex',
 });

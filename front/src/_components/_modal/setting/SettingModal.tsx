@@ -1,4 +1,4 @@
-import { modalExit, modalEnter } from '../modal2.css';
+import { modalExit, modalEnter } from '../modal.css';
 import { useState } from 'react';
 import SettingModalTriggerButton from './SettingModalTriggerButton';
 import { Modal } from 'brgndyy-react-modal';

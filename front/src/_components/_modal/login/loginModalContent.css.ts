@@ -203,7 +203,7 @@ export const underLineWide = style({
 
 export const underLineNarrow = style({
   '::before': {
-    width: '40%',
+    width: '35%',
   },
 });
 

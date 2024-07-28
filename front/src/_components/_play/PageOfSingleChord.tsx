@@ -62,9 +62,9 @@ export default function PageOfSingleChord({ whiteChordImages, darkChordImages }:
           </div>
 
           <span className={`${text} ${myStyle}`}>현재 박자:</span>
-          <Metronome.BPMInput className={`${input} ${BMHANNAAir.className}`} />
+          <Metronome.BPMInput className={`${input}`} />
           <Metronome.Button
-            className={`${button} ${myStyle} ${BMHANNAAir.className}`}
+            className={`${button} ${myStyle}`}
             buttonContents={['재생', '일시정지']}
           />
         </div>
