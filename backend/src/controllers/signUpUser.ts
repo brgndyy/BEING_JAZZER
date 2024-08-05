@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from 'express';
 import HttpError from '../error/HttpError';
-import findExisitingUserDataFromEmail from '../services/databaseOfAuthService/findExistingUserDataFromEmail';
+import findExistingUserDataFromEmail from '../services/databaseOfAuthService/findExistingUserDataFromEmail';
 import ERROR_MESSAGES from '../constants/errorMessages';
 import findAuthEmailRecordDataFromEmail from '../services/databaseOfAuthService/findAuthEmailRecordDataFromEmail';
 import PATH from '../constants/path';
@@ -16,11 +16,16 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userName, userEmail } = req.body;
 
+    console.log('userName,', userName);
+    console.log('userEmail,', userEmail);
+
     const userProfileImageSrc = req.file
       ? `${PATH.replace_profile_image_url}${req.file.filename}`
       : PATH.default_user_profile_image_url;
 
-    const existingUser = await findExisitingUserDataFromEmail(userEmail);
+    const existingUser = await findExistingUserDataFromEmail(userEmail);
+
+    console.log('existingUser : ', existingUser);
 
     if (existingUser) {
       throw new HttpError(ERROR_MESSAGES.EXISTING_USER, 422);

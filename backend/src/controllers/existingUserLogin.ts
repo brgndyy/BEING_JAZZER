@@ -13,7 +13,11 @@ const existingUserLogin = async (req: Request, res: Response, next: NextFunction
   try {
     const { encryptedCode } = req.body;
 
+    console.log('encryptted :', encryptedCode);
+
     const authEmailRecordData = await findUserEmailDataFromEncryptedCode(encryptedCode);
+
+    console.log('auth: ', authEmailRecordData);
 
     if (!authEmailRecordData) {
       throw new HttpError(ERROR_MESSAGES.NOT_FOUND_EMAIL_RECORD, 503);

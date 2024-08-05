@@ -64,7 +64,7 @@ export default function RegisterFunnel({ userEmail }: Props) {
                 handlePreviousStep={handlePreviousStep}
                 handleNextStep={handleNextStep}
                 value={formState.userName}
-                inputHandler={handleFormValue}
+                onChange={handleFormValue}
               />
             </Funnel.Step>
             <Funnel.Step name={REGISTER_STEP[3]}>

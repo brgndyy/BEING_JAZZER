@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import ERROR_MESSAGES from '@/_constants/errorMessages';
 import { PAGE_ROUTES } from '@/_constants/routes';
 import { SignUpParams } from '@/_types';
+import { useEffect } from 'react';
 
 const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpParams) => {
   const router = useRouter();
@@ -34,6 +35,12 @@ const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpParams) => 
 
     userSignUpMutation(signUpFormData);
   };
+
+  useEffect(() => {
+    console.log(userEmail);
+    console.log(userName);
+    console.log(userImage);
+  }, [userEmail, userName, userImage]);
 
   return { handleUserSignUp };
 };

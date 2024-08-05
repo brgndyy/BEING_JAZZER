@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 
-import type { Metadata } from 'next';
+import type { Metadata } from 'next/types';
 import '../globals.css';
 import Card from '@/_components/_common/cards/Card';
 import { getThemeCookieValue } from '@/_utils/getThemeCookieValue';

@@ -2,7 +2,7 @@ import { User } from '../../models/users';
 import HttpError from '../../error/HttpError';
 import ERROR_MESSAGES from '../../constants/errorMessages';
 
-const findExisitingUserDataFromEmail = async (userEmail: string) => {
+const findExistingUserDataFromEmail = async (userEmail: string) => {
   try {
     const existingUser = await User.findOne({
       where: {
@@ -17,4 +17,4 @@ const findExisitingUserDataFromEmail = async (userEmail: string) => {
   }
 };
 
-export default findExisitingUserDataFromEmail;
+export default findExistingUserDataFromEmail;
