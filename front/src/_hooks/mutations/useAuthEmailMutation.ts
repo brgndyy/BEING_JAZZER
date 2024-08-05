@@ -12,22 +12,20 @@ type UseLoginMutation = {
 const useAuthEmailMutation = ({ userEmail }: UseLoginMutation) => {
   const [message, setMessage] = useState<string | undefined>();
 
-  const { mutate: userSignUpMutation, isPending } = useMutation<void, Error, { userEmail: string }>(
-    {
-      mutationFn: ({ userEmail }) => sendAuthEmail(userEmail),
-      onSuccess: () => {
-        setMessage(SUCCESS_MESSAGE.send_mail);
-      },
-      onError: (error: Error) => {
-        toast.error(ERROR_MESSAGES.FAIL_SEND_EMAIL);
-        console.error(error.message);
-      },
+  const { mutate: userSignUpMutation, isPending } = useMutation({
+    mutationFn: (userEmail: string) => sendAuthEmail(userEmail),
+    onSuccess: () => {
+      setMessage(SUCCESS_MESSAGE.send_mail);
     },
-  );
+    onError: (error: Error) => {
+      toast.error(ERROR_MESSAGES.FAIL_SEND_EMAIL);
+      console.error(error.message);
+    },
+  });
 
   const handleSendAuthEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    userSignUpMutation({ userEmail });
+    userSignUpMutation(userEmail);
   };
 
   return { message, handleSendAuthEmail, isPending };

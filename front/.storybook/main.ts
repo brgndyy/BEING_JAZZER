@@ -24,13 +24,6 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
   } as PresetValue<Partial<import('@storybook/types').TypescriptOptions> | undefined>,
 
-  staticDirs: [
-    {
-      from: '../src/components/fonts',
-      to: 'src/components/fonts',
-    },
-  ],
-
   webpackFinal(config, options) {
     // Add Vanilla-Extract and MiniCssExtract Plugins
     config.plugins?.push(new VanillaExtractPlugin(), new MiniCssExtractPlugin());
@@ -55,19 +48,6 @@ const config: StorybookConfig = {
           loader: require.resolve('css-loader'),
           options: {
             url: false, // Required as image imports should be handled via JS/TS import statements
-          },
-        },
-      ],
-    });
-
-    config.module?.rules?.push({
-      test: /\.(ttf|otf|eot|woff|woff2)$/,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',
           },
         },
       ],

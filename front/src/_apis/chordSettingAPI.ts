@@ -1,19 +1,20 @@
-import Fetcher from './fetcher/Fetcher';
 import { API_ROUTES } from '@/_constants/routes';
 import { ChangeUserChordSetting, ChordSetting } from '@/_types/index';
-import API_URL from '@/_constants/apiUrl';
+import beingJazzerClient from './clients/beingJazzerClient';
+import HttpError from '../_error/HttpError';
 
 type GetUserChordSetting = {
   convertedAllUserSetting: ChordSetting[];
 };
 
 export const getUserChordSetting = async (accessToken: string) => {
-  const data = await Fetcher.get<GetUserChordSetting>(
-    `${API_URL}${API_ROUTES.user_chord_setting}`,
-    {
-      headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
-    },
-  );
+  const data = await beingJazzerClient.get<GetUserChordSetting>(API_ROUTES.user_chord_setting, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+
+  if (!data) {
+    throw new HttpError('', 503);
+  }
 
   const { convertedAllUserSetting } = data;
 
@@ -24,10 +25,10 @@ export const changeUserChordSetting = async ({
   chordSetting,
   accessToken,
 }: ChangeUserChordSetting) => {
-  await Fetcher.post(`${API_URL}${API_ROUTES.user_chord_setting}`, {
-    headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
+  await beingJazzerClient.post(API_ROUTES.user_chord_setting, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+    body: {
       userChordSetting: chordSetting,
-    }),
+    },
   });
 };

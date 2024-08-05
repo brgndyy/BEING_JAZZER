@@ -17,12 +17,4 @@ const preview: Preview = {
   },
 };
 
-export const decorators = [
-  (Story) => (
-    <div className={myFont.className}>
-      <Story />
-    </div>
-  ),
-];
-
 export default preview;

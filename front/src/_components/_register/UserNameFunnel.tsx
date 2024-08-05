@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 import { myStyle } from '@/_styles/vars.css';
 import { toast } from 'react-toastify';
 import { validate, VALIDATION_TYPE } from '@/_utils/validator';
@@ -15,19 +15,20 @@ import {
   funnelInput,
 } from './funnel.css';
 import Button from '../_common/button/Button';
+import { myFont } from '@/assets/fonts/font';
 
 type Props = {
   handleNextStep: () => void;
   handlePreviousStep: () => void;
   value: string;
-  inputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 export default function UserNameFunnel({
   handleNextStep,
   handlePreviousStep,
   value,
-  inputHandler,
+  onChange,
 }: Props) {
   const [error, setError] = useState(false);
 
@@ -55,12 +56,12 @@ export default function UserNameFunnel({
       <div className={funnelInputContainer}>
         <motion.input
           type="text"
-          className={`${funnelInput}`}
+          className={`${funnelInput} ${myFont.className}`}
           id="userName"
           name="userName"
           autoComplete="off"
           value={value}
-          onChange={inputHandler}
+          onChange={onChange}
           initial={false}
           animate={{
             borderColor: error ? 'red' : 'initial',
