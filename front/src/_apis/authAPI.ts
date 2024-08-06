@@ -10,7 +10,7 @@ type AccessToken = {
 
 export const getNewAccessToken = async (refreshToken: string) => {
   const data = await beingJazzerClient.post<AccessToken>(`${API_ROUTES.new_access_token}`, {
-    body: refreshToken,
+    body: { refreshToken },
   });
 
   if (data) {
@@ -27,7 +27,7 @@ type TokenValues = {
 };
 
 export const getTokenValuesByEncryptedCode = async (path: string, encryptedCode: string) => {
-  const data = await beingJazzerClient.post<TokenValues>(path, { body: encryptedCode });
+  const data = await beingJazzerClient.post<TokenValues>(path, { body: { encryptedCode } });
 
   if (!data) {
     redirect('/not-found');
@@ -37,7 +37,7 @@ export const getTokenValuesByEncryptedCode = async (path: string, encryptedCode:
 };
 
 export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: string) => {
-  const data = await beingJazzerClient.post<UserInfo>(path, { body: encryptedCode });
+  const data = await beingJazzerClient.post<UserInfo>(path, { body: { encryptedCode } });
 
   if (!data) {
     redirect('/not-found');
@@ -47,11 +47,11 @@ export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: st
 };
 
 export const userSignUp = async (signUpFormData: FormData) => {
-  await beingJazzerClient.post<void>(API_ROUTES.signup, { body: signUpFormData });
+  await beingJazzerClient.post<void>(API_ROUTES.signup, { body: { signUpFormData } });
 };
 
 export const sendAuthEmail = async (userEmail: string) => {
-  await beingJazzerClient.post<void>(API_ROUTES.request_auth_email, { body: userEmail });
+  await beingJazzerClient.post<void>(API_ROUTES.request_auth_email, { body: { userEmail } });
 };
 
 export const getUserInfoByAccessToken = async (accessToken?: string) => {
@@ -75,8 +75,8 @@ export const getUserInfoByAccessToken = async (accessToken?: string) => {
 };
 
 export const withdrawAccount = async (accessToken: string) => {
-  console.log('accessToken :', accessToken);
   await beingJazzerClient.post<void>(API_ROUTES.withdraw_user, {
+    body: null,
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

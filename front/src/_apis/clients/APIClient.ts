@@ -8,7 +8,10 @@ export default class APIClient {
   private defaultHeaders: Record<string, string>;
   private onError?: (error: Error) => void;
 
-  constructor(baseUrl: string, defaultHeaders: Record<string, string> = {}) {
+  constructor(
+    baseUrl: string,
+    defaultHeaders: Record<string, string> = { 'Content-Type': 'application/json' },
+  ) {
     this.baseUrl = baseUrl;
     this.defaultHeaders = defaultHeaders;
   }
@@ -46,13 +49,12 @@ export default class APIClient {
   }
 
   private prepareBody(body: any): any {
-    console.log('prepare body : ', body);
     if (body instanceof FormData) {
       return body;
-    } else if (typeof body === 'object') {
+    } else if (typeof body === 'object' && body !== null) {
       return JSON.stringify(body);
     } else {
-      return JSON.stringify({ body });
+      return body;
     }
   }
 
@@ -99,6 +101,7 @@ export default class APIClient {
     const { body, headers, ...restOptions } = options;
 
     console.log('body:', body);
+    console.log(this.defaultHeaders);
     console.log('headers:', headers);
 
     return this.request<T>(url, {
@@ -107,9 +110,8 @@ export default class APIClient {
       headers: {
         ...this.defaultHeaders,
         ...headers,
-        'Content-Type': headers?.['Content-Type'] || 'application/json',
       },
-      body: body !== undefined ? this.prepareBody(body) : undefined,
+      body: body !== undefined ? this.prepareBody(body) : JSON.stringify({}),
     });
   }
 
