@@ -30,19 +30,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: List files in front directory
-        run: ls -la
-        working-directory: front
-
       - name: Install dependencies
         run: npm ci
+        working-directory: front
 
       - name: Build Storybook
-        run: npm run build-storybook
+        run: npm run build-storybook -- --output-dir storybook-static > build-storybook.log 2>&1
+        working-directory: front
 
-      - name: Publish to Chromatic
-        id: chromatic
+      - name: Print Storybook build log
+        run: cat build-storybook.log
+        working-directory: front
+
+      - name: Run Chromatic
         uses: chromaui/action@latest
         with:
-          workingDir: front
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        working-directory: front
