@@ -1,8 +1,7 @@
 name: "Chromatic"
 
 on:
-  pull_request:
-    branches: [main]
+  push:
 
 jobs:
   chromatic:
@@ -28,7 +27,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: front
 
       - name: Build Storybook
@@ -36,7 +35,9 @@ jobs:
         working-directory: front
 
       - name: Run Chromatic
-        run: npm run chromatic
-        working-directory: front
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        working-directory: front
