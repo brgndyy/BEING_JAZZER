@@ -44,6 +44,7 @@ jobs:
 
       - name: Run Chromatic
         uses: chromaui/action@latest
+        working-directory: front
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         env:
