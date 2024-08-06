@@ -40,5 +40,9 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
-      - name: Run Chromatic
-        run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@latest
+        with:
+          workingDir: front
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
