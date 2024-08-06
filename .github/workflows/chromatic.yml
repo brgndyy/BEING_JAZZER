@@ -3,10 +3,6 @@ name: "Chromatic"
 on:
   push:
 
-defaults:
-  run:
-    working-directory: front
-
 jobs:
   chromatic:
     name: Run Chromatic
@@ -44,8 +40,8 @@ jobs:
 
       - name: Run Chromatic
         uses: chromaui/action@latest
-        working-directory: front
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        working-directory: front
