@@ -16,22 +16,21 @@ const useChangeUserChordSetting = ({
   initialChordSetting,
   accessToken = '',
 }: HookProps) => {
-  const { mutate: changeChordSettingMutation, isPending } = useCachedMutation<
-    void,
-    Error,
-    ChangeUserChordSetting
-  >(({ accessToken, chordSetting }) => changeUserChordSetting({ accessToken, chordSetting }), {
-    initialValue: { accessToken, chordSetting: initialChordSetting },
-    onError: () => {
-      toast.error(ERROR_MESSAGES.fail_get_chord_setting);
+  const { mutate: changeChordSettingMutation, isPending } = useCachedMutation(
+    changeUserChordSetting,
+    {
+      initialValue: { accessToken, chordSetting: initialChordSetting },
+      onError: () => {
+        toast.error(ERROR_MESSAGES.fail_get_chord_setting);
+      },
+      onSuccess: () => {
+        toast.success(SUCCESS_MESSAGE.set_user_chord);
+      },
+      onSettled: () => {
+        handleClose();
+      },
     },
-    onSuccess: () => {
-      toast.success(SUCCESS_MESSAGE.set_user_chord);
-    },
-    onSettled: () => {
-      handleClose();
-    },
-  });
+  );
 
   const handleUserChordSetting = ({ accessToken, chordSetting }: ChangeUserChordSetting) => {
     changeChordSettingMutation({ accessToken, chordSetting });

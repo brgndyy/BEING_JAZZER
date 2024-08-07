@@ -29,7 +29,7 @@ export const useCachedMutation = <TData, TError, TVariables>(
     (variables: TVariables, options?: MutateOptions<TData, TError, TVariables>) => {
       console.log(variables);
       if (equalityFn(previousVariables, variables)) {
-        console.error('변경 사항이 없어요!');
+        console.error('no change');
         if (mutationOptions.onSettled) {
           mutationOptions.onSettled(undefined, null, variables, undefined);
         }
