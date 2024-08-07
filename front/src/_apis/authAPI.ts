@@ -15,9 +15,9 @@ export const getNewAccessToken = async (refreshToken: string) => {
 
   if (data) {
     return { newAccessToken: data.newAccessToken };
-  } else {
-    return;
   }
+
+  return;
 };
 
 type TokenValues = {
