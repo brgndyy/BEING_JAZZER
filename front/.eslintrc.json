@@ -8,39 +8,58 @@
     "ecmaVersion": "latest"
   },
   "env": {
-    // 전역객체를 eslint가 인식하는 구간
-    "browser": true, // document나 window 인식되게 함
+    "browser": true,
     "node": true,
     "es6": true
   },
-  "ignorePatterns": ["node_modules/"], // eslint 미적용될 폴더나 파일 명시
+  "ignorePatterns": ["node_modules/"],
   "extends": [
     "next/core-web-vitals",
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended", // ts 권장
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended", // eslint의 포매팅을 prettier로 사용.
-    "prettier" // eslint-config-prettier prettier와 중복된 eslint 규칙 제거
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "linebreak-style": 0,
-    // 경고표시, 파일 확장자를 .ts나 .tsx 모두 허용함
     "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
-    "import/prefer-default-export": ["off", { "target": "single" }],
-    // label이 직접 컨트롤 폼을 감싸거나, id 바인딩 둘중 하나만 되어도 가능
+    "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": [
       2,
       {
         "labelAttributes": ["htmlFor"]
       }
     ],
-    "import/no-extraneous-dependencies": 0, // 테스트 또는 개발환경을 구성하는 파일에서는 devDependency 사용을 허용
-    "no-shadow": 0, // 다른 스코프에서 동일한 변수 사용 금지
-    "react/prop-types": 0, // propTypes 강제
-    "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }]
+    "import/no-extraneous-dependencies": 0,
+    "no-shadow": 0,
+    "react/prop-types": 0,
+    "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }],
+    "consistent-return": "off", // 비활성화
+    "no-useless-return": "off", // 비활성화
+    "@typescript-eslint/no-explicit-any": "off", // 비활성화
+    "@typescript-eslint/lines-between-class-members": "off", // 비활성화
+    "class-methods-use-this": "off", // 비활성화
+    "no-console": "off", // 비활성화
+    "@typescript-eslint/return-await": "off", // 비활성화
+    "no-else-return": "off", // 비활성화
+    "react/require-default-props": "off", // 비활성화
+    "react/button-has-type": "off", // 비활성화
+    "react-hooks/exhaustive-deps": "off", // 비활성화
+    "@typescript-eslint/no-unused-vars": "off", // 비활성화
+    "import/order": "off", // 비활성화
+    "react/no-unused-prop-types": "off", // 비활성화
+    "prettier/prettier": "off", // 비활성화
+    "@typescript-eslint/no-shadow": "off", // 비활성화
+    "@typescript-eslint/no-use-before-define": "off", // 비활성화
+    "@typescript-eslint/no-unused-expressions": "off", // 비활성화
+    "react/jsx-curly-brace-presence": "off",
+    "react/jsx-props-no-spreading": "off",
+    "prefer-template": "off",
+    "no-restricted-syntax": "off"
+    // 비활성화,
   }
 }

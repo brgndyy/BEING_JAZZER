@@ -44,6 +44,7 @@ export default function OptionConfig({
               }`}
             >
               <Input
+                variant="default"
                 type="checkbox"
                 name={key}
                 id={key}

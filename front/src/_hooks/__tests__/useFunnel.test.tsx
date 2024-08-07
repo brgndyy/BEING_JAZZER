@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import useFunnel from '../useFunnel';
 
-const FunnelComponent = ({ steps }: { steps: string[] }) => {
+function FunnelComponent({ steps }: { steps: string[] }) {
   const { step, Funnel, handleNextStep, handlePreviousStep } = useFunnel(steps);
 
   return (
@@ -18,7 +18,7 @@ const FunnelComponent = ({ steps }: { steps: string[] }) => {
       <button onClick={handlePreviousStep}>이전</button>
     </div>
   );
-};
+}
 
 describe('useFunnel에 대한 테스트 코드 작성', () => {
   const steps = ['Step1', 'Step2', 'Step3'];
