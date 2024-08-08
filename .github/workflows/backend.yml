@@ -1,0 +1,80 @@
+name: backend CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "front/src/**"
+      - "backend/src/**"
+
+jobs:
+  path_changes:
+    runs-on: ubuntu-latest
+    outputs:
+      front: ${{ steps.filter.outputs.front }}
+      backend: ${{ steps.filter.outputs.backend }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            front:
+              - 'front/src/**'
+            backend:
+              - 'backend/src/**'
+
+  build_and_push_backend:
+    needs: path_changes
+    if: needs.path_changes.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN_BACKEND }}
+
+      - name: Set up Docker Meta for Backend
+        id: docker_meta_backend
+        uses: docker/metadata-action@v5
+        with:
+          images: brgndy/being_jazzer-backend
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha
+          flavor: |
+            latest=true
+
+      - name: Build and Push Frontend Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.docker_meta_backend.outputs.tags }}
+          labels: ${{ steps.docker_meta_backend.outputs.labels }}
+          no-cache: true
+          build-args: |
+            DEV_FRONT_URL=${{ secrets.DEV_FRONT_URL }}
+            PROD_FRONT_URL=${{ secrets.PROD_FRONT_URL }}
+            GMAIL_USER=${{ secrets.GMAIL_USER}}
+            MAIL_APP_PASSWORD=${{ secrets.MAIL_APP_PASSWORD }}
+            JWT_SIGNATURE=${{ secrets.JWT_SIGNATURE }}
+            DEV_MYSQL_PASSWORD=${{ secrets.DEV_MYSQL_PASSWORD }}
+            DEV_MYSQL_DATABASE=${{ secrets.DEV_MYSQL_DATABASE }}
+            PROD_MYSQL_USERNAME=${{ secrets.PROD_MYSQL_USERNAME }}
+            PROD_MYSQL_PASSWORD=${{ secrets.PROD_MYSQL_PASSWORD }}
+            PROD_MYSQL_DATABASE=${{ secrets.PROD_MYSQL_DATABASE }}
+            PROD_MYSQL_HOST=${{ secrets.PROD_MYSQL_HOST }}
+            BACK_END_NODE_ENV=${{ secrets.BACK_END_NODE_ENV }}

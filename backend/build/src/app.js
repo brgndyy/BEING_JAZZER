@@ -42,15 +42,14 @@ const userRoutes_1 = require("./routes/userRoutes");
 const chordImageRoutes_1 = require("./routes/chordImageRoutes");
 dotenv.config();
 const app = (0, express_1.default)();
-app.set('port', process.env.PORT || 3002);
+app.set('port', process.env.PORT || 80);
 app.use((0, cors_1.default)(options_1.CORS_OPTIONS));
 app.use((0, helmet_1.default)({
     crossOriginResourcePolicy: false,
 }));
 app.use(body_parser_1.default.json());
 app.use((0, cookie_parser_1.default)());
-app.use(process.env.NODE_ENV === 'production' ? (0, morgan_1.default)('combined') : (0, morgan_1.default)('dev'));
-app.use((0, morgan_1.default)('dev'));
+app.use(process.env.BACK_END_NODE_ENV === 'production' ? (0, morgan_1.default)('combined') : (0, morgan_1.default)('dev'));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use('/images', express_1.default.static('src/assets/images'));
@@ -79,5 +78,8 @@ app.use((error, req, res) => {
     res.json({ message: error.message || errorMessages_1.default.DEFAULT_ERROR });
 });
 app.listen(app.get('port'), () => {
+    console.log(process.env.BACK_END_NODE_ENV === 'production'
+        ? progressMessages_1.default.sever_start_from_production
+        : progressMessages_1.default.sever_start_from_development);
     console.log(app.get('port'), progressMessages_1.default.port);
 });

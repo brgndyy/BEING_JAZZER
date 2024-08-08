@@ -10,7 +10,7 @@ import { initKeyChordDetail, KeyChordDetail } from './keyChordDetail';
 import { UserSetting, initUserSetting } from './userSetting';
 
 const configs: Config = configData;
-const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+const env = process.env.BACK_END_NODE_ENV === 'production' ? 'production' : 'development';
 const config = configs[env];
 
 const sequelize = new Sequelize(
@@ -20,7 +20,13 @@ const sequelize = new Sequelize(
   {
     host: config.host,
     dialect: 'mysql',
-    timezone: '+09:00',
+    logging: false,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
   },
 );
 
