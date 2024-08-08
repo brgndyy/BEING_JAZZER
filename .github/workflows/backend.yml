@@ -62,8 +62,8 @@ jobs:
           file: ./backend/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.docker_meta_frontend.outputs.tags }}
-          labels: ${{ steps.docker_meta_frontend.outputs.labels }}
+          tags: ${{ steps.docker_meta_backend.outputs.tags }}
+          labels: ${{ steps.docker_meta_backend.outputs.labels }}
           no-cache: true
           build-args: |
             DEV_FRONT_URL=${{ secrets.DEV_FRONT_URL }}
