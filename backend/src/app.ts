@@ -18,7 +18,7 @@ dotenv.config();
 
 const app = express();
 
-app.set('port', process.env.PORT || 3002);
+app.set('port', process.env.PORT || 80);
 
 app.use(cors(CORS_OPTIONS));
 app.use(
@@ -28,8 +28,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(process.env.NODE_ENV === 'production' ? morgan('combined') : morgan('dev'));
-app.use(morgan('dev'));
+app.use(process.env.BACK_END_NODE_ENV === 'production' ? morgan('combined') : morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/images', express.static('src/assets/images'));
@@ -64,5 +63,10 @@ app.use((error: CustomError, req: Request, res: Response) => {
 });
 
 app.listen(app.get('port'), () => {
+  console.log(
+    process.env.BACK_END_NODE_ENV === 'production'
+      ? PROGRESS_MESSAGES.sever_start_from_production
+      : PROGRESS_MESSAGES.sever_start_from_development,
+  );
   console.log(app.get('port'), PROGRESS_MESSAGES.port);
 });
