@@ -41,6 +41,8 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
 
     const newUser = await createNewUserData(userName, userEmail, emailId, userProfileImageSrc);
 
+    console.log('newUser : ', newUser);
+
     const newAccessToken = createNewAccessToken(newUser);
 
     const newRefreshToken = createNewRefreshToken(newUser);
@@ -51,9 +53,9 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
 
     await setAllKeyChordDetails(newUser.id);
 
-    sendTokenCookieToClient('accessToken', newAccessToken, res);
-    sendTokenCookieToClient('refreshToken', newRefreshToken, res);
+    return res.json({ accessToken: newAccessToken, refreshToken: newRefreshToken });
   } catch (err) {
+    console.error(err);
     const error = new HttpError(ERROR_MESSAGES.FAIL_SIGN_UP, 503);
 
     return next(error);

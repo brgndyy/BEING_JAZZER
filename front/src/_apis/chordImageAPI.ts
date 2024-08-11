@@ -4,15 +4,7 @@ import beingJazzerClient from './clients/beingJazzerClient';
 import HttpError from '../_error/HttpError';
 
 export const getDefaultChordImage = async () => {
-  const data = await beingJazzerClient.get<TotalChordImageData>(
-    `${API_ROUTES.default_chord_images}`,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    },
-  );
+  const data = await beingJazzerClient.get<TotalChordImageData>(API_ROUTES.default_chord_images);
 
   if (!data) {
     throw new HttpError('', 503);

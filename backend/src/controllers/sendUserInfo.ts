@@ -20,6 +20,7 @@ const sendUserInfo = async (req: CustomRequestType, res: Response, next: NextFun
 
     return res.json({ userInfo: existingUserInfo });
   } catch (err) {
+    console.error(err);
     const error = new HttpError(ERROR_MESSAGES.FAIL_SEND_USER_INFO, 503);
     return next(error);
   }

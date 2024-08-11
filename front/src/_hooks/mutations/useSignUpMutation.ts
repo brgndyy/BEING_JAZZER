@@ -1,20 +1,18 @@
 import { useMutation } from '@tanstack/react-query';
-import { userSignUp } from '@/_apis/authAPI';
-import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import ERROR_MESSAGES from '@/_constants/errorMessages';
-import { PAGE_ROUTES } from '@/_constants/routes';
 import { SignUpParams } from '@/_types';
-import { useEffect } from 'react';
+import { userSignUp } from '@/app/actions';
+import { useRouter } from 'next/navigation';
+import { PAGE_ROUTES } from '@/_constants/routes';
 
 const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpParams) => {
   const router = useRouter();
-
   const { mutate: userSignUpMutation } = useMutation({
     mutationFn: userSignUp,
     onSuccess: () => {
       router.refresh();
-      router.replace(PAGE_ROUTES.main);
+      router.push(PAGE_ROUTES.main);
     },
     onError: (error: Error) => {
       toast.error(ERROR_MESSAGES.FAIL_SIGN_UP);
@@ -35,12 +33,6 @@ const useSignUpMutation = ({ userName, userEmail, userImage }: SignUpParams) => 
 
     userSignUpMutation(signUpFormData);
   };
-
-  useEffect(() => {
-    console.log(userEmail);
-    console.log(userName);
-    console.log(userImage);
-  }, [userEmail, userName, userImage]);
 
   return { handleUserSignUp };
 };

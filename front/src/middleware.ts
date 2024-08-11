@@ -46,10 +46,10 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(url);
     }
 
-    return response || NextResponse.next();
+    return response;
   }
 
-  return response || NextResponse.next();
+  return response;
 }
 
 export const config = {
