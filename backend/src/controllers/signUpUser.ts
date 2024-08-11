@@ -36,6 +36,8 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
 
     const newUser = await createNewUserData(userName, userEmail, emailId, userProfileImageSrc);
 
+    console.log('newUser : ', newUser);
+
     const newAccessToken = createNewAccessToken(newUser);
 
     const newRefreshToken = createNewRefreshToken(newUser);
