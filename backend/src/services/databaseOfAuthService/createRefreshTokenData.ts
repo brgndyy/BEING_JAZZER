@@ -9,6 +9,7 @@ const createRefreshTokenData = async (hashedRefreshToken: string, id: number) =>
       userId: id,
     });
   } catch (err) {
+    console.error('error log', err);
     throw new HttpError(ERROR_MESSAGES.FAIL_CREATE_REFRESH_TOKEN_DATA, 503);
   }
 };

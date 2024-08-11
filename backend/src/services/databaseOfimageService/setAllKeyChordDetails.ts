@@ -26,6 +26,7 @@ const setAllKeyChordDetails = async (id: number) => {
       }
     }
   } catch (err) {
+    console.error('error log', err);
     throw new HttpError(ERROR_MESSAGES.FAIL_SET_CHORD_IMAGES, 503);
   }
 };

@@ -3,17 +3,22 @@ import { redirect } from 'next/navigation';
 import { UserProfile, UserInfo } from '../_types/index';
 import beingJazzerClient from './clients/beingJazzerClient';
 import HttpError from '../_error/HttpError';
+import BASE_URL from './clients/baseUrl';
 
-type AccessToken = {
+type GetNewAccessTokenResponse = {
   newAccessToken: string;
 };
 
 export const getNewAccessToken = async (refreshToken: string) => {
-  const data = await beingJazzerClient.post<AccessToken>(`${API_ROUTES.new_access_token}`, {
-    body: { refreshToken },
+  const response = await fetch(`${BASE_URL.dev}${API_ROUTES.new_access_token}`, {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify({ refreshToken }),
   });
 
-  if (data) {
+  const data: GetNewAccessTokenResponse = await response.json();
+
+  if (data && data.newAccessToken) {
     return { newAccessToken: data.newAccessToken };
   }
 
@@ -46,12 +51,13 @@ export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: st
   return data;
 };
 
-export const userSignUp = async (signUpFormData: FormData) => {
-  await beingJazzerClient.post<void>(API_ROUTES.signup, { body: { signUpFormData } });
-};
-
 export const sendAuthEmail = async (userEmail: string) => {
-  await beingJazzerClient.post<void>(API_ROUTES.request_auth_email, { body: { userEmail } });
+  await fetch(`${BASE_URL.dev}${API_ROUTES.request_auth_email}`, {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify({ userEmail }),
+  });
+  // await beingJazzerClient.post<void>(API_ROUTES.request_auth_email, { body: { userEmail } });
 };
 
 export const getUserInfoByAccessToken = async (accessToken?: string) => {
@@ -72,13 +78,4 @@ export const getUserInfoByAccessToken = async (accessToken?: string) => {
   const { userInfo } = data;
 
   return userInfo;
-};
-
-export const withdrawAccount = async (accessToken: string) => {
-  await beingJazzerClient.post<void>(API_ROUTES.withdraw_user, {
-    body: null,
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
 };

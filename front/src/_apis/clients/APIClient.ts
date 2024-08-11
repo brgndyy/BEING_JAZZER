@@ -28,6 +28,8 @@ export default class APIClient {
 
     if (!isFormData) {
       headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+    } else {
+      delete headers['Content-Type'];
     }
 
     return headers;
@@ -61,14 +63,8 @@ export default class APIClient {
   private async request<T>(url: string, options: RequestOptions): Promise<T | null> {
     const isFormData = options.body instanceof FormData;
 
-    console.log('options.body:', options.body);
-
     const headers = this.getHeaders(options, isFormData);
     const body = options.body !== undefined ? this.prepareBody(options.body) : undefined;
-
-    console.log('request header: ', headers);
-    console.log('request body: ', body);
-    console.log('isFormData :', isFormData);
 
     try {
       const response = await fetch(`${this.baseUrl}${url}`, {
@@ -76,8 +72,6 @@ export default class APIClient {
         headers,
         body,
       });
-
-      console.log('response: ', response);
 
       return this.handleResponse<T>(response, isFormData);
     } catch (error) {
@@ -99,10 +93,7 @@ export default class APIClient {
     options: { body?: any; headers?: Record<string, string> } = {},
   ): Promise<T | null> {
     const { body, headers, ...restOptions } = options;
-
-    console.log('body:', body);
-    console.log(this.defaultHeaders);
-    console.log('headers:', headers);
+    const isFormData = body instanceof FormData;
 
     return this.request<T>(url, {
       ...restOptions,
@@ -111,7 +102,7 @@ export default class APIClient {
         ...this.defaultHeaders,
         ...headers,
       },
-      body: body !== undefined ? this.prepareBody(body) : JSON.stringify({}),
+      body: isFormData ? body : JSON.stringify(body),
     });
   }
 
