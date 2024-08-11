@@ -16,16 +16,11 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userName, userEmail } = req.body;
 
-    console.log('userName,', userName);
-    console.log('userEmail,', userEmail);
-
     const userProfileImageSrc = req.file
       ? `${PATH.replace_profile_image_url}${req.file.filename}`
       : PATH.default_user_profile_image_url;
 
     const existingUser = await findExistingUserDataFromEmail(userEmail);
-
-    console.log('existingUser : ', existingUser);
 
     if (existingUser) {
       throw new HttpError(ERROR_MESSAGES.EXISTING_USER, 422);
@@ -40,8 +35,6 @@ const userSignUp = async (req: Request, res: Response, next: NextFunction) => {
     const emailId = emailFromRecord.id;
 
     const newUser = await createNewUserData(userName, userEmail, emailId, userProfileImageSrc);
-
-    console.log('newUser : ', newUser);
 
     const newAccessToken = createNewAccessToken(newUser);
 
