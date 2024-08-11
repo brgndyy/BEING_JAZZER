@@ -78,3 +78,15 @@ jobs:
             PROD_MYSQL_DATABASE=${{ secrets.PROD_MYSQL_DATABASE }}
             PROD_MYSQL_HOST=${{ secrets.PROD_MYSQL_HOST }}
             BACK_END_NODE_ENV=${{ secrets.BACK_END_NODE_ENV }}
+
+      - name: EC2 Backend Docker Run
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.BACKEND_EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.BACKEND_EC2_PEM_KEY }}
+          script: |
+            docker stop ${{ secrets.BACKEND_DOCKER_CONTAINER }} || true
+            docker rm ${{ secrets.BACKEND_DOCKER_CONTAINER }} || true
+            docker pull ${{ secrets.BACKEND_DOCKER_IMAGE }}:latest
+            docker run --name ${{ secrets.BACKEND_DOCKER_CONTAINER }} --rm -d -p 80:80 ${{ secrets.BACKEND_DOCKER_IMAGE }}:latest
