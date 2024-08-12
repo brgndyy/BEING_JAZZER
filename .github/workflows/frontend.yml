@@ -1,4 +1,4 @@
-name: frontend CI
+name: frontend CI/CD
 
 on:
   pull_request:
@@ -99,3 +99,15 @@ jobs:
             NEXT_PUBLIC_PRODUCTION_API_URL=${{ secrets.NEXT_PUBLIC_PRODUCTION_API_URL }}
             NEXT_PUBLIC_FRONT_ENV_MODE=${{ secrets.NEXT_PUBLIC_FRONT_ENV_MODE }}
             NEXT_PUBLIC_CDN_URL=${{ secrets.NEXT_PUBLIC_CDN_URL }}
+
+      - name: EC2 Front Docker Run
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.FRONT_EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.FRONT_EC2_PEM_KEY }}
+          script: |
+            docker stop being_jazzer_container || true
+            docker rm being_jazzer_container || true
+            docker pull brgndy/being_jazzer-frontend:latest
+            docker run --name being_jazzer_container --rm -d -p 3000:3000 brgndy/being_jazzer-frontend:latest
