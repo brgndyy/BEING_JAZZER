@@ -1,12 +1,12 @@
 'use server';
 
-import BASE_URL from '@/_apis/clients/baseUrl';
+import { baseUrl } from '@/_apis/clients/beingJazzerClient';
 import { API_ROUTES } from '@/_constants/routes';
 import { cookies } from 'next/headers';
 import TOKEN_COOKIE_OPTION from '@/_constants/tokenCookieOption';
 
 export const withdrawAccount = async (accessToken: string) => {
-  await fetch(`${BASE_URL.dev}${API_ROUTES.withdraw_user}`, {
+  await fetch(`${baseUrl}${API_ROUTES.withdraw_user}`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -24,7 +24,7 @@ type UserSignUpResponse = {
 };
 
 export const userSignUp = async (signUpFormData: FormData) => {
-  const res = await fetch(`${BASE_URL.dev}${API_ROUTES.signup}`, {
+  const res = await fetch(`${baseUrl}${API_ROUTES.signup}`, {
     method: 'POST',
     body: signUpFormData,
   });

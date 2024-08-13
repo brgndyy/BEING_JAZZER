@@ -3,14 +3,14 @@ import { redirect } from 'next/navigation';
 import { UserProfile, UserInfo } from '../_types/index';
 import beingJazzerClient from './clients/beingJazzerClient';
 import HttpError from '../_error/HttpError';
-import BASE_URL from './clients/baseUrl';
+import { baseUrl } from './clients/beingJazzerClient';
 
 type GetNewAccessTokenResponse = {
   newAccessToken: string;
 };
 
 export const getNewAccessToken = async (refreshToken: string) => {
-  const response = await fetch(`${BASE_URL.dev}${API_ROUTES.new_access_token}`, {
+  const response = await fetch(`${baseUrl}${API_ROUTES.new_access_token}`, {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify({ refreshToken }),
@@ -52,7 +52,7 @@ export const getUserInfoByEncryptedCode = async (path: string, encryptedCode: st
 };
 
 export const sendAuthEmail = async (userEmail: string) => {
-  await fetch(`${BASE_URL.dev}${API_ROUTES.request_auth_email}`, {
+  await fetch(`${baseUrl}${API_ROUTES.request_auth_email}`, {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify({ userEmail }),
