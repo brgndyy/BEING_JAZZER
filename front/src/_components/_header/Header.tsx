@@ -29,6 +29,13 @@ export default function Header({ currentTheme, userInfo, chordSetting, accessTok
   const { updateChordSetting } = useChordSettingStore();
   const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
 
+  console.log(
+    'layout process.env.NEXT_PUBLIC_FRONT_ENV_MODE:',
+    process.env.NEXT_PUBLIC_FRONT_ENV_MODE,
+  );
+
+  console.log('test!');
+
   useEffect(() => {
     updateChordSetting(chordSetting);
     if (accessToken) {
