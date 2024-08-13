@@ -22,17 +22,16 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  console.log(
+    'layout process.env.NEXT_PUBLIC_FRONT_ENV_MODE:',
+    process.env.NEXT_PUBLIC_FRONT_ENV_MODE,
+  );
   const currentTheme = getThemeCookieValue();
   const sanitizedThemeScript = sanitizeHtml(generateThemeScript(currentTheme));
   const accessToken = getAccessTokenValue();
   const userInfo = await getUserInfoByAccessToken(accessToken);
   const chordSetting =
     accessToken && userInfo ? await getUserChordSetting(accessToken) : defaultChordSetting;
-
-  console.log(
-    'layout process.env.NEXT_PUBLIC_FRONT_ENV_MODE:',
-    process.env.NEXT_PUBLIC_FRONT_ENV_MODE,
-  );
 
   return (
     <html lang="en">
