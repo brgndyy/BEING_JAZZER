@@ -34,6 +34,8 @@ export default function Header({ currentTheme, userInfo, chordSetting, accessTok
     process.env.NEXT_PUBLIC_FRONT_ENV_MODE,
   );
 
+  console.log('test!');
+
   useEffect(() => {
     updateChordSetting(chordSetting);
     if (accessToken) {

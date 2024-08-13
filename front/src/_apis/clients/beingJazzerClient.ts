@@ -8,8 +8,6 @@ export const baseUrl =
 
 const beingJazzerClient = new APIClient(baseUrl);
 
-console.log('baseUrl:', baseUrl);
-
 beingJazzerClient.setErrorHandler((error) => {
   console.error('Custom API error handler:', error);
   // 예: 사용자에게 에러 메시지 표시
