@@ -110,4 +110,9 @@ jobs:
             docker stop ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
             docker rm ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
             docker pull ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
-            docker run --name ${{ secrets.FRONT_DOCKER_CONTAINER }} --rm -d -p 3000:3000 ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
+            docker run --name ${{ secrets.FRONT_DOCKER_CONTAINER }} --rm -d -p 3000:3000 \
+              -e NEXT_PUBLIC_FRONT_ENV_MODE=${{ secrets.NEXT_PUBLIC_FRONT_ENV_MODE }} \
+              -e NEXT_PUBLIC_DEV_API_URL=${{ secrets.NEXT_PUBLIC_DEV_API_URL }} \
+              -e NEXT_PUBLIC_PRODUCTION_API_URL=${{ secrets.NEXT_PUBLIC_PRODUCTION_API_URL }} \
+              -e NEXT_PUBLIC_CDN_URL=${{ secrets.NEXT_PUBLIC_CDN_URL }} \
+              ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
