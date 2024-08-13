@@ -24,13 +24,10 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const currentTheme = getThemeCookieValue();
   const sanitizedThemeScript = sanitizeHtml(generateThemeScript(currentTheme));
-  console.log('test');
   const accessToken = getAccessTokenValue();
   const userInfo = await getUserInfoByAccessToken(accessToken);
   const chordSetting =
     accessToken && userInfo ? await getUserChordSetting(accessToken) : defaultChordSetting;
-
-  console.log('process.env.NEXT_PUBLIC_FRONT_ENV_MODE : ', process.env.NEXT_PUBLIC_FRONT_ENV_MODE);
 
   return (
     <html lang="en">
