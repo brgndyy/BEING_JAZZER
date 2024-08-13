@@ -1,10 +1,10 @@
 import BASE_URL from './baseUrl';
 import APIClient from './APIClient';
 
-console.log('NEXT_PUBLIC_FRONT_ENV_MODE:', process.env.NEXT_PUBLIC_FRONT_ENV_MODE);
+// export const baseUrl =
+//   process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
 
-export const baseUrl =
-  process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
+export const baseUrl = BASE_URL.prod;
 
 const beingJazzerClient = new APIClient(baseUrl);
 
