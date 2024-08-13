@@ -45,7 +45,7 @@ jobs:
         id: docker_meta_backend
         uses: docker/metadata-action@v5
         with:
-          images: brgndy/being_jazzer-backend
+          images: ${{ secrets.BACKEND_DOCKER_IMAGE }}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
