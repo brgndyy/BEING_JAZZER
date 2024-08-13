@@ -1,9 +1,9 @@
-import BASE_URL from './baseUrl';
+// import BASE_URL from './baseUrl';
 import APIClient from './APIClient';
 
-export const baseUrl =
-  process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
-// export const baseUrl = BASE_URL.prod;
+// export const baseUrl =
+//   process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
+export const baseUrl = 'https://api.being-jazzer.com';
 
 const beingJazzerClient = new APIClient(baseUrl);
 
