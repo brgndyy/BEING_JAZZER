@@ -5,8 +5,9 @@ console.log('process.env.FRONT_ENV_MODE:', process.env.FRONT_ENV_MODE);
 
 export const baseUrl = process.env.FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
 
-console.log('baseUrl:', baseUrl);
 const beingJazzerClient = new APIClient(baseUrl);
+
+console.log('baseUrl:', baseUrl);
 
 beingJazzerClient.setErrorHandler((error) => {
   console.error('Custom API error handler:', error);
