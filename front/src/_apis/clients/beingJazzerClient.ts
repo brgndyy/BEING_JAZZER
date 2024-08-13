@@ -5,9 +5,9 @@ export const baseUrl =
   process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
 // export const baseUrl = BASE_URL.prod;
 
-console.log('baseUrl : ', baseUrl);
-
 const beingJazzerClient = new APIClient(baseUrl);
+
+console.log('baseUrl : ', baseUrl);
 
 beingJazzerClient.setErrorHandler((error) => {
   console.error('Custom API error handler:', error);
