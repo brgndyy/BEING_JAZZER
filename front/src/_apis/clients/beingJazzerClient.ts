@@ -1,11 +1,9 @@
 import BASE_URL from './baseUrl';
 import APIClient from './APIClient';
 
-// export const baseUrl =
-//   process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
-export const baseUrl = BASE_URL.prod;
-
-console.log('process.env.NEXT_PUBLIC_FRONT_ENV_MODE : ', process.env.NEXT_PUBLIC_FRONT_ENV_MODE);
+export const baseUrl =
+  process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
+// export const baseUrl = BASE_URL.prod;
 
 console.log('baseUrl : ', baseUrl);
 
