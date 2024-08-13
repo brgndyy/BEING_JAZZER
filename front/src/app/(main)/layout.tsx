@@ -29,6 +29,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const chordSetting =
     accessToken && userInfo ? await getUserChordSetting(accessToken) : defaultChordSetting;
 
+  console.log(
+    'layout process.env.NEXT_PUBLIC_FRONT_ENV_MODE:',
+    process.env.NEXT_PUBLIC_FRONT_ENV_MODE,
+  );
+
   return (
     <html lang="en">
       <body suppressHydrationWarning className={myFont.className}>
