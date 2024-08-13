@@ -1,9 +1,8 @@
 import { API_ROUTES } from '@/_constants/routes';
 import { redirect } from 'next/navigation';
 import { UserProfile, UserInfo } from '../_types/index';
-import beingJazzerClient from './clients/beingJazzerClient';
+import beingJazzerClient, { baseUrl } from './clients/beingJazzerClient';
 import HttpError from '../_error/HttpError';
-import { baseUrl } from './clients/beingJazzerClient';
 
 type GetNewAccessTokenResponse = {
   newAccessToken: string;
