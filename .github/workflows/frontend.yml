@@ -74,7 +74,7 @@ jobs:
         id: docker_meta_frontend
         uses: docker/metadata-action@v5
         with:
-          images: brgndy/being_jazzer-frontend
+          images: ${{ secrets.FRONT_DOCKER_IMAGE }}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -107,7 +107,7 @@ jobs:
           username: ec2-user
           key: ${{ secrets.FRONT_EC2_PEM_KEY }}
           script: |
-            docker stop being_jazzer_container || true
-            docker rm being_jazzer_container || true
-            docker pull brgndy/being_jazzer-frontend:latest
-            docker run --name being_jazzer_container --rm -d -p 3000:3000 brgndy/being_jazzer-frontend:latest
+            docker stop ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
+            docker rm ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
+            docker pull ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
+            docker run --name ${{ secrets.FRONT_DOCKER_CONTAINER }} --rm -d -p 3000:3000 ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
