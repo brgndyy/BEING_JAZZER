@@ -38,4 +38,4 @@ USER nextjs
 
 EXPOSE 3000
 
-CMD ["npx", "next", "start"]
+CMD ["npm", "run", "start"]
