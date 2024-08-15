@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM node:20 AS base
 
 ARG NEXT_PUBLIC_DEV_API_URL
 ARG NEXT_PUBLIC_PRODUCTION_API_URL
@@ -21,7 +21,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 
-RUN npm ci
+RUN npm install
 
 FROM base AS builder
 
