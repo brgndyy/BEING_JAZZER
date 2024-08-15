@@ -115,3 +115,13 @@ jobs:
               -e NODE_ENV=production \
               -e NEXT_PUBLIC_FRONT_ENV_MODE=production \
               ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
+
+      - name: Remove dangling images
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.FRONT_EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.FRONT_EC2_PEM_KEY }}
+          script: |
+            docker images -q --filter "dangling=true" | xargs docker rmi -f
+            docker image prune -f
