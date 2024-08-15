@@ -47,11 +47,7 @@ jobs:
 
       - name: Install frontend dependencies
         working-directory: front
-        run: npm i --force
-
-      - name: Install missing dependencies
-        working-directory: front
-        run: npm install -D @vanilla-extract/next-plugin
+        run: npm install --force
 
       - name: Run frontend tests
         working-directory: front

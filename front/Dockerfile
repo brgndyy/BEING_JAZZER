@@ -19,6 +19,7 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 COPY package.json package-lock.json ./
 RUN npm ci
+RUN npm install -D @vanilla-extract/next-plugin
 
 FROM deps AS builder
 
