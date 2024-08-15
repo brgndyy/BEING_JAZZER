@@ -54,7 +54,6 @@ const nextConfig = {
       },
     ],
   },
-  output: 'standalone',
 };
 
 module.exports = withVanillaExtract(nextConfig);
