@@ -23,6 +23,8 @@ RUN npm install --save-dev @vanilla-extract/next-plugin
 
 FROM deps AS builder
 
+COPY --from=deps /app/node_modules ./node_modules
+
 COPY . .
 RUN rm -rf ./.next/cache
 RUN npm run build
@@ -33,7 +35,6 @@ WORKDIR /app
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
 
 RUN addgroup -S nextjs && adduser -S -G nextjs nextjs
 USER nextjs
