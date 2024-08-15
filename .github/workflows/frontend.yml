@@ -54,7 +54,8 @@ jobs:
   #       run: npm test
 
   build_and_push_frontend:
-    needs: [path_changes, frontend-tests]
+    # needs: [path_changes, frontend-tests]
+    needs: [path_changes]
     if: needs.path_changes.outputs.front == 'true'
     runs-on: ubuntu-latest
     steps:
