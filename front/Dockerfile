@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:20 AS base
 
 ARG NEXT_PUBLIC_DEV_API_URL
 ARG NEXT_PUBLIC_PRODUCTION_API_URL
@@ -14,25 +14,21 @@ ENV NODE_ENV=$NODE_ENV
 
 WORKDIR /app
 
-
 FROM base AS deps
 
 RUN apk add --no-cache libc6-compat
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 FROM deps AS builder
 
 COPY . .
 RUN rm -rf ./.next/cache
 
-RUN rm -rf node_modules
-RUN npm install
-
 RUN npm run build
 
-FROM node:20-alpine AS runner
+FROM node:20 AS runner
 
 WORKDIR /app
 
