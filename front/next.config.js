@@ -46,7 +46,14 @@ const nextConfig = {
       {
         protocol: 'http',
         hostname: 'localhost',
-        port: '3002',
+        port: '',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.being-jazzer.com',
+        port: '*',
+        pathname: '/images/**',
       },
       {
         protocol: 'https',

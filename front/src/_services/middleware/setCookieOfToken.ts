@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import COOKIE_CONFIG from '@/_constants/tokenCookieOption';
+import TOKEN_COOKIE_OPTION from '@/_constants/tokenCookieOption';
 
 const setCookieOfToken = (response: NextResponse, type: string, token: string) => {
   const cookieConfig =
-    type === 'accessToken' ? COOKIE_CONFIG.access_token : COOKIE_CONFIG.refresh_token;
+    type === 'accessToken' ? TOKEN_COOKIE_OPTION.access_token : TOKEN_COOKIE_OPTION.refresh_token;
 
   response.cookies.set(type, token, cookieConfig);
 };

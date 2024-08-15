@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import API_URL from '@/_constants/apiUrl';
+import { baseUrl } from '@/_apis/clients/beingJazzerClient';
 import { profileImage, profileWrapper, infoWrapper, textWrapper } from './userInfo.css';
 import InfoText from './InfoText';
 import WithdrawTriggerButton from './WithdrawTriggerButton';
@@ -16,7 +16,7 @@ export default function UserInfo({ userEmail, userName, profileImageUrl }: UserI
       <div>
         <Image
           className={profileImage}
-          src={`${API_URL}${profileImageUrl}`}
+          src={`${baseUrl}${profileImageUrl}`}
           width={200}
           height={200}
           alt="프로필 이미지"

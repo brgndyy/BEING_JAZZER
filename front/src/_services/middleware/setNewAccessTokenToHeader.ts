@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import COOKIE_CONFIG from '@/_constants/tokenCookieOption';
+import TOKEN_COOKIE_OPTION from '@/_constants/tokenCookieOption';
 
 const setNewAccessTokenToHeader = (response: NextResponse, newAccessToken: string) => {
-  response.cookies.set('accessToken', newAccessToken, COOKIE_CONFIG.access_token);
+  response.cookies.set('accessToken', newAccessToken, TOKEN_COOKIE_OPTION.access_token);
 
   response.headers.set('X-NewAccessToken', newAccessToken);
 
