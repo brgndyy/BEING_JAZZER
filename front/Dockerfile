@@ -19,7 +19,7 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 COPY package.json package-lock.json ./
 RUN npm ci
-RUN npm install --save -dev @vanilla-extract/next-plugin
+RUN npm install --save-dev @vanilla-extract/next-plugin
 
 FROM deps AS builder
 
@@ -43,4 +43,4 @@ USER nextjs
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["npx", "run", "start"]
