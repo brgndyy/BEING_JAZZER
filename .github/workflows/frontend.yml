@@ -24,34 +24,34 @@ jobs:
             backend:
               - 'backend/src/**'
 
-  # frontend-tests:
-  #   needs: path_changes
-  #   if: needs.path_changes.outputs.front == 'true'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v3
+  frontend-tests:
+    needs: path_changes
+    if: needs.path_changes.outputs.front == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: "18"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-  #     - name: Cache Node.js modules
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: front/node_modules
-  #         key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-node-
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-  #     - name: Install frontend dependencies
-  #       working-directory: front
-  #       run: npm install
+      - name: Install frontend dependencies
+        working-directory: front
+        run: npm install
 
-  #     - name: Run frontend tests
-  #       working-directory: front
-  #       run: npm test
+      - name: Run frontend tests
+        working-directory: front
+        run: npm test
 
   build_and_push_frontend:
     # needs: [path_changes, frontend-tests]
