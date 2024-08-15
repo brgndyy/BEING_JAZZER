@@ -4,11 +4,13 @@ ARG NEXT_PUBLIC_DEV_API_URL
 ARG NEXT_PUBLIC_PRODUCTION_API_URL
 ARG NEXT_PUBLIC_FRONT_ENV_MODE
 ARG NEXT_PUBLIC_CDN_URL
+ARG NODE_ENV
 
 ENV NEXT_PUBLIC_DEV_API_URL=$NEXT_PUBLIC_DEV_API_URL
 ENV NEXT_PUBLIC_PRODUCTION_API_URL=$NEXT_PUBLIC_PRODUCTION_API_URL
 ENV NEXT_PUBLIC_FRONT_ENV_MODE="production"
 ENV NEXT_PUBLIC_CDN_URL="d2qtp7qksp5k9g.cloudfront.net"
+ENV NODE_ENV=$NODE_ENV
 
 WORKDIR /app
 
@@ -28,7 +30,6 @@ FROM node:18-alpine AS runner
 
 WORKDIR /app
 
-ENV NODE_ENV=production
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
