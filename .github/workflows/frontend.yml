@@ -55,6 +55,7 @@ jobs:
 
   build_and_push_frontend:
     needs: [path_changes, frontend-tests]
+    # needs: path_changes
     if: needs.path_changes.outputs.front == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -110,4 +111,17 @@ jobs:
             docker stop ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
             docker rm ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
             docker pull ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
-            docker run --name ${{ secrets.FRONT_DOCKER_CONTAINER }} --rm -d -p 3000:3000 ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
+            docker run --name ${{ secrets.FRONT_DOCKER_CONTAINER }} --rm -d -p 3000:3000 \
+              -e NODE_ENV=production \
+              -e NEXT_PUBLIC_FRONT_ENV_MODE=production \
+              ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
+
+      - name: Remove dangling images
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.FRONT_EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.FRONT_EC2_PEM_KEY }}
+          script: |
+            docker images -q --filter "dangling=true" | xargs docker rmi -f
+            docker image prune -f
