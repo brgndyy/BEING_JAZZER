@@ -47,7 +47,7 @@ jobs:
 
       - name: Install frontend dependencies
         working-directory: front
-        run: npm ci
+        run: npm install --force
 
       - name: Install missing dependencies
         working-directory: front
