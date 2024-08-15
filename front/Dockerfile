@@ -21,15 +21,11 @@ RUN npm ci
 
 FROM deps AS builder
 
-WORKDIR /app
-
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
 RUN rm -rf ./.next/cache
 RUN npm run build
 
-FROM base AS runner
+FROM node:18-alpine AS runner
 
 WORKDIR /app
 
