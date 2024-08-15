@@ -14,7 +14,7 @@ ENV NODE_ENV=$NODE_ENV
 
 FROM base AS deps
 
-RUN apk add --no-cache libc6-compat
+RUN apt-get update && apt-get install -y libc6
 
 WORKDIR /app
 
