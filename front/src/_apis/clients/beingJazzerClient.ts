@@ -3,7 +3,7 @@ import APIClient from './APIClient';
 
 export const baseUrl = process.env.NODE_ENV === 'production' ? BASE_URL.prod : BASE_URL.dev;
 
-console.log('baseUrl : ', baseUrl);
+console.log('baseUrl은 : ', baseUrl);
 
 const beingJazzerClient = new APIClient(baseUrl);
 
