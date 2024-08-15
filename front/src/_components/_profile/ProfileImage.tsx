@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { profileImage } from './profileImage.css';
-import API_URL from '@/_constants/apiUrl';
+import { baseUrl } from '@/_apis/clients/beingJazzerClient';
 
 export default function ProfileImage({ userProfileImageSrc }: { userProfileImageSrc: string }) {
   return (
     <Image
-      src={`${API_URL}${userProfileImageSrc}`}
+      src={`${baseUrl}${userProfileImageSrc}`}
       width={40}
       height={40}
       className={`${profileImage}`}
