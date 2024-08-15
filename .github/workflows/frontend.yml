@@ -41,13 +41,13 @@ jobs:
       #   uses: actions/cache@v4
       #   with:
       #     path: front/node_modules
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}-reset
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}
       #     restore-keys: |
       #       ${{ runner.os }}-node-
 
       - name: Install frontend dependencies
         working-directory: front
-        run: npm install --force
+        run: npm i --force
 
       - name: Install missing dependencies
         working-directory: front

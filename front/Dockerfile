@@ -18,7 +18,7 @@ FROM base AS deps
 
 RUN apk add --no-cache libc6-compat
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm i -force
 
 FROM deps AS builder
 
