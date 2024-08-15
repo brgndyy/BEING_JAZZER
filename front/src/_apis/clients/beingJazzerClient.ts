@@ -1,10 +1,11 @@
 import BASE_URL from './baseUrl';
 import APIClient from './APIClient';
 
-// export const baseUrl =
-//   process.env.NEXT_PUBLIC_FRONT_ENV_MODE === 'production' ? BASE_URL.prod : BASE_URL.dev;
+export const baseUrl = process.env.NODE_ENV === 'production' ? BASE_URL.prod : BASE_URL.dev;
 
-export const baseUrl = 'https://api.being-jazzer.com';
+// export const baseUrl = 'https://api.being-jazzer.com';
+
+console.log(process.env.NODE_ENV);
 
 console.log('baseUrl : ', baseUrl);
 
