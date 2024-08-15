@@ -21,6 +21,7 @@ import UserProfile from '../_profile/UserProfile';
 import SettingModal from '../_modal/setting/SettingModal';
 import LoginModal from '../_modal/login/LoginModal';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { baseUrl } from '@/_apis/clients/beingJazzerClient';
 
 export const queryClient = new QueryClient({});
 
@@ -29,12 +30,7 @@ export default function Header({ currentTheme, userInfo, chordSetting, accessTok
   const { updateChordSetting } = useChordSettingStore();
   const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
 
-  console.log(
-    'layout process.env.NEXT_PUBLIC_FRONT_ENV_MODE:',
-    process.env.NEXT_PUBLIC_FRONT_ENV_MODE,
-  );
-
-  console.log('test!');
+  console.log('baseUrl : ', baseUrl);
 
   useEffect(() => {
     updateChordSetting(chordSetting);

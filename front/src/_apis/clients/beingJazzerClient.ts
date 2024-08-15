@@ -3,12 +3,6 @@ import APIClient from './APIClient';
 
 export const baseUrl = process.env.NODE_ENV === 'production' ? BASE_URL.prod : BASE_URL.dev;
 
-// export const baseUrl = 'https://api.being-jazzer.com';
-
-console.log(process.env.NODE_ENV);
-
-console.log('baseUrl : ', baseUrl);
-
 const beingJazzerClient = new APIClient(baseUrl);
 
 beingJazzerClient.setErrorHandler((error) => {
