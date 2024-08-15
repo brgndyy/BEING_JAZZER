@@ -47,7 +47,11 @@ jobs:
 
       - name: Install frontend dependencies
         working-directory: front
-        run: npm install
+        run: npm ci
+
+      - name: Install missing dependencies
+        working-directory: front
+        run: npm install -D @vanilla-extract/next-plugin
 
       - name: Run frontend tests
         working-directory: front
