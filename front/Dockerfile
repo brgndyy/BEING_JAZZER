@@ -1,4 +1,4 @@
-FROM node:20 AS base
+FROM node:18-alpine AS base
 
 ARG NEXT_PUBLIC_DEV_API_URL
 ARG NEXT_PUBLIC_PRODUCTION_API_URL
@@ -14,7 +14,7 @@ ENV NODE_ENV=$NODE_ENV
 
 FROM base AS deps
 
-RUN apt-get update && apt-get install -y libc6
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
@@ -30,6 +30,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 
 COPY . .
+
+RUN npm install -D @vanilla-extract/next-plugin
 
 RUN rm -rf ./.next/cache
 
