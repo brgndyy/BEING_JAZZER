@@ -5,7 +5,7 @@ const getTokenCookieConfig = () => {
   const tokenCookieConfig = {
     expiration_standard_time: expirationStandardTime,
     access_token: {
-      //TODO 빠른 테스트를 위해 1분으로 관리
+      // TODO 빠른 테스트를 위해 1분으로 관리
       expires: new Date(Date.now() + 60 * 1000),
       secure: isProduction,
       httpOnly: isProduction,
