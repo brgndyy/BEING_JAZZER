@@ -23,6 +23,9 @@ FROM deps AS builder
 
 COPY . .
 RUN rm -rf ./.next/cache
+
+RUN npm install @vanilla-extract/next-plugin
+
 RUN npm run build
 
 FROM node:18-alpine AS runner
