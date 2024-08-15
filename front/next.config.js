@@ -4,6 +4,7 @@ const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   webpack: (config, options) => {
     const { isServer } = options;
     // WAV 파일 처리를 위한 설정
@@ -54,7 +55,6 @@ const nextConfig = {
       },
     ],
   },
-  output: 'standalone',
 };
 
 module.exports = withVanillaExtract(nextConfig);
