@@ -37,21 +37,21 @@ jobs:
         with:
           node-version: "18"
 
-      # - name: Cache Node.js modules
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: front/node_modules
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}-reset
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install frontend dependencies
         working-directory: front
-        run: npm i --force
+        run: npm install
 
-      - name: Install missing dependencies
-        working-directory: front
-        run: npm install -D @vanilla-extract/next-plugin
+      # - name: Install missing dependencies
+      #   working-directory: front
+      #   run: npm install -D @vanilla-extract/next-plugin
 
       - name: Run frontend tests
         working-directory: front
