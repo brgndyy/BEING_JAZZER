@@ -1,11 +1,11 @@
 import { UserInfo } from '@/_types';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import handleKeyDown from '@/_utils/handleKeyDown';
 import ProfileImage from './ProfileImage';
 import { profileContainer, motionContainer } from './userProfile.css';
 import ProfileMenu from './ProfileMenu';
 import DownIcon from './DownIcon';
+import useOutSideClick from '@/_hooks/useOutsideClick';
+import useToggle from '@/_hooks/useToggle';
 
 export interface Props {
   userInfo: UserInfo;
@@ -13,20 +13,19 @@ export interface Props {
 
 export default function UserProfile({ userInfo }: Props) {
   const { userProfileImageSrc } = userInfo;
+  const { isOpen, toggle, close } = useToggle();
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const ref = useOutSideClick<HTMLDivElement>({
+    onOutsideClick: close,
+    onInsideClick: toggle,
+  });
 
   return (
     <div
+      ref={ref}
       className={profileContainer}
-      onClick={toggleMenu}
       role="button"
       tabIndex={0}
-      onKeyDown={() => handleKeyDown(toggleMenu)}
       aria-label="프로필 설정 토글"
     >
       <ProfileImage userProfileImageSrc={userProfileImageSrc} />
