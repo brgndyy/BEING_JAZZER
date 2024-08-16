@@ -10,6 +10,7 @@ const ERROR_MESSAGES = {
   FAIL_LOGIN: '로그인에 실패했어요!',
   not_satisfied_chord_setting: '모든 설정이 유효하지 않아요!',
   fail_withdraw: '회원탈퇴에 실패했어요!',
+  duplicate_request: '중복 된 요청이 존재해요!',
 } as const;
 
 export default ERROR_MESSAGES;
