@@ -4,23 +4,19 @@ import getTokenValues from './_services/middleware/getTokenValues';
 import { getNewAccessToken, getTokenValuesByEncryptedCode } from './_apis/authAPI';
 import { API_ROUTES } from './_constants/routes';
 import setCookieOfToken from './_services/middleware/setCookieOfToken';
-import TOKEN_COOKIE_OPTION from './_constants/tokenCookieOption';
 
 export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
   const { accessToken, refreshToken } = getTokenValues(request);
-  let response = null;
+  let response = NextResponse.next();
+
+  console.log('실행!');
 
   if (!accessToken && refreshToken) {
-    const res = await getNewAccessToken(refreshToken);
+    const newAccessToken = await getNewAccessToken(refreshToken);
 
-    if (res && res.newAccessToken) {
-      response = NextResponse.next();
-
-      response.cookies.set('accessToken', res.newAccessToken, TOKEN_COOKIE_OPTION.access_token);
-
-      response.headers.set('X-NewAccessToken', res.newAccessToken);
-    }
+    console.log('미들웨어 newAccessToken', newAccessToken);
+    setCookieOfToken(response, 'accessToken', newAccessToken);
   }
 
   if (pathname === '/email-login') {
@@ -35,8 +31,10 @@ export async function middleware(request: NextRequest) {
         encryptedCode,
       );
 
+      console.log('/email-login 미들웨어의 accessTokenValue: ', accessTokenValue);
+      console.log('/email-login 미들웨어의 refreshTokenValue: ', refreshTokenValue);
+
       if (success) {
-        response = response || NextResponse.next();
         setCookieOfToken(response, 'accessToken', accessTokenValue);
         setCookieOfToken(response, 'refreshToken', refreshTokenValue);
       }
@@ -44,11 +42,9 @@ export async function middleware(request: NextRequest) {
       url.pathname = '/not-found';
       return NextResponse.redirect(url);
     }
-
-    return response;
   }
 
-  return response;
+  return response || NextResponse.next();
 }
 
 export const config = {
