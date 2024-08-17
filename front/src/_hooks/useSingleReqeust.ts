@@ -1,11 +1,12 @@
 import { useRef } from 'react';
+import ERROR_MESSAGES from '@/_constants/errorMessages';
 
 const useSingleRequest = () => {
   const apiRequests = useRef<Set<string>>(new Set());
 
   const startRequest = (requestId: string): boolean => {
     if (apiRequests.current.has(requestId)) {
-      console.warn('이미 요청이 진행 중입니다.');
+      console.warn(ERROR_MESSAGES.duplicate_request);
       return false;
     }
     apiRequests.current.add(requestId);

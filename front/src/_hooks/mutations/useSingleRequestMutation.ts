@@ -1,40 +1,42 @@
-import { useMutation, UseMutationOptions } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
+import type { UseMutationResult, UseMutationOptions } from '@tanstack/react-query';
 import useSingleRequest from '../useSingleReqeust';
+import ERROR_MESSAGES from '@/_constants/errorMessages';
 
 interface SingleFlightMutationOptions<TData, TError, TVariables>
   extends UseMutationOptions<TData, TError, TVariables> {
   requestId?: string;
+  queryFn: (variables: TVariables) => Promise<TData>;
 }
 
 const useSingleRequestMutation = <TData, TError, TVariables = void>(
-  mutationFn: (variables: TVariables) => Promise<TData>,
-  options?: SingleFlightMutationOptions<TData, TError, TVariables>,
-) => {
+  options: SingleFlightMutationOptions<TData, TError, TVariables>,
+): UseMutationResult<TData, TError, TVariables> => {
   const { startRequest, endRequest } = useSingleRequest();
   const requestId = options?.requestId || 'defaultRequestId';
 
   return useMutation<TData, TError, TVariables>({
     ...options,
-    mutationFn,
-    onMutate: (variables: TVariables) => {
+    mutationFn: options.queryFn,
+    onMutate: async (variables: TVariables) => {
       const canProceed = startRequest(requestId);
       if (!canProceed) {
-        throw new Error('이미 요청이 진행 중입니다.');
+        throw new Error(ERROR_MESSAGES.duplicate_request);
       }
       if (options?.onMutate) {
-        return options.onMutate(variables);
+        return await options.onMutate(variables);
       }
     },
     onSuccess: (data: TData, variables: TVariables, context: unknown) => {
       endRequest(requestId);
       if (options?.onSuccess) {
-        options.onSuccess(data, variables, context);
+        options.onSuccess(data, variables, context as unknown);
       }
     },
     onError: (error: TError, variables: TVariables, context: unknown) => {
       endRequest(requestId);
       if (options?.onError) {
-        options.onError(error, variables, context);
+        options.onError(error, variables, context as unknown);
       }
     },
     onSettled: (
@@ -45,7 +47,7 @@ const useSingleRequestMutation = <TData, TError, TVariables = void>(
     ) => {
       endRequest(requestId);
       if (options?.onSettled) {
-        options.onSettled(data, error, variables, context);
+        options.onSettled(data, error, variables, context as unknown);
       }
     },
   });

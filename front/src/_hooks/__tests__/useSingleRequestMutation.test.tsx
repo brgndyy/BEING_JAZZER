@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import useSingleRequestMutation from '../mutations/useSingleRequestMutation';
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 const createQueryClient = () => new QueryClient();
 
@@ -9,7 +9,8 @@ const wrapper = ({ children }: PropsWithChildren) => (
   <QueryClientProvider client={createQueryClient()}>{children}</QueryClientProvider>
 );
 
-const mockMutationFn = jest.fn().mockResolvedValue('success'); // 비동기 함수로 설정
+const mockVariable = jest.fn();
+const mockMutationFn = jest.fn().mockResolvedValue('success');
 const mockOnMutate = jest.fn();
 const mockOnSuccess = jest.fn();
 const mockOnError = jest.fn();
@@ -21,7 +22,9 @@ describe('useSingleRequestMutation 훅 테스트', () => {
   });
 
   it('초기 상태가 정상적으로 설정된다.', () => {
-    const { result } = renderHook(() => useSingleRequestMutation(mockMutationFn), { wrapper });
+    const { result } = renderHook(() => useSingleRequestMutation({ queryFn: mockMutationFn }), {
+      wrapper,
+    });
 
     expect(result.current.mutate).toBeDefined();
   });
@@ -29,14 +32,15 @@ describe('useSingleRequestMutation 훅 테스트', () => {
   it('요청이 성공적으로 수행되면 onSuccess와 onSettled가 호출된다.', async () => {
     const { result } = renderHook(
       () =>
-        useSingleRequestMutation(mockMutationFn, {
+        useSingleRequestMutation({
+          queryFn: mockMutationFn,
           onSuccess: mockOnSuccess,
           onSettled: mockOnSettled,
         }),
       { wrapper },
     );
 
-    result.current.mutate();
+    result.current.mutate(undefined);
 
     await waitFor(() => {
       expect(mockMutationFn).toHaveBeenCalledTimes(1);
@@ -50,14 +54,15 @@ describe('useSingleRequestMutation 훅 테스트', () => {
     mockMutationFn.mockRejectedValueOnce(error);
     const { result } = renderHook(
       () =>
-        useSingleRequestMutation(mockMutationFn, {
+        useSingleRequestMutation({
+          queryFn: mockMutationFn,
           onError: mockOnError,
           onSettled: mockOnSettled,
         }),
       { wrapper },
     );
 
-    result.current.mutate();
+    result.current.mutate(undefined);
 
     await waitFor(() => {
       expect(mockMutationFn).toHaveBeenCalledTimes(1);
@@ -68,17 +73,20 @@ describe('useSingleRequestMutation 훅 테스트', () => {
 
   it('동일한 requestId로 중복 요청이 방지된다.', async () => {
     const { result } = renderHook(
-      () => useSingleRequestMutation(mockMutationFn, { requestId: 'testRequestId' }),
+      () => useSingleRequestMutation({ queryFn: mockMutationFn, requestId: 'testRequestId' }),
       { wrapper },
     );
 
-    result.current.mutate();
-    result.current.mutate();
-    result.current.mutate();
-    result.current.mutate();
-    result.current.mutate();
-    result.current.mutate();
-    result.current.mutate();
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
+    result.current.mutate(mockVariable);
 
     await waitFor(() => {
       expect(mockMutationFn).toHaveBeenCalledTimes(1);
@@ -87,17 +95,17 @@ describe('useSingleRequestMutation 훅 테스트', () => {
 
   it('다른 requestId로 요청이 가능하다.', async () => {
     const { result: result1 } = renderHook(
-      () => useSingleRequestMutation(mockMutationFn, { requestId: 'requestId1' }),
+      () => useSingleRequestMutation({ queryFn: mockMutationFn, requestId: 'requestId1' }),
       { wrapper },
     );
 
     const { result: result2 } = renderHook(
-      () => useSingleRequestMutation(mockMutationFn, { requestId: 'requestId2' }),
+      () => useSingleRequestMutation({ queryFn: mockMutationFn, requestId: 'requestId2' }),
       { wrapper },
     );
 
-    result1.current.mutate();
-    result2.current.mutate();
+    result1.current.mutate(mockVariable);
+    result2.current.mutate(mockVariable);
 
     await waitFor(() => {
       expect(mockMutationFn).toHaveBeenCalledTimes(2);
@@ -106,11 +114,11 @@ describe('useSingleRequestMutation 훅 테스트', () => {
 
   it('onMutate가 호출되면 요청 전에 실행된다.', async () => {
     const { result } = renderHook(
-      () => useSingleRequestMutation(mockMutationFn, { onMutate: mockOnMutate }),
+      () => useSingleRequestMutation({ queryFn: mockMutationFn, onMutate: mockOnMutate }),
       { wrapper },
     );
 
-    result.current.mutate();
+    result.current.mutate(mockVariable);
 
     await waitFor(() => {
       expect(mockOnMutate).toHaveBeenCalled();
