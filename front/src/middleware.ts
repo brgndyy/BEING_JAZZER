@@ -5,22 +5,17 @@ import { getNewAccessToken, getTokenValuesByEncryptedCode } from './_apis/authAP
 import { API_ROUTES } from './_constants/routes';
 import setCookieOfToken from './_services/middleware/setCookieOfToken';
 import TOKEN_COOKIE_OPTION from './_constants/tokenCookieOption';
+import applySetCookie from './_utils/applySetCookie';
 
 export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
   const { accessToken, refreshToken } = getTokenValues(request);
-  let response = null;
+  const response = NextResponse.next();
 
   if (!accessToken && refreshToken) {
-    const res = await getNewAccessToken(refreshToken);
-
-    if (res && res.newAccessToken) {
-      response = NextResponse.next();
-
-      response.cookies.set('accessToken', res.newAccessToken, TOKEN_COOKIE_OPTION.access_token);
-
-      response.headers.set('X-NewAccessToken', res.newAccessToken);
-    }
+    const newAccessToken = await getNewAccessToken(refreshToken);
+    response.cookies.set('accessToken', newAccessToken, TOKEN_COOKIE_OPTION.access_token);
+    applySetCookie(request, response);
   }
 
   if (pathname === '/email-login') {
@@ -36,19 +31,17 @@ export async function middleware(request: NextRequest) {
       );
 
       if (success) {
-        response = response || NextResponse.next();
         setCookieOfToken(response, 'accessToken', accessTokenValue);
         setCookieOfToken(response, 'refreshToken', refreshTokenValue);
+        applySetCookie(request, response);
       }
     } catch (err) {
       url.pathname = '/not-found';
       return NextResponse.redirect(url);
     }
-
-    return response;
   }
 
-  return response;
+  return response || NextResponse.next();
 }
 
 export const config = {
