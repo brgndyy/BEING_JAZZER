@@ -8,20 +8,19 @@ import FunnelCard from '../_common/cards/FunnelCard';
 import WelcomeFunnel from './WelcomeFunnel';
 import UserNameFunnel from './UserNameFunnel';
 import UserImageFunnel from './UserImageFunnel';
-import FinishFunnel from './FinishFunnel';
-import { funnelConatiner } from './funnel.css';
+import { funnelContainer } from './funnel.css';
 import UserEmailFunnel from './UserEmailFunnel';
 import useSignUpMutation from '@/_hooks/mutations/useSignUpMutation';
 import { SignUpParams } from '@/_types';
 import { boxVariants } from '@/_styles/framer';
 
-const REGISTER_STEP = ['welcome', 'userEmail', 'userName', 'userImage', 'finish'] as const;
+const REGISTER_STEP = ['welcome', 'userEmail', 'userName', 'userImage'] as const;
 
-type Props = {
+type RegisterFunnelProps = {
   userEmail: string;
 };
 
-export default function RegisterFunnel({ userEmail }: Props) {
+export default function RegisterFunnel({ userEmail }: RegisterFunnelProps) {
   const { step, Funnel, handleNextStep, handlePreviousStep, direction } = useFunnel(REGISTER_STEP);
 
   const { formState, handleFormValue, handleUploadFormFile } = useForm<SignUpParams>({
@@ -40,7 +39,7 @@ export default function RegisterFunnel({ userEmail }: Props) {
     <FunnelCard>
       <AnimatePresence custom={direction} initial={false}>
         <motion.div
-          className={`${funnelConatiner} ${myStyle}`}
+          className={`${funnelContainer} ${myStyle}`}
           key={step}
           variants={boxVariants}
           initial="entry"
@@ -73,9 +72,6 @@ export default function RegisterFunnel({ userEmail }: Props) {
                 handleUploadFormFile={handleUploadFormFile}
                 handleUserSignUp={handleUserSignUp}
               />
-            </Funnel.Step>
-            <Funnel.Step name={REGISTER_STEP[4]}>
-              <FinishFunnel />
             </Funnel.Step>
           </Funnel>
         </motion.div>

@@ -1,4 +1,4 @@
-import { Children, useState, ReactNode, isValidElement } from 'react';
+import { Children, useState, ReactNode, isValidElement, useEffect } from 'react';
 
 interface StepProps {
   name: string;
@@ -27,7 +27,6 @@ const useFunnel = (steps: readonly string[]) => {
 
   const handleNextStep = () => {
     if (stepIndex < steps.length - 1) {
-      setDirection('next');
       setStepIndex((prevStepIndex) => {
         const newIndex = prevStepIndex + 1;
         setStep(steps[prevStepIndex + 1]);

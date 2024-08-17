@@ -25,7 +25,7 @@ export default function WelcomeFunnel({ handleNextStep }: Props) {
         </div>
 
         <div className={logoContainer}>
-          <h1 className={`${logo} ${myStyle} ${second}`}>BEING JAZEER 에</h1>
+          <h1 className={`${logo} ${myStyle} ${second}`}>Being JAZEER 에</h1>
         </div>
         <div className={logoContainer}>
           <h1 className={`${logo} ${myStyle} ${third}`}>오신걸 환영해요!</h1>
