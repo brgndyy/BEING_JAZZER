@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { background2, text1, text4 } from '@/_styles/vars.css';
 
-export const funnelConatiner = style({
+export const funnelContainer = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

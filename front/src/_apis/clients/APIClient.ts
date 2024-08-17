@@ -45,8 +45,6 @@ export default class APIClient {
       throw new Error(errorData.message);
     }
 
-    console.log('isFormData: ', isFormData);
-
     return isFormData ? ((await response.text()) as unknown as T) : await response.json();
   }
 
