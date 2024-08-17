@@ -36,7 +36,7 @@ export default function UserImageFunnel({
     setFile,
   } = useDragAndDrop();
 
-  const uploadImageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUploadUserImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile = e.target.files ? e.target.files[0] : null;
 
     if (imageFile) {
@@ -71,7 +71,7 @@ export default function UserImageFunnel({
             aria-hidden
             id="userImage"
             name="userImage"
-            onChange={uploadImageHandler}
+            onChange={handleUploadUserImage}
           />
           <div className={`${alertText} ${myStyle}`}>
             (업로드 된 파일이 없을시, 기본 이미지로 대체돼요!)
