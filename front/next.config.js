@@ -65,3 +65,18 @@ const nextConfig = {
 };
 
 module.exports = withVanillaExtract(nextConfig);
+
+// Injected content via Sentry wizard below
+
+const { withSentryConfig } = require('@sentry/nextjs');
+
+module.exports = withSentryConfig(module.exports, {
+  org: 'beingjazzer',
+  project: 'javascript-nextjs',
+  silent: false,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+  automaticVercelMonitors: true,
+});

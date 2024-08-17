@@ -100,6 +100,8 @@ jobs:
             NEXT_PUBLIC_PRODUCTION_API_URL=${{ secrets.NEXT_PUBLIC_PRODUCTION_API_URL }}
             NEXT_PUBLIC_FRONT_ENV_MODE=${{ secrets.NEXT_PUBLIC_FRONT_ENV_MODE }}
             NEXT_PUBLIC_CDN_URL=${{ secrets.NEXT_PUBLIC_CDN_URL }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
 
       - name: EC2 Front Docker Run
         uses: appleboy/ssh-action@master
