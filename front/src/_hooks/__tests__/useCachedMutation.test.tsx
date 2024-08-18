@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, waitFor } from '@testing-library/react';
 import { useCachedMutation } from '../mutations/useCachedMutate';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
@@ -19,7 +19,7 @@ describe('useCachedMutation 훅에 대한 테스트', () => {
 
   it('초기 값이 정상적으로 설정 된다.', () => {
     const { result } = renderHook(
-      () => useCachedMutation(mockMutationFn, { initialValue: initialVariables }),
+      () => useCachedMutation({ queryFn: mockMutationFn, initialValue: initialVariables }),
       { wrapper },
     );
 
@@ -28,42 +28,44 @@ describe('useCachedMutation 훅에 대한 테스트', () => {
 
   it('만약 인자로 넣어주는 값이 같다면 mutate 함수를 호출하지 않는다.', async () => {
     const { result } = renderHook(
-      () => useCachedMutation(mockMutationFn, { initialValue: initialVariables }),
+      () => useCachedMutation({ queryFn: mockMutationFn, initialValue: initialVariables }),
       { wrapper },
     );
 
-    await act(async () => {
-      result.current.mutate(initialVariables);
-    });
+    result.current.mutate(initialVariables);
 
-    expect(mockMutationFn).not.toHaveBeenCalled();
+    await waitFor(() => {
+      expect(mockMutationFn).not.toHaveBeenCalled();
+    });
   });
 
   it('만약 인자로 넣어주는 값이 다르다면 mutate 함수를 호출한다.', async () => {
     const { result } = renderHook(
-      () => useCachedMutation(mockMutationFn, { initialValue: initialVariables }),
+      () => useCachedMutation({ queryFn: mockMutationFn, initialValue: initialVariables }),
       { wrapper },
     );
 
     const newVariables = { test: 'new' };
-    await act(async () => {
-      result.current.mutate(newVariables);
-    });
 
-    expect(mockMutationFn).toHaveBeenCalledWith(newVariables);
+    result.current.mutate(newVariables);
+
+    await waitFor(() => {
+      expect(mockMutationFn).toHaveBeenCalledWith(newVariables);
+    });
   });
 
   it('만약 인자로 넣어주는 값이 같다면 onSettled 함수를 호출한다.', async () => {
     const onSettled = jest.fn();
     const { result } = renderHook(
-      () => useCachedMutation(mockMutationFn, { initialValue: initialVariables, onSettled }),
+      () =>
+        useCachedMutation({ queryFn: mockMutationFn, initialValue: initialVariables, onSettled }),
       { wrapper },
     );
 
-    await act(async () => {
-      result.current.mutate(initialVariables);
-    });
+    result.current.mutate(initialVariables);
 
-    expect(onSettled).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(onSettled).toHaveBeenCalled();
+    });
   });
 });
