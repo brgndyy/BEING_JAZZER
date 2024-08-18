@@ -10,7 +10,7 @@ export interface ChordSetting {
 }
 
 export type ChangeUserChordSetting = {
-  chordSetting: ChordSetting[];
+  initialChordSetting: ChordSetting[];
   accessToken: string;
 };
 
@@ -36,20 +36,8 @@ export interface UserInfo {
   updatedAt: string;
 }
 
-export interface HeaderProps {
-  currentTheme: string;
-  userInfo?: UserInfo;
-  chordSetting: ChordSetting[];
-  accessToken?: string;
-}
-
 export interface UserProfile {
   userInfo: UserInfo;
-}
-
-export interface ThemeToggleInputProps {
-  darkTheme: boolean;
-  themeToggleHandler: () => void;
 }
 
 export type ChordSettingKey = 'Key' | 'Chord' | 'Tension';

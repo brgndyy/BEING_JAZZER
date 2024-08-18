@@ -5,9 +5,9 @@ import ERROR_MESSAGES from '@/_constants/errorMessages';
 import { useCachedMutation } from './useCachedMutate';
 import SUCCESS_MESSAGE from '@/_constants/successMessage';
 
-interface HookProps {
+interface ChangeUserChordSettingOptions {
   handleClose: () => void;
-  initialChordSetting: ChangeUserChordSetting['chordSetting'];
+  initialChordSetting: ChangeUserChordSetting['initialChordSetting'];
   accessToken?: string;
 }
 
@@ -15,25 +15,23 @@ const useChangeUserChordSetting = ({
   handleClose,
   initialChordSetting,
   accessToken = '',
-}: HookProps) => {
-  const { mutate: changeChordSettingMutation, isPending } = useCachedMutation(
-    changeUserChordSetting,
-    {
-      initialValue: { accessToken, chordSetting: initialChordSetting },
-      onError: () => {
-        toast.error(ERROR_MESSAGES.fail_get_chord_setting);
-      },
-      onSuccess: () => {
-        toast.success(SUCCESS_MESSAGE.set_user_chord);
-      },
-      onSettled: () => {
-        handleClose();
-      },
+}: ChangeUserChordSettingOptions) => {
+  const { mutate: changeChordSettingMutation, isPending } = useCachedMutation({
+    queryFn: changeUserChordSetting,
+    initialValue: { accessToken, initialChordSetting },
+    onError: () => {
+      toast.error(ERROR_MESSAGES.fail_get_chord_setting);
     },
-  );
+    onSuccess: () => {
+      toast.success(SUCCESS_MESSAGE.set_user_chord);
+    },
+    onSettled: () => {
+      handleClose();
+    },
+  });
 
-  const handleUserChordSetting = ({ accessToken, chordSetting }: ChangeUserChordSetting) => {
-    changeChordSettingMutation({ accessToken, chordSetting });
+  const handleUserChordSetting = () => {
+    changeChordSettingMutation({ accessToken, initialChordSetting });
   };
 
   return { handleUserChordSetting, isPending };

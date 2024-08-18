@@ -22,13 +22,13 @@ export const getUserChordSetting = async (accessToken: string) => {
 };
 
 export const changeUserChordSetting = async ({
-  chordSetting,
+  initialChordSetting,
   accessToken,
 }: ChangeUserChordSetting) => {
   await beingJazzerClient.post(API_ROUTES.user_chord_setting, {
     headers: { Authorization: `Bearer ${accessToken}` },
     body: {
-      userChordSetting: chordSetting,
+      userChordSetting: initialChordSetting,
     },
   });
 };

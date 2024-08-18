@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { HeaderProps } from '@/_types';
+import { ChordSetting, UserInfo } from '@/_types';
 import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
 import useChordSettingStore from '@/_store/useChordSettingStore';
@@ -23,6 +23,13 @@ import LoginModal from '../_modal/login/LoginModal';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 export const queryClient = new QueryClient({});
+
+export interface HeaderProps {
+  currentTheme: string;
+  userInfo?: UserInfo;
+  chordSetting: ChordSetting[];
+  accessToken?: string;
+}
 
 export default function Header({ currentTheme, userInfo, chordSetting, accessToken }: HeaderProps) {
   const { darkTheme, themeToggleHandler } = useTheme(currentTheme);

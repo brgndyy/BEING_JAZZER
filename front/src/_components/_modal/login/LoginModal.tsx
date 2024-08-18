@@ -1,38 +1,17 @@
-import { modalExit, modalEnter } from '../modal.css';
-import { Modal } from 'brgndyy-react-modal';
-import React, { useState } from 'react';
 import LoginModalTriggerButton from './LoginModalTriggerButton';
 import LoginModalContent from './content/LoginModalContent';
+import useModal from '@/_hooks/useModal';
+import ModalWrapper from '@/_components/_common/modal/ModalWrapper';
 
 export default function LoginModal() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
+  const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
 
   return (
     <>
       <LoginModalTriggerButton handleModalOpen={handleModalOpen} />
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        mountAnimation={modalEnter}
-        unMountAnimation={modalExit}
-        animationTime={300}
-      >
-        <Modal.Portal id="portal">
-          <Modal.Backdrop opacity="rgba(0, 0, 0, 0.35)">
-            <Modal.Container>
-              <LoginModalContent handleClose={handleModalClose} />
-            </Modal.Container>
-          </Modal.Backdrop>
-        </Modal.Portal>
-      </Modal>
+      <ModalWrapper isModalOpen={isModalOpen} handleModalClose={handleModalClose}>
+        <LoginModalContent handleClose={handleModalClose} />
+      </ModalWrapper>
     </>
   );
 }

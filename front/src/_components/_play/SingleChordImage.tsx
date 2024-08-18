@@ -3,18 +3,16 @@ import React from 'react';
 import { container, singleChordImage } from './singleChordImage.css';
 import { myStyle } from '@/_styles/vars.css';
 
-const CDN_URL = 'https://d2qtp7qksp5k9g.cloudfront.net';
-
-type Props = {
+type SingleChordImageProps = {
   imageUrl: string;
 };
 
-export default function SingleChordImage({ imageUrl }: Props) {
+export default function SingleChordImage({ imageUrl }: SingleChordImageProps) {
   return (
     <div className={container}>
       <Image
         className={`${singleChordImage} ${myStyle}`}
-        src={`${CDN_URL}${imageUrl}`}
+        src={`${process.env.NEXT_PUBLIC_CDN_URL}${imageUrl}`}
         alt="코드 이미지"
         width={100}
         height={100}

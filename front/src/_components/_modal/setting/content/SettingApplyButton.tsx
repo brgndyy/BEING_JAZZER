@@ -1,69 +1,29 @@
 'use client';
 
-import useSelectSettingOption from '@/_hooks/useSelectSettingOption';
 import { buttonContainer, button } from '../settingModal.css';
-import useChangeUserChordSetting from '@/_hooks/mutations/useChangeUserChordSetting';
-import useAccessTokenStore from '@/_store/useAccessTokenStore';
-import { toast } from 'react-toastify';
 import LoadingSpinner from '@/_components/_common/loadingSpinner/LoadingSpinner';
-import { ChordSetting, ChordSettingKey } from '@/_types';
-import ERROR_MESSAGES from '@/_constants/errorMessages';
-import { usePathname } from 'next/navigation';
-import { PAGE_ROUTES } from '@/_constants/routes';
+import Button from '@/_components/_common/button/Button';
+import useUserChordSetting from '@/_hooks/useUserChordSetting';
 
-type Props = {
+type SettingApplyButtonProps = {
   handleClose: () => void;
 };
 
-const isValidSetting = (chordSetting: ChordSetting[], type: ChordSettingKey) => {
-  return chordSetting.some(
-    (setting) =>
-      setting.type === type &&
-      Object.values(setting.config).some((config) => config.isAvailable && config.isSelected),
-  );
-};
-
-const validateMinimumSetting = (chordSetting: ChordSetting[]) => {
-  const requiredTypes: ChordSettingKey[] = ['Key', 'Chord', 'Tension'];
-  return requiredTypes.every((type) => isValidSetting(chordSetting, type));
-};
-
-export default function SettingApplyButton({ handleClose }: Props) {
-  const { chordSetting, initializeDefaultChordSetting } = useSelectSettingOption();
-  const pathName = usePathname();
-  const isPlayChordPage = pathName === PAGE_ROUTES.playChord;
-
-  const { accessToken } = useAccessTokenStore();
-  const isCompletedMinimumSetting = validateMinimumSetting(chordSetting);
-  const { handleUserChordSetting, isPending: isUserChordChangePending } = useChangeUserChordSetting(
-    {
-      handleClose,
-      initialChordSetting: chordSetting,
-      accessToken,
-    },
-  );
-
-  const handleTotalUserChordSetting = () => {
-    if (isCompletedMinimumSetting) {
-      if (accessToken) {
-        handleUserChordSetting({ accessToken, chordSetting });
-        isPlayChordPage && window.location.reload();
-      } else {
-        handleClose();
-        initializeDefaultChordSetting();
-      }
-    } else {
-      toast.error(ERROR_MESSAGES.not_satisfied_chord_setting);
-    }
-  };
+export default function SettingApplyButton({ handleClose }: SettingApplyButtonProps) {
+  const { isPending, handleTotalUserChordSetting } = useUserChordSetting({ handleClose });
 
   return (
     <>
-      {isUserChordChangePending && <LoadingSpinner />}
+      {isPending && <LoadingSpinner />}
       <div className={buttonContainer}>
-        <button onClick={handleTotalUserChordSetting} className={`${button}`} type="button">
+        <Button
+          variant="default"
+          onClick={handleTotalUserChordSetting}
+          className={`${button}`}
+          type="button"
+        >
           설정 변경
-        </button>
+        </Button>
       </div>
     </>
   );

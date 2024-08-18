@@ -6,13 +6,9 @@ import { carouselCard } from './slideOfSingleChord.css';
 import Metronome from '../__metronome/Metronome';
 import useCarousel from '@/_hooks/useCarousel';
 import useThemeStore from '@/_store/useThemeStore';
-import { useWindowWidth } from '@/_hooks/useWindowWidth';
-import { useEffect, useState } from 'react';
-import { ResponsiveType } from 'react-multi-carousel';
 import { metronomeContainer, text, container, button, input } from './pageOfSingChord.css';
 import VinylImage from '../_common/images/vinylImage/VinylImage';
 import { myStyle } from '@/_styles/vars.css';
-import { BMHANNAAir } from '@/_styles/fonts/fonts';
 
 type Props = {
   whiteChordImages: ChordImageData[];
@@ -39,19 +35,6 @@ export default function PageOfSingleChord({ whiteChordImages, darkChordImages }:
   const { carouselRef, handleNextCarousel } = useCarousel();
   const theme = useThemeStore((state) => state.theme);
   const currentImages = theme ? darkChordImages : whiteChordImages;
-
-  // const windowWidth = useWindowWidth();
-  // const [responsive, setResponsive] = useState<ResponsiveType>(responsiveSetting);
-
-  // useEffect(() => {
-  //   if (windowWidth >= 1500) {
-  //     setResponsive({ ...responsiveSetting });
-  //   } else if (windowWidth >= 1000) {
-  //     setResponsive({ ...responsiveSetting, desktop: responsiveSetting.tablet });
-  //   } else {
-  //     setResponsive({ ...responsiveSetting, desktop: responsiveSetting.mobile });
-  //   }
-  // }, [windowWidth]);
 
   return (
     <div className={carouselCard}>

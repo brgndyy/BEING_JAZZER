@@ -1,38 +1,17 @@
-import { modalExit, modalEnter } from '../modal.css';
-import { useState } from 'react';
 import SettingModalTriggerButton from './SettingModalTriggerButton';
-import { Modal } from 'brgndyy-react-modal';
 import SettingModalContent from '@/_components/_modal/setting/content/SettingModalContent';
+import useModal from '@/_hooks/useModal';
+import ModalWrapper from '@/_components/_common/modal/ModalWrapper';
 
 export default function SettingModal() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
+  const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
 
   return (
     <>
       <SettingModalTriggerButton handleModalOpen={handleModalOpen} />
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        mountAnimation={modalEnter}
-        unMountAnimation={modalExit}
-        animationTime={300}
-      >
-        <Modal.Portal id="portal">
-          <Modal.Backdrop opacity="rgba(0, 0, 0, 0.35)">
-            <Modal.Container>
-              <SettingModalContent handleClose={handleModalClose} />
-            </Modal.Container>
-          </Modal.Backdrop>
-        </Modal.Portal>
-      </Modal>
+      <ModalWrapper isModalOpen={isModalOpen} handleModalClose={handleModalClose}>
+        <SettingModalContent handleClose={handleModalClose} />
+      </ModalWrapper>
     </>
   );
 }
