@@ -7,11 +7,11 @@ import DownIcon from './DownIcon';
 import useOutSideClick from '@/_hooks/useOutsideClick';
 import useToggle from '@/_hooks/useToggle';
 
-export interface Props {
+export interface UserProfileProps {
   userInfo: UserInfo;
 }
 
-export default function UserProfile({ userInfo }: Props) {
+export default function UserProfile({ userInfo }: UserProfileProps) {
   const { userProfileImageSrc } = userInfo;
   const { isOpen, toggle, close } = useToggle();
 

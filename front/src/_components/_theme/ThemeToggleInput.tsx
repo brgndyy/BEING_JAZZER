@@ -1,5 +1,9 @@
 import { toggleInput, toggleLabel, toggleLabelChecked } from './themeToggleInput.css';
-import { ThemeToggleInputProps } from '@/_types/index';
+
+export interface ThemeToggleInputProps {
+  darkTheme: boolean;
+  themeToggleHandler: () => void;
+}
 
 export default function ThemeToggleInput({ darkTheme, themeToggleHandler }: ThemeToggleInputProps) {
   return (

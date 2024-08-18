@@ -9,7 +9,6 @@ import { queryClient } from '@/_components/_header/Header';
 
 export default async function RegisterPage({ searchParams }: SearchParams) {
   const encryptedCode = getEncryptedCodeFromParams({ searchParams });
-  console.log('encryptedCode: ', encryptedCode);
   const userInfo = await getUserInfoByEncryptedCode(API_ROUTES.register_user_info, encryptedCode);
   const { userEmail } = userInfo;
 
