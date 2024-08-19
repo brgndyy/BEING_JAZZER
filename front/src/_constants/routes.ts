@@ -15,3 +15,5 @@ export const PAGE_ROUTES = {
   main: '/',
   playChord: '/play/chords',
 } as const;
+
+export const CDN_URL = 'https://d2qtp7qksp5k9g.cloudfront.net';
