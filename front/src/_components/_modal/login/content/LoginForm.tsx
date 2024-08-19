@@ -10,14 +10,14 @@ import {
 } from '../loginModalContent.css';
 import Input from '@/_components/_common/input/Input';
 import Button from '@/_components/_common/button/Button';
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEventHandler, FormEventHandler } from 'react';
 
 type LoginFormProps = {
   handleFormValue: ChangeEventHandler<HTMLInputElement>;
   message?: string;
   value: string;
   isLoginMode: boolean;
-  handleSendAuthEmail: (e: React.FormEvent) => void;
+  handleSendAuthEmail: FormEventHandler<HTMLFormElement>;
 };
 
 export default function LoginForm({
