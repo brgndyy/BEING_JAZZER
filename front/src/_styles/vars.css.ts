@@ -5,6 +5,7 @@ export const background2 = createVar();
 export const background3 = createVar();
 export const buttonBackground1 = createVar();
 export const warningBackground = createVar();
+export const borderColor = createVar();
 export const text1 = createVar();
 export const text2 = createVar();
 export const text3 = createVar();
@@ -18,6 +19,7 @@ export const myStyle = style({
     [background3]: '#fff',
     [buttonBackground1]: '#000',
     [warningBackground]: '#7b2525',
+    [borderColor]: '#cbcbcb',
     [text1]: '#000',
     [text2]: '#fff',
     [text3]: '#868e96',
@@ -32,6 +34,7 @@ export const myStyle = style({
         [background3]: '#232323',
         [buttonBackground1]: '#fff',
         [warningBackground]: '#7b2525',
+        [borderColor]: '#cbcbcb',
         [text1]: '#fff',
         [text2]: '##2c2c2c',
         [text3]: '#acacac',

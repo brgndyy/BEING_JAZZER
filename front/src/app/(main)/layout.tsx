@@ -14,7 +14,7 @@ import ContentCard from '@/_components/_common/cards/ContentCard';
 import Header from '@/_components/_header/Header';
 import defaultChordSetting from '@/_mocks/chordSettingOptions';
 import { getUserChordSetting } from '@/_apis/chordSettingAPI';
-import { myFont } from '@/assets/fonts/font';
+import { myFontClass } from '../font.css';
 
 export const metadata: Metadata = {
   title: 'Being JAZZER',
@@ -31,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={myFont.className}>
+      <body suppressHydrationWarning className={myFontClass}>
         <script
           dangerouslySetInnerHTML={{
             __html: sanitizedThemeScript,

@@ -16,14 +16,15 @@ export const logo = style({
   justifyContent: 'center',
   color: text1,
   padding: '1rem',
+  fontSize: '2rem',
 });
 
 export const closeButtonContainer = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  height: '2.5rem',
-  width: '2.5rem',
+  height: '5rem',
+  width: '5rem',
   borderRadius: '100%',
   transition: 'all 0.3s',
   position: 'absolute',
@@ -36,7 +37,7 @@ export const closeButtonContainer = style({
 });
 
 export const closeButton = style({
-  fontSize: '1.25rem',
+  fontSize: '2rem',
   cursor: 'pointer',
   color: text1,
 });
@@ -48,7 +49,7 @@ export const settingForm = style({
 
 export const optionContainer = style({
   width: '100%',
-  fontSize: '1.5rem',
+  fontSize: '2.5rem',
   display: 'flex',
   flexDirection: 'row',
   margin: '0.5rem 0',
@@ -70,7 +71,7 @@ export const title = style({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '2rem',
-  width: '30%',
+  minWidth: '25%',
   color: text1,
 });
 
@@ -80,14 +81,4 @@ export const buttonContainer = style({
   alignItems: 'center',
   height: '5rem',
   marginTop: '1rem',
-});
-
-export const button = style({
-  padding: '1rem',
-  border: '0.05rem solid',
-  borderRadius: '1rem',
-  cursor: 'pointer',
-  fontWeight: 'bold',
-  width: '10rem',
-  fontSize: '1rem',
 });

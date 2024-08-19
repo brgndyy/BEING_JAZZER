@@ -10,10 +10,9 @@ import { metronomeContainer, text, container, button, input } from './pageOfSing
 import VinylImage from '../_common/images/vinylImage/VinylImage';
 import { myStyle } from '@/_styles/vars.css';
 
-type Props = {
+type PageOfSingleChordProps = {
   whiteChordImages: ChordImageData[];
   darkChordImages: ChordImageData[];
-  currentTheme: 'dark' | 'light';
 };
 
 const responsiveSetting = {
@@ -31,7 +30,10 @@ const responsiveSetting = {
   },
 };
 
-export default function PageOfSingleChord({ whiteChordImages, darkChordImages }: Props) {
+export default function PageOfSingleChord({
+  whiteChordImages,
+  darkChordImages,
+}: PageOfSingleChordProps) {
   const { carouselRef, handleNextCarousel } = useCarousel();
   const theme = useThemeStore((state) => state.theme);
   const currentImages = theme ? darkChordImages : whiteChordImages;

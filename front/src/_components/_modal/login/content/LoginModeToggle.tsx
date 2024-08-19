@@ -1,21 +1,25 @@
 import React from 'react';
 import { myStyle } from '@/_styles/vars.css';
-import { joinContainer, toggleAuthMode, toggleText } from '../loginModalContent.css';
+import { joinContainer, toggleText } from '../loginModalContent.css';
+import Button from '@/_components/_common/button/Button';
 
-type Props = {
+type LoginModeToggleProps = {
   isLoginMode: boolean;
-  handleLoginMode: () => void;
+  handleToggleAuthMode: () => void;
 };
 
-export default function LoginModeToggle({ isLoginMode, handleLoginMode }: Props) {
+export default function LoginModeToggle({
+  isLoginMode,
+  handleToggleAuthMode,
+}: LoginModeToggleProps) {
   return (
     <div className={joinContainer}>
       <div className={`${myStyle} ${toggleText}`}>
         <p>{isLoginMode ? `아직 Being JAZZER가 아니신가요 ?` : `이미 Being JAZZER 이신가요 ?`}</p>
       </div>
-      <button type="button" className={`${toggleAuthMode} ${myStyle}`} onClick={handleLoginMode}>
+      <Button variant="border" type="button" onClick={handleToggleAuthMode}>
         {isLoginMode ? `회원가입 하기` : `로그인 하기`}
-      </button>
+      </Button>
     </div>
   );
 }

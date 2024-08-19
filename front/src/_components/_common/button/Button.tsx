@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import { background, baseButtonStyle } from './button.css';
 import { myStyle } from '@/_styles/vars.css';
-// import { myFont } from '@/assets/fonts/font';
+import { myFontClass } from '@/app/font.css';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: keyof typeof background;
@@ -13,7 +13,7 @@ export default function Button({
   className,
   ...props
 }: PropsWithChildren<ButtonProps>) {
-  const classNames = ` ${background[variant]} ${myStyle} ${className ?? ''} ${baseButtonStyle}`;
+  const classNames = ` ${background[variant]} ${myStyle} ${myFontClass} ${className ?? ''} ${baseButtonStyle}`;
 
   return (
     <button className={classNames} {...props}>

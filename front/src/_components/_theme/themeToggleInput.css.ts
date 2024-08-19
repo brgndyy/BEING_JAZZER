@@ -7,8 +7,8 @@ export const toggleInput = style({
 });
 
 export const toggleLabel = style({
-  width: '5rem',
-  height: '2rem',
+  width: '6rem',
+  height: '3rem',
   position: 'relative',
   display: 'block',
   background: '#ebebeb',
@@ -20,8 +20,8 @@ export const toggleLabel = style({
   transition: 'all 0.3s',
   '::after': {
     content: '',
-    width: '1.3rem',
-    height: '1.3rem',
+    width: '2.3rem',
+    height: '2.3rem',
     position: 'absolute',
     top: '4px',
     left: '3px',
@@ -35,8 +35,80 @@ export const toggleLabel = style({
 export const toggleLabelChecked = style({
   background: '#242424',
   '::after': {
-    left: '4.8rem',
+    left: '5.7rem',
     transform: 'translateX(-100%)',
     background: 'linear-gradient(180deg, #fff, #3a3a3a)',
+  },
+  '@media': {
+    'screen and (max-width: 1280px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 1024px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 912px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 853px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 820px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 768px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 540px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 430px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 414px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 412px)': {
+      '::after': {
+        left: '5.6rem',
+      },
+    },
+    'screen and (max-width: 390px)': {
+      '::after': {
+        left: '5.5rem',
+      },
+    },
+    'screen and (max-width: 375px)': {
+      '::after': {
+        left: '5.5rem',
+      },
+    },
+    'screen and (max-width: 360px)': {
+      '::after': {
+        left: '4.7rem',
+      },
+    },
+    'screen and (max-width: 344px)': {
+      '::after': {
+        left: '4.7rem',
+      },
+    },
   },
 });

@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes } from 'react';
-import { myFont } from '@/assets/fonts/font';
-import { background } from './input.css';
+import { myFontClass } from '@/app/font.css';
+import { background, baseInputStyle } from './input.css';
 import { myStyle } from '@/_styles/vars.css';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -8,7 +8,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function Input({ variant, className, ...props }: Props) {
-  const classNames = ` ${background[variant]} ${myStyle} ${className || ''} ${myFont.className}`;
+  const classNames = ` ${background[variant]} ${myStyle} ${className || ''} ${myFontClass} ${baseInputStyle}`;
 
   return <input className={classNames} {...props} />;
 }

@@ -5,17 +5,15 @@ import PageOfSingleChord from '@/_components/_play/PageOfSingleChord';
 import { ChordImageData } from '@/_types';
 import { useState } from 'react';
 
-type Props = {
+type SingleChordPageProps = {
   whiteChordImages: ChordImageData[];
   darkChordImages: ChordImageData[];
-  currentTheme: 'dark' | 'light';
 };
 
 export default function SingleChordPage({
   darkChordImages,
   whiteChordImages,
-  currentTheme,
-}: Props) {
+}: SingleChordPageProps) {
   const [isInitialMount, setIsInitialMount] = useState(true);
 
   const handleEndInitialMount = () => {
@@ -27,11 +25,7 @@ export default function SingleChordPage({
       {isInitialMount ? (
         <CountDown handleEndInitialMount={handleEndInitialMount} />
       ) : (
-        <PageOfSingleChord
-          darkChordImages={darkChordImages}
-          whiteChordImages={whiteChordImages}
-          currentTheme={currentTheme}
-        />
+        <PageOfSingleChord darkChordImages={darkChordImages} whiteChordImages={whiteChordImages} />
       )}
     </>
   );

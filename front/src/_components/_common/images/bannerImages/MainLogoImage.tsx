@@ -1,10 +1,11 @@
 import DarkBannerImage from 'public/assets/svgs/DarkBanner.svg';
 import WhiteBannerImage from 'public/assets/svgs/WhiteBanner.svg';
+import { logoImage } from './mainLogoImage.css';
 
 export default function MainLogoImage({ darkTheme }: { darkTheme: boolean }) {
   return darkTheme ? (
-    <DarkBannerImage width={100} height={100} />
+    <DarkBannerImage className={logoImage} />
   ) : (
-    <WhiteBannerImage width={100} height={100} />
+    <WhiteBannerImage className={logoImage} />
   );
 }
