@@ -45,8 +45,8 @@ export const closeButtonContainer = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  height: '2.5rem',
-  width: '2.5rem',
+  height: '5rem',
+  width: '5rem',
   borderRadius: '100%',
   transition: 'all 0.3s',
   position: 'absolute',
@@ -59,7 +59,7 @@ export const closeButtonContainer = style({
 });
 
 export const closeButton = style({
-  fontSize: '1.25rem',
+  fontSize: '2rem',
   cursor: 'pointer',
   color: text1,
 });
@@ -67,9 +67,9 @@ export const closeButton = style({
 export const logo = style({
   width: '100%',
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   color: text1,
-  fontSize: '1.4rem',
+  fontSize: '2rem',
 });
 
 export const loginBannerText = style({
@@ -91,7 +91,7 @@ export const loginForm = style({
 
 export const formLabel = style({
   margin: '1.5rem 0',
-  fontSize: '1.2rem',
+  fontSize: '1.8rem',
   color: text4,
 });
 
@@ -155,10 +155,10 @@ export const orLogo = style({
   justifyContent: 'center',
   alignItems: 'center',
   color: text4,
-  fontSize: '1rem',
+  fontSize: '2rem',
 });
 
-export const googleIcon = style({
+export const googleIconWrapper = style({
   margin: '0 1rem',
   background: '#fff',
   border: '0.1rem solid #DEE2E6',
@@ -170,29 +170,25 @@ export const googleIcon = style({
   cursor: 'pointer',
 });
 
-// export const naverIcon = style({
-//   display: 'flex',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   padding: '0.5rem',
-//   cursor: 'pointer',
-//   marginLeft: '0.7rem',
-//   marginRight: '0.7rem',
-//   marginBottom: '0.1rem',
-// });
+export const googleIcon = style({
+  width: '4rem',
+  height: '4rem',
+});
 
 export const joinContainer = style({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  flexDirection: 'column',
   margin: '1rem 0',
   padding: '1rem',
 });
 
 export const toggleText = style({
   color: text4,
-  fontSize: '1.1rem',
+  fontSize: '1.6rem',
+  marginBottom: '3rem',
 });
 
 export const underLineWide = style({
@@ -203,16 +199,15 @@ export const underLineWide = style({
 
 export const underLineNarrow = style({
   '::before': {
-    width: '35%',
+    width: '50%',
   },
 });
 
 export const underLine = style({
   position: 'relative',
-  marginTop: '0.5rem',
+  marginTop: '1rem',
   marginLeft: '1rem',
   marginRight: '1rem',
-  fontSize: '1.25rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -231,6 +226,28 @@ export const underLine = style({
     '&:hover::before': {
       transform: 'scaleX(1)',
     },
+  },
+  '@media': {
+    'screen and (max-width: 1280px)': {},
+    'screen and (max-width: 1024px)': {},
+    'screen and (max-width: 912px)': {},
+    'screen and (max-width: 853px)': {},
+    'screen and (max-width: 820px)': {},
+    'screen and (max-width: 768px)': {},
+    'screen and (max-width: 540px)': {},
+    'screen and (max-width: 430px)': {},
+    'screen and (max-width: 414px)': {
+      marginLeft: '0',
+      marginRight: '0',
+    },
+    'screen and (max-width: 412px)': {},
+    'screen and (max-width: 390px)': {},
+    'screen and (max-width: 375px)': {
+      marginLeft: '0',
+      marginRight: '0',
+    },
+    'screen and (max-width: 360px)': {},
+    'screen and (max-width: 344px)': {},
   },
 });
 

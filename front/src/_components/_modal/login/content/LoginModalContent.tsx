@@ -24,7 +24,7 @@ export default function LoginModalContent({ handleClose }: Props) {
     userEmail: '',
   });
 
-  const handleLoginMode = () => {
+  const handleToggleAuthMode = () => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
@@ -52,7 +52,7 @@ export default function LoginModalContent({ handleClose }: Props) {
             <p>또는</p>
           </div>
           <OAuthIcons />
-          <LoginModeToggle isLoginMode={isLoginMode} handleLoginMode={handleLoginMode} />
+          <LoginModeToggle isLoginMode={isLoginMode} handleToggleAuthMode={handleToggleAuthMode} />
         </div>
       </div>
     </>

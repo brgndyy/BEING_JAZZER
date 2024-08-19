@@ -11,8 +11,8 @@ export const modalExit = style({
 });
 
 export const modalContainer = style({
-  width: '48rem',
-  height: '43rem',
+  width: '50rem',
+  height: '52rem',
   borderRadius: '1rem',
   position: 'relative',
   zIndex: '1000',

@@ -5,20 +5,19 @@ import {
   formLabel,
   sendMailContainer,
   mailMessage,
-  formInput,
-  loginButton,
   underLine,
   underLineNarrow,
 } from '../loginModalContent.css';
 import Input from '@/_components/_common/input/Input';
 import Button from '@/_components/_common/button/Button';
+import type { ChangeEventHandler, FormEventHandler } from 'react';
 
-type Props = {
-  handleFormValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+type LoginFormProps = {
+  handleFormValue: ChangeEventHandler<HTMLInputElement>;
   message?: string;
   value: string;
   isLoginMode: boolean;
-  handleSendAuthEmail: (e: React.FormEvent) => void;
+  handleSendAuthEmail: FormEventHandler<HTMLFormElement>;
 };
 
 export default function LoginForm({
@@ -27,7 +26,7 @@ export default function LoginForm({
   value,
   isLoginMode,
   handleSendAuthEmail,
-}: Props) {
+}: LoginFormProps) {
   return (
     <div className={loginFormContainer}>
       <form className={loginForm} onSubmit={handleSendAuthEmail}>
@@ -43,7 +42,6 @@ export default function LoginForm({
             variant="default"
             type="email"
             placeholder="이메일"
-            className={`${formInput}`}
             id="userEmail"
             autoComplete="off"
             name="userEmail"
@@ -51,11 +49,7 @@ export default function LoginForm({
             onChange={handleFormValue}
           />
         )}
-        <Button
-          variant="default"
-          type="submit"
-          className={`${loginButton} ${myStyle} ${underLineNarrow} ${underLine}`}
-        >
+        <Button variant="default" type="submit" className={`${underLineNarrow} ${underLine}`}>
           {isLoginMode ? '로그인 하기' : '회원가입 하기'}
         </Button>
       </form>

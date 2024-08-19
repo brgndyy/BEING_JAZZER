@@ -2,10 +2,10 @@ import { style } from '@vanilla-extract/css';
 import { text1 } from '@/_styles/vars.css';
 
 export const settingIcon = style({
-  fontSize: '2rem',
+  fontSize: '3rem',
   color: text1,
   cursor: 'pointer',
-  marginTop: '0.3rem',
+  marginTop: '0.5rem',
   transition: 'transform 0.3s ease',
   ':hover': {
     transform: 'rotate(180deg)',

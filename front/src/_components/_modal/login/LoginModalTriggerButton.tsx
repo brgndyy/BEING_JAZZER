@@ -1,11 +1,11 @@
 import { wideUnderLine } from './loginModalContent.css';
 import Button from '@/_components/_common/button/Button';
 
-type Props = {
+type LoginModalTriggerButtonProps = {
   handleModalOpen: () => void;
 };
 
-export default function LoginModalTriggerButton({ handleModalOpen }: Props) {
+export default function LoginModalTriggerButton({ handleModalOpen }: LoginModalTriggerButtonProps) {
   return (
     <div>
       <Button variant="default" type="button" className={wideUnderLine} onClick={handleModalOpen}>
