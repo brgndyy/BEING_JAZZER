@@ -13,12 +13,21 @@ import { CORS_OPTIONS } from './constants/options';
 import sequelize from './models';
 import { userRoutes } from './routes/userRoutes';
 import { chordImageRoutes } from './routes/chordImageRoutes';
+import nunjucks from 'nunjucks';
 
 dotenv.config();
 
 const app = express();
 
 app.set('port', process.env.PORT || 80);
+
+nunjucks.configure('src/views', {
+  autoescape: true,
+  express: app,
+  watch: true,
+});
+
+app.set('view engine', 'njk');
 
 app.use(cors(CORS_OPTIONS));
 app.use(

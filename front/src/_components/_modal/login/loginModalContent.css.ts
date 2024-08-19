@@ -27,7 +27,7 @@ export const sendMailContainer = style({
 });
 
 export const mailMessage = style({
-  fontSize: '0.875rem',
+  fontSize: '1.4rem',
   flex: '1 1 0%',
   textAlign: 'center',
   color: text1,
