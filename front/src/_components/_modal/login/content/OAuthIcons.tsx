@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { OAuthContainer, googleIconWrapper, googleIcon } from '../loginModalContent.css';
 import { baseUrl } from '@/_apis/clients/beingJazzerClient';
-import GoogleIcon from 'public/assets/svgs/googleLoginIcon.svg';
+import GoogleIcon from 'public/assets/svgs/GoogleLoginIcon.svg';
 
 export default function OAuthIcons() {
   return (
