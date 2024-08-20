@@ -8,7 +8,7 @@ export const headerContainer = style({
   left: '0',
   right: '0',
   zIndex: '100',
-  width: '80%',
+  width: '90%',
   margin: 'auto',
   height: '80px',
   boxShadow: 'rgba(0, 0, 0, 0.08) 0px 0px 8px',

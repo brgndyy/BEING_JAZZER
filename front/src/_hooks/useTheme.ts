@@ -9,7 +9,7 @@ export const useTheme = (currentTheme: string) => {
     updateTheme(darkTheme);
   }, [darkTheme, updateTheme]);
 
-  const themeToggleHandler = async () => {
+  const handleToggleTheme = async () => {
     const newTheme = !darkTheme;
     let theme;
 
@@ -49,5 +49,5 @@ export const useTheme = (currentTheme: string) => {
     }
   }, []);
 
-  return { darkTheme, themeToggleHandler };
+  return { darkTheme, handleToggleTheme };
 };

@@ -11,17 +11,18 @@ export const menuContainer = style({
 });
 
 export const marginText = style({
-  marginLeft: '1rem',
+  marginLeft: '2rem',
+  marginTop: '1rem',
 });
 
 export const link = style({
-  padding: '1rem',
+  padding: '2rem',
 });
 
 export const linkText = style({
   color: text1,
   transition: 'all 0.3s ease',
-  fontSize: '1.2rem',
+  fontSize: '1.5rem',
 
   ':hover': {
     opacity: 0.7,

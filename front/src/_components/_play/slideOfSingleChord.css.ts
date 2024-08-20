@@ -2,5 +2,5 @@ import { style } from '@vanilla-extract/css';
 
 export const carouselCard = style({
   width: '80%',
-  margin: 'auto',
+  margin: '0 auto',
 });

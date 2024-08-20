@@ -1,6 +1,7 @@
 import WhiteModeVinylImage from '@/assets/images/vinylWhiteMode.svg';
 import DarkModeVinylImage from '@/assets/images/vinylDarkMode.svg';
 import useThemeStore from '@/_store/useThemeStore';
+import { vinylImage } from './vinylImage.css';
 
 export default function VinylImage() {
   const currentTheme = useThemeStore((state) => state.theme);
@@ -8,9 +9,9 @@ export default function VinylImage() {
   return (
     <>
       {currentTheme ? (
-        <DarkModeVinylImage width={20} height={20} />
+        <DarkModeVinylImage className={vinylImage} />
       ) : (
-        <WhiteModeVinylImage width={20} height={20} />
+        <WhiteModeVinylImage className={vinylImage} />
       )}
     </>
   );

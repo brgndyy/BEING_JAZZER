@@ -6,16 +6,14 @@ export const funnelContainer = style({
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
-  height: '30rem',
-  width: '30rem',
   borderRadius: '1rem',
   position: 'absolute',
 });
 
 export const contentContainer = style({
   background: background2,
-  width: '26rem',
-  height: '18rem',
+  width: '43rem',
+  height: '22rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -35,7 +33,7 @@ export const funnelButton = style({
   color: text1,
   background: background2,
   border: 'none',
-  fontSize: '1.2rem',
+  fontSize: '2rem',
   padding: '0.5rem',
   margin: '1rem 0',
   cursor: 'pointer',
@@ -48,7 +46,7 @@ export const funnelButton = style({
 export const funnelLabel = style({
   color: text1,
   fontWeight: 'bold',
-  fontSize: '1.8rem',
+  fontSize: '3rem',
   margin: '1rem 0',
 });
 
@@ -65,8 +63,8 @@ export const funnelInput = style({
   margin: '1rem 0',
   borderRadius: '0.5rem',
   border: 'none',
-  width: '80%',
-  fontSize: '1.2rem',
+  width: '60%',
+  fontSize: '1.8rem',
   boxShadow: 'rgba(0, 0, 0, 0.08) 0px 0px 8px',
   ':focus': {
     outline: 'none',
@@ -76,11 +74,11 @@ export const funnelInput = style({
 export const funnelImageInput = style({
   padding: '0.9rem',
   margin: '1rem 0',
-  marginLeft: '4rem',
+  marginLeft: '8rem',
   borderRadius: '0.5rem',
   border: 'none',
   width: '80%',
-  fontSize: '1rem',
+  fontSize: '2rem',
   color: text1,
 });
 
@@ -93,7 +91,7 @@ export const drag = style({
 
 export const alertText = style({
   color: text4,
-  fontSize: '1.2rem',
+  fontSize: '2rem',
 });
 
 export const emailCard = style({
@@ -104,7 +102,7 @@ export const emailCard = style({
 
 export const userEmailContainer = style({
   color: text1,
-  fontSize: '1.25rem',
+  fontSize: '2rem',
   margin: '1rem 0',
   padding: '0.9rem',
   borderRadius: '0.5rem',
@@ -122,4 +120,5 @@ export const alertContainer = style({
 
 export const lockIcon = style({
   color: text1,
+  fontSize: '1.5rem',
 });

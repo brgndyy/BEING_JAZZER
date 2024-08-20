@@ -8,7 +8,7 @@ import {
   second,
   third,
   fourth,
-  nextButton,
+  buttonContainer,
 } from './welcomFunnel.css';
 import Button from '../_common/button/Button';
 
@@ -32,13 +32,8 @@ export default function WelcomeFunnel({ handleNextStep }: Props) {
         </div>
       </div>
 
-      <div>
-        <Button
-          variant="primary"
-          type="button"
-          onClick={handleNextStep}
-          className={`${nextButton} ${myStyle} ${fourth}`}
-        >
+      <div className={buttonContainer}>
+        <Button variant="primary" type="button" onClick={handleNextStep} className={fourth}>
           회원가입 하러 가기
         </Button>
       </div>

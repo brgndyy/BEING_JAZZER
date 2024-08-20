@@ -8,7 +8,7 @@ export const container = style({
 });
 
 export const linkContainer = style({
-  padding: '1.5rem',
+  padding: '2.5rem',
   boxShadow: 'rgba(0, 0, 0, 0.08) 0px 0px 8px',
   borderRadius: '1rem',
   color: text1,
@@ -16,7 +16,7 @@ export const linkContainer = style({
   fontWeight: 'bold',
   background: background2,
   transition: 'all 0.3s ease',
-  minWidth: '17rem',
+  minWidth: '20rem',
   margin: '1rem 0',
   textAlign: 'center',
   ':hover': {

@@ -21,7 +21,7 @@ export const iconContainer = style({
 
 export const icon = style({
   color: text1,
-  fontSize: '1rem',
+  fontSize: '2rem',
 });
 
 export const motionContainer = style({
