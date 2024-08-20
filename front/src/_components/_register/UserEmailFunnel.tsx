@@ -13,13 +13,17 @@ import {
 import Button from '../_common/button/Button';
 import Input from '../_common/input/Input';
 
-type Props = {
+type UserEmailFunnelProps = {
   userEmail: string;
   handleNextStep: () => void;
   handlePreviousStep: () => void;
 };
 
-export default function UserEmailFunnel({ userEmail, handleNextStep, handlePreviousStep }: Props) {
+export default function UserEmailFunnel({
+  userEmail,
+  handleNextStep,
+  handlePreviousStep,
+}: UserEmailFunnelProps) {
   return (
     <div className={`${contentContainer} ${myStyle}`}>
       <h1 className={`${funnelLabel} ${myStyle}`}>이메일</h1>

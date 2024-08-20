@@ -1,18 +1,20 @@
+import Input from '../_common/input/Input';
 import { toggleInput, toggleLabel, toggleLabelChecked } from './themeToggleInput.css';
 
 export interface ThemeToggleInputProps {
   darkTheme: boolean;
-  themeToggleHandler: () => void;
+  handleToggleTheme: () => void;
 }
 
-export default function ThemeToggleInput({ darkTheme, themeToggleHandler }: ThemeToggleInputProps) {
+export default function ThemeToggleInput({ darkTheme, handleToggleTheme }: ThemeToggleInputProps) {
   return (
     <>
-      <input
+      <Input
+        variant="default"
         type="checkbox"
         id="darkmodeToggle"
         className={toggleInput}
-        onChange={themeToggleHandler}
+        onChange={handleToggleTheme}
       />
       <label
         htmlFor="darkmodeToggle"

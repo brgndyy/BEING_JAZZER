@@ -9,6 +9,7 @@ import useThemeStore from '@/_store/useThemeStore';
 import { metronomeContainer, text, container, button, input } from './pageOfSingChord.css';
 import VinylImage from '../_common/images/vinylImage/VinylImage';
 import { myStyle } from '@/_styles/vars.css';
+import { myFontClass } from '@/app/font.css';
 
 type PageOfSingleChordProps = {
   whiteChordImages: ChordImageData[];
@@ -49,7 +50,7 @@ export default function PageOfSingleChord({
           <span className={`${text} ${myStyle}`}>현재 박자:</span>
           <Metronome.BPMInput className={`${input}`} />
           <Metronome.Button
-            className={`${button} ${myStyle}`}
+            className={`${button} ${myStyle} ${myFontClass}`}
             buttonContents={['재생', '일시정지']}
           />
         </div>

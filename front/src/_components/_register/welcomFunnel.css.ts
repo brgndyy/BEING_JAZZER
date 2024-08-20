@@ -47,16 +47,6 @@ export const fourth = style({
   opacity: 0,
 });
 
-export const nextButton = style({
-  margin: '2rem 0',
-  padding: '1rem',
-  borderRadius: '1rem',
-  border: 'none',
-  cursor: 'pointer',
-  fontSize: '1rem',
-  background: background2,
-  boxShadow: 'rgba(0, 0, 0, 0.08) 0px 0px 8px',
-  transition: 'all 0.3s',
-  color: text4,
-  opacity: 0,
+export const buttonContainer = style({
+  marginTop: '2rem',
 });

@@ -32,9 +32,11 @@ export interface HeaderProps {
 }
 
 export default function Header({ currentTheme, userInfo, chordSetting, accessToken }: HeaderProps) {
-  const { darkTheme, themeToggleHandler } = useTheme(currentTheme);
+  const { darkTheme, handleToggleTheme } = useTheme(currentTheme);
   const { updateChordSetting } = useChordSettingStore();
   const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
+
+  console.log('chordSetting : ', chordSetting);
 
   useEffect(() => {
     updateChordSetting(chordSetting);
@@ -53,7 +55,7 @@ export default function Header({ currentTheme, userInfo, chordSetting, accessTok
           <div className={loginOrSignUpCategory}>
             {userInfo ? <UserProfile userInfo={userInfo} /> : <LoginModal />}
           </div>
-          <ThemeToggleInput darkTheme={darkTheme} themeToggleHandler={themeToggleHandler} />
+          <ThemeToggleInput darkTheme={darkTheme} handleToggleTheme={handleToggleTheme} />
           <div className={settingCategory}>
             <SettingModal />
           </div>
