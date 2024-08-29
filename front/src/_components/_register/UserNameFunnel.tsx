@@ -72,7 +72,7 @@ export default function UserNameFunnel({
       </div>
       <div className={funnelButtonContainer}>
         <Button
-          variant="primary"
+          variant="none"
           type="button"
           className={`${myStyle} ${funnelButton}`}
           onClick={handlePreviousStep}
@@ -80,7 +80,7 @@ export default function UserNameFunnel({
           이전으로
         </Button>
         <Button
-          variant="primary"
+          variant="none"
           type="button"
           className={`${myStyle} ${funnelButton}`}
           onClick={handleNext}

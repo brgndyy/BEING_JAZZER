@@ -60,7 +60,7 @@ export const funnelInputContainer = style({
 
 export const funnelInput = style({
   padding: '0.9rem',
-  margin: '1rem 0',
+  margin: '0 auto !important',
   borderRadius: '0.5rem',
   border: 'none',
   width: '60%',
@@ -73,7 +73,7 @@ export const funnelInput = style({
 
 export const funnelImageInput = style({
   padding: '0.9rem',
-  margin: '1rem 0',
+  margin: '1rem auto !important',
   marginLeft: '8rem',
   borderRadius: '0.5rem',
   border: 'none',
@@ -120,5 +120,6 @@ export const alertContainer = style({
 
 export const lockIcon = style({
   color: text1,
-  fontSize: '1.5rem',
+  fontSize: '2rem',
+  marginLeft: '1rem',
 });

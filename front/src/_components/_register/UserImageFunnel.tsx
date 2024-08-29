@@ -81,7 +81,7 @@ export default function UserImageFunnel({
 
       <div className={funnelButtonContainer}>
         <Button
-          variant="default"
+          variant="none"
           type="button"
           className={`${myStyle} ${funnelButton}`}
           onClick={handlePreviousStep}
@@ -89,7 +89,7 @@ export default function UserImageFunnel({
           이전으로
         </Button>
         <Button
-          variant="default"
+          variant="none"
           type="submit"
           className={`${myStyle} ${funnelButton} `}
           onClick={handleUserSignUp}
