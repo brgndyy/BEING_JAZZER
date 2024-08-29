@@ -25,7 +25,7 @@ export default function WithdrawContent({ handleModalClose }: WithdrawContentPro
           <Button variant="warning" onClick={handleWithdraw}>
             탈퇴
           </Button>
-          <Button variant="primary" onClick={handleModalClose}>
+          <Button variant="border" onClick={handleModalClose}>
             취소
           </Button>
         </div>
