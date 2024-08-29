@@ -48,10 +48,10 @@ export default function LoginModalContent({ handleClose }: Props) {
             value={formState.userEmail}
             isLoginMode={isLoginMode}
           />
-          <div className={`${orLogo} ${myStyle}`}>
+          {/* <div className={`${orLogo} ${myStyle}`}>
             <p>또는</p>
           </div>
-          <OAuthIcons />
+          <OAuthIcons /> */}
           <LoginModeToggle isLoginMode={isLoginMode} handleToggleAuthMode={handleToggleAuthMode} />
         </div>
       </div>
