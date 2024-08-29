@@ -8,6 +8,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from '@/_components/_common/cards/Card';
 import { myFontClass } from '@/app/font.css';
+import type { Metadata } from 'next/types';
+
+export const metadata: Metadata = {
+  title: 'Being JAZZER 회원 가입',
+  description: 'Being JAZZER의 회원 가입 페이지입니다.',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
 
 export default async function RegisterPageLayout({ children }: { children: React.ReactNode }) {
   const currentTheme = getThemeCookieValue();

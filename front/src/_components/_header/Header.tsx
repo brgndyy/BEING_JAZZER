@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { ChordSetting, UserInfo } from '@/_types';
 import { useTheme } from '@/_hooks/useTheme';
 import { myStyle } from '@/_styles/vars.css';
-import useChordSettingStore from '@/_store/useChordSettingStore';
 import { useEffect } from 'react';
 import useAccessTokenStore from '@/_store/useAccessTokenStore';
 import MainLogoImage from '../_common/images/bannerImages/MainLogoImage';
