@@ -17,7 +17,7 @@ export const myStyle = style({
     [background1]: '#fff',
     [background2]: '#fff',
     [background3]: '#fff',
-    [buttonBackground1]: '#000',
+    [buttonBackground1]: '#fff',
     [warningBackground]: '#7b2525',
     [borderColor]: '#cbcbcb',
     [text1]: '#000',

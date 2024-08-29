@@ -45,7 +45,7 @@ export default function UserEmailFunnel({
       </div>
       <div className={funnelButtonContainer}>
         <Button
-          variant="primary"
+          variant="none"
           type="button"
           className={`${myStyle} ${funnelButton}`}
           onClick={handlePreviousStep}
@@ -53,7 +53,7 @@ export default function UserEmailFunnel({
           이전으로
         </Button>
         <Button
-          variant="primary"
+          variant="none"
           type="button"
           className={`${myStyle} ${funnelButton}`}
           onClick={handleNextStep}

@@ -6,17 +6,18 @@ import SettingApplyButton from './SettingApplyButton';
 import SettingModalCloseButton from './SettingModalCloseButton';
 import SettingModalLogo from './SettingModalLogo';
 import { modalContainer } from '../../modal.css';
+import { myFontClass } from '@/app/font.css';
 
-type Props = {
+type SettingModalContentProps = {
   handleClose: () => void;
 };
 
-export default function SettingModalContent({ handleClose }: Props) {
+export default function SettingModalContent({ handleClose }: SettingModalContentProps) {
   const { chordSetting, handleSelectedUserChordSetting } = useSelectSettingOption();
 
   return (
     <div className={`${modalContainer} ${myStyle}`}>
-      <div className={`${formLogo}`}>
+      <div className={`${formLogo} ${myFontClass}`}>
         <SettingModalLogo />
         <SettingModalCloseButton handleClose={handleClose} />
 

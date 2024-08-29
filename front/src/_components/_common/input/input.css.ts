@@ -12,7 +12,9 @@ export const baseInputStyle = style({
   border: `0.1rem solid ${borderColor}`,
   minHeight: '3rem',
   borderRadius: '1rem',
-  ':focus': {
-    outline: 'none',
+  selectors: {
+    '&:focus': {
+      outline: 'none',
+    },
   },
 });

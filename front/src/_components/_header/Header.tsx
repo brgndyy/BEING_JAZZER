@@ -33,17 +33,13 @@ export interface HeaderProps {
 
 export default function Header({ currentTheme, userInfo, chordSetting, accessToken }: HeaderProps) {
   const { darkTheme, handleToggleTheme } = useTheme(currentTheme);
-  const { updateChordSetting } = useChordSettingStore();
   const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
 
-  console.log('chordSetting : ', chordSetting);
-
   useEffect(() => {
-    updateChordSetting(chordSetting);
     if (accessToken) {
       updateAccessToken(accessToken);
     }
-  }, [accessToken, chordSetting, updateAccessToken, updateChordSetting]);
+  }, [accessToken, chordSetting, updateAccessToken]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -57,7 +53,7 @@ export default function Header({ currentTheme, userInfo, chordSetting, accessTok
           </div>
           <ThemeToggleInput darkTheme={darkTheme} handleToggleTheme={handleToggleTheme} />
           <div className={settingCategory}>
-            <SettingModal />
+            <SettingModal chordSetting={chordSetting} />
           </div>
         </div>
       </div>

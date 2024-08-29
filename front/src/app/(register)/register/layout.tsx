@@ -7,7 +7,7 @@ import sanitizeHtml from '@/_utils/sanitizeHtml';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Card from '@/_components/_common/cards/Card';
-import { myFont } from '@/assets/fonts/font';
+import { myFontClass } from '@/app/font.css';
 
 export default async function RegisterPageLayout({ children }: { children: React.ReactNode }) {
   const currentTheme = getThemeCookieValue();
@@ -15,7 +15,7 @@ export default async function RegisterPageLayout({ children }: { children: React
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={myFont.className}>
+      <body suppressHydrationWarning className={myFontClass}>
         <script
           dangerouslySetInnerHTML={{
             __html: sanitizedThemeScript,

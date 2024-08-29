@@ -1,4 +1,4 @@
-name: frontend CI/CD
+name: frontend CI
 
 permissions:
   pull-requests: write
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -58,8 +58,7 @@ jobs:
         run: npm test
 
   build_and_push_frontend:
-    needs: [path_changes, frontend-tests]
-    # needs: path_changes
+    needs: frontend-tests
     if: needs.path_changes.outputs.front == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -106,28 +105,3 @@ jobs:
             NEXT_PUBLIC_CDN_URL=${{ secrets.NEXT_PUBLIC_CDN_URL }}
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
-
-      - name: EC2 Front Docker Run
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.FRONT_EC2_HOST }}
-          username: ec2-user
-          key: ${{ secrets.FRONT_EC2_PEM_KEY }}
-          script: |
-            docker stop ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
-            docker rm ${{ secrets.FRONT_DOCKER_CONTAINER }} || true
-            docker pull ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
-            docker run --name ${{ secrets.FRONT_DOCKER_CONTAINER }} --rm -d -p 3000:3000 \
-              -e NODE_ENV=production \
-              -e NEXT_PUBLIC_FRONT_ENV_MODE=production \
-              ${{ secrets.FRONT_DOCKER_IMAGE }}:latest
-
-      - name: Remove dangling images
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.FRONT_EC2_HOST }}
-          username: ec2-user
-          key: ${{ secrets.FRONT_EC2_PEM_KEY }}
-          script: |
-            docker images -q --filter "dangling=true" | xargs docker rmi -f
-            docker image prune -f

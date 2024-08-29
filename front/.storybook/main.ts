@@ -13,10 +13,13 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     '@chromatic-com/storybook',
     '@storybook/addon-styling-webpack',
+    '@storybook/addon-themes',
   ],
   framework: {
     name: '@storybook/nextjs',
-    options: {},
+    options: {
+      strictMode: false,
+    },
   },
 
   docs: {},
@@ -25,10 +28,8 @@ const config: StorybookConfig = {
   } as PresetValue<Partial<import('@storybook/types').TypescriptOptions> | undefined>,
 
   webpackFinal(config, options) {
-    // Add Vanilla-Extract and MiniCssExtract Plugins
     config.plugins?.push(new VanillaExtractPlugin(), new MiniCssExtractPlugin());
 
-    // Exclude vanilla extract files from regular css processing
     config.module?.rules?.forEach((rule) => {
       if (
         rule &&
@@ -52,6 +53,27 @@ const config: StorybookConfig = {
         },
       ],
     });
+
+    if (!config.module || !config.module.rules) {
+      return config;
+    }
+
+    config.module.rules = [
+      ...config.module.rules.map((rule) => {
+        if (!rule || rule === '...') {
+          return rule;
+        }
+
+        if (rule.test && /svg/.test(String(rule.test))) {
+          return { ...rule, exclude: /\.svg$/i };
+        }
+        return rule;
+      }),
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+    ];
 
     config.resolve = config.resolve || {};
     config.resolve.alias = config.resolve.alias || {};
