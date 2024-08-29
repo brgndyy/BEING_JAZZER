@@ -15,7 +15,7 @@ import {
   funnelInput,
 } from './funnel.css';
 import Button from '../_common/button/Button';
-import { myFont } from '@/assets/fonts/font';
+import { myFontClass } from '@/app/font.css';
 
 type Props = {
   handleNextStep: () => void;
@@ -56,7 +56,7 @@ export default function UserNameFunnel({
       <div className={funnelInputContainer}>
         <motion.input
           type="text"
-          className={`${funnelInput} ${myFont.className}`}
+          className={`${funnelInput} ${myFontClass}`}
           id="userName"
           name="userName"
           autoComplete="off"

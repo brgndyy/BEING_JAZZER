@@ -33,7 +33,7 @@ export default function WelcomeFunnel({ handleNextStep }: Props) {
       </div>
 
       <div className={buttonContainer}>
-        <Button variant="primary" type="button" onClick={handleNextStep} className={fourth}>
+        <Button variant="border" type="button" onClick={handleNextStep} className={fourth}>
           회원가입 하러 가기
         </Button>
       </div>

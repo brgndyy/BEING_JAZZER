@@ -8,7 +8,7 @@ type LoginModalTriggerButtonProps = {
 export default function LoginModalTriggerButton({ handleModalOpen }: LoginModalTriggerButtonProps) {
   return (
     <div>
-      <Button variant="default" type="button" className={wideUnderLine} onClick={handleModalOpen}>
+      <Button variant="none" type="button" className={wideUnderLine} onClick={handleModalOpen}>
         로그인
       </Button>
     </div>

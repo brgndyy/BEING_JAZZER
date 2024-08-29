@@ -49,7 +49,7 @@ export default function LoginForm({
             onChange={handleFormValue}
           />
         )}
-        <Button variant="default" type="submit" className={`${underLineNarrow} ${underLine}`}>
+        <Button variant="none" type="submit" className={`${underLineNarrow} ${underLine}`}>
           {isLoginMode ? '로그인 하기' : '회원가입 하기'}
         </Button>
       </form>

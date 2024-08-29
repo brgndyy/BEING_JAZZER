@@ -36,8 +36,6 @@ export default function Header({ currentTheme, userInfo, chordSetting, accessTok
   const { updateChordSetting } = useChordSettingStore();
   const updateAccessToken = useAccessTokenStore((state) => state.updateAccessToken);
 
-  console.log('chordSetting : ', chordSetting);
-
   useEffect(() => {
     updateChordSetting(chordSetting);
     if (accessToken) {
