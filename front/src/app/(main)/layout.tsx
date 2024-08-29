@@ -18,7 +18,23 @@ import { myFontClass } from '../font.css';
 
 export const metadata: Metadata = {
   title: 'Being JAZZER',
-  description: '랜덤으로 코드를 연습할수 있는 사이트입니다.',
+  description: '재즈 피아노 초견 연습을 할수 있는 사이트입니다.',
+  openGraph: {
+    url: 'https://being-jazzer.com',
+    siteName: 'Being JAZZER',
+    images: [
+      {
+        url: 'https://d2qtp7qksp5k9g.cloudfront.net/favicon.svg',
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'ko',
+    type: 'website',
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
