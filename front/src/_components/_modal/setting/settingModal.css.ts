@@ -3,11 +3,32 @@ import { text1 } from '@/_styles/vars.css';
 
 export const formLogo = style({
   width: '100%',
+  height: '100%',
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'column',
   alignItems: 'center',
   padding: '0.5rem',
+  '@media': {
+    'screen and (max-width: 1280px)': {},
+    'screen and (max-width: 1024px)': {},
+    'screen and (max-width: 912px)': {},
+    'screen and (max-width: 853px)': {},
+    'screen and (max-width: 820px)': {},
+    'screen and (max-width: 768px)': {},
+    'screen and (max-width: 540px)': {},
+    'screen and (max-width: 430px)': {},
+    'screen and (max-width: 414px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
+    'screen and (max-width: 412px)': {},
+    'screen and (max-width: 390px)': {},
+    'screen and (max-width: 375px)': {
+      height: '100%',
+    },
+    'screen and (max-width: 360px)': {},
+    'screen and (max-width: 344px)': {},
+  },
 });
 
 export const logo = style({
@@ -17,6 +38,24 @@ export const logo = style({
   color: text1,
   padding: '1rem',
   fontSize: '2rem',
+  '@media': {
+    'screen and (max-width: 1280px)': {
+      fontSize: '1.5rem',
+    },
+    'screen and (max-width: 1024px)': {},
+    'screen and (max-width: 912px)': {},
+    'screen and (max-width: 853px)': {},
+    'screen and (max-width: 820px)': {},
+    'screen and (max-width: 768px)': {},
+    'screen and (max-width: 540px)': {},
+    'screen and (max-width: 430px)': {},
+    'screen and (max-width: 414px)': {},
+    'screen and (max-width: 412px)': {},
+    'screen and (max-width: 390px)': {},
+    'screen and (max-width: 375px)': {},
+    'screen and (max-width: 360px)': {},
+    'screen and (max-width: 344px)': {},
+  },
 });
 
 export const closeButtonContainer = style({
@@ -54,6 +93,28 @@ export const optionContainer = style({
   flexDirection: 'row',
   margin: '0.5rem 0',
   borderBottom: `0.05rem solid ${text1}`,
+  '@media': {
+    'screen and (max-width: 1280px)': {
+      fontSize: '2rem',
+    },
+    'screen and (max-width: 1024px)': {},
+    'screen and (max-width: 912px)': {},
+    'screen and (max-width: 853px)': {
+      height: '40vh',
+    },
+    'screen and (max-width: 820px)': {},
+    'screen and (max-width: 768px)': {},
+    'screen and (max-width: 540px)': {},
+    'screen and (max-width: 430px)': {},
+    'screen and (max-width: 414px)': {},
+    'screen and (max-width: 412px)': {},
+    'screen and (max-width: 390px)': {},
+    'screen and (max-width: 375px)': {
+      height: '100vh',
+    },
+    'screen and (max-width: 360px)': {},
+    'screen and (max-width: 344px)': {},
+  },
 });
 
 export const optionSelect = style({
@@ -63,6 +124,30 @@ export const optionSelect = style({
   gap: '1rem',
   padding: '1rem',
   color: text1,
+  '@media': {
+    'screen and (max-width: 1280px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
+    'screen and (max-width: 1024px)': {},
+    'screen and (max-width: 912px)': {},
+    'screen and (max-width: 853px)': {},
+    'screen and (max-width: 820px)': {},
+    'screen and (max-width: 768px)': {},
+    'screen and (max-width: 540px)': {},
+    'screen and (max-width: 430px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
+    'screen and (max-width: 414px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
+    'screen and (max-width: 412px)': {},
+    'screen and (max-width: 390px)': {},
+    'screen and (max-width: 375px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+    'screen and (max-width: 360px)': {},
+    'screen and (max-width: 344px)': {},
+  },
 });
 
 export const title = style({
@@ -73,6 +158,24 @@ export const title = style({
   padding: '2rem',
   minWidth: '25%',
   color: text1,
+  '@media': {
+    'screen and (max-width: 1280px)': {},
+    'screen and (max-width: 1024px)': {},
+    'screen and (max-width: 912px)': {},
+    'screen and (max-width: 853px)': {},
+    'screen and (max-width: 820px)': {},
+    'screen and (max-width: 768px)': {},
+    'screen and (max-width: 540px)': {},
+    'screen and (max-width: 430px)': {},
+    'screen and (max-width: 414px)': {},
+    'screen and (max-width: 412px)': {},
+    'screen and (max-width: 390px)': {},
+    'screen and (max-width: 375px)': {
+      minWidth: '30%',
+    },
+    'screen and (max-width: 360px)': {},
+    'screen and (max-width: 344px)': {},
+  },
 });
 
 export const buttonContainer = style({

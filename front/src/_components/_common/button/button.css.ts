@@ -1,14 +1,7 @@
 import { styleVariants, style } from '@vanilla-extract/css';
-import {
-  buttonBackground1,
-  text1,
-  text2,
-  warningBackground,
-  borderColor,
-} from '@/_styles/vars.css';
+import { buttonBackground1, text1, warningBackground, borderColor } from '@/_styles/vars.css';
 
 export const background = styleVariants({
-  primary: { background: buttonBackground1, color: text2 },
   warning: { background: warningBackground, color: '#fff' },
   border: { background: 'none', color: text1, border: `0.1rem solid ${borderColor} !important` },
   none: { background: 'none', color: text1 },
