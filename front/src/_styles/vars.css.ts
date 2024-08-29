@@ -32,7 +32,7 @@ export const myStyle = style({
         [background1]: '#1e1e1e',
         [background2]: '#2b2b2b',
         [background3]: '#232323',
-        [buttonBackground1]: '#000',
+        [buttonBackground1]: '#fff',
         [warningBackground]: '#7b2525',
         [borderColor]: '#cbcbcb',
         [text1]: '#fff',
