@@ -20,6 +20,7 @@
     "@types/dompurify": "^3.0.5",
     "@types/jsdom": "^21.1.5",
     "@vanilla-extract/css": "^1.14.0",
+    "brgndy-react-metronome": "^1.1.4",
     "brgndyy-react-modal": "^0.0.12",
     "dompurify": "^3.0.6",
     "framer-motion": "^10.16.5",
