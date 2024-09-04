@@ -3,7 +3,7 @@
 import SlideOfSingleChord from './SlideOfSingleChord';
 import { ChordImageData } from '@/_types';
 import { carouselCard } from './slideOfSingleChord.css';
-import Metronome from '../__metronome/Metronome';
+import { Metronome } from 'brgndy-react-metronome';
 import useCarousel from '@/_hooks/useCarousel';
 import useThemeStore from '@/_store/useThemeStore';
 import { metronomeContainer, text, container, button, input } from './pageOfSingChord.css';
